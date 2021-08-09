@@ -4,10 +4,10 @@ A basic Bitcoin trading bot example.
 
 Let's try an example that uses data from a CSV file to train.  We will be training a model that uses historical Bitcoin prices to learn when to trade effectively.
 
-First, ensure this `samples` repository is cloned.
+First, ensure this `quickstarts` repository is cloned.
 
 ```bash
-git clone https://github.com/spiceai/samples.git
+git clone https://github.com/spiceai/quickstarts.git
 ```
 
 Move to the `trader` directory and start the Spice runtime.
@@ -18,7 +18,7 @@ cd trader
 spice run
 ```
 
-In another terminal, add the Trader sample:
+In another terminal, add the Trader sample pod:
 
 ```bash
 spice pod add samples/Trader
