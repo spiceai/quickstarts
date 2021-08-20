@@ -2,14 +2,7 @@
 
 A CPU based log pruning example.
 
-This example uses CPU metrics to anticipate the best time to prune logs.  It pulls CPU metrics collected by [Telegraf](https://www.influxdata.com/time-series-platform/telegraf/) from [InfluxDB](https://www.influxdata.com/products/influxdb/) and uses them to determine likely times of low load.
-
-## Prerequisites
-
-This example requires
-
-- [Docker](https://docs.docker.com/get-docker/) (v20.10 for Linux or v18.03 for Windows/MacOS)
-- [Docker Compose](https://docs.docker.com/compose/install/)
+This example uses CPU metrics to anticipate the best time to prune logs.  It pulls CPU metrics from a [Flux Annotated CSV](https://docs.influxdata.com/influxdb/cloud/reference/syntax/annotated-csv/) file and uses them to determine likely times of low load.
 
 ## Train
 
@@ -19,17 +12,7 @@ First, ensure this `quickstarts` repository is cloned.
 git clone https://github.com/spiceai/quickstarts.git
 ```
 
-Move to the `log-pruner` directory and start collecting metrics.
-
-```bash
-cd quickstarts
-cd log-pruner
-docker-compose up
-```
-
-You will observe Telegraf and InfluxDB start up.  After both containers have started, CPU metrics will begin flowing into InfluxDB.
-
-In another terminal, start the Spice runtime in the log-pruner directory.
+Move to the `log-pruner` directory and start the Spice AI runtime.
 
 ```bash
 cd quickstarts
