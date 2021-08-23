@@ -19,7 +19,7 @@
 	"forwardPorts": [ 8000 ],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	// "postCreateCommand": "uname -a",
+	"postCreateCommand": "curl https://raw.githubusercontent.com/spiceai/spiceai/trunk/install/install.sh?token=AAATSLRBS4STDET7UCNWQFDBFQ7E2 | /bin/bash",
 
 	// Comment out connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
 	"remoteUser": "vscode"
