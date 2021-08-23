@@ -11,9 +11,12 @@
 	// Set *default* container specific settings.json values on container create.
 	"settings": {},
 
-
 	// Add the IDs of extensions you want installed when the container is created.
 	"extensions": [],
+
+	"containerEnv": {
+		"PATH": "$HOME/.spice/bin:$PATH",
+	},
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	"forwardPorts": [ 8000 ],
