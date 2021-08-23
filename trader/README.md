@@ -25,7 +25,7 @@ spice pod add samples/Trader
 
 > ### Note
 
-> If you are running this quickstart in GitHub Codespaces, then you can click the split button in the terminal window to open a new terminal in split-view mode. This will allow you to see what the Spice AI runtime is doing while you run the CLI commands.
+> If you are running this quickstart in GitHub Codespaces or VS Code, then you can click the split button in the terminal window to open a new terminal in split-view mode. This will allow you to see what the Spice AI runtime is doing while you run the CLI commands.
 
 > ![alt](/.imgs/split_terminal.png)
 
