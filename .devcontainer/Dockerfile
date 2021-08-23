@@ -1,11 +1,9 @@
-# See here for image contents: https://github.com/microsoft/vscode-dev-containers/tree/v0.191.1/containers/ubuntu/.devcontainer/base.Dockerfile
+FROM mcr.microsoft.com/vscode/devcontainers/universal:1-linux
 
-# [Choice] Ubuntu version: bionic, focal
-ARG VARIANT="focal"
-FROM mcr.microsoft.com/vscode/devcontainers/base:0-${VARIANT}
-
-# [Optional] Uncomment this section to install additional OS packages.
+# ** [Optional] Uncomment this section to install additional packages. **
+# USER root
+#
 # RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
 #     && apt-get -y install --no-install-recommends <your-package-list-here>
-
-
+#
+# USER codespace
