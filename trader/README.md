@@ -17,7 +17,7 @@ cd trader
 spice run
 ```
 
-In another terminal, add the Trader sample pod:
+In another terminal (also in the `trader` directory), add the Trader sample pod:
 
 ```bash
 spice pod add samples/Trader
@@ -37,10 +37,10 @@ _Change_
 
 ```yaml
 fields:
-    - name: usd_balance
-    initializer: 10 # update with the starting balance to train with
-    - name: btc_balance
-    initializer: 0 # update with the starting balance to train with
+  - name: usd_balance
+  initializer: 0 # update with the starting balance to train with
+  - name: btc_balance
+  initializer: 0 # update with the starting balance to train with
 ```
 
 _to_
@@ -75,8 +75,8 @@ You'll see a result you can take action on immediately:
 {
   "action": "buy",
   "confidence": 0.9,
-  "end": "Mon Jul 19 12:34:00 2021",
-  "start": "Mon Jul 19 12:29:00 2021",
+  "end": "1607907600",
+  "start": "1607886000",
   "tag": "latest"
 }
 ```
@@ -106,4 +106,11 @@ setInterval(async () => {
 
   console.log(`${new Date().toISOString()}: ${data.action.toUpperCase()}!!!`);
 }, 3000);
+```
+
+Create this file as `trader.js` in this quickstart folder. Then run the following:
+
+```js
+npm install node-fetch
+node trader.js
 ```
