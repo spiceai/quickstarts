@@ -45,9 +45,9 @@
 	"forwardPorts": [ 8000 ],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "sh install.sh && cat \"export PATH=\"$HOME/.spice/bin:$PATH\" >> ~/.bashrc",
+	"postCreateCommand": "sh install.sh",
 
 	"remoteEnv": {
-		"PATH": "${containerEnv:PATH}:${containerEnv:HOME}/.spice/bin",
+		"PATH": "${containerEnv:PATH}:/home/vscode/.spice/bin:/home/codespace/.spice/bin",
 	},
 }
