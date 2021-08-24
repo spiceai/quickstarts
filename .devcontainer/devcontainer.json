@@ -8,7 +8,7 @@
 	// Add the IDs of extensions you want installed when the container is created.
 	"extensions": [],
 	"remoteEnv": {
-		"PATH": "${containerEnv:PATH}:/home/vscode/.spice/bin:/home/codespace/.spice/bin",
+		"PATH": "${containerEnv:PATH}:/home/codespace/.spice/bin",
 	},
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	"forwardPorts": [
