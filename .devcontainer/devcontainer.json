@@ -42,8 +42,12 @@
 	],
 	
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	// "forwardPorts": [],
+	"forwardPorts": [ 8000 ],
 
-	// "oryx build" will automatically install your dependencies and attempt to build your project
-	"postCreateCommand": "oryx build -p virtualenv_name=.venv --log-file /tmp/oryx-build.log --manifest-dir /tmp || echo 'Could not auto-build. Skipping.'"
+	// Use 'postCreateCommand' to run commands after the container is created.
+	"postCreateCommand": "sh install.sh",
+
+	"remoteEnv": {
+		"PATH": "${containerEnv:PATH}:${containerEnv:HOME}/.spice/bin",
+	},
 }
