@@ -13,6 +13,7 @@ git clone https://github.com/spiceai/quickstarts.git
 Move to the `trader` directory and start the Spice runtime.
 
 ```bash
+cd quickstarts
 cd trader
 spice run
 ```
@@ -75,8 +76,8 @@ You'll see a result you can take action on immediately:
 {
   "action": "buy",
   "confidence": 0.9,
-  "end": "1607907600",
-  "start": "1607886000",
+  "start": 1607886000,
+  "end": 1607907600,
   "tag": "latest"
 }
 ```
@@ -114,3 +115,7 @@ Create this file as `trader.js` in this quickstart folder. Then run the followin
 npm install node-fetch
 node trader.js
 ```
+
+## Next steps
+
+You've successfully trained a model that can tell you when it is a good time to buy or sell Bitcoin, based on your portfolio constraints! In a real application you would want to continually be adding in new bitcoin price data as observations so that calls to the `/inference` API gives recommendations about live data. Try tweaking the parameters in the Pod manifest (`.spice/pods/trader.yaml`) to see how the Spice AI runtime behaves.
