@@ -12,11 +12,11 @@ First, ensure this `quickstarts` repository is cloned.
 git clone https://github.com/spiceai/quickstarts.git
 ```
 
-Move to the `log-pruner` directory and start the Spice AI runtime.
+Move to the `logpruner` directory and start the Spice AI runtime.
 
 ```bash
 cd quickstarts
-cd log-pruner
+cd logpruner
 spice run
 ```
 
@@ -24,7 +24,7 @@ Once the Spice runtime has loaded, add the LogPruner example using another termi
 
 ```bash
 cd quickstarts
-cd log-pruner
+cd logpruner
 spice pod add samples/LogPruner
 ```
 
@@ -58,4 +58,4 @@ You'll see a result telling you if now is a good time to prune logs or not, alon
 
 ## Next steps
 
-You've successfully trained a model that can tell you when it is a good time to prune logs or not! In a real application you would want to continually be adding in new CPU metrics as observations so that calls to the `/inference` API gives recommendations about the live data. To see how this can be done, check out the [Log Pruner Sample](https://github.com/spiceai/samples/blob/trunk/log-pruner/README.md).
+You've successfully trained a model that can tell you when it is a good time to prune logs or not! In a real application you would want to continually be adding in new CPU metrics as observations so that calls to the `/inference` API gives recommendations about the live data. To see how this can be done, check out the [Log Pruner Sample](https://github.com/spiceai/samples/blob/trunk/logpruner/README.md).
