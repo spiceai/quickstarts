@@ -26,7 +26,7 @@ spice pod add samples/Trader
 
 > ### Note
 
-> If you are running this quickstart in GitHub Codespaces or VS Code, then you can click the split button in the terminal window to open a new terminal in split-view mode. This will allow you to see what the Spice AI runtime is doing while you run the CLI commands.
+> If you are running this quickstart in GitHub Codespaces or VS Code, then you can click the split button in the terminal window to open a new terminal in split-view mode. This will allow you to see what the Spice.ai runtime is doing while you run the CLI commands.
 
 > ![alt](/.imgs/split_terminal.png)
 
@@ -92,7 +92,7 @@ curl http://localhost:8000/api/v0.1/pods/trader/observations
 
 ## Integrate with your app
 
-You can easily use your newly trained model in your app. Spice AI works with any language using a simple REST API. Here is a simple example that will fetch inferences for a Javascript app:
+You can easily use your newly trained model in your app. Spice.ai works with any language using a simple REST API. Here is a simple example that will fetch inferences for a Javascript app:
 
 ```js
 const fetch = require("node-fetch");
@@ -118,4 +118,4 @@ node trader.js
 
 ## Next steps
 
-You've successfully trained a model that can tell you when it is a good time to buy or sell Bitcoin, based on your portfolio constraints! In a real application you would want to continually be adding in new bitcoin price data as observations so that calls to the `/inference` API gives recommendations about live data. Try tweaking the parameters in the Pod manifest (`.spice/pods/trader.yaml`) to see how the Spice AI runtime behaves.
+You've successfully trained a model that can tell you when it is a good time to buy or sell Bitcoin, based on your portfolio constraints! In a real application you would want to continually be adding in new bitcoin price data as observations so that calls to the `/inference` API gives recommendations about live data. Try tweaking the parameters in the Pod manifest (`.spice/pods/trader.yaml`) to see how the Spice.ai runtime behaves.
