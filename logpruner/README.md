@@ -12,7 +12,7 @@ First, ensure this `quickstarts` repository is cloned.
 git clone https://github.com/spiceai/quickstarts.git
 ```
 
-Move to the `logpruner` directory and start the Spice AI runtime.
+Move to the `logpruner` directory and start the Spice.ai runtime.
 
 ```bash
 cd quickstarts
@@ -30,7 +30,7 @@ spice pod add samples/LogPruner
 
 > ### Note
 
-> If you are running this quickstart in GitHub Codespaces or VS Code, then you can click the split button in the terminal window to open a new terminal in split-view mode. This will allow you to see what the Spice AI runtime is doing while you run the CLI commands.
+> If you are running this quickstart in GitHub Codespaces or VS Code, then you can click the split button in the terminal window to open a new terminal in split-view mode. This will allow you to see what the Spice.ai runtime is doing while you run the CLI commands.
 
 > ![alt](/.imgs/split_terminal.png)
 
@@ -44,7 +44,7 @@ Now try fetching a recommendation from the newly trained pod.
 curl http://localhost:8000/api/v0.1/pods/logpruner/inference
 ```
 
-You'll see a result telling you if now is a good time to prune logs or not, along with Spice AI's confidence in that recommendation. Cool!
+You'll see a result telling you if now is a good time to prune logs or not, along with Spice.ai's confidence in that recommendation. Cool!
 
 ```json
 {
