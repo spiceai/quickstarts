@@ -92,7 +92,7 @@ Feel free to try whatever amounts you'd like!
 Now, save the file. You should observe a new training run begin in the Spice.ai runtime terminal. You can also manually start a training run using this command.
 
 ```bash
-spice pod train trader
+spice train trader
 ```
 
 You can view the pod training progress at: [http://localhost:8000/pods/trader](http://localhost:8000/pods/trader).
