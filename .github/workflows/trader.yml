@@ -9,6 +9,10 @@ on:
     branches:
       - trunk
       - release-*
+  schedule:
+    # * is a special character in YAML so you have to quote this string
+    # Run every day at midnight
+    - cron:  '0 0 * * *'
   workflow_dispatch:
 
 defaults:
