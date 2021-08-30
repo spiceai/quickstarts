@@ -117,7 +117,7 @@ Holding.
 You can also fetch a recommendation directly from the API.
 
 ```bash
-curl http://localhost:8000/api/v0.1/pods/trader/inference
+curl http://localhost:8000/api/v0.1/pods/trader/recommendation
 ```
 
 You'll see a result you can take action on immediately:

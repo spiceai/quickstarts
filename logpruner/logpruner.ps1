@@ -8,35 +8,39 @@
 
 Write-Host "Server Maintenance v0.1!"
 Write-Host
+Write-Host "Ctrl-C to stop running"
+Write-Host
 
 function Get-Recommendation {
   try {
-    $response = Invoke-WebRequest -URI http://localhost:8000/api/v0.1/pods/logpruner/inference
-  } catch {
+    $response = Invoke-WebRequest -URI http://localhost:8000/api/v0.1/pods/logpruner/recommendation
+  }
+  catch {
     Write-Host "Unable to communicate with Spice.ai, is it running?"
     return
   }
 
-  $inference = $response | ConvertFrom-Json
+  $recommendation = $response | ConvertFrom-Json
 
-  Write-Host "Recommendation to $($inference.action) with confidence $($inference.confidence)"
+  Write-Host "Recommendation to $($recommendation.action) with confidence $($recommendation.confidence)"
 
-  return $inference
+  return $recommendation
 }
 
-function Try-PerformMaintenance {
+function Invoke-TryPerformMaintenance {
   param (
-    $Inference
+    $Recommendation
   )
 
-  if (!$Inference.confidence) {
+  if (!$Recommendation.confidence) {
     Write-Host "Recommendation has a confidence of 0. Has this pod been trained yet?"
     return
   }
 
-  if ($Inference.confidence -gt 0.5 -and $Inference.action -eq "prune_logs") {
+  if ($Recommendation.confidence -gt 0.5 -and $Recommendation.action -eq "prune_logs") {
     Write-Host "Running server maintenance now!"
-  } else {
+  }
+  else {
     Write-Host "Deferring server maintenance to later"
   }
 }
@@ -44,12 +48,12 @@ function Try-PerformMaintenance {
 while ($true) {
   Write-Host "Time to perform a maintenance run, checking to see if now is a good time to run"
 
-  $inference = Get-Recommendation
-  if (!$inference) {
+  $recommendation = Get-Recommendation
+  if (!$recommendation) {
     return
   }
 
-  Try-PerformMaintenance -Inference $inference
+  Invoke-TryPerformMaintenance -Recommendation $recommendation
   Write-Host
 
   Start-Sleep -Seconds 5

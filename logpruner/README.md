@@ -36,12 +36,12 @@ spice pod add samples/LogPruner
 
 In the Spice runtime terminal, you will observe the runtime load CPU metrics and begin to train!
 
-## Inference
+## Recommendation
 
 Now try fetching a recommendation from the newly trained pod.
 
 ```bash
-curl http://localhost:8000/api/v0.1/pods/logpruner/inference
+curl http://localhost:8000/api/v0.1/pods/logpruner/recommendation
 ```
 
 You'll see a result telling you if now is a good time to prune logs or not, along with Spice.ai's confidence in that recommendation. Cool!
@@ -58,4 +58,4 @@ You'll see a result telling you if now is a good time to prune logs or not, alon
 
 ## Next steps
 
-You've successfully trained a model that can tell you when it is a good time to prune logs or not! In a real application you would want to continually be adding in new CPU metrics as observations so that calls to the `/inference` API gives recommendations about the live data. To see how this can be done, check out the [Log Pruner Sample](https://github.com/spiceai/samples/blob/trunk/logpruner/README.md).
+You've successfully trained a model that can tell you when it is a good time to prune logs or not! In a real application you would want to continually be adding in new CPU metrics as observations so that calls to the `/recommendation` API gives recommendations about the live data. To see how this can be done, check out the [Log Pruner Sample](https://github.com/spiceai/samples/blob/trunk/logpruner/README.md).
