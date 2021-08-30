@@ -2,6 +2,7 @@
   "name": "trader",
   "version": "0.1.0",
   "description": "A Spice trading app",
+  "repository": "https://github.com/spiceai/quickstarts/trader",
   "main": "main.js",
   "type": "module",
   "scripts": {

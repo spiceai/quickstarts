@@ -33,7 +33,7 @@ So that you can watch the Spice.ai runtime output and enter commands at the same
 > If you are using GitHub Codespaces or VS Code, then you can open a new terminal in split-view mode by clicking the 'split' button.
 > ![alt](/.imgs/split_terminal.png)
 
-Run npm install to setup the sample application.
+Run npm install in the new terminal to setup the sample application.
 
 ```bash
 npm install
@@ -45,7 +45,17 @@ npm install
 node main.js
 ```
 
-## Get the sample
+You should see the following output:
+
+```bash
+Trader - A Spice trading app
+Fetching trade recommendation...
+Recommendation has a confidence of 0. Has this pod been trained yet?
+```
+
+The sample application will attempt to fetch a recommendation from the Spice.ai runtime but will return a confidence of 0, because we have not yet created a pod and trained it. Press Ctrl-C to close the sample application and let's add a pod in the next step.
+
+## Get the sample pod
 
 In the new terminal add the Trader sample pod:
 
@@ -87,7 +97,22 @@ spice pod train trader
 
 ## Recommendations
 
-Now try fetching a recommendation from the newly trained pod.
+Once the pod has trained, re-run the sample application:
+
+```bash
+node main.js
+```
+
+Now you should see output with a recomendation (recommendation may differ from sample as this depends on the trained model):
+
+```bash
+Trader - A Spice trading app
+Fetching trade recommendation...
+Recommendation to SELL with 0.623 confidence.
+Holding.
+```
+
+You can also fetch a recommendation directly from the API.
 
 ```bash
 curl http://localhost:8000/api/v0.1/pods/trader/inference
@@ -103,32 +128,6 @@ You'll see a result you can take action on immediately:
   "end": 1607907600,
   "tag": "latest"
 }
-```
-
-## Integrate with your app
-
-You can easily use your newly trained model in your app. Spice.ai works with any language using a simple REST API. Here is a simple example that will fetch inferences for a Javascript app:
-
-```js
-const fetch = require("node-fetch");
-
-console.log("Trader - A Spice app");
-
-setInterval(async () => {
-  let response = await fetch(
-    "http://localhost:8000/api/v0.1/pods/trader/inference"
-  );
-  let data = await response.json();
-
-  console.log(`${new Date().toISOString()}: ${data.action.toUpperCase()}!!!`);
-}, 3000);
-```
-
-Create this file as `trader.js` in this quickstart folder. Then run the following:
-
-```js
-npm install node-fetch
-node trader.js
 ```
 
 ## Observation Data
