@@ -28,7 +28,7 @@ jobs:
 
       - name: install Spice.ai
         run: |
-          curl https://spiceai.z22.web.core.windows.net | /bin/bash
+          curl https://install.spiceai.org | /bin/bash
 
       - name: start Spice.ai runtime
         run: |
