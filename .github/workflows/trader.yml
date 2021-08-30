@@ -23,7 +23,7 @@ jobs:
     env:
       GOVER: 1.16
       SPICE_GH_TOKEN: ${{ secrets.SPICE_GH_TOKEN }}
-      PATH: ~/.spice/bin:${{ env.PATH }}
+      PATH: ~/.spice/bin:$PATH
     steps:
       - uses: actions/checkout@v2
 
