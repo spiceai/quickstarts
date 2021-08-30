@@ -32,7 +32,7 @@ jobs:
 
       - name: start Spice.ai runtime
         run: |
-          echo $PATH
+          source ~/.bashrc
           spice run
 
       - name: get sample pod
