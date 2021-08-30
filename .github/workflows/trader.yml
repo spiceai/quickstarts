@@ -13,7 +13,7 @@ on:
 
 defaults:
   run:
-    shell: bash --rcfile ~/.bashrc -eo pipefail {0}
+    shell: bash
     working-directory: trader
 
 jobs:
@@ -23,6 +23,7 @@ jobs:
     env:
       GOVER: 1.16
       SPICE_GH_TOKEN: ${{ secrets.SPICE_GH_TOKEN }}
+      PATH: ~/.spice/bin:${{ env.PATH }}
     steps:
       - uses: actions/checkout@v2
 
@@ -32,7 +33,6 @@ jobs:
 
       - name: start Spice.ai runtime
         run: |
-          source ~/.bashrc
           spice run
 
       - name: get sample pod
