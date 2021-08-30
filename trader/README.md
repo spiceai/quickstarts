@@ -95,6 +95,8 @@ Now, save the file. You should observe a new training run begin in the Spice.ai 
 spice pod train trader
 ```
 
+You can view the pod training progress at: [http://localhost:8000/pods/trader](http://localhost:8000/pods/trader).
+
 ## Recommendations
 
 Once the pod has trained, re-run the sample application:
