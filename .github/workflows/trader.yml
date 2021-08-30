@@ -13,7 +13,7 @@ on:
 
 defaults:
   run:
-    shell: bash -eo pipefail {0}
+    shell: bash --noprofile --rcfile ~/.bashrc -eo pipefail {0}
     working-directory: trader
 
 jobs:
@@ -32,6 +32,7 @@ jobs:
 
       - name: start Spice.ai runtime
         run: |
+          cat ~/.bashrc
           spice run
 
       - name: get sample pod
