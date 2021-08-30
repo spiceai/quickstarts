@@ -23,9 +23,12 @@ jobs:
     env:
       GOVER: 1.16
       SPICE_GH_TOKEN: ${{ secrets.SPICE_GH_TOKEN }}
-      PATH: ~/.spice/bin:$PATH
     steps:
       - uses: actions/checkout@v2
+
+      - name: update PATH
+        run: |
+          "PATH=~/.spice/bin:$PATH" >> $GITHUB_ENV
 
       - name: install Spice.ai
         run: |
