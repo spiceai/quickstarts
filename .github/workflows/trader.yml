@@ -11,6 +11,10 @@ on:
       - release-*
   workflow_dispatch:
 
+permissions:
+  contents: read
+  deployments: read
+
 jobs:
   test:
     name: test trader
