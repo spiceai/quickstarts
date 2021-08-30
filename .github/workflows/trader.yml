@@ -17,16 +17,12 @@ jobs:
     runs-on: ubuntu-latest
     env:
       GOVER: 1.16
-    strategy:
-      fail-fast: false
-      matrix:
-        algorithm: [vpg, dql]
     steps:
       - uses: actions/checkout@v2
 
       - name: install Spice.ai
         run: |
-          curl spiceai.z22.web.core.windows.net | /bin/bash
+          curl https://spiceai.z22.web.core.windows.net | /bin/bash
         working-directory: trader
 
       - name: start Spice.ai runtime
