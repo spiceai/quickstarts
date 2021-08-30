@@ -7,8 +7,7 @@
 # in a real server monitoring application this period would likely be longer.
 
 Write-Host "Server Maintenance v0.1!"
-
-$lastMaintenanceRun = 0
+Write-Host
 
 function Get-Recommendation {
   try {
@@ -37,26 +36,21 @@ function Try-PerformMaintenance {
 
   if ($Inference.confidence -gt 0.5 -and $Inference.action -eq "prune_logs") {
     Write-Host "Running server maintenance now!"
-    $lastMaintenanceRun = $now
   } else {
     Write-Host "Deferring server maintenance to later"
   }
 }
 
 while ($true) {
-  $now = Get-Date -UFormat %s # unix seconds
-  if ($now - $lastMaintenanceRun -gt 15) {
-    Write-Host "Time to perform a maintenance run, checking to see if now is a good time to run"
+  Write-Host "Time to perform a maintenance run, checking to see if now is a good time to run"
 
-    $inference = Get-Recommendation
-    if (!$inference) {
-      return
-    }
-
-    Try-PerformMaintenance -Inference $inference
-
-    Write-Host
+  $inference = Get-Recommendation
+  if (!$inference) {
+    return
   }
+
+  Try-PerformMaintenance -Inference $inference
+  Write-Host
 
   Start-Sleep -Seconds 5
 }
