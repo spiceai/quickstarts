@@ -60,7 +60,7 @@ The sample application will attempt to fetch a recommendation from the Spice.ai 
 In the new terminal add the Trader sample pod:
 
 ```bash
-spice pod add samples/Trader
+spice add samples/Trader
 ```
 
 In the Spice.ai runtime terminal, you will observe the runtime loading the CSV from `data/btcusd.csv` and starting to train!
@@ -117,7 +117,7 @@ Holding.
 You can also fetch a recommendation directly from the API.
 
 ```bash
-curl http://localhost:8000/api/v0.1/pods/trader/inference
+curl http://localhost:8000/api/v0.1/pods/trader/recommendation
 ```
 
 You'll see a result you can take action on immediately:

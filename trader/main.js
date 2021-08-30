@@ -10,7 +10,7 @@ console.log("Trader - A Spice trading app");
 const fetchRecommendation = async () => {
   console.log("Fetching trade recommendation...");
   const response = await fetch(
-    "http://localhost:8000/api/v0.1/pods/trader/inference"
+    "http://localhost:8000/api/v0.1/pods/trader/recommendation"
   ).catch((e) => {});
 
   if (!response || !response.ok) {
