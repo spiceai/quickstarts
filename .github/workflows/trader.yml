@@ -21,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       GOVER: 1.16
-      SPICE_GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      SPICE_GH_TOKEN: ${{ secrets.SPICE_GH_TOKEN }}
     steps:
       - uses: actions/checkout@v2
 
