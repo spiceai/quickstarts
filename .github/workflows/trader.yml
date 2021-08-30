@@ -11,9 +11,10 @@ on:
       - release-*
   workflow_dispatch:
 
-permissions:
-  contents: read
-  deployments: read
+defaults:
+  run:
+    shell: bash
+    working-directory: trader
 
 jobs:
   test:
@@ -28,27 +29,22 @@ jobs:
       - name: install Spice.ai
         run: |
           curl https://spiceai.z22.web.core.windows.net | /bin/bash
-        working-directory: trader
 
       - name: start Spice.ai runtime
         run: |
           spice run
-        working-directory: trader
 
       - name: get sample pod
         run: |
           spice add samples/Trader
-        working-directory: trader
 
       - name: install npm packages
         run: |
           npm install
-        working-directory: trader
 
       - name: start Trader app
         run: |
           node main.js
-        working-directory: trader
 
       - name: Sleep for 30 seconds
         uses: jakejarvis/wait-action@master
@@ -58,19 +54,15 @@ jobs:
       - name: Fetch recommendations
         run: |
           curl http://localhost:8000/api/v0.1/pods/trader/inference
-        working-directory: trader
 
       - name: Fetch observations
         run: |
           curl http://localhost:8000/api/v0.1/pods/trader/observations
-        working-directory: trader
 
       - name: stop Trader app
         run: |
           killall node
-        working-directory: trader
 
       - name: stop Spice.ai runtime
         run: |
           killall node
-        working-directory: trader
