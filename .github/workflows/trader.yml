@@ -1,0 +1,75 @@
+name: trader
+
+on:
+  push:
+    branches:
+      - trunk
+      - release-*
+  pull_request:
+    branches:
+      - trunk
+      - release-*
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: test trader
+    runs-on: ubuntu-latest
+    env:
+      GOVER: 1.16
+    strategy:
+      fail-fast: false
+      matrix:
+        algorithm: [vpg, dql]
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: install Spice.ai
+        run: |
+          curl https://install.spiceai.org | /bin/bash
+        working-directory: trader
+
+      - name: start Spice.ai runtime
+        run: |
+          spice run
+        working-directory: trader
+
+      - name: get sample pod
+        run: |
+          spice add samples/Trader
+        working-directory: trader
+
+      - name: install npm packages
+        run: |
+          npm install
+        working-directory: trader
+
+      - name: start Trader app
+        run: |
+          node main.js
+        working-directory: trader
+
+      - name: Sleep for 30 seconds
+        uses: jakejarvis/wait-action@master
+        with:
+          time: "30s"
+
+      - name: Fetch recommendations
+        run: |
+          curl http://localhost:8000/api/v0.1/pods/trader/inference
+        working-directory: trader
+
+      - name: Fetch observations
+        run: |
+          curl http://localhost:8000/api/v0.1/pods/trader/observations
+        working-directory: trader
+
+      - name: stop Trader app
+        run: |
+          killall node
+        working-directory: trader
+
+      - name: stop Spice.ai runtime
+        run: |
+          killall node
+        working-directory: trader
