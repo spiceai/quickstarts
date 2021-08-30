@@ -13,7 +13,7 @@ on:
 
 defaults:
   run:
-    shell: bash
+    shell: bash --noprofile -eo pipefail {0}
     working-directory: trader
 
 jobs:
