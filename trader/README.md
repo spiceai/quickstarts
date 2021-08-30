@@ -60,7 +60,7 @@ The sample application will attempt to fetch a recommendation from the Spice.ai 
 In the new terminal add the Trader sample pod:
 
 ```bash
-spice pod add samples/Trader
+spice add samples/Trader
 ```
 
 In the Spice.ai runtime terminal, you will observe the runtime loading the CSV from `data/btcusd.csv` and starting to train!

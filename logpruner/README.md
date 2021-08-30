@@ -25,7 +25,7 @@ Once the Spice runtime has loaded, add the LogPruner example using another termi
 ```bash
 cd quickstarts
 cd logpruner
-spice pod add samples/LogPruner
+spice add samples/LogPruner
 ```
 
 > ### Note
@@ -36,6 +36,28 @@ spice pod add samples/LogPruner
 
 In the Spice runtime terminal, you will observe the runtime load CPU metrics and begin to train!
 
+## Start the server maintenance app
+
+While Spice.ai is training the model, start the server maintenance app that comes with this quickstart:
+
+```bash
+pwsh ./logpruner.ps1
+```
+
+You should see output that looks like:
+
+```
+Server Maintenance v0.1!
+
+Ctrl-C to stop running
+
+Time to perform a maintenance run, checking to see if now is a good time to run
+Recommendation to do_not_prune_logs with confidence
+Recommendation has a confidence of 0. Has this pod been trained yet?
+```
+
+Once the pod has finished training, the output should change to show that now is a good time to run server maintenance or not.
+
 ## Recommendation
 
 Now try fetching a recommendation from the newly trained pod.
@@ -44,7 +66,7 @@ Now try fetching a recommendation from the newly trained pod.
 curl http://localhost:8000/api/v0.1/pods/logpruner/recommendation
 ```
 
-You'll see a result telling you if now is a good time to prune logs or not, along with Spice.ai's confidence in that recommendation. Cool!
+You'll see a result telling you if now is a good time to prune logs or not, along with Spice.ai's confidence in that recommendation. This is also used by the server maintenance app bundled with this quickstart to determine what it should do. Cool!
 
 ```json
 {
