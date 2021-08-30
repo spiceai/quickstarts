@@ -50,7 +50,7 @@ You should see the following output:
 ```bash
 Trader - A Spice trading app
 Fetching trade recommendation...
-Failed to fetch recommendation. Is the Spice.ai runtime running?
+Failed to fetch recommendation. Has a pod been added yet??
 ```
 
 The sample application will attempt to fetch a recommendation from the Spice.ai runtime but will not find one, because we have not yet created a pod and trained it. Press Ctrl-C to close the sample application and let's add a pod in the next step.
