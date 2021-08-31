@@ -53,11 +53,10 @@ jobs:
       - name: start Trader app
         run: |
           node main.js &
-
-      - name: Sleep for 90 seconds
-        uses: jakejarvis/wait-action@master
-        with:
-          time: "90s"
+      
+      - name: Wait for runtime to start
+        run: |
+          curl --retry 120 --retry-delay 5 --retry-connrefused http://localhost:8000/health
 
       - name: Verify installation
         run: |
