@@ -40,7 +40,7 @@ jobs:
 
       - name: start Spice.ai runtime
         run: |
-          spice run
+          & spice run
 
       - name: get sample pod
         run: |
@@ -52,7 +52,7 @@ jobs:
 
       - name: start Trader app
         run: |
-          node main.js
+          & node main.js
 
       - name: Sleep for 30 seconds
         uses: jakejarvis/wait-action@master
