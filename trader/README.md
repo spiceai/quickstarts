@@ -50,10 +50,10 @@ You should see the following output:
 ```bash
 Trader - A Spice trading app
 Fetching trade recommendation...
-Recommendation has a confidence of 0. Has this pod been trained yet?
+Failed to fetch recommendation. Is the Spice.ai runtime started and has a pod been added?
 ```
 
-The sample application will attempt to fetch a recommendation from the Spice.ai runtime but will return a confidence of 0, because we have not yet created a pod and trained it. Press Ctrl-C to close the sample application and let's add a pod in the next step.
+The sample application will attempt to fetch a recommendation from the Spice.ai runtime but will not find one, because we have not yet created a pod and trained it. Press Ctrl-C to close the sample application and let's add a pod in the next step.
 
 ## Get the sample pod
 
