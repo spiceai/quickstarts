@@ -19,7 +19,7 @@ const fetchRecommendation = async () => {
       return;
     }
     console.log(
-      "Failed to fetch recommendation. Has a pod been added yet?"
+      "Failed to fetch recommendation. Is the Spice.ai runtime started and has a pod been added?"
     );
     return;
   }
