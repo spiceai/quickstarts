@@ -54,10 +54,10 @@ jobs:
         run: |
           node main.js &
 
-      - name: Sleep for 60 seconds
+      - name: Sleep for 90 seconds
         uses: jakejarvis/wait-action@master
         with:
-          time: "60s"
+          time: "90s"
 
       - name: Fetch recommendations
         run: |
