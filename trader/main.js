@@ -13,13 +13,20 @@ const fetchRecommendation = async () => {
     "http://localhost:8000/api/v0.1/pods/trader/recommendation"
   ).catch((e) => {});
 
-  if (!response || !response.ok) {
+  if (!response) {
+    console.log(
+      "Failed to fetch recommendation. Is the Spice.ai runtime started?"
+    );
+    return;
+  }
+
+  if (!response.ok) {
     if (response.status >= 500) {
       console.log(`An error occurred: ${response.statusText}`);
       return;
     }
     console.log(
-      "Failed to fetch recommendation. Is the Spice.ai runtime started and has a pod been added?"
+      "Failed to fetch recommendation. Has a pod been added?"
     );
     return;
   }
