@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       FORBIDDEN_LICENSE_CHECK: |
-        grep -E "GPL|CC|APSL|CPAL|EUPL|NPOSL|OSL|SSPL|Parity|RPL|QPL|Sleepycat|copyleft|CDDL|CPL|EPL|ErlPL|IPL|MPL|MS-RL|SPL|WTFPL|Facebook|Commons-Clause" | grep . && exit 1 || echo "ok" 
+        grep -E "GPL|CC-BY-SA|CC-BY-NC|CC-BY-NC-SA|CC-BY-NC-ND|APSL|CPAL|EUPL|NPOSL|OSL|SSPL|Parity|RPL|QPL|Sleepycat|copyleft|CDDL|CPL|EPL|ErlPL|IPL|MPL|MS-RL|SPL|WTFPL|Facebook|Commons-Clause" | grep . && exit 1 || echo "ok" 
     steps:
       - uses: actions/checkout@v2
 
