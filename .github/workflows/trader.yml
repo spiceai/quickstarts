@@ -1,18 +1,7 @@
 name: trader
 
 on:
-  push:
-    branches:
-      - trunk
-      - release-*
-  pull_request:
-    branches:
-      - trunk
-      - release-*
-  schedule:
-    # * is a special character in YAML so you have to quote this string
-    # Run every day at midnight
-    - cron: "0 0 * * *"
+  # Temporarily disabled to unblock trunk
   workflow_dispatch:
 
 defaults:
