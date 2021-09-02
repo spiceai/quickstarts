@@ -20,12 +20,12 @@ cd logpruner
 spice run
 ```
 
-Once the Spice runtime has loaded, add the LogPruner example using another terminal.
+Once the Spice runtime has loaded, add the LogPruner pod from spicerack.org using another terminal.
 
 ```bash
 cd quickstarts
 cd logpruner
-spice add samples/LogPruner
+spice add quickstarts/logpruner
 ```
 
 > ### Note

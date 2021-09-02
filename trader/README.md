@@ -33,13 +33,13 @@ So that you can watch the Spice.ai runtime output and enter commands at the same
 > If you are using GitHub Codespaces or VS Code, then you can open a new terminal in split-view mode by clicking the 'split' button.
 > ![alt](/.imgs/split_terminal.png)
 
-Run npm install in the new terminal to setup the sample application.
+Run npm install in the new terminal to setup the quickstart application.
 
 ```bash
 npm install
 ```
 
-## Run the sample application
+## Run the quickstart application
 
 ```bash
 node main.js
@@ -53,14 +53,14 @@ Fetching trade recommendation...
 Failed to fetch recommendation. Is the Spice.ai runtime started and has a pod been added?
 ```
 
-The sample application will attempt to fetch a recommendation from the Spice.ai runtime but will not find one, because we have not yet created a pod and trained it. Press Ctrl-C to close the sample application and let's add a pod in the next step.
+The quickstart application will attempt to fetch a recommendation from the Spice.ai runtime but will not find one, because we have not yet created a pod and trained it. Press Ctrl-C to close the quickstart application and let's add a pod in the next step.
 
-## Get the sample pod
+## Get the quickstart pod
 
-In the new terminal add the Trader sample pod:
+In the new terminal add the Trader quickstart pod from spicerack.org:
 
 ```bash
-spice add samples/Trader
+spice add quickstarts/trader
 ```
 
 In the Spice.ai runtime terminal, you will observe the runtime loading the CSV from `data/btcusd.csv` and starting to train!
@@ -99,13 +99,13 @@ You can view the pod training progress at: [http://localhost:8000/pods/trader](h
 
 ## Recommendations
 
-Once the pod has trained, re-run the sample application:
+Once the pod has trained, re-run the quickstart application:
 
 ```bash
 node main.js
 ```
 
-Now you should see output with a recomendation (recommendation may differ from sample as this depends on the trained model):
+Now you should see output with a recomendation (recommendation may differ from this quickstart as this depends on the trained model):
 
 ```bash
 Trader - A Spice trading app
@@ -142,7 +142,7 @@ curl http://localhost:8000/api/v0.1/pods/trader/observations
 
 ## Next steps
 
-Congratulations! You've successfully trained a model that provides real-time recommendations for trades based on the sample data and your portfolio constraints!
+Congratulations! You've successfully trained a model that provides real-time recommendations for trades based on the quickstart data and your portfolio constraints!
 
 If you were to extend this example to a real-world application, the next steps might be to replace the static CSV data with live streaming data and to further develop the reward functions to train a model that produces better recommendations.
 
