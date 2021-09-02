@@ -31,9 +31,9 @@ jobs:
         run: |
           spice run
 
-      - name: get sample pod
+      - name: get quickstart pod
         run: |
-          spice add samples/Trader
+          spice add quickstarts/Trader
 
       - name: install npm packages
         run: |

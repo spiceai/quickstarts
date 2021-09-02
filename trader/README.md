@@ -33,13 +33,13 @@ So that you can watch the Spice.ai runtime output and enter commands at the same
 > If you are using GitHub Codespaces or VS Code, then you can open a new terminal in split-view mode by clicking the 'split' button.
 > ![alt](/.imgs/split_terminal.png)
 
-Run npm install in the new terminal to setup the sample application.
+Run npm install in the new terminal to setup the quickstart application.
 
 ```bash
 npm install
 ```
 
-## Run the sample application
+## Run the quickstart application
 
 ```bash
 node main.js
@@ -53,11 +53,11 @@ Fetching trade recommendation...
 Failed to fetch recommendation. Is the Spice.ai runtime started and has a pod been added?
 ```
 
-The sample application will attempt to fetch a recommendation from the Spice.ai runtime but will not find one, because we have not yet created a pod and trained it. Press Ctrl-C to close the sample application and let's add a pod in the next step.
+The quickstart application will attempt to fetch a recommendation from the Spice.ai runtime but will not find one, because we have not yet created a pod and trained it. Press Ctrl-C to close the quickstart application and let's add a pod in the next step.
 
-## Get the sample pod
+## Get the quickstart pod
 
-In the new terminal add the Trader sample pod from spicerack.org:
+In the new terminal add the Trader quickstart pod from spicerack.org:
 
 ```bash
 spice add quickstarts/Trader
@@ -105,7 +105,7 @@ Once the pod has trained, re-run the quickstart application:
 node main.js
 ```
 
-Now you should see output with a recomendation (recommendation may differ from sample as this depends on the trained model):
+Now you should see output with a recomendation (recommendation may differ from this quickstart as this depends on the trained model):
 
 ```bash
 Trader - A Spice trading app
