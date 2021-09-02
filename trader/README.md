@@ -57,10 +57,10 @@ The sample application will attempt to fetch a recommendation from the Spice.ai 
 
 ## Get the sample pod
 
-In the new terminal add the Trader sample pod:
+In the new terminal add the Trader sample pod from spicerack.org:
 
 ```bash
-spice add samples/Trader
+spice add quickstarts/Trader
 ```
 
 In the Spice.ai runtime terminal, you will observe the runtime loading the CSV from `data/btcusd.csv` and starting to train!
@@ -99,7 +99,7 @@ You can view the pod training progress at: [http://localhost:8000/pods/trader](h
 
 ## Recommendations
 
-Once the pod has trained, re-run the sample application:
+Once the pod has trained, re-run the quickstart application:
 
 ```bash
 node main.js
@@ -142,7 +142,7 @@ curl http://localhost:8000/api/v0.1/pods/trader/observations
 
 ## Next steps
 
-Congratulations! You've successfully trained a model that provides real-time recommendations for trades based on the sample data and your portfolio constraints!
+Congratulations! You've successfully trained a model that provides real-time recommendations for trades based on the quickstart data and your portfolio constraints!
 
 If you were to extend this example to a real-world application, the next steps might be to replace the static CSV data with live streaming data and to further develop the reward functions to train a model that produces better recommendations.
 
