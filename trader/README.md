@@ -60,7 +60,7 @@ The quickstart application will attempt to fetch a recommendation from the Spice
 In the new terminal add the Trader quickstart pod from spicerack.org:
 
 ```bash
-spice add quickstarts/Trader
+spice add quickstarts/trader
 ```
 
 In the Spice.ai runtime terminal, you will observe the runtime loading the CSV from `data/btcusd.csv` and starting to train!

@@ -25,7 +25,7 @@ Once the Spice runtime has loaded, add the LogPruner pod from spicerack.org usin
 ```bash
 cd quickstarts
 cd logpruner
-spice add quickstarts/LogPruner
+spice add quickstarts/logpruner
 ```
 
 > ### Note

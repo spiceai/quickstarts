@@ -33,7 +33,7 @@ jobs:
 
       - name: get quickstart pod
         run: |
-          spice add quickstarts/Trader
+          spice add quickstarts/trader
 
       - name: install npm packages
         run: |
