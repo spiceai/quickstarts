@@ -146,4 +146,4 @@ Congratulations! You've successfully trained a model that provides real-time rec
 
 If you were to extend this example to a real-world application, the next steps might be to replace the static CSV data with live streaming data and to further develop the reward functions to train a model that produces better recommendations.
 
-Try tweaking the parameters in the pod manifest (`.spice/pods/trader.yaml`) to learn how the Spice.ai runtime behaves.
+Try tweaking the parameters in the pod manifest (`spicepods/trader.yaml`) to learn how the Spice.ai runtime behaves.
