@@ -9,7 +9,7 @@ Let's try an example that uses historical Bitcoin prices to learn when to make B
 ## Requirements
 
 - [Node.js 14](https://nodejs.org/)
-- [Spice.ai](https://crispy-dollop-c329115a.pages.github.io/#/install)
+- [Spice.ai](https://docs.spiceai.org/getting-started/install-spiceai/)
 
 ## Setup
 
