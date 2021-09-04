@@ -6,14 +6,14 @@
 # This application checks every 5 seconds to see if we should prune the logs, however 
 # in a real server monitoring application this period would likely be longer.
 
-Write-Host "Server Maintenance v0.1!"
+Write-Host "Server Ops v0.1!"
 Write-Host
 Write-Host "Ctrl-C to stop running"
 Write-Host
 
 function Get-Recommendation {
   try {
-    $response = Invoke-WebRequest -URI http://localhost:8000/api/v0.1/pods/logpruner/recommendation
+    $response = Invoke-WebRequest -URI http://localhost:8000/api/v0.1/pods/serverops/recommendation
   }
   catch {
     Write-Host "Unable to communicate with Spice.ai, is it running?"
@@ -38,15 +38,17 @@ function Invoke-TryPerformMaintenance {
   }
 
   if ($Recommendation.confidence -gt 0.5 -and $Recommendation.action -eq "prune_logs") {
-    Write-Host "Running server maintenance now!"
+    Write-Host "Pruning logs now!"
+  } else if ($Recommendation.confidence -gt 0.5 -and $Recommendation.action -eq "preload_cache") {
+    Write-Host "Preloading cache now!"
   }
   else {
-    Write-Host "Deferring server maintenance to later"
+    Write-Host "Not performing any server operations"
   }
 }
 
 while ($true) {
-  Write-Host "Time to perform a maintenance run, checking to see if now is a good time to run"
+  Write-Host "Checking for a server operation recommendation"
 
   $recommendation = Get-Recommendation
   if (!$recommendation) {
