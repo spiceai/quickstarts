@@ -66,11 +66,11 @@ Now try fetching a recommendation from the newly trained pod.
 curl http://localhost:8000/api/v0.1/pods/serverops/recommendation
 ```
 
-You'll see a result telling you if now is a good time to prune logs or not, along with Spice.ai's confidence in that recommendation. This is also used by the server ops app bundled with this quickstart to determine what it should do. Cool!
+You'll see a result telling you if now is a good time to perform server operations or not, along with Spice.ai's confidence in that recommendation. This is also used by the server ops app bundled with this quickstart to determine what it should do. Cool!
 
 ```json
 {
-  "action": "prune_logs",
+  "action": "preload_cache",
   "confidence": 0.95,
   "start": 1629237960,
   "end": 1629238560,
@@ -80,4 +80,4 @@ You'll see a result telling you if now is a good time to prune logs or not, alon
 
 ## Next steps
 
-You've successfully trained a model that can tell you when it is a good time to prune logs or not! In a real application you would want to continually be adding in new CPU metrics as observations so that calls to the `/recommendation` API gives recommendations about the live data. To see how this can be done, check out the [ServerOps Sample](https://github.com/spiceai/samples/blob/trunk/serverops/README.md).
+You've successfully trained a model that can tell you when it is a good time to perform server operations or not! In a real application you would want to continually be adding in new CPU metrics as observations so that calls to the `/recommendation` API gives recommendations about the live data. To see how this can be done, check out the [ServerOps Sample](https://github.com/spiceai/samples/blob/trunk/serverops/README.md).
