@@ -1,4 +1,4 @@
 # Spice.ai Quickstart Tutorials
 
-- [Log Pruner](logpruner/README.md) - A CPU metrics based log pruner
+- [ServerOps](serverops/README.md) - A CPU metrics based server operations app
 - [Trader](trader/README.md) - A basic Bitcoin trading bot
