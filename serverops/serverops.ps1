@@ -37,8 +37,8 @@ function Invoke-TryPerformMaintenance {
     return
   }
 
-  if ($Recommendation.confidence -gt 0.5 -and $Recommendation.action -eq "prune_logs") {
-    Write-Host "Pruning logs now!"
+  if ($Recommendation.confidence -gt 0.5 -and $Recommendation.action -eq "perform_maintenance") {
+    Write-Host "Performing server maintenance now!"
   } else if ($Recommendation.confidence -gt 0.5 -and $Recommendation.action -eq "preload_cache") {
     Write-Host "Preloading cache now!"
   }
