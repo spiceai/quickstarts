@@ -38,7 +38,31 @@ In the Spice runtime terminal, you will observe the runtime load CPU metrics and
 
 ## Start the server maintenance app
 
-While Spice.ai is training the model, start the server ops app that comes with this quickstart:
+While Spice.ai is training the model, start the server ops app that comes with this quickstart.
+
+The quickstart serverops app has been written in both Node.js and Powershell to highlight that Spice.ai can be used to integrate with any application written in any language. Choose the language you are most familiar with to proceed with the quickstart.
+
+### Node.js
+
+```bash
+npm install
+node serverops.js
+```
+
+You should see output that looks like:
+
+```
+Server Ops v0.1!
+
+Ctrl-C to stop running
+
+Fetching Server Ops recommendation...
+Recommendation has a confidence of 0. Has this pod been trained yet?
+```
+
+Once the pod has finished training, the output should change to show that now is a good time to run server operations or not.
+
+### Powershell
 
 ```bash
 pwsh ./serverops.ps1
