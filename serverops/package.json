@@ -1,0 +1,12 @@
+{
+  "name": "serverops",
+  "version": "0.1.0",
+  "repository": "https://github.com/spiceai/quickstarts/serverops",
+  "main": "serverops.js",
+  "type": "module",
+  "author": "Spice AI",
+  "license": "MIT",
+  "dependencies": {
+    "node-fetch": "^2.6.1"
+  }
+}
