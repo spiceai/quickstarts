@@ -1,10 +1,11 @@
 #!/usr/local/bin/pwsh
 
-# This is a log pruning application written in Powershell that queries Spice AI
-# for intelligent recommendations on when it would be a good time to prune logs.
-# This application will only prune logs if the confidence is higher than 50%. 
-# This application checks every 5 seconds to see if we should prune the logs, however 
-# in a real server monitoring application this period would likely be longer.
+# This is a server ops application written in Powershell that queries Spice.ai
+# for intelligent recommendations on when it would be a good time to perform 
+# various server operations.
+# This application will only take the recommendation if the confidence is higher than 50%. 
+# As an example, this application checks every 5 seconds however in a real server monitoring
+# application this period would likely be longer, such as every 5mins
 
 Write-Host "Server Ops v0.1!"
 Write-Host
@@ -16,13 +17,20 @@ function Get-Recommendation {
     $response = Invoke-WebRequest -URI http://localhost:8000/api/v0.1/pods/serverops/recommendation
   }
   catch {
-    Write-Host "Unable to communicate with Spice.ai, is it running?"
+    if ($null -eq $_.Exception.Response) {
+      Write-Warning "Unable to communicate with Spice.ai, is it running?"
+    } else {
+      $message = $_.ErrorDetails.Message | ConvertFrom-Json
+      if ($message.response.result -eq "pod_not_initialized") {
+        Write-Warning "Pod not initialized. Have you run spice add quickstarts/serverops yet?"
+      } else {
+        Write-Warning "The Spice.ai runtime returned an error: $($message.response.result)"
+      }
+    }
     return
   }
 
   $recommendation = $response | ConvertFrom-Json
-
-  Write-Host "Recommendation to $($recommendation.action) with confidence $($recommendation.confidence)"
 
   return $recommendation
 }
@@ -37,18 +45,21 @@ function Invoke-TryPerformMaintenance {
     return
   }
 
-  if ($Recommendation.confidence -gt 0.5 -and $Recommendation.action -eq "perform_maintenance") {
-    Write-Host "Performing server maintenance now!"
-  } elseif ($Recommendation.confidence -gt 0.5 -and $Recommendation.action -eq "preload_cache") {
-    Write-Host "Preloading cache now!"
-  }
-  else {
+  if ($Recommendation.confidence -gt 0.5) {
+    Write-Host "Successfully got recommendation to '$($recommendation.action)' with confidence '$($recommendation.confidence)'" -ForegroundColor Green
+
+    if ($Recommendation.action -eq "perform_maintenance") {
+      Write-Host "Performing server maintenance now!"
+    } elseif ($Recommendation.action -eq "preload_cache") {
+      Write-Host "Preloading cache now!"
+    }
+  } else {
     Write-Host "Not performing any server operations"
   }
 }
 
 while ($true) {
-  Write-Host "Checking for a server operation recommendation"
+  Write-Host "Checking for a server operation recommendation..."
 
   $recommendation = Get-Recommendation
   if (!$recommendation) {
