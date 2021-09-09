@@ -54,6 +54,7 @@ jobs:
       - name: start Trader app
         run: |
           node main.js
+        working-directory: trader
         timeout-minutes: 0.5
         continue-on-error: true
 
