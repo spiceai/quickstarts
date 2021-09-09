@@ -43,6 +43,10 @@ jobs:
         run: |
           npm install
 
+      - name: start training
+        run: |
+          spice train trader
+
       - name: start Trader app
         run: |
           node main.js
