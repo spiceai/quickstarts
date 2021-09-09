@@ -39,14 +39,17 @@ jobs:
       - name: get quickstart pod
         run: |
           spice add quickstarts/trader
+        working-directory: trader
 
       - name: install npm packages
         run: |
           npm install
+        working-directory: trader
 
       - name: start training
         run: |
-          spice train trader
+          spice train spicepods/trader.yaml
+        working-directory: trader
 
       - name: start Trader app
         run: |
