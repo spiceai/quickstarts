@@ -33,6 +33,7 @@ jobs:
 
       - name: check Spice.ai runtime
         run: |
+          docker ps
           curl http://localhost:8000/health
 
       - name: get quickstart pod
@@ -50,11 +51,7 @@ jobs:
       - name: start Trader app
         run: |
           node main.js
-
-      - name: Sleep for 30 seconds
-        uses: jakejarvis/wait-action@master
-        with:
-          time: "30s"
+        timeout-minutes: 1
 
       - name: Fetch recommendations
         run: |
