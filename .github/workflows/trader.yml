@@ -48,7 +48,7 @@ jobs:
 
       - name: start training
         run: |
-          spice train spicepods/trader.yaml
+          spice train trader
         working-directory: trader
 
       - name: start Trader app
