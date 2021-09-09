@@ -17,7 +17,7 @@ jobs:
       GOVER: 1.17
     services:
       spiced:
-        image: ghcr.io/spiceai/spiced:latest
+        image: ghcr.io/spiceai/spiced:v0.1.0-alpha
         ports:
           - 8000:8000
     steps:
@@ -51,9 +51,11 @@ jobs:
       - name: start Trader app
         run: |
           node main.js
-        timeout-minutes: 1
+        timeout-minutes: 0.5
+        continue-on-error: true
 
       - name: Fetch recommendations
+        if: always()
         run: |
           curl http://localhost:8000/api/v0.1/pods/trader/recommendation
 
