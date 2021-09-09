@@ -14,8 +14,12 @@ jobs:
     name: test trader
     runs-on: ubuntu-latest
     env:
-      GOVER: 1.16
-      SPICE_GH_TOKEN: ${{ secrets.SPICE_GH_TOKEN }}
+      GOVER: 1.17
+    services:
+      spiced:
+        image: ghcr.io/spiceai/spiced:latest
+        ports:
+        - 8000:8000
     steps:
       - uses: actions/checkout@v2
 
@@ -27,9 +31,9 @@ jobs:
         run: |
           curl https://install.spiceai.org | /bin/bash
 
-      - name: start Spice.ai runtime
+      - name: check Spice.ai runtime
         run: |
-          spice run
+          curl http://localhost:8000/health
 
       - name: get quickstart pod
         run: |
@@ -43,11 +47,6 @@ jobs:
         run: |
           node main.js
 
-      - name: Sleep for 30 seconds
-        uses: jakejarvis/wait-action@master
-        with:
-          time: "30s"
-
       - name: Fetch recommendations
         run: |
           curl http://localhost:8000/api/v0.1/pods/trader/recommendation
@@ -59,7 +58,3 @@ jobs:
       - name: stop Trader app
         run: |
           killall node
-
-      - name: stop Spice.ai runtime
-        run: |
-          killall spiced
