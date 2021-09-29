@@ -52,7 +52,6 @@ jobs:
           curl http://localhost:8000/api/v0.1/diagnostics
 
       - name: get quickstart pod
-        # working-directory: trader
         run: |
           spice add quickstarts/trader
 
@@ -61,7 +60,6 @@ jobs:
           npm install
 
       - name: start training
-        # working-directory: trader
         run: |
           spice train trader
 
