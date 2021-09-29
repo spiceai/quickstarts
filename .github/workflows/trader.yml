@@ -70,7 +70,7 @@ jobs:
 
       - name: check output for success
         run: |
-          grep -E "Submitting|Holding" | grep . && echo "Found successful action based on recommendation" || exit 1 
+          grep -E "Submitting|Holding" trader.out && echo "Found successful action based on recommendation" || exit 1
 
       - name: Fetch recommendations
         run: |
