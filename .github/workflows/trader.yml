@@ -1,7 +1,12 @@
 name: trader
 
 on:
-  # Temporarily disabled to unblock trunk
+  push:
+    branches:
+      - trunk
+  pull_request:
+    branches:
+      - trunk
   workflow_dispatch:
 
 defaults:
