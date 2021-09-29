@@ -59,6 +59,9 @@ jobs:
         run: |
           pwd
           ls -ral ${{ github.workspace }}/trader
+          ls -ral ${{ github.workspace }}/trader/spicepods
+          ls -ral ${{ github.workspace }}/trader/spicepods/data
+
 
       - name: install npm packages
         run: |
