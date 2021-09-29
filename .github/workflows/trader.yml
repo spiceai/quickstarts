@@ -17,7 +17,7 @@ jobs:
       GOVER: 1.17
     services:
       spiceai:
-        image: ghcr.io/spiceai/spiceai:0.2.0-alpha-rc-linux-amd64
+        image: ghcr.io/spiceai/spiceai:0.1.1-alpha-linux-amd64
         ports:
           - 8000:8000
         options: -v ${{ github.workspace }}/trader:/userapp --name spicert
@@ -53,7 +53,7 @@ jobs:
       - name: get quickstart pod
         working-directory: trader
         run: |
-          spice add quickstarts/trader
+          spice add quickstarts/trader@v0.3.0
 
       - name: list trader dir
         run: |
