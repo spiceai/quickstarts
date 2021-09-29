@@ -17,6 +17,7 @@ jobs:
       GOVER: 1.17
     services:
       spiceai:
+        # Use latest released version to ensure incoming quickstart changes do not break it 
         image: ghcr.io/spiceai/spiceai:0.1.1-alpha-linux-amd64
         ports:
           - 8000:8000
@@ -28,11 +29,6 @@ jobs:
         uses: docker://docker
         with:
           args: docker restart spicert
-
-      - name: list trader dir
-        run: |
-          pwd
-          ls -ral ${{ github.workspace }}/trader
 
       - name: update PATH
         run: |
@@ -53,15 +49,7 @@ jobs:
       - name: get quickstart pod
         working-directory: trader
         run: |
-          spice add quickstarts/trader@v0.3.0
-
-      - name: list trader dir
-        run: |
-          pwd
-          ls -ral ${{ github.workspace }}/trader
-          ls -ral ${{ github.workspace }}/trader/spicepods
-          cat ${{ github.workspace }}/trader/spicepods/trader.yaml
-
+          spice add quickstarts/trader
 
       - name: install npm packages
         run: |
@@ -78,7 +66,11 @@ jobs:
 
       - name: start Trader app
         run: |
-          timeout 30 node main.js
+          timeout 30 node main.js | tee trader.out || true
+
+      - name: check output for success
+        run: |
+          grep -E "Submitting|Holding" | grep . && echo "Found successful action based on recommendation" || exit 1 
 
       - name: Fetch recommendations
         run: |
