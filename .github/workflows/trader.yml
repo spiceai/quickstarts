@@ -42,7 +42,7 @@ jobs:
         run: |
           timeout 30 bash -c 'while [[ "$(curl -s -w 200 http://localhost:8000/health)" != "ok200" ]]; do sleep 1; done' || false
 
-      - name: Fetch diagnostics
+      - name: fetch diagnostics
         run: |
           curl http://localhost:8000/api/v0.1/diagnostics
 
@@ -60,7 +60,7 @@ jobs:
         run: |
           spice train trader
 
-      - name: Fetch diagnostics
+      - name: fetch diagnostics
         run: |
           curl http://localhost:8000/api/v0.1/diagnostics
 
