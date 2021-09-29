@@ -20,6 +20,8 @@ jobs:
         image: ghcr.io/spiceai/spiced:latest
         ports:
         - 8000:8000
+        options: |
+          -v ${{ github.workspace }}/trader:/app
     steps:
       - uses: actions/checkout@v2
 
