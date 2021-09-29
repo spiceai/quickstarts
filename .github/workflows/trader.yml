@@ -21,7 +21,7 @@ jobs:
         ports:
         - 8000:8000
         options: |
-          -v ${{ github.workspace }}/trader:/app
+          -v ${{ github.workspace }}/trader:/userapp
     steps:
       - uses: actions/checkout@v2
 
@@ -33,9 +33,9 @@ jobs:
         run: |
           curl https://install.spiceai.org | /bin/bash
 
-      - name: check Spice.ai runtime
+      - name: wait for Spice.ai runtime healthy
         run: |
-          curl http://localhost:8000/health
+          timeout 30 bash -c 'while [[ "$(curl -s -w 200 http://localhost:8000/health)" != "ok200" ]]; do sleep 1; done' || false
 
       - name: get quickstart pod
         run: |
