@@ -60,7 +60,7 @@ jobs:
           pwd
           ls -ral ${{ github.workspace }}/trader
           ls -ral ${{ github.workspace }}/trader/spicepods
-          ls -ral ${{ github.workspace }}/trader/spicepods/data
+          cat ${{ github.workspace }}/trader/spicepods/trader.yaml
 
 
       - name: install npm packages
