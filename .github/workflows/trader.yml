@@ -21,14 +21,14 @@ jobs:
         ports:
           - 8000:8000
         options: |
-          -v ${{ github.workspace }}/trader:/userapp --name spiceai
+          -v ${{ github.workspace }}/trader:/userapp --name spicert
     steps:
       - uses: actions/checkout@v2
 
-      - name: Restart spiceai
+      - name: Restart spicert
         uses: docker://docker
         with:
-          args: docker restart spiceai
+          args: docker restart spicert
 
       - name: update PATH
         run: |
