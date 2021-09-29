@@ -71,15 +71,3 @@ jobs:
       - name: check output for success
         run: |
           grep -E "Submitting|Holding" trader.out && echo "Found successful action based on recommendation" || exit 1
-
-      - name: Fetch recommendations
-        run: |
-          curl http://localhost:8000/api/v0.1/pods/trader/recommendation
-
-      - name: Fetch observations
-        run: |
-          curl http://localhost:8000/api/v0.1/pods/trader/observations
-
-      - name: stop Trader app
-        run: |
-          killall node
