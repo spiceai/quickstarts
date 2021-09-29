@@ -29,6 +29,10 @@ jobs:
         with:
           args: docker restart spicert
 
+      - name: list trader dir
+        run: |
+          ls -ral trader
+
       - name: update PATH
         run: |
           echo "PATH=~/.spice/bin:$PATH" >> $GITHUB_ENV
@@ -49,6 +53,10 @@ jobs:
         working-directory: trader
         run: |
           spice add quickstarts/trader
+
+      - name: list trader dir
+        run: |
+          ls -ral trader
 
       - name: install npm packages
         run: |
