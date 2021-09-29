@@ -16,14 +16,19 @@ jobs:
     env:
       GOVER: 1.17
     services:
-      spiced:
+      spiceai:
         image: ghcr.io/spiceai/spiceai:0.2.0-alpha-rc-linux-amd64
         ports:
           - 8000:8000
         options: |
-          -v ${{ github.workspace }}/trader:/userapp
+          -v ${{ github.workspace }}/trader:/userapp --name spiceai
     steps:
       - uses: actions/checkout@v2
+
+      - name: Restart spiceai
+        uses: docker://docker
+        with:
+          args: docker restart spiceai
 
       - name: update PATH
         run: |
