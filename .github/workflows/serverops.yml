@@ -83,7 +83,7 @@ jobs:
 
       - name: start serverops app
         run: |
-          timeout 30 node main.js | tee serverops-node.out || true
+          timeout 30 node serverops.js | tee serverops-node.out || true
 
       - name: check output for success
         run: |
