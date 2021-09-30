@@ -63,15 +63,11 @@ jobs:
 
       - name: fetch pods
         run: |
-          curl http://localhost:8000/api/v0.1/pods
+          curl -s http://localhost:8000/api/v0.1/pods | jq
       
       - name: fetch observations
         run: |
           curl http://localhost:8000/api/v0.1/pods/serverops/observations
-
-      - name: start training
-        run: |
-          spice train serverops
 
       - name: start serverops powershell script
         run: |
@@ -79,7 +75,7 @@ jobs:
 
       - name: fetch recommendations
         run: |
-          curl http://localhost:8000/api/v0.1/pods/serverops/recommendation | jq
+          curl -s http://localhost:8000/api/v0.1/pods/serverops/recommendation | jq
 
       - name: check output for success
         run: |
