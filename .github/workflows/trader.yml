@@ -63,9 +63,13 @@ jobs:
         run: |
           spice train trader
 
-      - name: fetch diagnostics
+      - name: fetch recommendations
         run: |
-          curl http://localhost:8000/api/v0.1/diagnostics
+          curl http://localhost:8000/api/v0.1/pods/trader/recommendation
+          
+      - name: fetch observations
+        run: |
+          curl http://localhost:8000/api/v0.1/pods/trader/observations
 
       - name: start Trader app
         run: |
