@@ -56,10 +56,18 @@ jobs:
       - name: get quickstart pod
         run: |
           spice add quickstarts/serverops
+
+      - name: install npm packages
+        run: |
+          npm install
+
+      - name: fetch pods
+        run: |
+          curl http://localhost:8000/api/v0.1/pods
       
       - name: fetch observations
         run: |
-          curl http://localhost:8000/api/v0.1/pods/serverops/observations | jq
+          curl http://localhost:8000/api/v0.1/pods/serverops/observations
 
       - name: start training
         run: |
@@ -67,7 +75,7 @@ jobs:
 
       - name: start serverops powershell script
         run: |
-          timeout 30 pwsh serverops.ps1 | tee serverops.out || true
+          timeout 30 pwsh serverops.ps1 | tee serverops-ps.out || true
 
       - name: fetch recommendations
         run: |
@@ -75,4 +83,12 @@ jobs:
 
       - name: check output for success
         run: |
-          grep -E "now" serverops.out && echo "Found successful action based on recommendation" || exit 1
+          grep -E "now" serverops-ps.out && echo "Found successful action based on recommendation" || exit 1
+
+      - name: start serverops app
+        run: |
+          timeout 30 node main.js | tee serverops-node.out || true
+
+      - name: check output for success
+        run: |
+          grep -E "now" serverops-node.out && echo "Found successful action based on recommendation" || exit 1

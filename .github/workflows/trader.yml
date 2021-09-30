@@ -57,6 +57,10 @@ jobs:
         run: |
           spice add quickstarts/trader
 
+      - name: fetch pods
+        run: |
+          curl http://localhost:8000/api/v0.1/pods
+
       - name: install npm packages
         run: |
           npm install
@@ -67,7 +71,7 @@ jobs:
           
       - name: fetch observations
         run: |
-          curl http://localhost:8000/api/v0.1/pods/trader/observations | jq
+          curl http://localhost:8000/api/v0.1/pods/trader/observations
 
       - name: start Trader app
         run: |
