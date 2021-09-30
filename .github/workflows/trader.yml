@@ -67,7 +67,7 @@ jobs:
           
       - name: fetch observations
         run: |
-          curl http://localhost:8000/api/v0.1/pods/trader/observations
+          curl http://localhost:8000/api/v0.1/pods/trader/observations | jq
 
       - name: start Trader app
         run: |
@@ -75,7 +75,7 @@ jobs:
 
       - name: fetch recommendations
         run: |
-          curl http://localhost:8000/api/v0.1/pods/trader/recommendation
+          curl http://localhost:8000/api/v0.1/pods/trader/recommendation | jq
 
       - name: check output for success
         run: |

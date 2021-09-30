@@ -56,14 +56,14 @@ jobs:
       - name: get quickstart pod
         run: |
           spice add quickstarts/serverops
+      
+      - name: fetch observations
+        run: |
+          curl http://localhost:8000/api/v0.1/pods/serverops/observations | jq
 
       - name: start training
         run: |
           spice train serverops
-          
-      - name: fetch observations
-        run: |
-          curl http://localhost:8000/api/v0.1/pods/serverops/observations
 
       - name: start serverops powershell script
         run: |
@@ -71,7 +71,7 @@ jobs:
 
       - name: fetch recommendations
         run: |
-          curl http://localhost:8000/api/v0.1/pods/serverops/recommendation
+          curl http://localhost:8000/api/v0.1/pods/serverops/recommendation | jq
 
       - name: check output for success
         run: |
