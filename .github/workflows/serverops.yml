@@ -71,7 +71,7 @@ jobs:
 
       - name: start serverops powershell script
         run: |
-          timeout 30 pwsh serverops.ps1 | tee serverops-ps.out || true
+          timeout 60 pwsh serverops.ps1 | tee serverops-ps.out || true
 
       - name: fetch recommendations
         run: |
