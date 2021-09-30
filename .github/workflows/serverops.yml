@@ -1,4 +1,4 @@
-name: trader
+name: serverops
 
 on:
   push:
@@ -14,11 +14,11 @@ on:
 defaults:
   run:
     shell: bash
-    working-directory: trader
+    working-directory: serverops
 
 jobs:
   test:
-    name: test trader
+    name: test serverops
     runs-on: ubuntu-latest
     env:
       GOVER: 1.17
@@ -28,7 +28,7 @@ jobs:
         image: ghcr.io/spiceai/spiceai:0.1.1-alpha-linux-amd64
         ports:
           - 8000:8000
-        options: -v ${{ github.workspace }}/trader:/userapp --name spicert
+        options: -v ${{ github.workspace }}/serverops:/userapp --name spicert
     steps:
       - uses: actions/checkout@v2
 
@@ -55,28 +55,24 @@ jobs:
 
       - name: get quickstart pod
         run: |
-          spice add quickstarts/trader
-
-      - name: install npm packages
-        run: |
-          npm install
+          spice add quickstarts/serverops
 
       - name: start training
         run: |
-          spice train trader
+          spice train serverops
           
       - name: fetch observations
         run: |
-          curl http://localhost:8000/api/v0.1/pods/trader/observations
+          curl http://localhost:8000/api/v0.1/pods/serverops/observations
 
-      - name: start Trader app
+      - name: start serverops powershell script
         run: |
-          timeout 30 node main.js | tee trader.out || true
+          timeout 30 pwsh serverops.ps1 | tee serverops.out || true
 
       - name: fetch recommendations
         run: |
-          curl http://localhost:8000/api/v0.1/pods/trader/recommendation
+          curl http://localhost:8000/api/v0.1/pods/serverops/recommendation
 
       - name: check output for success
         run: |
-          grep -E "Submitting|Holding" trader.out && echo "Found successful action based on recommendation" || exit 1
+          grep -E "now" serverops.out && echo "Found successful action based on recommendation" || exit 1
