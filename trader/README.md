@@ -63,7 +63,7 @@ In the new terminal add the Trader quickstart pod from spicerack.org:
 spice add quickstarts/trader
 ```
 
-In the Spice.ai runtime terminal, you will observe the runtime loading the CSV from `data/btcusd.csv` and starting to train!
+In the Spice.ai runtime terminal, you will observe the runtime loading the CSV from `spicepods/data/btcusd.csv` and starting to train!
 
 Now, let's update the starting balances for the portfolio so the app has more capital to trade with.
 
