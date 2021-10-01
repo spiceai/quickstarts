@@ -6,3 +6,6 @@ generate-acknowledgements:
 	pushd trader && npm install && npx license-checker --csv 2>/dev/null >> ../ACKNOWLEDGEMENTS.md && popd
 	pushd serverops && npm install && npx license-checker --csv 2>/dev/null >> ../ACKNOWLEDGEMENTS.md && popd
 
+	sed -i 's/\"//g' ACKNOWLEDGEMENTS.md
+	sed -i 's/,/, /g' ACKNOWLEDGEMENTS.md
+	sed -i 's/,  /, /g' ACKNOWLEDGEMENTS.md
