@@ -70,7 +70,7 @@ jobs:
 
       - name: check output for success
         run: |
-          grep -E "now" serverops-ps.out && echo "Found successful action based on recommendation" || exit 1
+          grep -E "any|now" serverops-ps.out && echo "Found successful action based on recommendation" || exit 1
 
       - name: start serverops app
         run: |
@@ -78,4 +78,4 @@ jobs:
 
       - name: check output for success
         run: |
-          grep -E "now" serverops-node.out && echo "Found successful action based on recommendation" || exit 1
+          grep -E "any|now" serverops-node.out && echo "Found successful action based on recommendation" || exit 1
