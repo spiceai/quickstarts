@@ -75,8 +75,7 @@ Server Ops v0.1!
 
 Ctrl-C to stop running
 
-Checking for a server operation recommendation
-Recommendation to do_nothing with confidence
+Checking for a server operation recommendation...
 Recommendation has a confidence of 0. Has this pod been trained yet?
 ```
 
