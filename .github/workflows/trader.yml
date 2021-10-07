@@ -38,7 +38,7 @@ jobs:
 
       - name: wait for Spice.ai runtime healthy
         run: |
-          timeout 30 bash -c 'while [[ "$(curl -s -w 200 http://localhost:8000/health)" != "ok200" ]]; do sleep 1; done' || false
+          timeout 120 bash -c 'while [[ "$(curl -s -w 200 http://localhost:8000/health)" != "ok200" ]]; do sleep 1; done' || false
 
       - name: fetch diagnostics
         run: |
