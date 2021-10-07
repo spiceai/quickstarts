@@ -20,22 +20,9 @@ jobs:
   test:
     name: test trader
     runs-on: ubuntu-latest
-    env:
-      GOVER: 1.17
-    services:
-      spiceai:
-        # Use latest released version to ensure incoming quickstart changes do not break it 
-        image: ghcr.io/spiceai/spiceai:0.1.1-alpha-linux-amd64
-        ports:
-          - 8000:8000
-        options: -v ${{ github.workspace }}/trader:/userapp --name spicert
+
     steps:
       - uses: actions/checkout@v2
-
-      - name: Restart spicert
-        uses: docker://docker
-        with:
-          args: docker restart spicert
 
       - name: update PATH
         run: |
@@ -44,6 +31,10 @@ jobs:
       - name: install Spice.ai
         run: |
           curl https://install.spiceai.org | /bin/bash
+
+      - name: start Spice.ai runtime
+        run: |
+          spice run &
 
       - name: wait for Spice.ai runtime healthy
         run: |
