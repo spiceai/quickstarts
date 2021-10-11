@@ -20,22 +20,9 @@ jobs:
   test:
     name: test serverops
     runs-on: ubuntu-latest
-    env:
-      GOVER: 1.17
-    services:
-      spiceai:
-        # Use latest released version to ensure incoming quickstart changes do not break it 
-        image: ghcr.io/spiceai/spiceai:0.2-alpha-linux-amd64
-        ports:
-          - 8000:8000
-        options: -v ${{ github.workspace }}/serverops:/userapp --name spicert
+
     steps:
       - uses: actions/checkout@v2
-
-      - name: Restart spicert
-        uses: docker://docker
-        with:
-          args: docker restart spicert
 
       - name: update PATH
         run: |
@@ -45,9 +32,13 @@ jobs:
         run: |
           curl https://install.spiceai.org | /bin/bash
 
+      - name: start Spice.ai runtime
+        run: |
+          spice run &
+
       - name: wait for Spice.ai runtime healthy
         run: |
-          timeout 30 bash -c 'while [[ "$(curl -s -w 200 http://localhost:8000/health)" != "ok200" ]]; do sleep 1; done' || false
+          timeout 120 bash -c 'while [[ "$(curl -s -w 200 http://localhost:8000/health)" != "ok200" ]]; do sleep 1; done' || false
 
       - name: fetch diagnostics
         run: |
@@ -79,7 +70,7 @@ jobs:
 
       - name: check output for success
         run: |
-          grep -E "now" serverops-ps.out && echo "Found successful action based on recommendation" || exit 1
+          grep -E "any|now" serverops-ps.out && echo "Found successful action based on recommendation" || exit 1
 
       - name: start serverops app
         run: |
@@ -87,4 +78,4 @@ jobs:
 
       - name: check output for success
         run: |
-          grep -E "now" serverops-node.out && echo "Found successful action based on recommendation" || exit 1
+          grep -E "any|now" serverops-node.out && echo "Found successful action based on recommendation" || exit 1
