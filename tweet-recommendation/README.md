@@ -1,7 +1,8 @@
 # Tweet Recommendations
 
-This quickstart provides a basic tweet recommendation tool: 
-Given the past tweet activity and metrics of a given account, this app can recommend when to tweet, comment, or retweet to maximize for like count, interaction rates, and outreach of said given twitter account. This information is useful to marketing accounts where follower interactioun and the reach of your posts matters alot. In this quickstart you will use the Spice CLI to add the necessary pod and train it with its respective data, and use the node script in this repo to demonstrate getting recommendations. 
+This quickstart demonstrates a basic tweet recommendation tool.
+
+Given the past tweet activity and metrics of a given account, this app can recommend when to tweet, comment, or retweet to maximize for like count, interaction rates, and outreach of said given Twitter account. This information is useful to marketing accounts where follower interaction and the reach of your posts is of great importance. In this quickstart, you will use the Spice CLI to add the necessary pod, train it, and use a sample node script in to fetch recommendations from it. 
 
 ## Requirements
 
@@ -50,7 +51,7 @@ Fetching twitter action recommendation...
 Failed to fetch recommendation. Is the Spice.ai runtime started and has a pod been added?
 ```
 
-The quickstart application will attempt to fetch a recommendation from the Spice.ai runtime but will not find one, because we have not yet created a pod and trained it. Press Ctrl-C to close the quickstart application and let's add a pod in the next step.
+The quickstart application will attempt to fetch a recommendation from the Spice.ai runtime but will not find one, because we have not yet created a pod and trained it. Press Ctrl-C to close the quickstart application and add a pod in the next step.
 
 ## Get the quickstart pod
 
@@ -132,9 +133,10 @@ curl http://localhost:8000/api/v0.1/pods/tweet-recommendation/observations
 
 ## Next steps
 
-Congratulations! You've successfully trained a model that provides real-time recommendations for twitter marketing accounts based off of performance of previous tweets and retweets
+Congratulations! You've successfully trained a model that provides real-time recommendations for Twitter marketing accounts based off of performance of previous tweets and retweets
 
 If you were to extend this example to a real-world application, the next steps might be to replace the static CSV data with live streaming data and to further develop the reward functions to train a model that produces better recommendations.
+
 Perhaps you could also add richer twitter data, maybe run some NLP, or use a more active/different twitter account as your data source.
 
 Try tweaking the parameters in the pod manifest (`spicepods/tweet-recommendation.yaml`) to learn how the Spice.ai runtime behaves.
