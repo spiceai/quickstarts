@@ -46,7 +46,10 @@ node main.js
 You should see the following output:
 
 ```bash
-tweet-recommendation - a twitter recommendation engine
+Tweet-recommendation v0.1!
+
+Ctrl-C to stop running
+
 Fetching twitter action recommendation...
 Failed to fetch recommendation. Is the Spice.ai runtime started and has a pod been added?
 ```
