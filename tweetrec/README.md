@@ -63,7 +63,7 @@ spice add quickstarts/tweetrec
 
 In the Spice.ai runtime terminal, you will observe the runtime loading the CSV from `spicepods/data/new_NZXT_tweets.csv` and starting to train!
 
-Now, save the file. You should observe a new training run begin in the Spice.ai runtime terminal. You can also manually start a training run using this command.
+You should observe a new training run begin in the Spice.ai runtime terminal. You can also manually start a training run using this command.
 
 ```bash
 spice train tweetrec
@@ -96,7 +96,6 @@ curl http://localhost:8000/api/v0.1/pods/tweetrec/recommendation
 You'll see a result you can take action on immediately:
 
 ```json
-
 {
     "start":1633694400,
     "end":1633824000,
@@ -104,7 +103,6 @@ You'll see a result you can take action on immediately:
     "confidence":0.851,
     "tag":"latest"
 }
-```
 
 ## Observation Data
 
