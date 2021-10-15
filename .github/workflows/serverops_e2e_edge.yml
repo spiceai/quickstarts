@@ -24,7 +24,7 @@ jobs:
       GOVER: 1.17
     services:
       spiceai:
-        image: ghcr.io/spiceai/spiceai:0.2.1-alpha-rc-linux-amd64
+        image: ghcr.io/spiceai/spiceai:0.2-alpha-linux-amd64
         ports:
           - 8000:8000
         options: -v ${{ github.workspace }}/serverops:/userapp --name spicert
