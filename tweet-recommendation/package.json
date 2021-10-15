@@ -1,5 +1,5 @@
 {
-  "name": "tweetrec",
+  "name": "tweet-recommendation",
   "version": "1.0.0",
   "description": "A basic bot to recommend twitter activity for brand marketing accounts",
   "main": "main.js",
