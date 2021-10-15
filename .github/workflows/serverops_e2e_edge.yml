@@ -27,7 +27,7 @@ jobs:
         image: ghcr.io/spiceai/spiceai:0.3-alpha-rc-linux-amd64
         ports:
           - 8000:8000
-        options: -v ${{ github.workspace }}/serverops:/userapp --name spicert --development
+        options: -v ${{ github.workspace }}/serverops:/userapp --name spicert --entrypoint "/app/spiced --context docker --development"
     steps:
       - uses: actions/checkout@v2
 
