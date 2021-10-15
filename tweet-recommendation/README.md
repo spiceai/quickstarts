@@ -136,10 +136,10 @@ curl http://localhost:8000/api/v0.1/pods/tweet-recommendation/observations
 
 ## Next steps
 
-Congratulations! You've successfully trained a model that provides real-time recommendations for Twitter marketing accounts based off of performance of previous tweets and retweets
+Congratulations! You've successfully trained a model that provides real-time recommendations for Twitter marketing accounts based off of performance of previous tweets and retweets.
 
 If you were to extend this example to a real-world application, the next steps might be to replace the static CSV data with live streaming data and to further develop the reward functions to train a model that produces better recommendations.
 
-Perhaps you could also add richer twitter data, maybe run some NLP, or use a more active/different twitter account as your data source.
+Perhaps you could also add richer twitter data, maybe run some NLP, or use a more active/different Twitter account as your data source.
 
 Try tweaking the parameters in the pod manifest (`spicepods/tweet-recommendation.yaml`) to learn how the Spice.ai runtime behaves.
