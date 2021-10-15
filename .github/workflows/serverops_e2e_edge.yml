@@ -27,14 +27,9 @@ jobs:
         image: ghcr.io/spiceai/spiceai:0.3-alpha-rc-linux-amd64
         ports:
           - 8000:8000
-        options: -v ${{ github.workspace }}/serverops:/userapp --name spicert --entrypoint "/app/spiced --context docker --development"
+        options: -v ${{ github.workspace }}/serverops:/userapp --name spicert
     steps:
       - uses: actions/checkout@v2
-
-      - name: Restart spicert
-        uses: docker://docker
-        with:
-          args: docker restart spicert
 
       - name: update PATH
         run: |
@@ -43,6 +38,15 @@ jobs:
       - name: install Spice.ai
         run: |
           curl https://install.spiceai.org | /bin/bash
+          
+      - name: get quickstart pod
+        run: |
+          spice add quickstarts/serverops
+
+      - name: Restart spicert
+        uses: docker://docker
+        with:
+          args: docker restart spicert
 
       - name: wait for Spice.ai runtime healthy
         run: |
@@ -51,10 +55,6 @@ jobs:
       - name: fetch diagnostics
         run: |
           curl http://localhost:8000/api/v0.1/diagnostics
-
-      - name: get quickstart pod
-        run: |
-          spice add quickstarts/serverops
 
       - name: install npm packages
         run: |
