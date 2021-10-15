@@ -30,6 +30,11 @@ jobs:
         options: -v ${{ github.workspace }}/serverops:/userapp --name spicert
     steps:
       - uses: actions/checkout@v2
+      
+      - name: Restart spicert
+        uses: docker://docker
+        with:
+          args: docker restart spicert
 
       - name: update PATH
         run: |
