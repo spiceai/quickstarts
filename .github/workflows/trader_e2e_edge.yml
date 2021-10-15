@@ -1,4 +1,4 @@
-name: trader
+name: trader-e2e-edge
 
 on:
   push:

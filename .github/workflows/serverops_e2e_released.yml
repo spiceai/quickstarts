@@ -1,4 +1,4 @@
-name: serverops
+name: serverops-e2e-released
 
 on:
   push:
