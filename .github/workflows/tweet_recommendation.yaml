@@ -1,0 +1,77 @@
+name: tweet-recommendation
+
+on:
+  push:
+    branches:
+      - trunk
+  pull_request:
+    branches:
+      - trunk
+  schedule:
+    - cron: '19 18 * * 4'
+  workflow_dispatch:
+
+defaults:
+  run:
+    shell: bash
+    working-directory: tweet-recommendation
+
+jobs:
+  test:
+    name: test tweet-recommendation
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: update PATH
+        run: |
+          echo "PATH=~/.spice/bin:$PATH" >> $GITHUB_ENV
+
+      - name: install Spice.ai
+        run: |
+          curl https://install.spiceai.org | /bin/bash
+
+      - name: start Spice.ai runtime
+        run: |
+          spice run &
+
+      - name: wait for Spice.ai runtime healthy
+        run: |
+          timeout 120 bash -c 'while [[ "$(curl -s -w 200 http://localhost:8000/health)" != "ok200" ]]; do sleep 1; done' || false
+
+      - name: fetch diagnostics
+        run: |
+          curl http://localhost:8000/api/v0.1/diagnostics
+
+      - name: get quickstart pod
+        run: |
+          spice add quickstarts/tweet-recommendation
+
+      - name: fetch pods
+        run: |
+          curl http://localhost:8000/api/v0.1/pods
+
+      - name: install npm packages
+        run: |
+          npm install
+
+      - name: start training
+        run: |
+          spice train tweet-recommendation
+          
+      - name: fetch observations
+        run: |
+          curl http://localhost:8000/api/v0.1/pods/tweet-recommendation/observations
+
+      - name: start tweet-recommendation app
+        run: |
+          timeout 30 node main.js | tee tweet-recommendation.out || true
+
+      - name: fetch recommendations
+        run: |
+          curl http://localhost:8000/api/v0.1/pods/tweet-recommendation/recommendation | jq
+
+      - name: check output for success
+        run: |
+          grep -E "should|nothing" tweet-recommendation.out && echo "Found successful action based on recommendation" || exit 1
