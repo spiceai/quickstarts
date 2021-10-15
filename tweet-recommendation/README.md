@@ -1,4 +1,4 @@
-# Tweet Recommendations
+# Tweet Recommendation
 
 This quickstart demonstrates a basic tweet recommendation tool.
 
