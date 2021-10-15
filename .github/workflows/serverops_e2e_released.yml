@@ -1,4 +1,4 @@
-name: trader
+name: serverops
 
 on:
   push:
@@ -14,11 +14,11 @@ on:
 defaults:
   run:
     shell: bash
-    working-directory: trader
+    working-directory: serverops
 
 jobs:
   test:
-    name: test trader
+    name: test serverops against latest release
     runs-on: ubuntu-latest
 
     steps:
@@ -46,32 +46,36 @@ jobs:
 
       - name: get quickstart pod
         run: |
-          spice add quickstarts/trader
-
-      - name: fetch pods
-        run: |
-          curl http://localhost:8000/api/v0.1/pods
+          spice add quickstarts/serverops
 
       - name: install npm packages
         run: |
           npm install
 
-      - name: start training
+      - name: fetch pods
         run: |
-          spice train trader
-          
+          curl -s http://localhost:8000/api/v0.1/pods | jq
+      
       - name: fetch observations
         run: |
-          curl http://localhost:8000/api/v0.1/pods/trader/observations
+          curl http://localhost:8000/api/v0.1/pods/serverops/observations
 
-      - name: start Trader app
+      - name: start serverops powershell script
         run: |
-          timeout 30 node main.js | tee trader.out || true
+          timeout 60 pwsh serverops.ps1 | tee serverops-ps.out || true
 
       - name: fetch recommendations
         run: |
-          curl http://localhost:8000/api/v0.1/pods/trader/recommendation | jq
+          curl -s http://localhost:8000/api/v0.1/pods/serverops/recommendation | jq
 
       - name: check output for success
         run: |
-          grep -E "Submitting|Holding" trader.out && echo "Found successful action based on recommendation" || exit 1
+          grep -E "any|now" serverops-ps.out && echo "Found successful action based on recommendation" || exit 1
+
+      - name: start serverops app
+        run: |
+          timeout 30 node serverops.js | tee serverops-node.out || true
+
+      - name: check output for success
+        run: |
+          grep -E "any|now" serverops-node.out && echo "Found successful action based on recommendation" || exit 1

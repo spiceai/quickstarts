@@ -1,0 +1,86 @@
+name: trader
+
+on:
+  push:
+    branches:
+      - trunk
+  pull_request:
+    branches:
+      - trunk
+  schedule:
+    - cron: '19 18 * * 4'
+  workflow_dispatch:
+
+defaults:
+  run:
+    shell: bash
+    working-directory: trader
+
+jobs:
+  test:
+    name: test trader using edge
+    runs-on: ubuntu-latest
+    env:
+      GOVER: 1.17
+    services:
+      spiceai:
+        # Use latest released version to ensure incoming quickstart changes do not break it 
+        image: ghcr.io/spiceai/spiceai:0.1.1-alpha-linux-amd64
+        ports:
+          - 8000:8000
+        options: -v ${{ github.workspace }}/trader:/userapp --name spicert
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Restart spicert
+        uses: docker://docker
+        with:
+          args: docker restart spicert
+
+      - name: update PATH
+        run: |
+          echo "PATH=~/.spice/bin:$PATH" >> $GITHUB_ENV
+
+      - name: install Spice.ai
+        run: |
+          curl https://install.spiceai.org | /bin/bash
+
+      - name: wait for Spice.ai runtime healthy
+        run: |
+          timeout 30 bash -c 'while [[ "$(curl -s -w 200 http://localhost:8000/health)" != "ok200" ]]; do sleep 1; done' || false
+
+      - name: fetch diagnostics
+        run: |
+          curl http://localhost:8000/api/v0.1/diagnostics
+
+      - name: get quickstart pod
+        run: |
+          spice add quickstarts/trader
+
+      - name: fetch pods
+        run: |
+          curl http://localhost:8000/api/v0.1/pods
+
+      - name: install npm packages
+        run: |
+          npm install
+
+      - name: start training
+        run: |
+          spice train trader
+          
+      - name: fetch observations
+        run: |
+          curl http://localhost:8000/api/v0.1/pods/trader/observations
+
+      - name: start Trader app
+        run: |
+          timeout 30 node main.js | tee trader.out || true
+
+      - name: fetch recommendations
+        run: |
+          curl http://localhost:8000/api/v0.1/pods/trader/recommendation | jq
+
+      - name: check output for success
+        run: |
+          grep -E "Submitting|Holding" trader.out && echo "Found successful action based on recommendation" || exit 1

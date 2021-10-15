@@ -18,11 +18,23 @@ defaults:
 
 jobs:
   test:
-    name: test serverops
+    name: test serverops using edge
     runs-on: ubuntu-latest
-
+    env:
+      GOVER: 1.17
+    services:
+      spiceai:
+        image: ghcr.io/spiceai/spiceai:0.3-alpha-rc-linux-amd64
+        ports:
+          - 8000:8000
+        options: -v ${{ github.workspace }}/serverops:/userapp --name spicert
     steps:
       - uses: actions/checkout@v2
+
+      - name: Restart spicert
+        uses: docker://docker
+        with:
+          args: docker restart spicert
 
       - name: update PATH
         run: |
@@ -32,13 +44,9 @@ jobs:
         run: |
           curl https://install.spiceai.org | /bin/bash
 
-      - name: start Spice.ai runtime
-        run: |
-          spice run &
-
       - name: wait for Spice.ai runtime healthy
         run: |
-          timeout 120 bash -c 'while [[ "$(curl -s -w 200 http://localhost:8000/health)" != "ok200" ]]; do sleep 1; done' || false
+          timeout 30 bash -c 'while [[ "$(curl -s -w 200 http://localhost:8000/health)" != "ok200" ]]; do sleep 1; done' || false
 
       - name: fetch diagnostics
         run: |
