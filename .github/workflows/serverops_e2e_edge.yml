@@ -22,19 +22,9 @@ jobs:
     runs-on: ubuntu-latest
     env:
       GOVER: 1.17
-    services:
-      spiceai:
-        image: ghcr.io/spiceai/spiceai:0.3-alpha-rc-linux-amd64
-        ports:
-          - 8000:8000
-        options: -v ${{ github.workspace }}/serverops:/userapp --name spicert
+
     steps:
       - uses: actions/checkout@v2
-      
-      - name: Stop spicert
-        uses: docker://docker
-        with:
-          args: docker stop spicert
           
       - name: Run spiced
         run: |
@@ -55,6 +45,10 @@ jobs:
       - name: get quickstart pod
         run: |
           spice add quickstarts/serverops
+          
+      - name: train quickstart pod
+        run: |
+          spice train serverops
 
       - name: fetch diagnostics
         run: |
