@@ -37,9 +37,8 @@ jobs:
           args: docker stop spicert
           
       - name: Run spiced
-        uses: docker://docker
-        with:
-          args: docker run -p 8000:8000 -v /home/runner/work/quickstarts/quickstarts/serverops:/userapp ghcr.io/spiceai/spiceai:0.3-alpha-rc-linux-amd64 -d
+        run: |
+          docker run -p 8000:8000 -v /home/runner/work/quickstarts/quickstarts/serverops:/userapp ghcr.io/spiceai/spiceai:0.3-alpha-rc-linux-amd64 -d &
 
       - name: update PATH
         run: |
