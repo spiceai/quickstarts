@@ -47,14 +47,14 @@ jobs:
       - name: install Spice.ai
         run: |
           curl https://install.spiceai.org | /bin/bash
-          
-      - name: get quickstart pod
-        run: |
-          spice add quickstarts/serverops
 
       - name: wait for Spice.ai runtime healthy
         run: |
           timeout 120 bash -c 'while [[ "$(curl -s -w 200 http://localhost:8000/health)" != "ok200" ]]; do sleep 1; done' || false
+          
+      - name: get quickstart pod
+        run: |
+          spice add quickstarts/serverops
 
       - name: fetch diagnostics
         run: |
