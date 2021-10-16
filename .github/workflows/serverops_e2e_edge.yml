@@ -39,7 +39,7 @@ jobs:
       - name: Run spicert
         uses: docker://docker
         with:
-          args: docker run spicert -d
+          args: docker run --network github_network_6032eb9c04d44060a57c110b49b63fa5 --network-alias spiceai -p 8000:8000 -v /home/runner/work/quickstarts/quickstarts/serverops:/userapp --name spicert -e GITHUB_ACTIONS=true -e CI=true ghcr.io/spiceai/spiceai:0.3-alpha-rc-linux-amd64 -d
 
       - name: update PATH
         run: |
