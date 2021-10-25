@@ -38,7 +38,7 @@ jobs:
             display_name: https://install.spiceai.org
           - version: edge
             context: metal
-            spicepod_version: latest
+            spicepod_version: 0.2.0
             display_name: spiceai/spiceai@trunk
 
     steps:
@@ -82,7 +82,7 @@ jobs:
 
       - name: fetch pods
         run: |
-          curl -s http://localhost:8000/api/v0.1/pods
+          curl -s http://localhost:8000/api/v0.1/pods | jq
 
       - name: install npm packages
         run: |
@@ -102,7 +102,7 @@ jobs:
 
       - name: fetch recommendations
         run: |
-          curl http://localhost:8000/api/v0.1/pods/tweet-recommendation/recommendation | jq
+          curl -s http://localhost:8000/api/v0.1/pods/tweet-recommendation/recommendation | jq
 
       - name: check output for success
         run: |
