@@ -38,7 +38,7 @@ jobs:
             display_name: https://install.spiceai.org
           - version: edge
             context: metal
-            spicepod_version: 0.2.0
+            spicepod_version: latest
             display_name: spiceai/spiceai@trunk
 
     steps:
