@@ -11,8 +11,10 @@
 
 **Step 5.** Edit the `spicepod.yaml` file in this directory and replace the params in the `eth_recent_blocks` dataset with the connection parameters from the Supabase project. Run the Spice.ai runtime with `spice run` from this directory.
 
-Follow the [quickstart guide](../index.md) to get started with the Spice.ai runtime.
+Follow the [quickstart guide](https://docs.spiceai.org/getting-started) to get started with the Spice.ai runtime.
 
-See the [datasets reference](../../../reference/spicepod/datasets.md) for more dataset configuration options and [PostgreSQL Data Accelerator](../../../data-accelerators/postgres/index.md) for more options on configuring PostgreSQL as a Data Accelerator.
+See the [datasets reference](https://docs.spiceai.org/reference/spicepod/datasets) for more dataset configuration options and [PostgreSQL Data Accelerator](https://docs.spiceai.org/data-accelerators/postgres) for more options on configuring PostgreSQL as a Data Accelerator.
+
+To securely store your Supabase password, see [Secret Stores](https://docs.spiceai.org/secret-stores)
 
 **Step 6.** Navigate to the `Table Editor` in the Supabase project to verify the creation of the `eth_recent_blocks` table. The Supabase `SQL Editor` can then be used to run queries against the table, with data updated in realtime.
