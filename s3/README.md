@@ -67,7 +67,7 @@ spice sql
 Check the taxi_trips table exists:
 
 ```sql
-show tables;
+sql> show tables;
 
 +---------------+--------------------+-------------+------------+
 | table_catalog | table_schema       | table_name  | table_type |
