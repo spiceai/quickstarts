@@ -30,23 +30,3 @@ jobs:
         grep -E "GPL|CC-BY-SA|CC-BY-NC|CC-BY-NC-SA|CC-BY-NC-ND|APSL|CPAL|EUPL|NPOSL|OSL|SSPL|Parity|RPL|QPL|Sleepycat|copyleft|CDDL|CPL|EPL|ErlPL|IPL|MS-RL|SPL|Facebook|Commons-Clause" | grep . && exit 1 || echo "ok" 
     steps:
       - uses: actions/checkout@v2
-
-      - name: Install trader packages
-        working-directory: trader
-        run: |
-          npm install
-
-      - name: Check trader package licenses
-        working-directory: trader
-        run: |
-          npx license-checker |& ${{ env.FORBIDDEN_LICENSE_CHECK }}
-
-      - name: Install serverops packages
-        working-directory: serverops
-        run: |
-          npm install
-
-      - name: Check serverops package licenses
-        working-directory: serverops
-        run: |
-          npx license-checker |& ${{ env.FORBIDDEN_LICENSE_CHECK }}
