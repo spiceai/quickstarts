@@ -2,7 +2,7 @@
 
 ## PostgreSQL
 
-- [Supabase Data Accelerator](quickstarts/postgres/README.md)
+- [PostgreSQL Data Accelerator](quickstarts/postgres/README.md)
 
 ## S3
 
