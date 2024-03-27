@@ -128,5 +128,3 @@ When accelerating Spice.ai datasets, only the following datasets support an appe
 * eth.recent_traces
 
 All other datasets must be configured with `refresh_mode: full`.
-
-ßß
