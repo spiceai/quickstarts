@@ -4,7 +4,7 @@
 - [Apache Superset Quickstart](./superset/README.md)
 
 ## Databricks
-- [Databricks Delta Lake](quickstarts/postgres/README.md)
+- [Databricks Delta Lake](./databricks/README.md)
  
 ## PostgreSQL
 - [PostgreSQL Data Accelerator](./postgres/README.md)
