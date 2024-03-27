@@ -37,6 +37,9 @@ Specify the location of the dataset:
 from: s3://spiceai-demo-datasets/taxi_trips/2024/
 ```
 
+**LIMITATION:** Spice.ai currently does not support discovering nested directories in S3. Please ensure that the parquet files are in the root of the specified S3 path.
+
+
 Select "y" when prompted whether to locally accelerate the dataset:
 
 ```bash
@@ -49,7 +52,7 @@ We should now see the following output:
 Dataset settings written to `datasets/taxi_trips/dataset.yaml`!
 ```
 
-If the login credentials were entered correctly, your dataset will have loaded into the runtime. You should see the following in the Spice runtime terminal :
+You also should see the following in the Spice runtime terminal :
 
 ```
 2024-03-26T22:18:02.062394Z  INFO runtime: Loaded dataset: taxi_trips
@@ -103,3 +106,104 @@ sql> select avg(total_amount), avg(tip_amount), count(1), passenger_count from t
 
 Query took: 0.015628708 seconds
 ```
+
+## For private S3 bucket
+
+**LIMITATION:** Spice.ai currently only supports authentication with AWS S3 using `aws_access_key_id` and `aws_secret_access_key`. Please [submit an issue](https://github.com/spiceai/spiceai/issues/new?template=feature_request.md) if you would like to see support for other authentication methods.
+
+**Step 1.** Prepare S3 bucket
+  - Create a new AWS S3 bucket `yourcompany-bucketname-datasets`.
+  - Create a path `tax_trips` in the above bucket.
+  - Download [taxi_trips dataset](https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2024-01.parquet) parquet, and upload it into `taxi_trips` path in the bucket.
+
+**Step 2.** Prepare AWS IAM user
+  - Create a new IAM user with the following inline policy:
+    ```json
+    {
+        "Version": "2012-10-17",
+        "Statement": [
+            {
+                "Effect": "Allow",
+                "Action": [
+  			         	"s3:ListBucket"
+  			         ],
+                "resource": "arn:aws:s3:::yourcompany-bucketname-datasets"
+            },
+            {
+                "Effect": "Allow",
+                "Action": [
+  			         	"s3:GetObject"
+  			         ],
+                "resource": "arn:aws:s3:::yourcompany-bucketname-datasets/*"
+            }
+        ]
+    }
+    ```
+  - Create access key contains `aws_access_key_id` and `aws_secret_access_key` for the IAM user under `Security credentials` tab.
+
+**Step 3.** Log into S3 using the Spice CLI.
+```
+spice login s3 -k <aws_access_key_id> -s <aws_secret_access_key>
+```
+
+You should see the following output:
+
+```
+Successfully logged in to s3
+```
+
+**Step 4.** If you haven't already initialized a new project, you need to do so. Then, start the Spice Runtime.
+
+```bash
+spice init s3-demo-project
+```
+
+```bash
+cd s3-demo-project
+spice run
+```
+
+**Step 5.** We now configure the dataset from S3:
+
+```bash
+spice dataset configure
+```
+
+Enter the name of the dataset:
+
+```bash
+dataset name: (s3-demo-project)  taxi_trips
+```
+
+Enter the description of the dataset:
+
+```
+description: taxi trips in s3
+```
+
+Specify the location of the dataset:
+
+```bash
+from: s3://yourcompany-bucketname-datasets/taxi_trips/
+```
+
+Select "y" when prompted whether to locally accelerate the dataset:
+
+```bash
+Locally accelerate (y/n)? y
+```
+
+We should now see the following output:
+
+```
+Dataset settings written to `datasets/taxi_trips/dataset.yaml`!
+```
+
+If the login credentials were entered correctly, your dataset will have loaded into the runtime. You should see the following in the Spice runtime terminal :
+
+```
+2024-03-26T22:18:02.062394Z  INFO runtime: Loaded dataset: taxi_trips
+2024-03-26T22:18:02.062462Z  INFO runtime::dataconnector: Refreshing data for taxi_trips
+```
+
+**Step 6.** Run queries against the dataset using the Spice SQL REPL. (see Step 3 above)
