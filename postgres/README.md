@@ -8,7 +8,7 @@ See the [datasets reference](https://docs.spiceai.org/reference/spicepod/dataset
 
 To securely store your PostgreSQL password, see [Secret Stores](https://docs.spiceai.org/secret-stores)
 
-**Step 2.** Run the Spice.ai runtime with `spice run` from this directory.
+**Step 2.** Run the Spice runtime with `spice run` from this directory.
 
 **Step 3.** Run `spice sql` in a new terminal to start an interactive SQL query session against the Spice runtime.
 
