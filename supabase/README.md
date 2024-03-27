@@ -17,4 +17,8 @@ To securely store your Supabase password, see [Secret Stores](https://docs.spice
 
 Follow the [quickstart guide](https://docs.spiceai.org/getting-started) to get started with the Spice runtime.
 
-**Step 6.** Navigate to the `Table Editor` in the Supabase project to verify the creation of the `eth_recent_blocks` table. The Supabase `SQL Editor` can then be used to run queries against the table, with data updated in realtime.
+**Step 6.** Run `spice sql` in a new terminal to start an interactive SQL query session against the Spice runtime.
+
+For more information on using `spice sql`, see the [CLI reference](https://docs.spiceai.org/cli/reference/sql).
+
+**Step 7.** Execute the query `select * from [local_table_name];` to see the Supabase table accelerated locally.
