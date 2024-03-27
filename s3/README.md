@@ -37,8 +37,6 @@ Specify the location of the dataset:
 from: s3://spiceai-demo-datasets/taxi_trips/2024/
 ```
 
-**LIMITATION:** Spice.ai currently does not support discovering nested directories in S3. Please ensure that the parquet files are in the root of the specified S3 path.
-
 Select "y" when prompted whether to locally accelerate the dataset:
 
 ```bash
@@ -119,8 +117,6 @@ Query took: 0.015628708 seconds
 ```
 
 ## For private S3 bucket
-
-**LIMITATION:** Spice.ai currently only supports authentication with AWS S3 using `aws_access_key_id` and `aws_secret_access_key`. Please [submit an issue](https://github.com/spiceai/spiceai/issues/new?template=feature_request.md) if you would like to see support for other authentication methods.
 
 **Step 1.** Prepare S3 bucket
 
