@@ -69,6 +69,10 @@ Saved datasets/eth_recent_blocks/dataset.yaml
 
 The content of dataset.yaml is the following:
 
+```bash
+cat datasets/eth_recent_blocks/dataset.yaml
+```
+
 ```yaml
 from: spice.ai/eth.recent_blocks
 name: eth_recent_blocks
