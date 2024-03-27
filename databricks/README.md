@@ -1,17 +1,16 @@
 ## Spice on Databricks
 
-Spice can  read data straight from your Databricks instance. This guide will create an app, configure Databricks, load and query a dataset. It assumes:
+Spice can read data straight from a Databricks instance. This guide will create an app, configure Databricks, load and query a dataset. It assumes:
+- Spice is installed (see the [Getting Started](https://docs.spiceai.org/getting-started) documentation).
 - The Databricks instance is running against AWS S3 storage in `us-east-1`.
 - Basic AWS authentication is configured (with environment variable credentials `AWS_ACCESS_KEY_ID` & `AWS_SECRET_ACCESS_KEY`).
 - A Databricks personal access token is available (as the environment variable `DATABRICKS_TOKEN`).
 - A table already exists in Databricks, called `spice_data.public.awesome_table`.
 
-1. First, install Spice (see the [Getting Started](https://docs.spiceai.org/getting-started) documentation).
-
 1. Initialise a Spice app
     ```shell
-    spice init databrick_demo
-    cd databrick_demo
+    spice init databricks_demo
+    cd databricks_demo
     ```
 
 1. Start the Spice runtime
@@ -35,7 +34,7 @@ Spice can  read data straight from your Databricks instance. This guide will cre
     ```shell
     >>> spice dataset configure
 
-    dataset name: (databrick_demo) my_table
+    dataset name: (databricks_demo) my_table
     description: My Databricks table
     from: databricks:spice_data.public.awesome_table
     endpoint: https://sp3-07i73ce9d-a654.cloud.databricks.com/
