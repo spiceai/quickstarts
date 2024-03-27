@@ -1,4 +1,4 @@
-### Follow these steps to get started with Supabase as a Data Accelerator.
+### Follow these steps to get started with Supabase as a Data Connector.
 
 **Step 1.** From a Supabase project select `Project Settings` from the sidebar navigation.
 
