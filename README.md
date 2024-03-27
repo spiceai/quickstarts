@@ -2,7 +2,7 @@
 
 ## PostgreSQL
 
-- [PostgreSQL Data Accelerator](quickstarts/postgres/README.md)
+- [PostgreSQL Data Accelerator](./postgres/README.md)
 
 ## S3
 
