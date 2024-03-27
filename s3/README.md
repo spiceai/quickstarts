@@ -51,6 +51,18 @@ The following output is shown:
 Dataset settings written to `datasets/taxi_trips/dataset.yaml`!
 ```
 
+The content of the `dataset.yaml` file is as follows:
+
+```yaml
+from: s3://spiceai-demo-datasets/taxi_trips/2024/
+name: taxi_trips
+description: taxi trips in s3
+acceleration:
+  enabled: true
+  refresh_interval: 10s
+  refresh_mode: full
+```
+
 The following output is shown in the Spice runtime terminal:
 
 ```
@@ -206,4 +218,8 @@ If the login credentials were entered correctly, the dataset will have loaded in
 2024-03-26T22:18:02.062462Z  INFO runtime::dataconnector: Refreshing data for taxi_trips
 ```
 
-**Step 6.** Run queries against the dataset using the Spice SQL REPL. (see Step 3 above)
+**Step 6.** Run queries against the dataset using the Spice SQL REPL.
+
+```sql
+sql> select avg(total_amount), avg(tip_amount), count(1), passenger_count from taxi_trips group by passenger_count order by passenger_count asc;
+```
