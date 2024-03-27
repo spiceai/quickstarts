@@ -31,6 +31,8 @@ spice run
 
 **Step 3.** Configure the dataset to connect to Spice.ai:
 
+Open a new terminal window in the spiceai-demo directory.
+
 ```bash
 spice dataset configure
 ```
@@ -50,7 +52,7 @@ description: ethereum recent block data
 Specify the location of the dataset:
 
 ```bash
-from: spiceai/eth.recent_blocks
+from: spice.ai/eth.recent_blocks
 ```
 
 Select "n" when prompted whether to locally accelerate the dataset:
@@ -65,7 +67,7 @@ The CLI will confirm the dataset has been configured with the following output:
 Saved datasets/eth_recent_blocks/dataset.yaml
 ```
 
-Thhe content of dataset.yaml is the following:
+The content of dataset.yaml is the following:
 
 ```yaml
 from: spice.ai/eth.recent_blocks
@@ -123,3 +125,4 @@ When accelerating Spice.ai datasets, only the following datasets support an appe
 
 All other datasets must be configured with `refresh_mode: full`.
 
+ßß
