@@ -13,7 +13,7 @@ cd s3-demo-project
 spice run
 ```
 
-**Step 2.** We now configure the dataset from S3:
+**Step 2.** Configure the dataset to connect to S3:
 
 ```bash
 spice dataset configure
@@ -45,13 +45,13 @@ Select "y" when prompted whether to locally accelerate the dataset:
 Locally accelerate (y/n)? y
 ```
 
-We should now see the following output:
+The following output is shown:
 
 ```
 Dataset settings written to `datasets/taxi_trips/dataset.yaml`!
 ```
 
-You also should see the following in the Spice runtime terminal :
+The following output is shown in the Spice runtime terminal:
 
 ```
 2024-03-26T22:18:02.062394Z  INFO runtime: Loaded dataset: taxi_trips
@@ -66,7 +66,7 @@ In a new terminal, start the Spice SQL REPL
 spice sql
 ```
 
-Check the taxi_trips table exists:
+Check that the taxi_trips table exists:
 
 ```sql
 sql> show tables;
@@ -82,7 +82,7 @@ sql> show tables;
 +---------------+--------------------+-------------+------------+
 ```
 
-You can now now query `taxi_trips` in the runtime.
+Query against the `taxi_trips` table in the runtime.
 
 ```sql
 sql> select avg(total_amount), avg(tip_amount), count(1), passenger_count from taxi_trips group by passenger_count order by passenger_count asc;
@@ -136,7 +136,7 @@ Query took: 0.015628708 seconds
     ]
   }
   ```
-- Create access key contains `aws_access_key_id` and `aws_secret_access_key` for the IAM user under `Security credentials` tab.
+- Create an access key that contains `aws_access_key_id` and `aws_secret_access_key` for the IAM user under `Security credentials` tab.
 
 **Step 3.** Log into S3 using the Spice CLI.
 
@@ -144,13 +144,13 @@ Query took: 0.015628708 seconds
 spice login s3 -k <aws_access_key_id> -s <aws_secret_access_key>
 ```
 
-You should see the following output:
+The following output is shown:
 
 ```
 Successfully logged in to s3
 ```
 
-**Step 4.** If you haven't already initialized a new project, you need to do so. Then, start the Spice Runtime.
+**Step 4.** Initialize a Spice application, then start the Spice runtime.
 
 ```bash
 spice init s3-demo-project
@@ -161,7 +161,7 @@ cd s3-demo-project
 spice run
 ```
 
-**Step 5.** We now configure the dataset from S3:
+**Step 5.** Configure the dataset to connect to S3:
 
 ```bash
 spice dataset configure
@@ -191,13 +191,13 @@ Select "y" when prompted whether to locally accelerate the dataset:
 Locally accelerate (y/n)? y
 ```
 
-We should now see the following output:
+The following output is shown:
 
 ```
 Dataset settings written to `datasets/taxi_trips/dataset.yaml`!
 ```
 
-If the login credentials were entered correctly, your dataset will have loaded into the runtime. You should see the following in the Spice runtime terminal :
+If the login credentials were entered correctly, the dataset will have loaded into the runtime. The following output is shown in the Spice runtime terminal:
 
 ```
 2024-03-26T22:18:02.062394Z  INFO runtime: Loaded dataset: taxi_trips
