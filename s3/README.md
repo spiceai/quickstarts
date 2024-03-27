@@ -138,6 +138,8 @@ Query took: 0.015628708 seconds
   ```
 - Create an access key that contains `aws_access_key_id` and `aws_secret_access_key` for the IAM user under `Security credentials` tab.
 
+![Screenshot](./aws-iam.png)
+
 **Step 3.** Log into S3 using the Spice CLI.
 
 ```
