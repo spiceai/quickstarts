@@ -2,7 +2,7 @@
 
 ## For public S3 bucket
 
-**Step 1.** If you haven't already initialized a new project, you need to do so. Then, start the Spice Runtime.
+**Step 1.** Initialize a Spice application, then start the Spice runtime.
 
 ```bash
 spice init s3-demo-project
