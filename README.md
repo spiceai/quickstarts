@@ -8,6 +8,10 @@
 
 - [Supabase Data Connector](./supabase/README.md)
 
+## AWS RDS
+
+- [AWS RDS Data Connector](./rds/README.md)
+
 ## S3
 
 - [S3 Quickstart](./s3/README.md)\
