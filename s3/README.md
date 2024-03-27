@@ -39,7 +39,6 @@ from: s3://spiceai-demo-datasets/taxi_trips/2024/
 
 **LIMITATION:** Spice.ai currently does not support discovering nested directories in S3. Please ensure that the parquet files are in the root of the specified S3 path.
 
-
 Select "y" when prompted whether to locally accelerate the dataset:
 
 ```bash
@@ -112,36 +111,35 @@ Query took: 0.015628708 seconds
 **LIMITATION:** Spice.ai currently only supports authentication with AWS S3 using `aws_access_key_id` and `aws_secret_access_key`. Please [submit an issue](https://github.com/spiceai/spiceai/issues/new?template=feature_request.md) if you would like to see support for other authentication methods.
 
 **Step 1.** Prepare S3 bucket
-  - Create a new AWS S3 bucket `yourcompany-bucketname-datasets`.
-  - Create a path `tax_trips` in the above bucket.
-  - Download [taxi_trips dataset](https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2024-01.parquet) parquet, and upload it into `taxi_trips` path in the bucket.
+
+- Create a new AWS S3 bucket `yourcompany-bucketname-datasets`.
+- Create a path `tax_trips` in the above bucket.
+- Download [taxi_trips dataset](https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2024-01.parquet) parquet, and upload it into `taxi_trips` path in the bucket.
 
 **Step 2.** Prepare AWS IAM user
-  - Create a new IAM user with the following inline policy:
-    ```json
-    {
-        "Version": "2012-10-17",
-        "Statement": [
-            {
-                "Effect": "Allow",
-                "Action": [
-  			         	"s3:ListBucket"
-  			         ],
-                "resource": "arn:aws:s3:::yourcompany-bucketname-datasets"
-            },
-            {
-                "Effect": "Allow",
-                "Action": [
-  			         	"s3:GetObject"
-  			         ],
-                "resource": "arn:aws:s3:::yourcompany-bucketname-datasets/*"
-            }
-        ]
-    }
-    ```
-  - Create access key contains `aws_access_key_id` and `aws_secret_access_key` for the IAM user under `Security credentials` tab.
+
+- Create a new IAM user with the following inline policy:
+  ```json
+  {
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Effect": "Allow",
+        "Action": ["s3:ListBucket"],
+        "resource": "arn:aws:s3:::yourcompany-bucketname-datasets"
+      },
+      {
+        "Effect": "Allow",
+        "Action": ["s3:GetObject"],
+        "resource": "arn:aws:s3:::yourcompany-bucketname-datasets/*"
+      }
+    ]
+  }
+  ```
+- Create access key contains `aws_access_key_id` and `aws_secret_access_key` for the IAM user under `Security credentials` tab.
 
 **Step 3.** Log into S3 using the Spice CLI.
+
 ```
 spice login s3 -k <aws_access_key_id> -s <aws_secret_access_key>
 ```
