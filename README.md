@@ -6,8 +6,14 @@
 
 ## S3
 
-- [S3 Quickstart](./s3/README.md)\
+- [S3 Quickstart](./s3/README.md)
 
 ## Apache Superset
 
 - [Apache Superset Quickstart](./superset/README.md)
+
+## Dremio
+- [Dremio Quickstart](./dremio/README.md)
+
+## Spice.ai Cloud Platform
+- [Spice.ai Quickstart](./spiceai/README.md)
