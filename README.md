@@ -4,6 +4,10 @@
 
 - [PostgreSQL Data Accelerator](./postgres/README.md)
 
+## Supabase
+
+- [Supabase Data Connector](./supabase/README.md)
+
 ## S3
 
 - [S3 Quickstart](./s3/README.md)\
