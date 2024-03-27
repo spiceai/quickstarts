@@ -4,6 +4,8 @@
 
 **Step 2.** Look for the `Endpoint` and `Port` in the `Connectivity & security` tab of the RDS instance details.
 
+![Screenshot](./aws-rds.png)
+
 **Step 3.** Edit the `spicepod.yaml` file in this directory and replace `[remote_table_path]` with the path to the remote table to be accelerated, `[local_table_name]` with your desired name for the locally accelerated table, and the `[pg_host]` and `[pg_port]` params with the connection parameters from your AWS RDS instance. The `[pg_user]` and `[pg_password]` should be set to the username and password for the RDS instance. The `[pg_db]` should be set to the name of the database in the RDS instance.
 
 See the [datasets reference](https://docs.spiceai.org/reference/spicepod/datasets) for more dataset configuration options and [PostgreSQL Data Connector](https://docs.spiceai.org/data-connectors/postgres) for more options on configuring a PostgreSQL Data Connector.
