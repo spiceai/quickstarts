@@ -1,5 +1,9 @@
 # Spice.ai Quickstart Tutorials
 
+## Query Federation
+
+- [Query Federation Quickstart](./federation/README.md)
+
 ## Apache Superset
 - [Apache Superset Quickstart](./superset/README.md)
 
