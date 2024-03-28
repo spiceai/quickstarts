@@ -13,6 +13,12 @@ cd quickstarts/federation
 spice login dremio -u demo -p demo1234
 ```
 
+**Step 3.** Start a local PostgreSQL instance loaded with demo data via Docker Compose:
+
+```bash
+make
+```
+
 **Step 3.** Start the Spice runtime.
 
 ```bash
@@ -57,4 +63,10 @@ SELECT SUM(sales) as total_sales,
        MAX(sales) AS max_sale,
        AVG(sales) AS avg_sale
 FROM all_sales
+```
+
+**Step 7.** Clean up the demo environment:
+
+```bash
+make clean
 ```
