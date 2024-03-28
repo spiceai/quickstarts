@@ -10,6 +10,7 @@ datasets:
       pg_port: "[Port]"
       pg_user: [User]
       pg_pass: [Password]
+      pg_insecure: 'true' # required to support Supabase root certificate
     acceleration:
       enabled: true
       refresh_mode: full
