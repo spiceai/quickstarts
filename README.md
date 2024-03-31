@@ -28,3 +28,7 @@
 ## S3
 - [S3 Quickstart](./s3/README.md)
 
+## TPC-H
+- [TPC-H Benchmark Quickstart](./tpc-h/README.md)
+
+
