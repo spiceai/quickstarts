@@ -4,6 +4,10 @@
 
 - [Query Federation Quickstart](./federation/README.md)
 
+## Kubernetes
+
+- [Kubernetes Quickstart](./kubernetes/README.md)
+
 ## Apache Superset
 - [Apache Superset Quickstart](./superset/README.md)
 
