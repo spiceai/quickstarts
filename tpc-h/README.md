@@ -4,18 +4,18 @@
 >
 > - [TPC Benchmark™ H (TPC-H)](https://www.tpc.org/tpch/)
 
-**Step 1.** Initialize and start Spice application
+**Step 1.** Initialize and start Spice
 
 ```bash
-spice init tpch-demo
+spice init tpch-quickstart
 ```
 
 ```bash
-cd tpch-demo
+cd tpch-quickstart
 spice run
 ```
 
-**Step 2.** Connect to the TPC-H Benchmark Sample Data
+**Step 2.** Connect the TPC-H Benchmark Sample Data
 
 Add `datasets` configuration below to `spicepod.yaml`
 
@@ -129,7 +129,7 @@ Query took: 4.178523666 seconds. 4/4 rows displayed.
 
 **Step4 (Optional)** Enable [Data Acceleration](https://docs.spiceai.org/data-accelerators) for TPC-H Benchmark Sample Data
 
-Replace `datasets` configuration in `spicepod.yaml`
+Replace `datasets` configuration in `spicepod.yaml` with
 
 ```yaml
 datasets:
@@ -174,7 +174,7 @@ datasets:
       enabled: true
 ```
 
-The following output is shown in the Spice runtime terminal confirming the datasets have been reloaded.
+The following output is shown in the Spice runtime terminal confirming new configuration is applied.
 ```bash
 2024-03-31T18:01:06.802013Z  INFO runtime: Unloaded dataset: customer
 2024-03-31T18:01:06.802073Z  INFO runtime: Unloaded dataset: lineitem
