@@ -1,38 +1,32 @@
 # Spice.ai Quickstart Tutorials
 
-## Query Federation
+Designed to take 1-5 mins each to get started quickly!
 
-- [Query Federation Quickstart](./federation/README.md)
+## Core scenarios
 
-## Kubernetes
+- [Query Federation](./federation/README.md)
 
-- [Kubernetes Quickstart](./kubernetes/README.md)
+## Consuming and visualizing data with clients
 
-## Apache Superset
-- [Apache Superset Quickstart](./superset/README.md)
+- [Apache Superset](./superset/README.md)
 
-## Databricks
-- [Databricks Delta Lake](./databricks/README.md)
- 
-## PostgreSQL
+## Connecting to Data Sources with Data Connectors
+
+- [S3 Data Connector](./s3/README.md)
+- [Databricks Delta Lake Data Connector](./databricks/README.md)
+- [Supabase Data Connector](./supabase/README.md)
+- [AWS RDS Data Connector](./rds/README.md)
+- [Dremio Data Connector](./dremio/README.md)
+- [Spice.ai Cloud Platform Data Connector](./spiceai/README.md)
+
+## Materializing & accelerating data locally with Data Accelerators
+
 - [PostgreSQL Data Accelerator](./postgres/README.md)
 
-## Supabase
-- [Supabase Data Connector](./supabase/README.md)
+## Deployment and Installation
 
-## AWS RDS
-- [AWS RDS Data Connector](./rds/README.md)
+- [Deploying to Kubernetes](./kubernetes/README.md)
 
-## Dremio
-- [Dremio Quickstart](./dremio/README.md)
+## Performance
 
-## Spice.ai Cloud Platform
-- [Spice.ai Quickstart](./spiceai/README.md)
-
-## S3
-- [S3 Quickstart](./s3/README.md)
-
-## TPC-H
-- [TPC-H Benchmark Quickstart](./tpc-h/README.md)
-
-
+- [TPC-H Benchmarking](./tpc-h/README.md)

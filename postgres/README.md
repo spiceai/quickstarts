@@ -1,4 +1,6 @@
-### Follow these steps to get started with PostgreSQL as a Data Accelerator.
+# PostgreSQL Data Accelerator
+
+Follow these steps to get started with PostgreSQL as a Data Accelerator.
 
 **Step 1.** Edit the `spicepod.yaml` file in this directory and replace the params in the `eth_recent_blocks` dataset with the connection parameters for your PostgreSQL instance.
 
