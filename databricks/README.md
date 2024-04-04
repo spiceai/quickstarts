@@ -26,8 +26,8 @@ Spice can read data straight from a Databricks instance. This guide will create 
     spice login databricks \
         --token $DATABRICKS_TOKEN \
         --aws-access-key-id $AWS_ACCESS_KEY_ID \
-        --aws-secret-access-key $AWS_SECRET_ACCESS_KEY
-        --aws-region us-east-1 \
+        --aws-secret-access-key $AWS_SECRET_ACCESS_KEY \
+        --aws-region us-east-1
     ``` 
 
 1. Configure a Databricks dataset into the spicepod. The table provided must be a reference to a table in the Databricks unity catalog. 
