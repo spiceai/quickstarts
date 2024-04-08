@@ -19,13 +19,13 @@ spice login dremio -u demo -p demo1234
 make
 ```
 
-**Step 3.** Start the Spice runtime.
+**Step 4.** Start the Spice runtime.
 
 ```bash
 spice run
 ```
 
-**Step 4.** In another terminal window, add the `spiceai/fed-demo` Spicepod from Spicerack.
+**Step 5.** In another terminal window, add the `spiceai/fed-demo` Spicepod from Spicerack.
 
 ```bash
 spice add spiceai/fed-demo
