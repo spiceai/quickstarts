@@ -18,6 +18,7 @@ Designed to take 1-5 mins each to get started quickly!
 - [AWS RDS Data Connector](./rds/README.md)
 - [Dremio Data Connector](./dremio/README.md)
 - [Spice.ai Cloud Platform Data Connector](./spiceai/README.md)
+- [MySQL Data Connector](./mysql/README.md
 
 ## Materializing & accelerating data locally with Data Accelerators
 
