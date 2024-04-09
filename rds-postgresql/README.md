@@ -1,6 +1,6 @@
-### Follow these steps to get started with AWS RDS as a Data Connector.
+### Follow these steps to get started with AWS RDS for PostgreSQL as a Data Backend.
 
-**Step 1.** Navigate to your AWS RDS instance in the AWS Management Console.
+**Step 1.** Navigate to your AWS RDS PostgreSQL instance in the AWS Management Console.
 
 **Step 2.** Look for the `Endpoint` and `Port` in the `Connectivity & security` tab of the RDS instance details.
 
