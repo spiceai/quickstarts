@@ -2,7 +2,7 @@
 
 **Step 1.** From a Planetscale project dashboard select `Connect`.
 
-**Step 2.** Select `New password` and select desirable brunch to connect to. Confirm via `Create password`.
+**Step 2.** Select `New password` and select desirable branch to connect to. Confirm via `Create password`.
 
 **Step 3.** Select `General` in the `Connect with` dropdown.
 
