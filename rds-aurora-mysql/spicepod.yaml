@@ -1,6 +1,6 @@
 version: v1beta1
 kind: Spicepod
-name: supabase_quickstart
+name: rds_aurora_mysql_quickstart
 datasets:
   - from: mysql:[remote_table_path]
     name: [local_table_name]
