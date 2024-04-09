@@ -1,4 +1,4 @@
-### Follow these steps to get started with AWS RDS for PostgreSQL as a Data Backend.
+### Follow these steps to get started with federated SQL query against AWS RDS for PostgreSQL.
 
 **Step 1.** Navigate to your AWS RDS PostgreSQL instance in the AWS Management Console.
 
