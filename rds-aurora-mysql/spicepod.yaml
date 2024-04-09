@@ -10,7 +10,7 @@ datasets:
       mysql_db: [db-name]
       mysql_user: [username]
       mysql_pass_key: [password]
-      mysql_sslmode: preferred
+      mysql_sslmode: preferred # "required" is default
     acceleration:
       enabled: true
       refresh_mode: full
