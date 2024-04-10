@@ -1,4 +1,4 @@
-# AWS RDS for PostgreSQL
+# AWS RDS for PostgreSQL Data Connector
 
 Follow these steps to get started with federated SQL query against AWS RDS for PostgreSQL.
 

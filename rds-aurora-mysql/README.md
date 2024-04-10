@@ -1,4 +1,4 @@
-# AWS RDS Aurora (MySQL Compatible)
+# AWS RDS Aurora (MySQL Compatible) Data Connector
 
 Follow these steps to get started with federated SQL query against AWS RDS Aurora (MySQL Compatible).
 
