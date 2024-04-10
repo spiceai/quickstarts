@@ -1,4 +1,6 @@
-### Follow these steps to get started with federated SQL query against AWS RDS for PostgreSQL.
+# AWS RDS for PostgreSQL
+
+Follow these steps to get started with federated SQL query against AWS RDS for PostgreSQL.
 
 **Step 1.** Navigate to your AWS RDS PostgreSQL instance in the AWS Management Console.
 

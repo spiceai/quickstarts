@@ -1,4 +1,6 @@
-### Follow these steps to get started with federated SQL query against AWS RDS Aurora (MySQL Compatible).
+# AWS RDS Aurora (MySQL Compatible)
+
+Follow these steps to get started with federated SQL query against AWS RDS Aurora (MySQL Compatible).
 
 **Step 1.** Navigate to your AWS RDS Aurora instance in the AWS Management Console.
 
