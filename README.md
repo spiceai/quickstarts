@@ -16,7 +16,7 @@ Designed to take 1-5 mins each to get started quickly!
 - [Databricks Delta Lake Data Connector](./databricks/README.md)
 - [Supabase Data Connector Data Connector](./supabase/README.md)
 - [AWS RDS PostgreSQL Data Connector](./rds-postgresql/README.md)
-- [AWS RDS Aurora (MySQL Compatible)](./rds-aurora-mysql/README.md)
+- [AWS RDS Aurora (MySQL Compatible) Data Connector](./rds-aurora-mysql/README.md)
 - [Dremio Data Connector](./dremio/README.md)
 - [Spice.ai Cloud Platform Data Connector](./spiceai/README.md)
 - [MySQL Data Connector](./mysql/README.md)
