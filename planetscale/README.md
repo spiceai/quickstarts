@@ -14,7 +14,13 @@ Follow these steps to get started with federated SQL query against [Planetscale]
 
 ![Screenshot](./img/planetscale-3-configure.png)
 
-**Step 4.** Edit the `spicepod.yaml` file in this directory and replace `[remote_table_path]` with the path to the Planetscale table to be accelerated, `[local_table_name]` with your desired name for the locally accelerated table, and the `[mysql_host]` and `[mysql_port]` params with the connection parameters from your AWS RDS instance. The `[mysql_user]` and `[mysql_pass]` should be set to the username and password for the RDS instance. The `[mysql_db]` should be set to the name of the database in the Planetscale instance.
+**Step 4.** Edit the `spicepod.yaml` file in this directory and replace the following parameters:
+
+- `[remote_table_path]` with the path to the Planetscale table to be accelerated.
+- `[local_table_name]` with your desired name for the locally accelerated table.
+- `[mysql_host]` with the host from Planetscale configuration.
+- `[mysql_user]` and `[mysql_pass]` with the username and password from generated credentials in step 3.
+- `[mysql_db]` with the name of your Planetscale database.
 
 See the [datasets reference](https://docs.spiceai.org/reference/spicepod/datasets) for more dataset configuration options and [MySQL Data Connector](https://docs.spiceai.org/data-connectors/mysql) for more options on configuring a MySQL Data Connector.
 
