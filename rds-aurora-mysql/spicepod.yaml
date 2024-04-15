@@ -6,7 +6,7 @@ datasets:
     name: [local_table_name]
     params:
       mysql_host: [db-host]
-      mysql_port: "[db-port]"
+      mysql_tcp_port: [db-port]
       mysql_db: [db-name]
       mysql_user: [username]
       mysql_pass_key: [password]

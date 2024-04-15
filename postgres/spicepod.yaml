@@ -12,6 +12,6 @@ datasets:
       params:
         pg_host: [Host]
         pg_db: [Database name]
-        pg_port: "[Port]"
+        pg_port: [Port]
         pg_user: [User]
         pg_pass: [Password]
