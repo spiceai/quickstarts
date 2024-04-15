@@ -1,0 +1,19 @@
+version: v1beta1
+kind: Spicepod
+name: planetscale_quickstart
+
+datasets:
+  - from: mysql:[remote_table_path]
+    name: [local_table_name]
+    description: test planetscale table
+    acceleration:
+      enabled: true
+      refresh_interval: 10s
+      refresh_mode: full
+    params:
+      mysql_host: aws.connect.psdb.cloud
+      mysql_port: 3306
+      mysql_db: [db-name]
+      mysql_user: [username]
+      mysql_pass: [password]
+      # mysql_pass_key: [password_key] # use password from secret store
