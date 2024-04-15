@@ -1,0 +1,12 @@
+version: v1beta1
+kind: Spicepod
+name: duckdb_quickstart
+datasets:
+  - from: duckdb:[database].[schema].[table]
+    name: [local_table_name]
+    params:
+      open: [path/to/duckdb/file/database_file.db]
+    acceleration:
+      enabled: true
+      refresh_mode: full
+      refresh_interval: 10s
