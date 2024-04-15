@@ -1,6 +1,6 @@
 # DuckDB Data Connector
 
-Follow these steps to get started with DuckDB (0.10.1) as a Data Connector.
+Follow these steps to get started with DuckDB (v0.10.1) as a Data Connector.
 
 **Step 1.** Edit the `spicepod.yaml` file in this directory. Replace the `open` params in the `duckdb_quickstart` dataset with the path to your DuckDB persistent File. Edit `[local_table_name]` to your desired name for the table and `[database].[schema].[table]` to the name of the table in your DuckDB instance.
 
