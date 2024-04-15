@@ -14,4 +14,4 @@ See the [datasets reference](https://docs.spiceai.org/reference/spicepod/dataset
 
 For more information on using `spice sql`, see the [CLI reference](https://docs.spiceai.org/cli/reference/sql).
 
-**Step 4.** Execute the query `select * from [local_table_name];` to see the DuckDB table accelerated locally.
+**Step 4.** Execute the query `select * from [local_table_name];` to query the DuckDB table through Spice.
