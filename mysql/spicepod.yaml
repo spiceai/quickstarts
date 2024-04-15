@@ -7,7 +7,7 @@ datasets:
     params:
       mysql_host: [Host]
       mysql_db: [Database name]
-      mysql_port: [Port]
+      mysql_tcp_port: [Port]
       mysql_user: [User]
       mysql_pass: [Password]
     acceleration:
