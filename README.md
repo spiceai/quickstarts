@@ -33,3 +33,7 @@ Designed to take 1-5 mins each to get started quickly!
 ## Performance
 
 - [TPC-H Benchmarking](./tpc-h/README.md)
+
+## Data Management
+
+- [Data Retention Policy](./retention/README.md)
