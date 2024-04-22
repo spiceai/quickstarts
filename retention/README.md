@@ -1,4 +1,4 @@
-# Quickstart for retention policies on accelerated dataset
+# Accelerated Dataset Retention Policy Quickstart
 
 **Step 1.** Initialize and start Spice
 
@@ -7,7 +7,7 @@ spice init retention-quickstart
 cd retention-quickstart
 ```
 
-**Step 2.** Add a dataset with retention policies by editing spicepod.yaml
+**Step 2.** Add a dataset with a retention policy by editing spicepod.yaml
 
 ```bash
 version: v1beta1
@@ -22,7 +22,7 @@ datasets:
       enabled: true
       refresh_interval: 10m
       retention_check_interval: 60s
-      retention_period: 35040h # 4 years, this will eliminate 5 rows of bad data in the public dataset
+      retention_period: 35040h # 4 years, this will evict 5 rows of data from the dataset
 ```
 
 **Step 3.** Run spice and see the retention policy in action
