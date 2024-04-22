@@ -36,4 +36,4 @@ Designed to take 1-5 mins each to get started quickly!
 
 ## Other features
 
-- [Retention](./retention/README.md)
+- [Data Retention Policy](./retention/README.md)
