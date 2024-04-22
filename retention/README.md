@@ -12,7 +12,7 @@ cd retention-quickstart
 ```bash
 version: v1beta1
 kind: Spicepod
-name: spiceai
+name: retention-quickstart
 datasets:
   - from: s3://spiceai-demo-datasets/taxi_trips/2024/
     name: taxi_trips
