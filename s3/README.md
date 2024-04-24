@@ -57,7 +57,7 @@ name: taxi_trips
 description: taxi trips in s3
 acceleration:
   enabled: true
-  refresh_interval: 10s
+  refresh_check_interval: 10s
   refresh_mode: full
 ```
 

@@ -72,7 +72,7 @@ params:
   endpoint: grpc://20.163.171.8:32010
 acceleration:
   enabled: true
-  refresh_interval: 10s
+  refresh_check_interval: 10s
   refresh_mode: full
 ```
 

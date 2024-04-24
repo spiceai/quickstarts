@@ -19,7 +19,7 @@ datasets:
     time_column: tpep_pickup_datetime
     acceleration:
       enabled: true
-      refresh_interval: 10m
+      refresh_check_interval: 10m
       retention_check_enabled: true
       retention_check_interval: 60s
       retention_period: 35040h # 4 years, this will evict 5 rows of data from the dataset
