@@ -2,7 +2,7 @@
 
 Follow these steps to get started with Clickhouse as a Data Connector.
 
-**Step 1.** Edit the `spicepod.yaml` file in this directory and replace the params in the `clickhouse_quickstart` dataset with the connection parameters for your Clickhouse instance, where is `[local_table_name]` is your desired name for the federated table and `[remote_table_path]` is the name of the table in your Clickhouse instance.
+**Step 1.** Edit the `spicepod.yaml` file in this directory and replace the params in the `clickhouse_quickstart` dataset with the connection parameters for your Clickhouse instance, where`[local_table_name]` is your desired name for the federated table and `[remote_table_path]` is the name of the table in your Clickhouse instance.
 
 
 
