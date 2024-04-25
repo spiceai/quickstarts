@@ -8,7 +8,7 @@ datasets:
       clickhouse_host: [Host]
       clickhouse_db: [Database name]
       clickhouse_tcp_port: [Port]
-      clickhouse_user: [User]
+      clickhouse_user: [Username]
       clickhouse_pass: [Password]
     acceleration:
       enabled: true
