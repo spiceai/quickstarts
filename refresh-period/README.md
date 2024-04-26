@@ -32,7 +32,7 @@ datasets:
 2024-04-26T04:52:27.392075Z  INFO runtime::http: Spice Runtime HTTP listening on 127.0.0.1:3000
 ```
 
-Run `spice sql` to check the number of rows, and the 5 earliest data sorted by `tpep_pickup_datetime`
+Run `spice sql` to check the number of rows and the 5 earliest records sorted by `tpep_pickup_datetime`
 
 ```sql
 spice sql
@@ -63,7 +63,7 @@ sql> select * from taxi_trips order by tpep_pickup_datetime limit 5;
 Query took: 0.036439333 seconds. 5/5 rows displayed.
 ```
 
-**Step 4.** Editing spicepod.yaml to add refresh_period
+**Step 4.** Edit spicepod.yaml to add `refresh_period`
 
 ```bash
 version: v1beta1
@@ -78,7 +78,7 @@ datasets:
       refresh_period: 35040h # 4 years, this will evict 5 rows of data from the dataset
 ```
 
-See printed logs:
+Check if dataset has been reloaded
 
 ```bash
 2024-04-26T04:52:52.817130Z  INFO runtime: Hot reloading accelerated dataset: taxi_trips...
