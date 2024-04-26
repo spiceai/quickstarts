@@ -1,5 +1,8 @@
-# Temporal Refresh Period Quickstart
+# Temporal Refresh Data Period Quickstart
 
+`refresh_data_period` adds a duration param that filters dataset refresh source queries to recent data (duration into past from now). Requires `time_column` and `time_format`(optional) to also be configured. Only supported for `full` refresh mode datasets.
+
+Check below for `refresh_data_period` in action.
 
 **Step 1.** Initialize and start Spice
 

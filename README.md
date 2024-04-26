@@ -37,4 +37,4 @@ Designed to take 1-5 mins each to get started quickly!
 ## Data Management
 
 - [Data Retention Policy](./retention/README.md)
-- [Data Temporal Refresh Period](./refresh-period/README.md)
+- [Temporal Refresh Data Period](./refresh-data-period/README.md)
