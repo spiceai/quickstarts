@@ -63,7 +63,7 @@ sql> select * from taxi_trips order by tpep_pickup_datetime limit 5;
 Query took: 0.036439333 seconds. 5/5 rows displayed.
 ```
 
-**Step 4.** Edit spicepod.yaml to add `refresh_period`
+**Step 4.** Edit spicepod.yaml to add `refresh_data_period`
 
 ```bash
 version: v1beta1
@@ -75,7 +75,7 @@ datasets:
     time_column: tpep_pickup_datetime
     acceleration:
       enabled: true
-      refresh_period: 35040h # 4 years, this will evict 5 rows of data from the dataset
+      refresh_data_period: 35040h # 4 years, this will evict 5 rows of data from the dataset
 ```
 
 Check if dataset has been reloaded
