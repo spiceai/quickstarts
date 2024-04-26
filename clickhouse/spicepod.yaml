@@ -1,0 +1,16 @@
+version: v1beta1
+kind: Spicepod
+name: clickhouse_quickstart
+datasets:
+  - from: clickhouse:[remote_table_path]
+    name: [local_table_name]
+    params:
+      clickhouse_host: [Host]
+      clickhouse_db: [Database name]
+      clickhouse_tcp_port: [Port]
+      clickhouse_user: [Username]
+      clickhouse_pass: [Password]
+    acceleration:
+      enabled: true
+      refresh_mode: full
+      refresh_interval: 10s
