@@ -32,7 +32,7 @@ datasets:
 2024-04-26T04:52:27.392075Z  INFO runtime::http: Spice Runtime HTTP listening on 127.0.0.1:3000
 ```
 
-Run `spice sql` to check number of rows
+Run `spice sql` to check the number of rows, and the 5 earliest data sorted by `tpep_pickup_datetime`
 
 ```sql
 spice sql
@@ -48,6 +48,19 @@ sql> select count(1) from taxi_trips;
 +-----------------+
 
 Query took: 0.012826375 seconds. 1/1 rows displayed.
+
+sql> select * from taxi_trips order by tpep_pickup_datetime limit 5;
++----------+----------------------+-----------------------+-----------------+---------------+------------+--------------------+--------------+--------------+--------------+-------------+-------+---------+------------+--------------+-----------------------+--------------+----------------------+-------------+
+| VendorID | tpep_pickup_datetime | tpep_dropoff_datetime | passenger_count | trip_distance | RatecodeID | store_and_fwd_flag | PULocationID | DOLocationID | payment_type | fare_amount | extra | mta_tax | tip_amount | tolls_amount | improvement_surcharge | total_amount | congestion_surcharge | Airport_fee |
++----------+----------------------+-----------------------+-----------------+---------------+------------+--------------------+--------------+--------------+--------------+-------------+-------+---------+------------+--------------+-----------------------+--------------+----------------------+-------------+
+| 2        | 2002-12-31T22:59:39  | 2002-12-31T23:05:41   | 1               | 0.63          | 1          | N                  | 170          | 170          | 3            | -6.5        | 0.0   | -0.5    | 0.0        | 0.0          | -1.0                  | -10.5        | -2.5                 | 0.0         |
+| 2        | 2002-12-31T22:59:39  | 2002-12-31T23:05:41   | 1               | 0.63          | 1          | N                  | 170          | 170          | 3            | 6.5         | 0.0   | 0.5     | 0.0        | 0.0          | 1.0                   | 10.5         | 2.5                  | 0.0         |
+| 2        | 2009-01-01T00:24:09  | 2009-01-01T01:13:00   | 2               | 10.88         | 1          | N                  | 138          | 264          | 2            | 50.6        | 9.25  | 0.5     | 0.0        | 6.94         | 1.0                   | 68.29        | 0.0                  | 0.0         |
+| 2        | 2009-01-01T23:30:39  | 2009-01-02T00:01:39   | 1               | 10.99         | 1          | N                  | 237          | 264          | 2            | 45.0        | 3.5   | 0.5     | 0.0        | 0.0          | 1.0                   | 50.0         | 0.0                  | 0.0         |
+| 2        | 2009-01-01T23:58:40  | 2009-01-02T00:01:40   | 1               | 0.46          | 1          | N                  | 137          | 264          | 2            | 4.4         | 3.5   | 0.5     | 0.0        | 0.0          | 1.0                   | 9.4          | 0.0                  | 0.0         |
++----------+----------------------+-----------------------+-----------------+---------------+------------+--------------------+--------------+--------------+--------------+-------------+-------+---------+------------+--------------+-----------------------+--------------+----------------------+-------------+
+
+Query took: 0.036439333 seconds. 5/5 rows displayed.
 ```
 
 **Step 4.** Editing spicepod.yaml to add refresh_period
@@ -75,7 +88,7 @@ See printed logs:
 
 ```
 
-Check number of rows again
+Check the number of rows again, and it shows 5 rows difference. The previous 5 earliest records are excluded after reloading.
 
 ```sql
 sql> select count(1) from taxi_trips;
