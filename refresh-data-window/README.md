@@ -7,8 +7,8 @@ Check below for `refresh_data_window` in action.
 **Step 1.** Initialize and start Spice
 
 ```bash
-spice init refresh-period-quickstart
-cd refresh-period-quickstart
+spice init refresh-data-window-quickstart
+cd refresh-data-window-quickstart
 ```
 
 **Step 2.** Add a new dataset
@@ -16,7 +16,7 @@ cd refresh-period-quickstart
 ```bash
 version: v1beta1
 kind: Spicepod
-name: refresh-period-quickstart
+name: refresh-data-window-quickstart
 datasets:
   - from: s3://spiceai-demo-datasets/taxi_trips/2024/
     name: taxi_trips
@@ -71,7 +71,7 @@ Time: 0.036439333 seconds. 5 rows.
 ```bash
 version: v1beta1
 kind: Spicepod
-name: refresh-period-quickstart
+name: refresh-data-window-quickstart
 datasets:
   - from: s3://spiceai-demo-datasets/taxi_trips/2024/
     name: taxi_trips
