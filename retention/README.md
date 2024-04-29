@@ -42,7 +42,7 @@ When dataset is being refreshed, the retention policy won't evict any data as 0 
 ```sql
 spice sql
 
-Welcome to the interactive Spice.ai SQL Query Utility! Type 'help' for help.
+Welcome to the Spice.ai SQL REPL! Type 'help' for help.
 
 show tables; -- list available tables
 sql> select count(1) from taxi_trips;
@@ -52,7 +52,7 @@ sql> select count(1) from taxi_trips;
 | 2964624         |
 +-----------------+
 
-Query took: 0.012826375 seconds. 1/1 rows displayed.
+Time: 0.012826375 seconds. 1 rows.
 sql> select * from taxi_trips order by tpep_pickup_datetime limit 5;
 +----------+----------------------+-----------------------+-----------------+---------------+------------+--------------------+--------------+--------------+--------------+-------------+-------+---------+------------+--------------+-----------------------+--------------+----------------------+-------------+
 | VendorID | tpep_pickup_datetime | tpep_dropoff_datetime | passenger_count | trip_distance | RatecodeID | store_and_fwd_flag | PULocationID | DOLocationID | payment_type | fare_amount | extra | mta_tax | tip_amount | tolls_amount | improvement_surcharge | total_amount | congestion_surcharge | Airport_fee |
@@ -64,7 +64,7 @@ sql> select * from taxi_trips order by tpep_pickup_datetime limit 5;
 | 2        | 2009-01-01T23:58:40  | 2009-01-02T00:01:40   | 1               | 0.46          | 1          | N                  | 137          | 264          | 2            | 4.4         | 3.5   | 0.5     | 0.0        | 0.0          | 1.0                   | 9.4          | 0.0                  | 0.0         |
 +----------+----------------------+-----------------------+-----------------+---------------+------------+--------------------+--------------+--------------+--------------+-------------+-------+---------+------------+--------------+-----------------------+--------------+----------------------+-------------+
 
-Query took: 0.053698917 seconds. 5/5 rows displayed.
+Time: 0.053698917 seconds. 5 rows.
 ```
 
 **Step 5.** Wait for the next retention check interval and see the retention policy evict data
@@ -83,7 +83,7 @@ sql> select count(1) from taxi_trips;
 | 2964619         |
 +-----------------+
 
-Query took: 0.008739667 seconds. 1/1 rows displayed.
+Time: 0.008739667 seconds. 1 rows.
 sql> select * from taxi_trips order by tpep_pickup_datetime limit 5;
 +----------+----------------------+-----------------------+-----------------+---------------+------------+--------------------+--------------+--------------+--------------+-------------+-------+---------+------------+--------------+-----------------------+--------------+----------------------+-------------+
 | VendorID | tpep_pickup_datetime | tpep_dropoff_datetime | passenger_count | trip_distance | RatecodeID | store_and_fwd_flag | PULocationID | DOLocationID | payment_type | fare_amount | extra | mta_tax | tip_amount | tolls_amount | improvement_surcharge | total_amount | congestion_surcharge | Airport_fee |
@@ -95,5 +95,5 @@ sql> select * from taxi_trips order by tpep_pickup_datetime limit 5;
 | 2        | 2023-12-31T23:54:27  | 2024-01-01T00:13:12   | 1               | 7.7           | 1          | N                  | 229          | 244          | 1            | 33.1        | 1.0   | 0.5     | 7.62       | 0.0          | 1.0                   | 45.72        | 2.5                  | 0.0         |
 +----------+----------------------+-----------------------+-----------------+---------------+------------+--------------------+--------------+--------------+--------------+-------------+-------+---------+------------+--------------+-----------------------+--------------+----------------------+-------------+
 
-Query took: 0.050874208 seconds. 5/5 rows displayed.
+Time: 0.050874208 seconds. 5 rows.
 ```

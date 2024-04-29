@@ -50,7 +50,7 @@ Spice can read data straight from a Databricks instance. This guide will create 
 1. Check the table exists from the Spice REPL
     ```shell
     >>> spice sql 
-    Welcome to the interactive Spice.ai SQL Query Utility! Type 'help' for help.
+    Welcome to the Spice.ai SQL REPL! Type 'help' for help.
 
     show tables; -- list available tables
     sql> show tables
@@ -64,7 +64,7 @@ Spice can read data straight from a Databricks instance. This guide will create 
     | datafusion    | information_schema | df_settings | VIEW       |
     +---------------+--------------------+-------------+------------+
 
-    Query took: 0.008540708 seconds
+    Time: 0.008540708 seconds
     ```
 
 
@@ -93,7 +93,7 @@ Spice can read data straight from a Databricks instance. This guide will create 
     | congestion_surcharge  | Float64                      | YES         |
     | Airport_fee           | Float64                      | YES         |
     +-----------------------+------------------------------+-------------+
-    Query took: 0.00507075 seconds
+    Time: 0.00507075 seconds
     ```
 
 1. Query against the Databricks table. Since the table isn't accelerated, the spice runtime will make a network call to the Databricks instance.
@@ -116,7 +116,7 @@ Spice can read data straight from a Databricks instance. This guide will create 
     | 25.811736633327225         | 1.5459567500463327       | 140162          |                 |
     +----------------------------+--------------------------+-----------------+-----------------+
 
-    Query took: 6.56567 seconds
+    Time: 6.56567 seconds
     ```
 
 ## (Optional): Accelerating Databricks
@@ -153,7 +153,7 @@ sql> select avg(total_amount), avg(tip_amount), count(1), passenger_count from m
 | 25.81173663332435          | 1.545956750046378        | 140162          |                 |
 +----------------------------+--------------------------+-----------------+-----------------+
 
-Query took: 0.0227835 seconds
+Time: 0.0227835 seconds
 ```
 
 Note: A dataset can be accelerated when configured by specifying yes (y) to `locally accelerate (y/n)?`.
