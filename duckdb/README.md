@@ -14,13 +14,13 @@ spice init duckdb-demo
 cd duckdb-demo
 ```
 
-**Step 2.** Create a persistent file-based database in Spice app.
+**Step 2.** Create a persistent file-based DuckDB database in Spice app.
 
 ```bash
 duckdb ./tpch.db
 ```
 
-Run the following queries in DuckDB to generate TPC-H data with DuckDB's [TCPH extension](https://duckdb.org/docs/extensions/tpch.html).
+Run the following queries in DuckDB CLI to generate TPC-H data with DuckDB's [TCPH extension](https://duckdb.org/docs/extensions/tpch.html).
 
 ```SQL
 INSTALL tpch;
