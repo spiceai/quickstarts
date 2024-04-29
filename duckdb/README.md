@@ -1,6 +1,6 @@
 # DuckDB Data Connector
 
-Follow these steps to get started with DuckDB (v0.10.1) as a Data Connector.
+Follow these steps to get started with DuckDB (v0.10.2) as a Data Connector.
 
 **Preparation** Install [DuckDB CLI](https://duckdb.org/docs/installation/?version=stable&environment=cli&platform=macos&download_method=package_manager). Create a persistent file-based DuckDB database by Providing a path to database file when starting DuckDB. DuckDB will create the database if there's no database file existing at the specified file path.
 
