@@ -8,7 +8,7 @@ datasets:
     description: test planetscale table
     acceleration:
       enabled: true
-      refresh_interval: 10s
+      refresh_check_interval: 10s
       refresh_mode: full
     params:
       mysql_host: [mysql_host]

@@ -7,7 +7,7 @@ datasets:
     acceleration:
       enabled: true
       refresh_mode: full
-      refresh_interval: 10s
+      refresh_check_interval: 10s
       engine: postgres
       params:
         pg_host: [Host]
