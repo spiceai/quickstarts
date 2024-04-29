@@ -1,8 +1,8 @@
 # Temporal Refresh Data Period Quickstart
 
-`refresh_data_period` is a duration param that filters dataset refresh source queries to recent data (duration into past from now). Requires `time_column` and `time_format`(optional) to also be configured. Only supported for `full` refresh mode datasets.
+`refresh_data_window` is a duration param that filters dataset refresh source queries to recent data (duration into past from now). Requires `time_column` and `time_format`(optional) to also be configured. Only supported for `full` refresh mode datasets.
 
-Check below for `refresh_data_period` in action.
+Check below for `refresh_data_window` in action.
 
 **Step 1.** Initialize and start Spice
 
@@ -66,7 +66,7 @@ sql> select * from taxi_trips order by tpep_pickup_datetime limit 5;
 Time: 0.036439333 seconds. 5 rows.
 ```
 
-**Step 4.** Edit spicepod.yaml to add `refresh_data_period`
+**Step 4.** Edit spicepod.yaml to add `refresh_data_window`
 
 ```bash
 version: v1beta1
@@ -78,7 +78,7 @@ datasets:
     time_column: tpep_pickup_datetime
     acceleration:
       enabled: true
-      refresh_data_period: 35040h # 4 years, this will evict 5 rows of data from the dataset
+      refresh_data_window: 35040h # 4 years, this will evict 5 rows of data from the dataset
 ```
 
 Check if dataset has been reloaded
