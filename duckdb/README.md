@@ -97,7 +97,7 @@ select c_name, c_address, c_acctbal, c_mktsegment from tpch_customer limit 10;
 | Customer#000000010 | Vf mQ6Ug9Ucf5OKGYq fsaX AtfsO7,rwY    | 2753.54   | HOUSEHOLD    |
 +--------------------+---------------------------------------+-----------+--------------+
 
-Query took: 0.003510375 seconds. 10/10 rows displayed.
+Time: 0.003510375 seconds. 10 rows.
 ```
 
 For more information on using `spice sql`, see the [CLI reference](https://docs.spiceai.org/cli/reference/sql).
