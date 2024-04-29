@@ -1,4 +1,4 @@
-# Temporal Refresh Data Period Quickstart
+# Temporal Refresh Data Window Quickstart
 
 `refresh_data_window` is a duration param that filters dataset refresh source queries to recent data (duration into past from now). Requires `time_column` and `time_format`(optional) to also be configured. Only supported for `full` refresh mode datasets.
 
