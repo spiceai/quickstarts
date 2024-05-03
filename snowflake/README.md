@@ -1,0 +1,200 @@
+# Quickstart for Snowflake Data Connector
+
+>[Snowflake](https://www.snowflake.com/) is a leading cloud-based data warehousing service that enables users to store, compute, and analyze vast amounts of data in real time.
+
+Spice can read data straight from a Snowflake warehouse.
+The guide demonstrates how to configure Snowflake Data Connector to access a Snowflake database. [Snowflake TPC-H sample dataset](https://docs.snowflake.com/en/user-guide/sample-data-tpch) is used for demonstration.
+
+The guide requires Snowflake account. Start [free trial](https://signup.snowflake.com/) if needed.
+
+**Step 1.** Configure Spice Snowflake access
+
+Run `spice login snowflake -u <username> -p <password>`
+
+Read about all supported [authentication options](https://docs.spiceai.org/data-connectors/snowflake).
+
+**Step 2.** Initialize and start Spice 
+
+```bash
+spice init snowflake-app
+cd snowflake-app
+spice run
+```
+
+The following output is shown in the Spice runtime terminal:
+
+```bash
+Spice.ai runtime starting...
+2024-05-03T06:16:38.263784Z  INFO spiced: Metrics listening on 127.0.0.1:9000
+2024-05-03T06:16:38.267184Z  INFO runtime::http: Spice Runtime HTTP listening on 127.0.0.1:3000
+2024-05-03T06:16:38.267212Z  INFO runtime::flight: Spice Runtime Flight listening on 127.0.0.1:50051
+2024-05-03T06:16:38.267277Z  INFO runtime::opentelemetry: Spice Runtime OpenTelemetry listening on 127.0.0.1:50052
+```
+
+**Step 3.** Configure Snowflake dataset
+
+Obtain **Account** Identifier and **Warehouse** Name.
+ - Login to [Snowflake Warehouse](https://app.snowflake.com/)
+ - Select Admin » Accounts » Account to get Account Identifier
+ - Select Admin » Warehouses » Warehouse to identify a Warehouse name
+
+Use text editor to add Snowflake dataset to `spicepod.yaml`. Use values from previous step for `account` and `warehouse`. 
+
+```yaml
+version: v1beta1
+kind: Spicepod
+name: snowflake-app
+datasets:
+- from: snowflake:snowflake_sample_data.tpch_sf1.lineitem
+  name: lineitem
+  params: 
+    account: ztyvqyb-vgb35424
+    warehouse: COMPUTE_WH
+```
+
+The following output is shown in the Spice runtime terminal:
+
+```bash
+2024-05-03T06:17:08.225248Z  INFO runtime: Loaded dataset lineitem
+```
+
+**Step 4.** Run queries against the dataset using the Spice SQL REPL.
+
+In a new terminal, start the Spice SQL REPL.
+
+```bash
+spice sql
+```
+
+Check that TPC-H lineitem tables exist:
+
+```sql
+show tables;
+
+sql> show tables;
++------------+------------+
+| table_name | table_type |
++------------+------------+
+| lineitem   | BASE TABLE |
++------------+------------+
+```
+
+Run *Pricing Summary Report Query (Q1)*. More information about TPC-H and all the queries involved can be found in the official [TPC Benchmark H Standard Specification](https://www.tpc.org/tpc_documents_current_versions/pdf/tpc-h_v2.17.1.pdf).
+
+```sql
+SELECT
+       "L_RETURNFLAG",
+       "L_LINESTATUS",
+       SUM("L_QUANTITY") AS "SUM_QTY",
+       SUM("L_EXTENDEDPRICE") AS "SUM_BASE_PRICE",
+       SUM("L_EXTENDEDPRICE" * (1-"L_DISCOUNT")) AS "SUM_DISC_PRICE",
+       SUM("L_EXTENDEDPRICE" * (1-"L_DISCOUNT") * (1+"L_TAX")) AS "SUM_CHARGE",
+       AVG("L_QUANTITY") AS "AVG_QTY",
+       AVG("L_EXTENDEDPRICE") AS "AVG_PRICE",
+       AVG("L_DISCOUNT") AS "AVG_DISC",
+       COUNT(*) AS "COUNT_ORDER"
+FROM
+       lineitem
+WHERE
+       "L_SHIPDATE" <= DATE '1998-12-01' - INTERVAL '90' DAY
+GROUP BY
+       "L_RETURNFLAG",
+       "L_LINESTATUS"
+ORDER BY
+       "L_RETURNFLAG",
+       "L_LINESTATUS";
+;
+
++--------------+--------------+------------+----------------+-----------------+------------------+--------------------+--------------------+-------------------+-------------+
+| L_RETURNFLAG | L_LINESTATUS | SUM_QTY    | SUM_BASE_PRICE | SUM_DISC_PRICE  | SUM_CHARGE       | AVG_QTY            | AVG_PRICE          | AVG_DISC          | COUNT_ORDER |
++--------------+--------------+------------+----------------+-----------------+------------------+--------------------+--------------------+-------------------+-------------+
+| A            | F            | 3773410700 | 5658655440073  | -22624317218527 | -113179099334294 | 2552.2005853257338 | 3827312.973462167  | 4.998529583839761 | 1478493     |
+| N            | F            | 99141700   | 148750471038   | -595474952221   | -2994727549668   | 2551.647192052298  | 3828446.7760848305 | 5.009342667421629 | 38854       |
+| N            | O            | 7447604000 | 11170172969774 | -44664820931570 | -223422983383122 | 2550.222676958499  | 3824911.798890827  | 4.999658605370408 | 2920374     |
+| R            | F            | 3771975300 | 5656804138090  | -22610682824870 | -112931255676827 | 2550.5793612690773 | 3825085.462609966  | 5.000940583012706 | 1478870     |
++--------------+--------------+------------+----------------+-----------------+------------------+--------------------+--------------------+-------------------+-------------+
+
+Time: 7.604522209 seconds. 4 rows.
+```
+
+**Step5 (Optional)** Enable [Data Acceleration](https://docs.spiceai.org/data-accelerators)
+
+Use text editor to update `spicepod.yaml`
+
+Before:
+
+```yaml
+version: v1beta1
+kind: Spicepod
+name: snowflake-app
+datasets:
+- from: snowflake:snowflake_sample_data.tpch_sf1.lineitem
+  name: lineitem
+  params: 
+    account: ztyvqyb-vgb35424
+    warehouse: COMPUTE_WH
+```
+After:
+```yaml
+version: v1beta1
+kind: Spicepod
+name: test
+datasets:
+- from: snowflake:snowflake_sample_data.tpch_sf1.lineitem
+  name: lineitem
+  params: 
+    account: ztyvqyb-vgb35424
+    warehouse: COMPUTE_WH
+  acceleration:
+    enabled: true
+    refresh_sql: |
+      SELECT * FROM lineitem WHERE "L_SHIPDATE" <= DATE '1998-12-01' - INTERVAL '90' DAY
+```
+Note: we use `refresh_sql` parameter in this example to specify exact data we require locally (specific date interval).
+
+The following output is shown in the Spice runtime terminal confirming new configuration is applied.
+```bash
+2024-05-03T06:24:59.474301Z  INFO runtime: Unloaded dataset lineitem
+2024-05-03T06:24:59.623574Z  INFO runtime: Loaded dataset lineitem
+2024-05-03T06:25:06.272827Z  INFO runtime: Updating accelerated dataset lineitem...
+2024-05-03T06:25:06.441558Z  INFO runtime::accelerated_table: [refresh] Loading data for dataset lineitem
+2024-05-03T06:25:14.601966Z  INFO runtime: Loaded dataset lineitem
+```
+
+Run *Pricing Summary Report Query* using the Spice SQL REPL. 
+
+```sql
+SELECT
+       "L_RETURNFLAG",
+       "L_LINESTATUS",
+       SUM("L_QUANTITY") AS "SUM_QTY",
+       SUM("L_EXTENDEDPRICE") AS "SUM_BASE_PRICE",
+       SUM("L_EXTENDEDPRICE" * (1-"L_DISCOUNT")) AS "SUM_DISC_PRICE",
+       SUM("L_EXTENDEDPRICE" * (1-"L_DISCOUNT") * (1+"L_TAX")) AS "SUM_CHARGE",
+       AVG("L_QUANTITY") AS "AVG_QTY",
+       AVG("L_EXTENDEDPRICE") AS "AVG_PRICE",
+       AVG("L_DISCOUNT") AS "AVG_DISC",
+       COUNT(*) AS "COUNT_ORDER"
+FROM
+       lineitem
+WHERE
+       "L_SHIPDATE" <= DATE '1998-12-01' - INTERVAL '90' DAY
+GROUP BY
+       "L_RETURNFLAG",
+       "L_LINESTATUS"
+ORDER BY
+       "L_RETURNFLAG",
+       "L_LINESTATUS";
+;
++--------------+--------------+------------+----------------+-----------------+------------------+--------------------+--------------------+-------------------+-------------+
+| L_RETURNFLAG | L_LINESTATUS | SUM_QTY    | SUM_BASE_PRICE | SUM_DISC_PRICE  | SUM_CHARGE       | AVG_QTY            | AVG_PRICE          | AVG_DISC          | COUNT_ORDER |
++--------------+--------------+------------+----------------+-----------------+------------------+--------------------+--------------------+-------------------+-------------+
+| A            | F            | 3773410700 | 5658655440073  | -22624317218527 | -113179099334294 | 2552.2005853257338 | 3827312.973462167  | 4.998529583839761 | 1478493     |
+| N            | F            | 99141700   | 148750471038   | -595474952221   | -2994727549668   | 2551.647192052298  | 3828446.7760848305 | 5.009342667421629 | 38854       |
+| N            | O            | 7447604000 | 11170172969774 | -44664820931570 | -223422983383122 | 2550.222676958499  | 3824911.798890827  | 4.999658605370408 | 2920374     |
+| R            | F            | 3771975300 | 5656804138090  | -22610682824870 | -112931255676827 | 2550.5793612690773 | 3825085.462609966  | 5.000940583012706 | 1478870     |
++--------------+--------------+------------+----------------+-----------------+------------------+--------------------+--------------------+-------------------+-------------+
+
+Time: 0.063395041 seconds. 4 rows.
+```
+Observe query execution time decreased from **7.604522209** to **0.063395041** seconds using local acceleration.
