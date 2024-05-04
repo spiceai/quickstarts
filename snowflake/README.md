@@ -1,19 +1,33 @@
 # Quickstart for Snowflake Data Connector
 
->[Snowflake](https://www.snowflake.com/) is a leading cloud-based data warehousing service that enables users to store, compute, and analyze vast amounts of data in real time.
+>[Snowflake](https://www.snowflake.com/) is a leading cloud-based data warehousing service that enables users to store, compute, and analyze vast amounts of data in real-time.
 
-Spice can read data straight from a Snowflake warehouse.
-The guide demonstrates how to configure Snowflake Data Connector to access a Snowflake database. [Snowflake TPC-H sample dataset](https://docs.snowflake.com/en/user-guide/sample-data-tpch) is used for demonstration.
+The guide demonstrates how to configure [Spice with Snowflake Data Connector](https://docs.spiceai.org/data-connectors/snowflake) to access a Snowflake database.
 
-The guide requires Snowflake account. Start [free trial](https://signup.snowflake.com/) if needed.
+The guide require Snowflake account. Start [free trial](https://signup.snowflake.com/) if needed.
 
-**Step 1.** Configure Spice Snowflake access
+**Step 1.** Create [Snowflake TPC-H Sample Dataset](https://docs.snowflake.com/en/user-guide/sample-data-tpch)
 
-Run `spice login snowflake -u <username> -p <password>`
+1. **Sign in** to [Snowflake](https://app.snowflake.com/)
+1. Select **Projects** » **Worksheets** 
+1. Execute the following SQL statements with the **ACCOUNTADMIN role** active. Refer to [Using the Sample Database](https://docs.snowflake.com/en/user-guide/sample-data-using) for more details
 
-Read about all supported [authentication options](https://docs.spiceai.org/data-connectors/snowflake).
+```sql
+-- Create a database from the share.
+CREATE DATABASE IF NOT EXISTS SNOWFLAKE_SAMPLE_DATA FROM SHARE SFC_SAMPLES.SAMPLE_DATA;
 
-**Step 2.** Initialize and start Spice 
+-- Grant the PUBLIC role access to the database.
+-- Optionally change the role name to restrict access to a subset of users.
+GRANT IMPORTED PRIVILEGES ON DATABASE SNOWFLAKE_SAMPLE_DATA TO ROLE PUBLIC;
+```
+
+**Step 2.** Configure Spice Snowflake access
+
+1. Get [Snowflake account identifier](https://docs.snowflake.com/en/user-guide/admin-account-identifier#finding-the-organization-and-account-name-for-an-account)
+
+1. Run `spice login snowflake -a <account-identifier> -u <username> -p <password>`
+
+**Step 3.** Initialize and start Spice 
 
 ```bash
 spice init snowflake-app
@@ -31,14 +45,9 @@ Spice.ai runtime starting...
 2024-05-03T06:16:38.267277Z  INFO runtime::opentelemetry: Spice Runtime OpenTelemetry listening on 127.0.0.1:50052
 ```
 
-**Step 3.** Configure Snowflake dataset
+**Step 4.** Configure Snowflake Dataset
 
-Obtain **Account** Identifier and **Warehouse** Name.
- - Login to [Snowflake Warehouse](https://app.snowflake.com/)
- - Select Admin » Accounts » Account to get Account Identifier
- - Select Admin » Warehouses » Warehouse to identify a Warehouse name
-
-Use text editor to add Snowflake dataset to `spicepod.yaml`. Use values from previous step for `account` and `warehouse`. 
+Use text editor add **snowflake_sample_data.tpch_sf1** dataset to `spicepod.yaml`. The configuration below uses default warehouse and user role. Uncomment `params` section to specify desired warehouse or role to use.
 
 ```yaml
 version: v1beta1
@@ -47,9 +56,9 @@ name: snowflake-app
 datasets:
 - from: snowflake:snowflake_sample_data.tpch_sf1.lineitem
   name: lineitem
-  params: 
-    account: ztyvqyb-vgb35424
-    warehouse: COMPUTE_WH
+#  params: 
+#     snowflake_role: public
+#     snowflake_warehouse: COMPUTE_WH
 ```
 
 The following output is shown in the Spice runtime terminal:
@@ -58,7 +67,7 @@ The following output is shown in the Spice runtime terminal:
 2024-05-03T06:17:08.225248Z  INFO runtime: Loaded dataset lineitem
 ```
 
-**Step 4.** Run queries against the dataset using the Spice SQL REPL.
+**Step 5.** Run queries against the dataset using the Spice SQL REPL.
 
 In a new terminal, start the Spice SQL REPL.
 
@@ -117,7 +126,7 @@ ORDER BY
 Time: 7.604522209 seconds. 4 rows.
 ```
 
-**Step5 (Optional)** Enable [Data Acceleration](https://docs.spiceai.org/data-accelerators)
+**Step6 (Optional)** Enable [Data Acceleration](https://docs.spiceai.org/data-accelerators)
 
 Use text editor to update `spicepod.yaml`
 
@@ -130,9 +139,9 @@ name: snowflake-app
 datasets:
 - from: snowflake:snowflake_sample_data.tpch_sf1.lineitem
   name: lineitem
-  params: 
-    account: ztyvqyb-vgb35424
-    warehouse: COMPUTE_WH
+#  params: 
+#     snowflake_role: public
+#     snowflake_warehouse: COMPUTE_WH
 ```
 After:
 ```yaml
@@ -142,15 +151,15 @@ name: test
 datasets:
 - from: snowflake:snowflake_sample_data.tpch_sf1.lineitem
   name: lineitem
-  params: 
-    account: ztyvqyb-vgb35424
-    warehouse: COMPUTE_WH
+#  params: 
+#     snowflake_role: public
+#     snowflake_warehouse: COMPUTE_WH
   acceleration:
     enabled: true
     refresh_sql: |
       SELECT * FROM lineitem WHERE "L_SHIPDATE" <= DATE '1998-12-01' - INTERVAL '90' DAY
 ```
-Note: we use `refresh_sql` parameter in this example to specify exact data we require locally (specific date interval).
+Note: we use `refresh_sql` parameter in this example to specify exact data we require local (specific date interval).
 
 The following output is shown in the Spice runtime terminal confirming new configuration is applied.
 ```bash
