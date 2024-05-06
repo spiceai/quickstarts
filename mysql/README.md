@@ -140,6 +140,7 @@ datasets:
       mysql_db: spice_test
       mysql_sslmode: disabled
       mysql_user: root
+      # mysql_pass: <root-password>
 ```
 
 Save the changes in `spicepod.yaml`. The Spice runtime terminal will show that the dataset has been loaded:
