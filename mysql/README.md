@@ -87,7 +87,7 @@ Check the sample data generated in the `sample_data` table.
 SELECT * FROM sample_data LIMIT 10;
 ```
 
-**Step 2.** Check the users in the local MySQL instance. Use any of the users in the later configuration of `mysql_user` in spicepod.yaml.
+**Step 2.** Inside MySQL, check the users in the local MySQL instance. Use any of the users from your query result in the later configuration of `mysql_user` in spicepod.yaml.
 
 ```SQL
 SELECT user FROM mysql.user;
@@ -125,7 +125,7 @@ Spice.ai runtime starting...
 2024-05-06T22:15:57.692571Z  INFO runtime::flight: Spice Runtime Flight listening on 127.0.0.1:50051
 ```
 
-**Step 4.** Configure the dataset to connect to MySQL. Copy and paste the configuration below to `spicepod.yaml` in the Spice app.
+**Step 5.** Configure the dataset to connect to MySQL. Copy and paste the configuration below to `spicepod.yaml` in the Spice app.
 
 ```yaml
 version: v1beta1
