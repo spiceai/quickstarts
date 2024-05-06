@@ -137,7 +137,7 @@ datasets:
     params:
       mysql_host: localhost
       mysql_tcp_port: 3306
-      mysql_db: spice_test
+      mysql_db: spice_demo
       mysql_sslmode: disabled
       mysql_user: root
       # mysql_pass: <root-password>
