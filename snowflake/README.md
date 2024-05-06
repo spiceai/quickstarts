@@ -4,7 +4,7 @@
 
 The guide demonstrates how to configure [Spice with Snowflake Data Connector](https://docs.spiceai.org/data-connectors/snowflake) to access a Snowflake database.
 
-The guide require Snowflake account. Start [free trial](https://signup.snowflake.com/) if needed.
+The guide requires a Snowflake account. Start [free trial](https://signup.snowflake.com/) if needed.
 
 **Step 1.** Create [Snowflake TPC-H Sample Dataset](https://docs.snowflake.com/en/user-guide/sample-data-tpch)
 
