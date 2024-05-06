@@ -22,6 +22,7 @@ Designed to take 1-5 mins each to get started quickly!
 - [MySQL Data Connector](./mysql/README.md)
 - [DuckDB Data Connector](./duckdb/README.md)
 - [Clickhouse Data Connector](./clickhouse/README.md)
+- [Snowflake Data Connector](./snowflake/README.md)
 
 ## Materializing & accelerating data locally with Data Accelerators
 
