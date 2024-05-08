@@ -1,6 +1,6 @@
-# Postgres Data Accelerator
+# PostgreSQL Data Accelerator
 
-This quickstart will use a demo instance of Postgres. Follow the quickstart to create Postgres instance and get started with Postgres as a Data Accelerator.
+This quickstart will use a demo instance of Postgres. Follow the quickstart to create Postgres instance and get started with Postgres as a Data Accelerator. Using Data Accelerator, data sourced by Data Connectors can be **locally materialized and accelerated**.
 
 **Preparation**
 
@@ -103,17 +103,42 @@ select number, "timestamp", hash, transaction_count, gas_used from eth_recent_bl
 +----------+------------+--------------------------------------------------------------------+-------------------+----------+
 | number   | timestamp  | hash                                                               | transaction_count | gas_used |
 +----------+------------+--------------------------------------------------------------------+-------------------+----------+
-| 19821622 | 1715126387 | 0x12753e72914d0fdf2343eda982a0a1a55776def2826e009ebbfbb67e11bef6cd | 153               | 29996777 |
-| 19821621 | 1715126375 | 0x8fd0d25335b3c012fa956c67717feeb7c8cc616711382398c8b4647b742c5c4b | 130               | 12823433 |
-| 19821620 | 1715126363 | 0x257887a5f15e0f5f623afe46722a531b20c52b83681329fbcbcf4ba6049b74cc | 148               | 28440691 |
-| 19821619 | 1715126351 | 0xc3045f7610ceecabfed863cb784f85a18e8b0b38ea5ba7b92a30a8581a419b0e | 157               | 11860723 |
-| 19821618 | 1715126339 | 0x9a55f7892e610ac917cf1145a7f31d42dbe8fa9ea1b391c5b925f5a5f2b3ae30 | 94                | 7387668  |
-| 19821617 | 1715126327 | 0xaef4a6f08d0ea3a85e6107f3855f15fa4a7e8b1c0713a8fc3b7606a77c344599 | 101               | 25220694 |
-| 19821616 | 1715126315 | 0xfe583d5247d08a958a4d4f68b178c12fe45cf039d78697553e708a3e17419b3b | 167               | 13190115 |
-| 19821615 | 1715126303 | 0xdc7757f24aaf2af21133841829aa31841a34cfc659dc9ac1311433435ed0a85b | 88                | 5630252  |
-| 19821614 | 1715126291 | 0x900fe2fc90ef7592bca360dec1aa9b4137e8c9feb13107fb807592e9e50f684c | 73                | 7385049  |
-| 19821613 | 1715126279 | 0xcb847f33e7f5a16af099dcc42c4b1dc47949eb709c5dc062d0e7e21689cfde80 | 167               | 17745429 |
+| 19823523 | 1715149295 | 0x6a4619e01fae477b9034981c74908a2cf5110c56828227971a46b798c5c11f1b | 238               | 15921279 |
+| 19823522 | 1715149283 | 0x3d02a95cfd236d04476bb80e21df4c8a09f58fb360e36af63518b3b253203c57 | 108               | 8855119  |
+| 19823521 | 1715149271 | 0x6696fd2d68eb4a527c9e66a4c0c2ab236e2582f898b626a016cde57c4b034bd0 | 243               | 26104830 |
+| 19823520 | 1715149259 | 0x51b62fd46a27ec2bc5fa101088123fe2d34d7822fd76f88c419c19ffc98ecd43 | 325               | 29984648 |
+| 19823519 | 1715149247 | 0x7be4da28b09084b1e1c5de0b36f1850bf864e8ab5cdd37c507ca814ebd9151c6 | 43                | 1607845  |
+| 19823518 | 1715149235 | 0x24fba85aa5895adba1087539c9cd717e2b864f334881b94dd88c09c78c8daca4 | 152               | 13537024 |
+| 19823517 | 1715149223 | 0x52453257ae23dd4c910694031d1045a3a3cf71e1004446b4e9b5107c5e569cf2 | 202               | 20325159 |
+| 19823516 | 1715149211 | 0x583a7daceb11037d7974cd771e57c8e66cda0fac4c2fd552ad0fc3f49a32c093 | 207               | 18527037 |
+| 19823515 | 1715149199 | 0x4c73f16ec65f84f349692e82b34a800a5c12227ec33349f7b54ebebf4d7908e8 | 142               | 14151725 |
+| 19823514 | 1715149187 | 0x7486a3c326ddbc4a30d027b222fd10d7cd4f8bcdba7bca68541442f6c0b34b2a | 179               | 15232250 |
 +----------+------------+--------------------------------------------------------------------+-------------------+----------+
+
+Time: 0.010686041 seconds. 10 rows.
 ```
 
 For more information on using `spice sql`, see the [CLI reference](https://docs.spiceai.org/cli/reference/sql).
+
+`eth_recent_blocks` is locally materialized in PostgreSQL, using `psql` to query the same table `eth_recent_blocks` in PostgreSQL.
+
+```sql
+psql spice_demo
+```
+
+```sql
+spice_demo=# select number, "timestamp", hash, transaction_count, gas_used from eth_recent_blocks order by number desc limit 10;
+  number  | timestamp  |                                hash                                | transaction_count | gas_used
+----------+------------+--------------------------------------------------------------------+-------------------+----------
+ 19823523 | 1715149295 | 0x6a4619e01fae477b9034981c74908a2cf5110c56828227971a46b798c5c11f1b |               238 | 15921279
+ 19823522 | 1715149283 | 0x3d02a95cfd236d04476bb80e21df4c8a09f58fb360e36af63518b3b253203c57 |               108 |  8855119
+ 19823521 | 1715149271 | 0x6696fd2d68eb4a527c9e66a4c0c2ab236e2582f898b626a016cde57c4b034bd0 |               243 | 26104830
+ 19823520 | 1715149259 | 0x51b62fd46a27ec2bc5fa101088123fe2d34d7822fd76f88c419c19ffc98ecd43 |               325 | 29984648
+ 19823519 | 1715149247 | 0x7be4da28b09084b1e1c5de0b36f1850bf864e8ab5cdd37c507ca814ebd9151c6 |                43 |  1607845
+ 19823518 | 1715149235 | 0x24fba85aa5895adba1087539c9cd717e2b864f334881b94dd88c09c78c8daca4 |               152 | 13537024
+ 19823517 | 1715149223 | 0x52453257ae23dd4c910694031d1045a3a3cf71e1004446b4e9b5107c5e569cf2 |               202 | 20325159
+ 19823516 | 1715149211 | 0x583a7daceb11037d7974cd771e57c8e66cda0fac4c2fd552ad0fc3f49a32c093 |               207 | 18527037
+ 19823515 | 1715149199 | 0x4c73f16ec65f84f349692e82b34a800a5c12227ec33349f7b54ebebf4d7908e8 |               142 | 14151725
+ 19823514 | 1715149187 | 0x7486a3c326ddbc4a30d027b222fd10d7cd4f8bcdba7bca68541442f6c0b34b2a |               179 | 15232250
+(10 rows)
+```
