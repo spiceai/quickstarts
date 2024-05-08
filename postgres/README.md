@@ -1,4 +1,4 @@
-# Postgres Data Accelerator
+# PostgreSQL Data Accelerator
 
 This quickstart will use a demo instance of Postgres. Follow the quickstart to create Postgres instance and get started with Postgres as a Data Accelerator.
 
