@@ -10,8 +10,8 @@ datasets:
       refresh_check_interval: 10s
       engine: postgres
       params:
-        pg_host: [Host]
-        pg_db: [Database name]
-        pg_port: [Port]
-        pg_user: [User]
-        pg_pass: [Password]
+        pg_host: localhost
+        pg_port: 5432
+        pg_db: my_database
+        pg_user: my_user
+        pg_sslmode: disable
