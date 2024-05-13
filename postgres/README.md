@@ -11,6 +11,18 @@ createdb --help
 psql --help
 ```
 
+- Start postgres server (note: this is an insecure postgres, only use for testing). 
+```bash
+docker run --name postgres -e POSTGRES_HOST_AUTH_METHOD=trust  -d -p 5432:5432 postgres
+```
+
+- Configure postgres settings
+```bash
+export PGHOST=localhost
+export PGPORT=5432
+export PGUSER=postgres
+```
+
 - Spice is installed (see the [Getting Started](https://docs.spiceai.org/getting-started) documentation).
 
 - [Login](https://docs.spiceai.org/cli/reference/login) to Spice, since this quickstart is using [Spice.ai Data Connector](https://docs.spiceai.org/data-connectors/spiceai).
@@ -72,9 +84,11 @@ datasets:
       engine: postgres
       params:
         pg_host: localhost
+        pg_user: postgres
         pg_port: 5432
         pg_db: spice_demo
         pg_sslmode: disable
+
 ```
 
 Save the changes to `spicepod.yaml`. The Spice runtime terminal will show that the dataset has been loaded:
