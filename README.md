@@ -1,10 +1,14 @@
-# Spice.ai Quickstart Tutorials
+# Spice.ai OSS Quickstart Tutorials
 
-Designed to take 1-5 mins each to get started quickly!
+Quickstarts for [github.com/spiceai/spiceai](https://github.com/spiceai/spiceai). Designed to take 1-5 mins each!
 
 ## Core scenarios
 
-- [Query Federation](./federation/README.md)
+- [SQL Query Federation](./federation/README.md)
+
+## Materializing & accelerating data locally with Data Accelerators
+
+- [PostgreSQL Data Accelerator](./postgres/README.md)
 
 ## Consuming and visualizing data with clients
 
@@ -19,10 +23,6 @@ Designed to take 1-5 mins each to get started quickly!
 - [Dremio Data Connector](./dremio/README.md)
 - [Spice.ai Cloud Platform Data Connector](./spiceai/README.md)
 
-## Materializing & accelerating data locally with Data Accelerators
-
-- [PostgreSQL Data Accelerator](./postgres/README.md)
-
 ## Deployment and Installation
 
 - [Deploying to Kubernetes](./kubernetes/README.md)
@@ -30,3 +30,7 @@ Designed to take 1-5 mins each to get started quickly!
 ## Performance
 
 - [TPC-H Benchmarking](./tpc-h/README.md)
+
+## Advanced scenarios
+
+- [Advanced Data Refresh](./acceleration/data-refresh/README.md)
