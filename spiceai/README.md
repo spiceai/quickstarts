@@ -112,7 +112,7 @@ sql> select number, hash from eth_recent_blocks limit 10;
 | 19527942 | 0x9abe37678e904d27d096686558d962b9999527fa17c622b6a5bf194cdb450b97 |
 +----------+--------------------------------------------------------------------+
 
-Query took: 0.282212625 seconds. 10/10 rows displayed.
+Time: 0.282212625 seconds. 10 rows.
 ```
 
 **Next Steps**

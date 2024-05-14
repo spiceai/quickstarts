@@ -1,6 +1,8 @@
-### Follow these steps to get started with AWS RDS as a Data Connector.
+# AWS RDS for PostgreSQL Data Connector
 
-**Step 1.** Navigate to your AWS RDS instance in the AWS Management Console.
+Follow these steps to get started with federated SQL query against AWS RDS for PostgreSQL.
+
+**Step 1.** Navigate to your AWS RDS PostgreSQL instance in the AWS Management Console.
 
 **Step 2.** Look for the `Endpoint` and `Port` in the `Connectivity & security` tab of the RDS instance details.
 

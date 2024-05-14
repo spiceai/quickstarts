@@ -15,36 +15,12 @@ cd tpch-quickstart
 spice run
 ```
 
-**Step 2.** Connect the TPC-H Benchmark Sample Data
+**Step 2.** Add the TPC-H Benchmark pod
 
-Add `datasets` configuration below to `spicepod.yaml`
-
-```yaml
-datasets:
-  - from: s3://spiceai-demo-datasets/tpch/customer/
-    name: customer
-
-  - from: s3://spiceai-demo-datasets/tpch/lineitem/
-    name: lineitem
-
-  - from: s3://spiceai-demo-datasets/tpch/nation/
-    name: nation
-
-  - from: s3://spiceai-demo-datasets/tpch/orders/
-    name: orders
-
-  - from: s3://spiceai-demo-datasets/tpch/part/
-    name: part
-
-  - from: s3://spiceai-demo-datasets/tpch/partsupp/
-    name: partsupp
-
-  - from: s3://spiceai-demo-datasets/tpch/region/
-    name: region
-  
-  - from: s3://spiceai-demo-datasets/tpch/supplier/
-    name: supplier
+```bash
+spice add spiceai/tpch
 ```
+
 The following output is shown in the Spice runtime terminal:
 
 ```bash
@@ -124,52 +100,24 @@ order by
 | R            | F            | 37719753.00 | 56568041380.90  | 53741292684.6040  | 55889619119.831932  | 25.505793 | 38250.854626 | 0.050009 | 1478870     |
 +--------------+--------------+-------------+-----------------+-------------------+---------------------+-----------+--------------+----------+-------------+
 
-Query took: 4.178523666 seconds. 4/4 rows displayed.
+Time: 4.178523666 seconds. 4 rows.
 ```
 
 **Step4 (Optional)** Enable [Data Acceleration](https://docs.spiceai.org/data-accelerators) for TPC-H Benchmark Sample Data
 
-Replace `datasets` configuration in `spicepod.yaml` with
+Use text editor to open `./spicepods/spiceai/tpch/spicepod.yaml` file and enable `acceleration` flags for each table. Save.
 
-```yaml
-datasets:
+Before:
+```
   - from: s3://spiceai-demo-datasets/tpch/customer/
     name: customer
     acceleration:
-      enabled: true
-
-  - from: s3://spiceai-demo-datasets/tpch/lineitem/
-    name: lineitem
-    acceleration:
-      enabled: true
-
-  - from: s3://spiceai-demo-datasets/tpch/nation/
-    name: nation
-    acceleration:
-      enabled: true
-
-  - from: s3://spiceai-demo-datasets/tpch/orders/
-    name: orders
-    acceleration:
-      enabled: true
-
-  - from: s3://spiceai-demo-datasets/tpch/part/
-    name: part
-    acceleration:
-      enabled: true
-
-  - from: s3://spiceai-demo-datasets/tpch/partsupp/
-    name: partsupp
-    acceleration:
-      enabled: true
-
-  - from: s3://spiceai-demo-datasets/tpch/region/
-    name: region
-    acceleration:
-      enabled: true
-  
-  - from: s3://spiceai-demo-datasets/tpch/supplier/
-    name: supplier
+      enabled: false
+```
+After:
+```
+  - from: s3://spiceai-demo-datasets/tpch/customer/
+    name: customer
     acceleration:
       enabled: true
 ```
@@ -228,7 +176,7 @@ order by
 | R            | F            | 37719753.00 | 56568041380.90  | 53741292684.6040  | 55889619119.831932  | 25.505793 | 38250.854626 | 0.050009 | 1478870     |
 +--------------+--------------+-------------+-----------------+-------------------+---------------------+-----------+--------------+----------+-------------+
 
-Query took: 0.108190459 seconds. 4/4 rows displayed.
+Time: 0.108190459 seconds. 4 rows.
 ```
 
 Observe query execution time decreased from **4.178523666** to **0.108190459** seconds.

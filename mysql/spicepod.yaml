@@ -1,0 +1,16 @@
+version: v1beta1
+kind: Spicepod
+name: mysql_quickstart
+datasets:
+  - from: mysql:[remote_table_path]
+    name: [local_table_name]
+    params:
+      mysql_host: [Host]
+      mysql_db: [Database name]
+      mysql_tcp_port: [Port]
+      mysql_user: [User]
+      mysql_pass: [Password]
+    acceleration:
+      enabled: true
+      refresh_mode: full
+      refresh_check_interval: 10s

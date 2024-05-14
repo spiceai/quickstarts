@@ -4,7 +4,7 @@ Quickstarts for [github.com/spiceai/spiceai](https://github.com/spiceai/spiceai)
 
 ## Core scenarios
 
-- [SQL Query Federation](./federation/README.md)
+- [Query Federation](./federation/README.md)
 
 ## Materializing & accelerating data locally with Data Accelerators
 
@@ -18,10 +18,15 @@ Quickstarts for [github.com/spiceai/spiceai](https://github.com/spiceai/spiceai)
 
 - [S3 Data Connector](./s3/README.md)
 - [Databricks Delta Lake Data Connector](./databricks/README.md)
-- [Supabase Data Connector](./supabase/README.md)
-- [AWS RDS Data Connector](./rds/README.md)
+- [Supabase Data Connector Data Connector](./supabase/README.md)
+- [AWS RDS PostgreSQL Data Connector](./rds-postgresql/README.md)
+- [AWS RDS Aurora (MySQL Compatible) Data Connector](./rds-aurora-mysql/README.md)
 - [Dremio Data Connector](./dremio/README.md)
 - [Spice.ai Cloud Platform Data Connector](./spiceai/README.md)
+- [MySQL Data Connector](./mysql/README.md)
+- [DuckDB Data Connector](./duckdb/README.md)
+- [Clickhouse Data Connector](./clickhouse/README.md)
+- [Snowflake Data Connector](./snowflake/README.md)
 
 ## Deployment and Installation
 
@@ -31,6 +36,8 @@ Quickstarts for [github.com/spiceai/spiceai](https://github.com/spiceai/spiceai)
 
 - [TPC-H Benchmarking](./tpc-h/README.md)
 
-## Advanced scenarios
+## Data Management
 
+- [Data Retention Policy](./retention/README.md)
+- [Temporal Refresh Data Window](./refresh-data-window/README.md)
 - [Advanced Data Refresh](./acceleration/data-refresh/README.md)
