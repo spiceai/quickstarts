@@ -1,5 +1,7 @@
 # PostgreSQL Data Accelerator
 
+Follow these steps to get started with PostgreSQL as a Data Accelerator.
+
 This quickstart will use a demo instance of Postgres. Follow the quickstart to create Postgres instance and get started with Postgres as a Data Accelerator. With Postgres as a Data Accelerator, data sourced by Data Connectors can be **locally materialized and accelerated** into an attached Postgres instance. Unlike other Data Accelerators which are local to Spice, this enables other applications to query the accelerated data via a native integration with Postgres, which Spice keeps up-to-date automatically.
 
 **Preparation**
@@ -11,12 +13,14 @@ createdb --help
 psql --help
 ```
 
-- Start postgres server (note: this is an insecure postgres, only use for testing). 
+- Start postgres server (note: this is an insecure postgres, only use for testing).
+
 ```bash
 docker run --name postgres -e POSTGRES_HOST_AUTH_METHOD=trust  -d -p 5432:5432 postgres
 ```
 
 - Configure postgres settings
+
 ```bash
 export PGHOST=localhost
 export PGPORT=5432
@@ -88,7 +92,6 @@ datasets:
         pg_port: 5432
         pg_db: spice_demo
         pg_sslmode: disable
-
 ```
 
 Save the changes to `spicepod.yaml`. The Spice runtime terminal will show that the dataset has been loaded:
