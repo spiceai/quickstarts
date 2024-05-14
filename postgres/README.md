@@ -136,3 +136,28 @@ Time: 0.010686041 seconds. 10 rows.
 ```
 
 For more information on using `spice sql`, see the [CLI reference](https://docs.spiceai.org/cli/reference/sql).
+
+# **Step 4.** Execute the query `select * from eth_recent_blocks;` to see the `eth_recent_blocks` dataset accelerated in your PostgreSQL instance.
+
+`eth_recent_blocks` is locally materialized in PostgreSQL, using `psql` to query the same table `eth_recent_blocks` in PostgreSQL.
+
+```sql
+psql spice_demo
+```
+
+```sql
+spice_demo=# select number, "timestamp", hash, transaction_count, gas_used from eth_recent_blocks order by number desc limit 10;
+  number  | timestamp  |                                hash                                | transaction_count | gas_used
+----------+------------+--------------------------------------------------------------------+-------------------+----------
+ 19823523 | 1715149295 | 0x6a4619e01fae477b9034981c74908a2cf5110c56828227971a46b798c5c11f1b |               238 | 15921279
+ 19823522 | 1715149283 | 0x3d02a95cfd236d04476bb80e21df4c8a09f58fb360e36af63518b3b253203c57 |               108 |  8855119
+ 19823521 | 1715149271 | 0x6696fd2d68eb4a527c9e66a4c0c2ab236e2582f898b626a016cde57c4b034bd0 |               243 | 26104830
+ 19823520 | 1715149259 | 0x51b62fd46a27ec2bc5fa101088123fe2d34d7822fd76f88c419c19ffc98ecd43 |               325 | 29984648
+ 19823519 | 1715149247 | 0x7be4da28b09084b1e1c5de0b36f1850bf864e8ab5cdd37c507ca814ebd9151c6 |                43 |  1607845
+ 19823518 | 1715149235 | 0x24fba85aa5895adba1087539c9cd717e2b864f334881b94dd88c09c78c8daca4 |               152 | 13537024
+ 19823517 | 1715149223 | 0x52453257ae23dd4c910694031d1045a3a3cf71e1004446b4e9b5107c5e569cf2 |               202 | 20325159
+ 19823516 | 1715149211 | 0x583a7daceb11037d7974cd771e57c8e66cda0fac4c2fd552ad0fc3f49a32c093 |               207 | 18527037
+ 19823515 | 1715149199 | 0x4c73f16ec65f84f349692e82b34a800a5c12227ec33349f7b54ebebf4d7908e8 |               142 | 14151725
+ 19823514 | 1715149187 | 0x7486a3c326ddbc4a30d027b222fd10d7cd4f8bcdba7bca68541442f6c0b34b2a |               179 | 15232250
+(10 rows)
+```
