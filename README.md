@@ -39,5 +39,5 @@ Quickstarts for [github.com/spiceai/spiceai](https://github.com/spiceai/spiceai)
 ## Data Management
 
 - [Data Retention Policy](./retention/README.md)
-- [Temporal Refresh Data Window](./refresh-data-window/README.md)
+- [Refresh Data Window](./refresh-data-window/README.md)
 - [Advanced Data Refresh](./acceleration/data-refresh/README.md)

@@ -1,8 +1,8 @@
-# Temporal Refresh Data Window Quickstart
+# Refresh Data Window Quickstart
 
-`refresh_data_window` is a duration param that filters dataset refresh source queries to recent data (duration into past from now). Requires `time_column` and `time_format`(optional) to also be configured. Only supported for `full` refresh mode datasets.
+`refresh_data_window` is a duration param that filters data refresh source queries for time-series to recent data (duration into past from now).
 
-Check below for `refresh_data_window` in action.
+Requires `time_column` and `time_format` (optional) to also be configured. Only supported for `full` refresh mode datasets.
 
 **Step 1.** Initialize and start Spice
 
@@ -112,4 +112,3 @@ sql> select * from taxi_trips order by tpep_pickup_datetime limit 1;
 
 Time: 0.052626208 seconds. 1 rows.
 ```
-
