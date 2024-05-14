@@ -1,4 +1,4 @@
-# Advanced Data Refresh
+# Advanced Data Refresh Quickstart
 
 Data refresh for accelerated datasets can be configured and tuned for specific scenarios.
 
