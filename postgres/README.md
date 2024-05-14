@@ -137,8 +137,6 @@ Time: 0.010686041 seconds. 10 rows.
 
 For more information on using `spice sql`, see the [CLI reference](https://docs.spiceai.org/cli/reference/sql).
 
-# **Step 4.** Execute the query `select * from eth_recent_blocks;` to see the `eth_recent_blocks` dataset accelerated in your PostgreSQL instance.
-
 `eth_recent_blocks` is locally materialized in PostgreSQL, using `psql` to query the same table `eth_recent_blocks` in PostgreSQL.
 
 ```sql
