@@ -1,0 +1,13 @@
+version: v1beta1
+kind: Spicepod
+name: ftp_quickstart
+datasets:
+  - from: ftp://[remote_host]/[remote_path]/
+    name: [local_table_name]
+    params:
+      ftp_user: [ftp_user]
+      ftp_pass: [ftp_password]
+    acceleration:
+      enabled: true
+      refresh_mode: full
+      refresh_interval: 10s
