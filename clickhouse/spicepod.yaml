@@ -10,6 +10,7 @@ datasets:
       clickhouse_tcp_port: [Port]
       clickhouse_user: [Username]
       clickhouse_pass: [Password]
+      clickhouse_secure: [true/false] # Default to true.  Set to false if not connecting over SSL
     acceleration:
       enabled: true
       refresh_mode: full
