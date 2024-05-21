@@ -1,26 +1,34 @@
-### Follow these steps to get started using Spice to federate SQL queries across data sources.
+# Federated SQL Query
 
-**Step 1.** Clone the quickstarts repo locally and navigate to the `federation` directory.
+Fetch combined data from S3 Parquet, PostgreSQL, and Dremio in a single query.
+
+## Requirements
+
+- Docker
+
+## Follow these steps to use Spice to federate SQL queries across data sources
+
+**Step 1.** Clone the [github.com/spiceai/quickstarts](https://github.com/spiceai/quickstarts) repo and navigate to the `federation` directory.
 
 ```bash
 git clone https://github.com/spiceai/quickstarts
 cd quickstarts/federation
 ```
-**Step 2.** Initialize the project.  Use the default name by pressing enter when prompted.
+
+**Step 2.** Initialize the Spice app. Use the default name by pressing enter when prompted.
 
 ```bash
 spice init
 name: (federation)?
 ```
 
-
-**Step 3.** Log into the demo Dremio instance:
+**Step 3.** Log into the demo Dremio instance.
 
 ```bash
 spice login dremio -u demo -p demo1234
 ```
 
-**Step 4.** Start a local PostgreSQL instance loaded with demo data via Docker Compose:
+**Step 4.** Start a local PostgreSQL instance preloaded with demo data via Docker Compose.
 
 ```bash
 make
@@ -32,7 +40,7 @@ make
 spice run
 ```
 
-**Step 6.** In another terminal window, add the `spiceai/fed-demo` Spicepod from Spicerack.
+**Step 6.** In another terminal window, add the `spiceai/fed-demo` Spicepod from [spicerack.org](https://spicerack.org).
 
 ```bash
 spice add spiceai/fed-demo
@@ -45,27 +53,31 @@ spice sql
 ```
 
 ```sql
---- Query from the federated S3 source
+-- Query the federated S3 source
 select * from s3_source;
--- Query from the accelerated S3 source
+
+-- Query the accelerated S3 source
 select * from s3_source_accelerated;
--- Query from the federated PostgreSQL source
+
+-- Query the federated PostgreSQL source
 select * from pg_source;
--- Query from the federated Dremio source
+
+-- Query the federated Dremio source
 select * from dremio_source;
--- Query from the accelerated Dremio source
+
+-- Query the accelerated Dremio source
 select * from dremio_source_accelerated;
 
--- Perform an aggregation query that combines data from the S3, PostgreSQL and Dremio sources
+-- Perform an aggregation query that combines data from S3, PostgreSQL, and Dremio
 WITH all_sales AS (
-  SELECT sales FROM pg_source 
-  UNION ALL 
+  SELECT sales FROM pg_source
+  UNION ALL
   SELECT sales FROM s3_source_accelerated
   UNION ALL
   select fare_amount+tip_amount as sales from dremio_source_accelerated
 )
 
-SELECT SUM(sales) as total_sales, 
+SELECT SUM(sales) as total_sales,
        COUNT(*) AS total_transactions,
        MAX(sales) AS max_sale,
        AVG(sales) AS avg_sale

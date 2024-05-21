@@ -4,7 +4,7 @@ Quickstarts for [github.com/spiceai/spiceai](https://github.com/spiceai/spiceai)
 
 ## Core scenarios
 
-- [Query Federation](./federation/README.md)
+- [Federated SQL Query](./federation/README.md) - Fetch combined data from S3, PostgreSQL, and Dremio in a single query.
 
 ## Materializing & accelerating data locally with Data Accelerators
 
