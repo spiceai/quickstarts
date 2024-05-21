@@ -2,11 +2,12 @@ version: v1beta1
 kind: Spicepod
 name: ftp_quickstart
 datasets:
-  - from: ftp://[remote_host]/[remote_path]/
-    name: [local_table_name]
+  - from: ftp://localhost/customers.csv
+    name: customers
     params:
-      ftp_user: [ftp_user]
-      ftp_pass: [ftp_password]
+      file_format: csv
+      ftp_user: user
+      ftp_pass: 123
     acceleration:
       enabled: true
       refresh_mode: full

@@ -1,20 +1,38 @@
 # FTP/SFTP Data Connector
 
-Follow these steps to get started with FTP/SFTP as a Data Connector.
+## Requirements
 
-**Step 1** Edit the `spicepod_ftp.yaml` or `spicepod_sftp.yaml` file in this directory, depending on your chosen connection type. Replace the parameters in the specified dataset with the connection details for your FTP/SFTP server. Define `[local_table_name]` as your preferred name for the federated table, `[remote_host]` as the server's address, and `[remote_path]` as the directory or file you wish to accelerate. The file should be named simply as spicepod.yaml. Currently, FTP/SFTP supports Parquet and CSV file formats.
+- Docker
 
-Follow the [quickstart guide](https://docs.spiceai.org/getting-started) to get started with the Spice.ai runtime.
+## Follow these steps to get started with FTP/SFTP as a Data Connector.
 
-See the [datasets reference](https://docs.spiceai.org/reference/spicepod/datasets) for more dataset configuration options.
+**Step 1.** Start a local FTP server preloaded with demo csv data via Docker Compose.
 
-To securely store your FTP/SFTP password, see [Secret Stores](https://docs.spiceai.org/secret-stores)
+```bash
+make
+```
 
-**Step 2.** Run the Spice runtime with `spice run` from this directory.
+**Step 2.** Start the Spice runtime.
 
-**Step 3.** Run `spice sql` in a new terminal to start an interactive SQL query session against the Spice runtime.
+```bash
+spice run
+```
 
-For more information on using `spice sql`, see the [CLI reference](https://docs.spiceai.org/cli/reference/sql).
+**Step 3.** Start the Spice SQL REPL and perform the following SQL queries:
 
-**Step 4.** Execute the query `select * from [local_table_name];` to see the data from your Parquet or CSV files from remote FTP/SFTP server accelerated locally.
+```bash
+spice sql
+```
 
+```sql
+-- Query data from loaded customers.csv
+select * from customers;
+```
+
+**Step 4.** Clean up the demo environment:
+
+```bash
+make clean
+```
+
+[Learn more](https://docs.spiceai.org/data-connectors/ftp) about Spice FTP/SFTP Data Connector.
