@@ -6,6 +6,8 @@ Fetch combined data from S3 Parquet, PostgreSQL, and Dremio in a single query.
 
 - Docker
 
+## Follow these steps to use Spice to federate SQL queries across data sources
+
 **Step 1.** Clone the [github.com/spiceai/quickstarts](https://github.com/spiceai/quickstarts) repo and navigate to the `federation` directory.
 
 ```bash
