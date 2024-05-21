@@ -24,7 +24,7 @@ Quickstarts for [github.com/spiceai/spiceai](https://github.com/spiceai/spiceai)
 - [Dremio Data Connector](./dremio/README.md)
 - [Spice.ai Cloud Platform Data Connector](./spiceai/README.md)
 - [MySQL Data Connector](./mysql/README.md)
-- [DuckDB Data Connector](./duckdb/README.md)
+- [DuckDB Data Connector](./duckdb/README.md) - Use a DuckDB database with sample TPCH data.
 - [Clickhouse Data Connector](./clickhouse/README.md)
 - [Snowflake Data Connector](./snowflake/README.md)
 

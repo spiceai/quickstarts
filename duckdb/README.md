@@ -1,26 +1,28 @@
-# DuckDB Data Connector
+# DuckDB Data Connector Quickstart
 
-This quickstart will use a demo instance of DuckDB with a sample TCPH dataset. Follow the quickstart to create DuckDB instance and get started with DuckDB as a Data Connector.
+Create a DuckDB instance using sample TPCH data and use it from Spice with the DuckDB data connector.
 
-**Preparation**
+## Requirements
 
-- Install [DuckDB CLI](https://duckdb.org/docs/installation/?version=stable&environment=cli&platform=macos&download_method=package_manager).
-- Spice is installed (see the [Getting Started](https://docs.spiceai.org/getting-started) documentation).
+- [DuckDB CLI](https://duckdb.org/docs/installation/?version=stable&environment=cli&platform=macos&download_method=package_manager) installed.
+- Spice CLI installed (see [Getting Started](https://docs.spiceai.org/getting-started)).
 
-**Step 1.** Initialize a Spice app.
+## Follow these steps
+
+**Step 1.** Initialize a new Spice app.
 
 ```bash
-spice init duckdb-demo
-cd duckdb-demo
+spice init duckdb-qs
+cd duckdb-qs
 ```
 
-**Step 2.** Create a persistent file-based DuckDB database in Spice app.
+**Step 2.** Create a DuckDB database with TPCH sample data.
 
 ```bash
 duckdb ./tpch.db
 ```
 
-Run the following queries in DuckDB CLI to generate TPC-H data with DuckDB's [TCPH extension](https://duckdb.org/docs/extensions/tpch.html).
+Using the DuckDB CLI execute the following commands to generate TPC-H data with DuckDB's [TPCH extension](https://duckdb.org/docs/extensions/tpch.html).
 
 ```SQL
 INSTALL tpch;
@@ -28,20 +30,20 @@ LOAD tpch;
 CALL dbgen(sf = 1);
 ```
 
-Run the following query to check the tables generated.
+Show the TPCH tables were correctly generated.
 
 ```SQL
 SHOW TABLES;
 ```
 
-Quit DuckDB CLI after the data generation.
+Quit the DuckDB CLI (ctrl-c, ctrl-c).
 
-**Step 3.** Configure the dataset to connect to DuckDB. Copy and paste the configuration below to `spicepod.yaml` in the Spice app.
+**Step 3.** Configure the dataset to use the DuckDB database file. Copy and paste the YAML below to `spicepod.yaml` in the Spice app.
 
 ```yaml
 version: v1beta1
 kind: Spicepod
-name: duckdb_quickstart
+name: duckdb-qs
 datasets:
   - from: duckdb:customer
     name: tpch_customer
@@ -49,19 +51,15 @@ datasets:
       open: ./tpch.db
 ```
 
-Follow the [quickstart guide](https://docs.spiceai.org/getting-started) to get started with the Spice.ai runtime.
-
-See the [datasets reference](https://docs.spiceai.org/reference/spicepod/datasets) for more dataset configuration options.
-
 **Step 4.** Start the Spice runtime.
 
 ```bash
 spice run
 ```
 
-The Spice runtime terminal will show that the dataset has been loaded:
+Confirm in the terminal output the `tpch_customer` dataset has been loaded:
 
-```
+```bash
 Spice.ai runtime starting...
 2024-04-29T18:23:18.055782Z  INFO spiced: Metrics listening on 127.0.0.1:9000
 2024-04-29T18:23:18.059972Z  INFO runtime: Loaded dataset: tpch_customer
@@ -72,13 +70,13 @@ Spice.ai runtime starting...
 
 **Step 5.** Run queries against the dataset using the Spice SQL REPL.
 
-In a new terminal, start the Spice SQL REPL
+_In a new terminal_, start the Spice SQL REPL
 
 ```bash
 spice sql
 ```
 
-You can now now query `customer` in the runtime.
+Query the `tpch_customer` dataset.
 
 ```sql
 select c_name, c_address, c_acctbal, c_mktsegment from tpch_customer limit 10;
@@ -100,4 +98,10 @@ select c_name, c_address, c_acctbal, c_mktsegment from tpch_customer limit 10;
 Time: 0.003510375 seconds. 10 rows.
 ```
 
-For more information on using `spice sql`, see the [CLI reference](https://docs.spiceai.org/cli/reference/sql).
+## Learn more
+
+- [DuckDB Data Connector Documentation](https://docs.spiceai.org/data-connectors/duckdb).
+
+- For using `spice sql`, see the [CLI reference](https://docs.spiceai.org/cli/reference/sql).
+
+- See the [datasets reference](https://docs.spiceai.org/reference/spicepod/datasets) for additional dataset configuration options.
