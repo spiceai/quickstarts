@@ -26,9 +26,9 @@ Spice can read data straight from a Spark instance. This guide will create an ap
 
 3. Create the Sample Dataset in Spark
 
-This Quickstarts use NYC taxi trip parquet data to create a sample table in Spark.
+This Quickstarts use NYC taxi trip parquet data to create a sample table in Spark. Download the NYC taxi trip data from [TLC Trip Record Data](https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page).
 
-Download the NYC taxi trip parquet file in this folder. Change the `parquet_file_path` in python script to the absolute file path where `yellow_tripdata_2024-01.parquet` is located. Run the following python script in the python environment that already have `pyspark` downloaded.
+Download the NYC taxi trip parquet file in this folder. Change the `parquet_file_path` in python script to the absolute file path where `yellow_tripdata.parquet` is located. Run the following python script in the python environment that already have `pyspark` downloaded.
 
 ```python
 from pyspark.sql import SparkSession
@@ -38,7 +38,7 @@ SparkSession.builder.master("local[*]").getOrCreate().stop()
 spark = SparkSession.builder.remote("sc://localhost:15002").getOrCreate()
 
 parquet_table_name = "nyc_taxi_trip"
-parquet_file_path = "/absolute/path/to/yellow_tripdata_2024-01.parquet"
+parquet_file_path = "/absolute/path/to/yellow_tripdata.parquet"
 
 df = spark.read.format('parquet').options(header=True,inferSchema=True).load(parquet_file_path)
 df.write.option("path", f"./{parquet_table_name}").mode("overwrite").saveAsTable(parquet_table_name)
