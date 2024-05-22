@@ -44,7 +44,7 @@ SparkSession.builder.master("local[*]").getOrCreate().stop()
 spark = SparkSession.builder.remote("sc://localhost:15002").getOrCreate()
 
 parquet_table_name = "nyc_taxi_trip"
-parquet_file_path = "/absolute/path/to/yellow_tripdata_2024-01.parquet
+parquet_file_path = "/absolute/path/to/yellow_tripdata_2024-01.parquet"
 
 df = spark.read.format('parquet').options(header=True,inferSchema=True).load(parquet_file_path)
 df.write.option("path", f"./{parquet_table_name}").mode("overwrite").saveAsTable(parquet_table_name)
