@@ -4,7 +4,7 @@ Spice can read data straight from a Spark instance. This guide will create an ap
 
 - Spice is installed (see the [Getting Started](https://docs.spiceai.org/getting-started) documentation).
 - Spark Connect Server is running locally (refer to the [Quickstart: Spark Connect](https://spark.apache.org/docs/latest/api/python/getting_started/quickstart_connect.html) to launch spark server with spark connect)
-- pyspark is installed in your python environment. (see [Installation](https://spark.apache.org/docs/latest/api/python/getting_started/install.html) for downloading pyspark in your python environment)
+- Install [Spark dependencies](https://spark.apache.org/docs/latest/api/python/getting_started/install.html#dependencies) in a dedicated python virtual environment.
 
 1. Initialise a Spice app
 
@@ -34,7 +34,7 @@ Download the NYC taxi trip parquet file using the following command
 wget https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2024-01.parquet
 ```
 
-Change the `parquet_file_path` in python script to the absolute file path where `yellow_tripdata_2024-01.parquet` is located. Run the following python script in the python environment that already have `pyspark` downloaded.
+Change the `parquet_file_path` in python script to the absolute file path where `yellow_tripdata_2024-01.parquet` is located. Run the following python script in the python virtual environment that already have [Spark dependencies](https://spark.apache.org/docs/latest/api/python/getting_started/install.html#dependencies) downloaded.
 
 ```python
 from pyspark.sql import SparkSession
