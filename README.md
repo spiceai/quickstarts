@@ -35,6 +35,7 @@ Quickstarts for [github.com/spiceai/spiceai](https://github.com/spiceai/spiceai)
 ## Performance
 
 - [TPC-H Benchmarking](./tpc-h/README.md)
+- [Results Caching](./caching/README.md)
 
 ## Data Management
 
