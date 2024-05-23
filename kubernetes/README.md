@@ -48,6 +48,8 @@ spicepod:
     - from: s3://spiceai-demo-datasets/taxi_trips/2024/
       name: taxi_trips_customized
       description: Demo taxi trips in s3
+      params:
+        file_format: parquet
       acceleration:
         enabled: true
 EOF
