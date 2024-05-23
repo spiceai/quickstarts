@@ -17,6 +17,8 @@ datasets:
   - from: s3://spiceai-demo-datasets/taxi_trips/2024/
     name: taxi_trips
     time_column: tpep_pickup_datetime
+    params:
+      file_format: parquet
     acceleration:
       enabled: true
       refresh_check_interval: 10m
