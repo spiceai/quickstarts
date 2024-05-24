@@ -3,6 +3,13 @@
 Spice can read data straight from a Spark instance. This guide will create an app, configure Spark to run locally, load and query a dataset. It assumes:
 
 - Spice is installed (see the [Getting Started](https://docs.spiceai.org/getting-started) documentation).
+- Apache Spark package newer than v3.4.0 is downloaded (see the [Download Apache Spark](https://spark.apache.org/downloads.html) to download Apache Spark package )
+- Spark is configured with enough spark driver memory before starting the Spark Connect Server. Add the following configuration to the `./conf/spark-defaults.conf` in apache spark package.
+
+```
+spark.driver.memory 6g
+```
+
 - Spark Connect Server is running locally (refer to the [Quickstart: Spark Connect](https://spark.apache.org/docs/latest/api/python/getting_started/quickstart_connect.html) to launch spark server with spark connect)
 - Install [Spark dependencies](https://spark.apache.org/docs/latest/api/python/getting_started/install.html#dependencies) in a dedicated python virtual environment.
 
