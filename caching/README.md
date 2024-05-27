@@ -42,7 +42,7 @@ The following output is shown in the Spice runtime terminal:
 Notice the following line confirming the default cache configuration with cached items expiration time of 1 second is loaded.
 
 ```bash
-2024-05-23T21:50:44.372986Z  INFO runtime: Initialized query results cache; max size: 128.00 MiB, item expire duration: 1s
+2024-05-23T21:50:44.372986Z  INFO runtime: Initialized query results cache; max size: 128.00 MiB, item ttl: 1s
 ```
 
 **Step 3.** Increase the cached items' expiration time
