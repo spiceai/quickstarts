@@ -5,7 +5,7 @@
 >
 > [Spice.ai OSS Docs: Results Caching](https://docs.spiceai.org/features/caching)
 
-The quickstart will use [ TPC-H Benchmark Sample Data](https://github.com/spiceai/quickstarts/tree/trunk/tpc-h), but instead of using local acceleration, we will leverage in-memory caching to boost query performance.
+The quickstart will use [TPC-H Benchmark Sample Data](https://github.com/spiceai/quickstarts/tree/trunk/tpc-h), but instead of using local acceleration, we will leverage in-memory caching to boost query performance.
 
 **Step 1.** Initialize and start Spice
 
