@@ -10,7 +10,7 @@ The guide requires a Snowflake account. Start [free trial](https://signup.snowfl
 
 1. **Sign in** to [Snowflake](https://app.snowflake.com/)
 1. Select **Projects** » **Worksheets** 
-1. Execute the following SQL statements with the **ACCOUNTADMIN role** active. Refer to [Using the Sample Database](https://docs.snowflake.com/en/user-guide/sample-data-using) for more details
+1. Execute the following SQL statements with the **ACCOUNTADMIN role** active. Refer to [Using the Sample Database](https://docs.snowflake.com/en/user-guide/sample-data-using) for more details.
 
 ```sql
 -- Create a database from the share.
@@ -47,7 +47,7 @@ Spice.ai runtime starting...
 
 **Step 4.** Configure Snowflake Dataset
 
-Use text editor add **snowflake_sample_data.tpch_sf1** dataset to `spicepod.yaml`. The configuration below uses default warehouse and user role. Uncomment `params` section to specify desired warehouse or role to use.
+Use text editor add **snowflake_sample_data.tpch_sf1** dataset to `spicepod.yaml`. Modify the `params` section to specify desired warehouse or role to use.
 
 ```yaml
 version: v1beta1
@@ -56,9 +56,9 @@ name: snowflake-app
 datasets:
 - from: snowflake:SNOWFLAKE_SAMPLE_DATA.TPCH_SF1.LINEITEM
   name: lineitem
-#  params: 
-#     snowflake_role: public
-#     snowflake_warehouse: COMPUTE_WH
+  params: 
+    snowflake_role: accountadmin
+    snowflake_warehouse: COMPUTE_WH
 ```
 
 The following output is shown in the Spice runtime terminal:
@@ -81,11 +81,15 @@ Check that TPC-H lineitem tables exist:
 show tables;
 
 sql> show tables;
-+------------+------------+
-| table_name | table_type |
-+------------+------------+
-| lineitem   | BASE TABLE |
-+------------+------------+
++---------------+--------------+---------------+------------+
+| table_catalog | table_schema | table_name    | table_type |
++---------------+--------------+---------------+------------+
+| spice         | runtime      | metrics       | BASE TABLE |
+| spice         | runtime      | query_history | BASE TABLE |
+| spice         | public       | lineitem      | BASE TABLE |
++---------------+--------------+---------------+------------+
+
+Time: 0.00588975 seconds. 3 rows.
 ```
 
 Run *Pricing Summary Report Query (Q1)*. More information about TPC-H and all the queries involved can be found in the official [TPC Benchmark H Standard Specification](https://www.tpc.org/tpc_documents_current_versions/pdf/tpc-h_v2.17.1.pdf).
@@ -141,9 +145,9 @@ name: snowflake-app
 datasets:
 - from: snowflake:snowflake_sample_data.tpch_sf1.lineitem
   name: lineitem
-#  params: 
-#     snowflake_role: public
-#     snowflake_warehouse: COMPUTE_WH
+  params: 
+    snowflake_role: accountadmin
+    snowflake_warehouse: COMPUTE_WH
 ```
 After:
 ```yaml
@@ -153,9 +157,9 @@ name: test
 datasets:
 - from: snowflake:snowflake_sample_data.tpch_sf1.lineitem
   name: lineitem
-#  params: 
-#     snowflake_role: public
-#     snowflake_warehouse: COMPUTE_WH
+  params: 
+    snowflake_role: accountadmin
+    snowflake_warehouse: COMPUTE_WH
   acceleration:
     enabled: true
     refresh_sql: |
