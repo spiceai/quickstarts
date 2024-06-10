@@ -1,0 +1,14 @@
+version: v1beta1
+kind: Spicepod
+name: graphql_quickstart
+datasets:
+  - from: graphql:[graphql_endpoint]
+    name: [local_table_name]
+    params:
+      json_path: [json_path]
+      query: |
+        [graphql_query]
+    acceleration:
+      enabled: true
+      refresh_mode: full
+      refresh_check_interval: 15s
