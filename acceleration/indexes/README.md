@@ -39,7 +39,7 @@ datasets:
 
 **Step 4.** Start Spice
 
-Spice will start and load the dataset into sqlite. This may take several minutes.
+Spice will start and load the dataset into sqlite. **This may take several minutes.**
 
 ```bash
 cd acceleration-indexes
