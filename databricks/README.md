@@ -42,6 +42,14 @@ Spice can read data straight from a Databricks instance. This guide will create 
     Saved datasets/my_table/dataset.yaml
     ```
 
+1. Edit the dataset to add `mode: delta_lake` to the `params` section:
+
+    ```yaml
+    params:
+      endpoint: <existing_endpoint>
+      mode: delta_lake
+    ```
+
 1. Confirm that the runtime has loaded the new table (in the original terminal)
     ```shell
     2024-03-27T05:27:54.051229Z  INFO runtime: Loaded dataset: my_table
@@ -96,7 +104,7 @@ Spice can read data straight from a Databricks instance. This guide will create 
     Time: 0.00507075 seconds
     ```
 
-1. Query against the Databricks table. Since the table isn't accelerated, the spice runtime will make a network call to the Databricks instance.
+1. Query against the Databricks table. Since the table isn't accelerated, the spice runtime will make a network call to the object storage service.
     ```shell
     >>> spice sql
     sql> SELECT avg(total_amount), avg(tip_amount), count(1), passenger_count FROM my_table  GROUP BY passenger_count ORDER BY passenger_count ASC;
@@ -120,7 +128,7 @@ Spice can read data straight from a Databricks instance. This guide will create 
     ```
 
 ## (Optional): Accelerating Databricks
-To improve the query performance, the Databrick dataset can be accelerated. 
+To improve the query performance, the Databricks dataset can be accelerated. 
 1. Edit the dataset, `my_table`.
 ```shell
 echo """acceleration:
