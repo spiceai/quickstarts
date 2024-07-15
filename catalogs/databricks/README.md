@@ -68,3 +68,24 @@ spice sql
 ```sql
 SELECT * FROM db_uc.<SCHEMA_NAME>.<TABLE_NAME> LIMIT 10;
 ```
+
+Example: 
+```bash
+sql> select trace_id, block_number from db_uc.default.traces limit 10
++-------------------------------------------------------------------------------+--------------+
+| trace_id                                                                      | block_number |
++-------------------------------------------------------------------------------+--------------+
+| call_0x0e981c555b68e4f7847155e348e75de70729d06a5f3f238dd4e7d4e062a62eed_      | 16876417     |
+| call_0xf2e97e476aaba415ad6793e5d09e82d7ef52d7d595db956306c44dc4e08d1f72_      | 16876417     |
+| call_0x79be0ec50306a78a79eed5c368a38d17ff7d3d51d0c8331e36914b95d8635ef3_5     | 16876417     |
+| call_0x79be0ec50306a78a79eed5c368a38d17ff7d3d51d0c8331e36914b95d8635ef3_5_0   | 16876417     |
+| call_0x7997d1a4ea8a7ece16d3a306c1e820de66744b7f340e7a51b78a35fad5d789d0_      | 16876417     |
+| call_0x7997d1a4ea8a7ece16d3a306c1e820de66744b7f340e7a51b78a35fad5d789d0_0     | 16876417     |
+| call_0x7997d1a4ea8a7ece16d3a306c1e820de66744b7f340e7a51b78a35fad5d789d0_0_0   | 16876417     |
+| call_0x7997d1a4ea8a7ece16d3a306c1e820de66744b7f340e7a51b78a35fad5d789d0_0_0_0 | 16876417     |
+| call_0x7997d1a4ea8a7ece16d3a306c1e820de66744b7f340e7a51b78a35fad5d789d0_0_1   | 16876417     |
+| call_0x7997d1a4ea8a7ece16d3a306c1e820de66744b7f340e7a51b78a35fad5d789d0_0_2   | 16876417     |
++-------------------------------------------------------------------------------+--------------+
+
+Time: 1.5179735 seconds. 10 rows.
+```

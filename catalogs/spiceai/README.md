@@ -57,8 +57,31 @@ SELECT * FROM spiceai.tpch.lineitem LIMIT 10;
 
 Use `show tables` in the Spice SQL REPL to see the available datasets.
 
-```sql
-show tables;
+```bash
+sql> show tables
++---------------+--------------+----------------------------------------------------------------+------------+
+| table_catalog | table_schema | table_name                                                     | table_type |
++---------------+--------------+----------------------------------------------------------------+------------+
+| spiceai       | tpch         | region                                                         | BASE TABLE |
+| spiceai       | tpch         | orders                                                         | BASE TABLE |
+| spiceai       | tpch         | part                                                           | BASE TABLE |
+| spiceai       | tpch         | supplier                                                       | BASE TABLE |
+| spiceai       | tpch         | customer                                                       | BASE TABLE |
+| spiceai       | tpch         | partsupp                                                       | BASE TABLE |
+| spiceai       | tpch         | lineitem                                                       | BASE TABLE |
+| spiceai       | tpch         | nation                                                         | BASE TABLE |
+| spiceai       | ens          | domains                                                        | BASE TABLE |
+| spiceai       | spiceai      | datasets_tpch_partsupp                                         | BASE TABLE |
+| spiceai       | spiceai      | datasets_tpch_nation                                           | BASE TABLE |
+| spiceai       | spiceai      | datasets_eth_aave_v2_collateral_updates                        | BASE TABLE |
+| spiceai       | spiceai      | datasets_eth_sushiswap_pool_stats_detailed                     | BASE TABLE |
+| spiceai       | spiceai      | datasets_tpch_orders                                           | BASE TABLE |
+... (truncated)
+| spiceai       | goerli       | wallet_lst_balances                                            | BASE TABLE |
+| spice         | runtime      | query_history                                                  | BASE TABLE |
++---------------+--------------+----------------------------------------------------------------+------------+
+
+Time: 0.007676958 seconds. 249 rows.
 ```
 
 ## Step 8. Filter the included tables with `include`
@@ -71,4 +94,23 @@ catalogs:
     from: spiceai
     include:
       - tpch.*
+```
+
+```bash
+sql> show tables
++---------------+--------------+---------------+------------+
+| table_catalog | table_schema | table_name    | table_type |
++---------------+--------------+---------------+------------+
+| spiceai       | tpch         | region        | BASE TABLE |
+| spiceai       | tpch         | part          | BASE TABLE |
+| spiceai       | tpch         | customer      | BASE TABLE |
+| spiceai       | tpch         | lineitem      | BASE TABLE |
+| spiceai       | tpch         | partsupp      | BASE TABLE |
+| spiceai       | tpch         | supplier      | BASE TABLE |
+| spiceai       | tpch         | nation        | BASE TABLE |
+| spiceai       | tpch         | orders        | BASE TABLE |
+| spice         | runtime      | query_history | BASE TABLE |
++---------------+--------------+---------------+------------+
+
+Time: 0.001866958 seconds. 9 rows.
 ```
