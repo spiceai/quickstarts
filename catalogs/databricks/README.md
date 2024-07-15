@@ -4,7 +4,7 @@ The Databricks Unity Catalog Connector makes querying Databricks Unity Catalog t
 
 ## Prerequisites
 
-- A Databricks account with a Unity Catalog configured with 1+ tables. (see the [Databricks documentation](https://docs.databricks.com/en/data-governance/unity-catalog/index.html) for more information).
+- A Databricks account with a Unity Catalog configured with 1 or more tables. (see the [Databricks documentation](https://docs.databricks.com/en/data-governance/unity-catalog/index.html) for more information).
 - Spice is installed (see the [Getting Started](https://docs.spiceai.org/getting-started) documentation).
 
 ## Step 1. Create a Databricks API token
