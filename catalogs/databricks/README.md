@@ -30,7 +30,7 @@ catalogs:
     params:
       endpoint: <instance-id>.cloud.databricks.com
       mode: spark_connect # or delta_lake
-      databricks_cluster_id: 0711-151224-1rh2uz8m
+      databricks_cluster_id: <cluster-id>
 ```
 
 For `mode` you can choose between `spark_connect` or `delta_lake`. `spark_connect` is the default mode and requires an [All-Purpose Compute Cluster](https://docs.databricks.com/en/compute/index.html) to be available. `delta_lake` mode queries directly against Delta Lake tables in object storage, and requires Spice to have the necessary permissions to access the object storage directly.
