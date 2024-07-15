@@ -1,6 +1,6 @@
 # Spice.ai Cloud Platform Catalog Connector
 
-The Spice.ai Cloud Platform Catalog Connector enables you to start querying the 200+ built-in datasets available in the Spice.ai Cloud Platform.
+The Spice.ai Cloud Platform Catalog Connector makes querying datasets in the Spice.ai Cloud Platform simple including to the [200+ built-in community datasets](https://docs.spice.ai/building-blocks/datasets).
 
 ## Prerequisites
 

@@ -1,6 +1,6 @@
 # Databricks Unity Catalog Connector
 
-The Databricks Unity Catalog Connector allows you to connect to your tables in a Databricks Unity Catalog and query them using Spice.
+The Databricks Unity Catalog Connector makes querying Databricks Unity Catalog tables in Spice simple.
 
 ## Prerequisites
 
