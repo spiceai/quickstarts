@@ -27,6 +27,13 @@ Quickstarts for [github.com/spiceai/spiceai](https://github.com/spiceai/spiceai)
 - [DuckDB Data Connector](./duckdb/README.md) - Use a DuckDB database with sample TPCH data.
 - [Clickhouse Data Connector](./clickhouse/README.md)
 - [Snowflake Data Connector](./snowflake/README.md)
+- [GraphQL Data Connector](./graphql/README.md)
+
+## Connecting to Data Sources with Catalog Connectors
+
+- [Spice.ai Cloud Platform Catalog Connector](./catalogs/spiceai/README.md)
+- [Databricks Unity Catalog Connector](./catalogs/databricks/README.md)
+- [Unity Catalog Connector](./catalogs/unity_catalog/README.md)
 
 ## Deployment and Installation
 
