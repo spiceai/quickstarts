@@ -6,7 +6,7 @@ This quickstart will use a demo instance of Postgres. Follow the quickstart to c
 
 ## Preparation
 
-- Install [Postgres](https://www.postgresql.org/download/). Uppon downloading, you should be able to successfully run the following commands:
+- Install [Postgres](https://www.postgresql.org/download/). Upon downloading, you should be able to successfully run the following commands:
 
 ```bash
 createdb --help
