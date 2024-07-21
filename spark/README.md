@@ -25,9 +25,9 @@ spark.driver.memory 6g
    ```shell
    >>> spice run
    Spice.ai runtime starting...
-   2024-05-20T23:54:42.323695Z  INFO spiced: Metrics listening on 127.0.0.1:9000
+   2024-05-20T23:54:42.323695Z  INFO spiced: Metrics listening on 127.0.0.1:9090
    2024-05-20T23:54:42.325278Z  INFO runtime::opentelemetry: Spice Runtime OpenTelemetry listening on 127.0.0.1:50052
-   2024-05-20T23:54:42.327243Z  INFO runtime::http: Spice Runtime HTTP listening on 127.0.0.1:3000
+   2024-05-20T23:54:42.327243Z  INFO runtime::http: Spice Runtime HTTP listening on 127.0.0.1:8090
    2024-05-20T23:54:42.327255Z  INFO runtime::flight: Spice Runtime Flight listening on 127.0.0.1:50051
    ```
 

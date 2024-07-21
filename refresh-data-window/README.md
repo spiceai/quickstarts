@@ -34,7 +34,7 @@ datasets:
 2024-04-26T04:52:27.387255Z  INFO runtime::flight: Spice Runtime Flight listening on 127.0.0.1:50051
 2024-04-26T04:52:27.387706Z  INFO runtime::opentelemetry: Spice Runtime OpenTelemetry listening on 127.0.0.1:50052
 2024-04-26T04:52:27.388588Z  INFO runtime::accelerated_table: [refresh] Refreshing data for taxi_trips
-2024-04-26T04:52:27.392075Z  INFO runtime::http: Spice Runtime HTTP listening on 127.0.0.1:3000
+2024-04-26T04:52:27.392075Z  INFO runtime::http: Spice Runtime HTTP listening on 127.0.0.1:8090
 ```
 
 Run `spice sql` to check the number of rows and the 5 earliest records sorted by `tpep_pickup_datetime`

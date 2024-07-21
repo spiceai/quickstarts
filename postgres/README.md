@@ -66,10 +66,10 @@ The Spice runtime terminal will show that Spice Runtime is running.
 
 ```
 Spice.ai runtime starting...
-2024-05-07T01:01:40.566270Z  INFO spiced: Metrics listening on 127.0.0.1:9000
+2024-05-07T01:01:40.566270Z  INFO spiced: Metrics listening on 127.0.0.1:9090
 2024-05-07T01:01:40.566873Z  INFO runtime::flight: Spice Runtime Flight listening on 127.0.0.1:50051
 2024-05-07T01:01:40.566960Z  INFO runtime::opentelemetry: Spice Runtime OpenTelemetry listening on 127.0.0.1:50052
-2024-05-07T01:01:40.568738Z  INFO runtime::http: Spice Runtime HTTP listening on 127.0.0.1:3000
+2024-05-07T01:01:40.568738Z  INFO runtime::http: Spice Runtime HTTP listening on 127.0.0.1:8090
 ```
 
 **Step 4.** Configure the dataset to use Postgres as data accelerator. Copy and paste the configuration below to `spicepod.yaml` in the Spice app.
