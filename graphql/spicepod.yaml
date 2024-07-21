@@ -5,7 +5,7 @@ datasets:
   - from: graphql:[graphql_endpoint]
     name: [local_table_name]
     params:
-      json_path: [json_path]
+      json_path: [json_pointer]
       query: |
         [graphql_query]
     acceleration:
