@@ -14,4 +14,4 @@ datasets:
         pg_db: [Database name]
         pg_port: [Port]
         pg_user: [User]
-        pg_pass: [Password]
+        pg_pass: ${env:PG_PASS}

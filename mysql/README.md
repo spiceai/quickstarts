@@ -140,7 +140,13 @@ datasets:
       mysql_db: spice_demo
       mysql_sslmode: disabled
       mysql_user: root
-      # mysql_pass: <root-password>
+      mysql_pass: ${env:MYSQL_PASS}
+```
+
+Ensure the `MYSQL_PASS` environment variable is set to the password for your MySQL instance. This can be specified on the command line when running the Spice runtime, or in a `.env` file in the same directory as `spicepod.yaml`.
+
+```bash
+echo "MYSQL_PASS=<password>" > .env
 ```
 
 Save the changes in `spicepod.yaml`. The Spice runtime terminal will show that the dataset has been loaded:

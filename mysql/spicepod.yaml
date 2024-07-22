@@ -9,7 +9,7 @@ datasets:
       mysql_db: [Database name]
       mysql_tcp_port: [Port]
       mysql_user: [User]
-      mysql_pass: [Password]
+      mysql_pass: ${env:MYSQL_PASS}
     acceleration:
       enabled: true
       refresh_mode: full
