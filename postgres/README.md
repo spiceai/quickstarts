@@ -6,7 +6,7 @@ This quickstart will use a demo instance of Postgres. Follow the quickstart to c
 
 **Preparation**
 
-- Install [Postgres](https://www.postgresql.org/download/). Upon downloading, you should be able to successfully run the following commands:
+- Install [PostgresSQL](https://www.postgresql.org/download/). Once downloaded and installed, run the following commands:
 
 ```bash
 createdb --help
@@ -95,7 +95,7 @@ datasets:
         pg_pass: ${env:PG_PASS}
 ```
 
-Ensure the `PG_PASS` environment variable is set to the password for your Postgres instance. This can be specified on the command line when running the Spice runtime, or in a `.env` file in the same directory as `spicepod.yaml`.
+Ensure the `PG_PASS` environment variable is set to the password for your Postgres instance. Environment variables can be specified on the command line when running the Spice runtime, or in a `.env` file in the same directory as `spicepod.yaml`.
 
 ```bash
 echo "PG_PASS=<password>" > .env

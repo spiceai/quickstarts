@@ -36,7 +36,7 @@ catalogs:
 
 For `mode` you can choose between `spark_connect` or `delta_lake`. `spark_connect` is the default mode and requires an [All-Purpose Compute Cluster](https://docs.databricks.com/en/compute/index.html) to be available. `delta_lake` mode queries directly against Delta Lake tables in object storage, and requires Spice to have the necessary permissions to access the object storage directly.
 
-The `DATABRICKS_TOKEN` environment variable should be set to the Databricks personal access token created in Step 1. You can create a `.env` file in the same directory as `spicepod.yaml` and set the environment variable there, i.e.:
+Set the `DATABRICKS_TOKEN` environment variable to the Databricks personal access token created in Step 1. A `.env` file created in the same directory as `spicepod.yaml` can be used to set the variable, i.e.:
   
 ```bash
 echo "DATABRICKS_TOKEN=<token>" > .env

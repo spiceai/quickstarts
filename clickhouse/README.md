@@ -10,7 +10,7 @@ Follow the [quickstart guide](https://docs.spiceai.org/getting-started) to get s
 
 See the [datasets reference](https://docs.spiceai.org/reference/spicepod/datasets) for more dataset configuration options.
 
-Set the environment variable `CLICKHOUSE_PASS` to the password for your Clickhouse instance. This can be specified on the command line when running the Spice runtime, or in a `.env` file in the same directory as `spicepod.yaml`.
+Set the environment variable `CLICKHOUSE_PASS` to the Clickhouse instance password. Environment variables can be specified on the command line when running the Spice runtime or in a `.env` file in the same directory as `spicepod.yaml`.
 
 i.e. to set the password in a `.env` file:
 

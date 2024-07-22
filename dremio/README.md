@@ -1,7 +1,7 @@
 
 ## Spice.ai Quickstart Tutorial using Dremio
 
-This quickstart will use a demo instance of Dremio with a sample dataset. No need to set up a Dremio instance, but the same steps can be used to connect to any Dremio instance available. 
+The Dremio quickstart uses a publicly accessible demo instance of Dremio loaded with sample datasets. Thus, setting up your own Dremio instance is not required to complete the quickstart, but the same steps can be used to connect to any Dremio instance.
 
 **Step 2.** Initialize a Spice project:
 

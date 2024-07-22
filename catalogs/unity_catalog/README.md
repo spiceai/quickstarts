@@ -35,7 +35,7 @@ Visit the documentation for more information configuring the [Unity Catalog Conn
 
 ## Step 3. Configure the object store credentials
 
-Configure the credentials needed to connect to the Delta Lake tables provided by the Unity Catalog Connector, based on which object store they are located in.
+Configure credentials for the underlying Delta Lake tables object store.
 
 ### AWS S3
 

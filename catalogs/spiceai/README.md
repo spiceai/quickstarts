@@ -21,13 +21,13 @@ spice init
 
 ## Step 3. Login to the Spice.ai Cloud Platform with `spice login`
 
-Using the Spice CLI, login to the Spice.ai Cloud Platform. A window will open in your browser to authenticate. Ensure you are in the `spice-catalog-demo` directory.
+Working in the `spice-catalog-demo` directory, use the Spice CLI to login to the Spice.ai Cloud Platform. A browser window will open to authenticate when executing the `spice login` command.
 
 ```bash
 spice login
 ```
 
-The API Key and token required to communicate with the Spice.ai Cloud Platform will be stored in a `.env` file in the directory where `spice login` was run, which will be `spice-catalog-demo` in this case. The Spice runtime automatically reads the `.env` file in the current working directory to load environment variables.
+After successfully authenticating, the Spice.ai Cloud Platform API Key and Token will be stored in the `spice-catalog-demo` working directory `.env` file. The Spice runtime reads environment variables set in the local working `.env` file.
 
 ## Step 4. Add the Spice.ai Cloud Platform Catalog Connector to `spicepod.yaml`
 

@@ -9,7 +9,7 @@ spice init spiceai-demo
 cd spiceai-demo
 ```
 
-**Step 2.** Log in to Spice.ai to store your access key and token in the spice runtime configuration.
+**Step 2.** Use `spice login` to store the Spice.ai Cloud Platform API Key and Token.
 
 ```bash
 spice login
@@ -25,7 +25,7 @@ Successfully logged in to Spice.ai as your_user (your_email@email.com)
 Using app your_user/your_app
 ```
 
-This will create a `.env` file in the `spiceai-demo` directory with the following content:
+A `.env` file is created in the `spiceai-demo` directory with the following content:
 
 ```bash
 SPICE_SPICEAI_API_KEY=<api_key>

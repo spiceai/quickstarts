@@ -21,7 +21,7 @@ Spice can read data straight from a Databricks instance. This guide will create 
     2024-03-27T05:27:52.696606Z  INFO runtime::opentelemetry: Spice Runtime OpenTelemetry listening on 127.0.0.1:50052
     ```
 
-1. In another terminal in the `databricks_demo` directory, configure Spice with the Databricks credentials
+1. In another terminal, working in the `databricks_demo` directory, configure Spice with the Databricks credentials
     ```shell
     spice login databricks \
         --token $DATABRICKS_TOKEN \
@@ -30,7 +30,7 @@ Spice can read data straight from a Databricks instance. This guide will create 
         --aws-region us-east-1
     ``` 
 
-    This will create a `.env` file in the `databricks_demo` directory with the Databricks credentials.
+    Executing `spice login` and successfully authenticating will create a `.env` file in the `databricks_demo` directory with the Databricks credentials.
 
 1. Configure a Databricks dataset into the spicepod. The table provided must be a reference to a table in the Databricks unity catalog. 
     ```shell
