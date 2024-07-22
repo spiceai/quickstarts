@@ -46,7 +46,6 @@ name: odbc-demo
 datasets:
 - from: odbc:taxi_trips
   name: taxi_trips
-  mode: read
   params:
     odbc_connection_string: Driver={PostgreSQL Unicode};Server=localhost;Port=5432;Database=spice_demo;Uid=postgres
 ```
