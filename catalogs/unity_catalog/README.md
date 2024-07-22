@@ -43,7 +43,7 @@ Configure credentials for the underlying Delta Lake tables object store.
 params:
   unity_catalog_aws_access_key_id: ${env:AWS_ACCESS_KEY_ID}
   unity_catalog_aws_secret_access_key: ${env:AWS_SECRET_ACCESS_KEY}
-  unity_catalog_aws_region: <region> # i.e. us-east-1, us-west-2
+  unity_catalog_aws_region: <region> # E.g. us-east-1, us-west-2
   unity_catalog_aws_endpoint: <endpoint> # If using an S3-compatible service, like Minio
 ```
 
