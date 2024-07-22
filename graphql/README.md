@@ -10,7 +10,7 @@ Follow the [quickstart guide](https://docs.spiceai.org/getting-started) to get s
 
 See the [datasets reference](https://docs.spiceai.org/reference/spicepod/datasets) for more dataset configuration options.
 
-To securely store your GraphQL auth params, see [Secret Stores](https://docs.spiceai.org/components/secrets)
+To securely store your GraphQL auth params, see [Secret Stores](https://docs.spiceai.org/components/secret-stores)
 
 **Step 2.** Run the Spice runtime with `spice run` from this directory.
 

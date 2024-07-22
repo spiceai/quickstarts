@@ -16,7 +16,7 @@ echo "PG_PASS=<password>" > .env
 
 See the [datasets reference](https://docs.spiceai.org/reference/spicepod/datasets) for more dataset configuration options and [PostgreSQL Data Connector](https://docs.spiceai.org/data-connectors/postgres) for more options on configuring a PostgreSQL Data Connector.
 
-To securely store your RDS password, see [Secret Stores](https://docs.spiceai.org/components/secrets)
+To securely store your RDS password, see [Secret Stores](https://docs.spiceai.org/components/secret-stores)
 
 **Step 5.** Run the Spice runtime with `spice run` from this directory.
 

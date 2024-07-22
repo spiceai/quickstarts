@@ -17,7 +17,7 @@ Ensure the `PG_PASS` environment variable is set to the password for your Supaba
 echo "PG_PASS=<password>" > .env
 ```
 
-To securely store your Supabase password, see [Secrets](https://docs.spiceai.org/components/secrets)
+To securely store your Supabase password, see [Secret Stores](https://docs.spiceai.org/components/secret-stores)
 
 **Step 5.** Run the Spice runtime with `spice run` from this directory.
 
