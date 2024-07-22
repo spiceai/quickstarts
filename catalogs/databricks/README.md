@@ -56,7 +56,7 @@ params:
   databricks_token: ${env:DATABRICKS_TOKEN}
   databricks_aws_access_key_id: ${env:AWS_ACCESS_KEY_ID}
   databricks_aws_secret_access_key: ${env:AWS_SECRET_ACCESS_KEY}
-  databricks_aws_region: <region>
+  databricks_aws_region: <region> # i.e. us-east-1, us-west-2
   databricks_aws_endpoint: <endpoint> # If using an S3-compatible service, like Minio
 ```
 
