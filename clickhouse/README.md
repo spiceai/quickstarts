@@ -18,6 +18,12 @@ i.e. to set the password in a `.env` file:
 echo "CLICKHOUSE_PASS=<password>" > .env
 ```
 
+A `.env` file is created in the project directory with the following content:
+
+```bash
+CLICKHOUSE_PASS=<password>
+```
+
 **Step 2.** Run the Spice runtime with `spice run` from this directory.
 
 **Step 3.** Run `spice sql` in a new terminal to start an interactive SQL query session against the Spice runtime.
