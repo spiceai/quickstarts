@@ -23,8 +23,8 @@ Add the following configuration to your `spicepod.yaml`:
 
 ```yaml
 catalogs:
-  - name: unity_catalog:https://<unity_catalog_host>/api/2.1/unity-catalog/catalogs/<catalog_name>
-    from: uc
+  - from: unity_catalog:https://<unity_catalog_host>/api/2.1/unity-catalog/catalogs/<catalog_name>
+    name: uc
     params:
       # Configure the object store credentials here
 ```
@@ -84,7 +84,7 @@ spice sql
 SELECT * FROM uc.<SCHEMA_NAME>.<TABLE_NAME> LIMIT 10;
 ```
 
-Example: 
+Example:
 ```bash
 sql> select trace_id, block_number from db_uc.default.traces limit 10
 +-------------------------------------------------------------------------------+--------------+
