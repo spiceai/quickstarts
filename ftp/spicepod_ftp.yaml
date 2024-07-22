@@ -5,8 +5,8 @@ datasets:
   - from: ftp://[remote_host]/[remote_path]/
     name: [local_table_name]
     params:
-      ftp_user: [ftp_user]
-      ftp_pass: [ftp_password]
+      ftp_user: [ftp_username]
+      ftp_pass: ${env:FTP_PASS}
     acceleration:
       enabled: true
       refresh_mode: full

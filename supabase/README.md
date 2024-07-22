@@ -11,7 +11,13 @@
 
 See the [datasets reference](https://docs.spiceai.org/reference/spicepod/datasets) for more dataset configuration options and [PostgreSQL Data Connector](https://docs.spiceai.org/data-connectors/postgres) for more options on configuring a PostgreSQL Data Connector.
 
-To securely store your Supabase password, see [Secret Stores](https://docs.spiceai.org/secret-stores)
+Ensure the `PG_PASS` environment variable is set to the password for your Supabase instance. Environment variables can be specified on the command line when running the Spice runtime, or in a `.env` file in the same directory as `spicepod.yaml`.
+
+```bash
+echo "PG_PASS=<password>" > .env
+```
+
+To securely store the Supabase password, see [Secret Stores](https://docs.spiceai.org/components/secret-stores)
 
 **Step 5.** Run the Spice runtime with `spice run` from this directory.
 

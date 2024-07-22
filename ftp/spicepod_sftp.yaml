@@ -6,7 +6,7 @@ datasets:
     name: [local_table_name]
     params:
       sftp_user: [sftp_user]
-      sftp_pass: [sftp_password]
+      sftp_pass: ${env:SFTP_PASS}
     acceleration:
       enabled: true
       refresh_mode: full

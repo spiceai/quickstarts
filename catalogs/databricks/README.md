@@ -28,30 +28,60 @@ catalogs:
   - name: databricks:<CATALOG_NAME>
     from: db_uc
     params:
-      endpoint: <instance-id>.cloud.databricks.com
       mode: spark_connect # or delta_lake
+      databricks_token: ${env:DATABRICKS_TOKEN}
+      databricks_endpoint: <instance-id>.cloud.databricks.com
       databricks_cluster_id: <cluster-id>
 ```
 
 For `mode` you can choose between `spark_connect` or `delta_lake`. `spark_connect` is the default mode and requires an [All-Purpose Compute Cluster](https://docs.databricks.com/en/compute/index.html) to be available. `delta_lake` mode queries directly against Delta Lake tables in object storage, and requires Spice to have the necessary permissions to access the object storage directly.
 
+Set the `DATABRICKS_TOKEN` environment variable to the Databricks personal access token created in Step 1. A `.env` file created in the same directory as `spicepod.yaml` can be used to set the variable, i.e.:
+  
+```bash
+echo "DATABRICKS_TOKEN=<token>" > .env
+```
+
 Visit the documentation for more information configuring the [Databricks Unity Catalog Connector](https://docs.spiceai.org/components/catalogs/databricks).
 
-## Step 4. Login to Databricks with `spice login`
+## Step 4. Set the object storage credentials for `delta_lake` mode
 
-Using the Spice CLI, set the credentials needed to connect to Databricks.
-
-### Using Spark Connect
-`spice login databricks --token <access-token>`
+When using the `delta_lake` mode, the object storage credentials must be set for Spice to access the data.
 
 ### Using Delta Lake directly against AWS S3
-`spice login databricks --token <access-token> --aws-region <aws-region> --aws-access-key-id <aws-access-key-id> --aws-secret-access-key <aws-secret-access-key>`
+
+```yaml
+params:
+  mode: delta_lake
+  databricks_token: ${env:DATABRICKS_TOKEN}
+  databricks_aws_access_key_id: ${env:AWS_ACCESS_KEY_ID}
+  databricks_aws_secret_access_key: ${env:AWS_SECRET_ACCESS_KEY}
+  databricks_aws_region: <region> # E.g. us-east-1, us-west-2
+  databricks_aws_endpoint: <endpoint> # If using an S3-compatible service, like Minio
+```
+
+Set the `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` environment variables to the AWS access key and secret key, respectively.
 
 ### Using Delta Lake directly against Azure Blob Storage
-`spice login databricks --token <access-token> --azure-storage-account-name <account-name> --azure-storage-access-key <access-key>`
+
+```yaml
+params:
+  mode: delta_lake
+  databricks_token: ${env:DATABRICKS_TOKEN}
+  databricks_azure_storage_account_name: ${env:AZURE_ACCOUNT_NAME}
+  databricks_azure_account_key: ${env:AZURE_ACCOUNT_KEY}
+```
+
+Set the `AZURE_ACCOUNT_NAME` and `AZURE_ACCOUNT_KEY` environment variables to the Azure storage account name and account key, respectively.
 
 ### Using Delta Lake directly against Google Cloud Storage
-`spice login databricks --token <access-token> --google-service-account-path /path/to/service-account.json`
+
+```yaml
+params:
+  mode: delta_lake
+  databricks_token: ${env:DATABRICKS_TOKEN}
+  databricks_google_service_account: </path/to/service-account.json>
+```
 
 ## Step 5. Start the Spice runtime
 

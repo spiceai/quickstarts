@@ -11,21 +11,23 @@ The Spice.ai Cloud Platform Catalog Connector makes querying datasets in the Spi
 
 Sign up for a Spice.ai Cloud Platform account at https://spice.ai.
 
-## Step 2. Login to the Spice.ai Cloud Platform with `spice login`
-
-Using the Spice CLI, login to the Spice.ai Cloud Platform. A window will open in your browser to authenticate.
-
-```bash
-spice login
-```
-
-## Step 3. Create a new directory and initialize a Spicepod
+## Step 2. Create a new directory and initialize a Spicepod
 
 ```bash
 mkdir spice-catalog-demo
 cd spice-catalog-demo
 spice init
 ```
+
+## Step 3. Login to the Spice.ai Cloud Platform with `spice login`
+
+Working in the `spice-catalog-demo` directory, use the Spice CLI to login to the Spice.ai Cloud Platform. A browser window will open to authenticate when executing the `spice login` command.
+
+```bash
+spice login
+```
+
+After successfully authenticating, the Spice.ai Cloud Platform API Key and Token will be stored in the `spice-catalog-demo` working directory `.env` file. The Spice runtime reads environment variables set in the local working `.env` file.
 
 ## Step 4. Add the Spice.ai Cloud Platform Catalog Connector to `spicepod.yaml`
 

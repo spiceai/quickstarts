@@ -25,6 +25,8 @@ Add the following configuration to your `spicepod.yaml`:
 catalogs:
   - name: unity_catalog:https://<unity_catalog_host>/api/2.1/unity-catalog/catalogs/<catalog_name>
     from: uc
+    params:
+      # Configure the object store credentials here
 ```
 
 The Unity Catalog connector only supports Delta Lake tables and requires specifying the object store credentials to connect to the Delta Lake tables.
@@ -33,16 +35,38 @@ Visit the documentation for more information configuring the [Unity Catalog Conn
 
 ## Step 3. Configure the object store credentials
 
-Using the Spice CLI, set the credentials needed to connect to the Delta Lake tables provided by the Unity Catalog Connector.
+Configure credentials for the underlying Delta Lake tables object store.
 
-### Using Delta Lake directly against AWS S3
-`spice login delta_lake --aws-region <aws-region> --aws-access-key-id <aws-access-key-id> --aws-secret-access-key <aws-secret-access-key>`
+### AWS S3
 
-### Using Delta Lake directly against Azure Blob Storage
-`spice login delta_lake --azure-storage-account-name <account-name> --azure-storage-access-key <access-key>`
+```yaml
+params:
+  unity_catalog_aws_access_key_id: ${env:AWS_ACCESS_KEY_ID}
+  unity_catalog_aws_secret_access_key: ${env:AWS_SECRET_ACCESS_KEY}
+  unity_catalog_aws_region: <region> # E.g. us-east-1, us-west-2
+  unity_catalog_aws_endpoint: <endpoint> # If using an S3-compatible service, like Minio
+```
 
-### Using Delta Lake directly against Google Cloud Storage
-`spice login delta_lake --google-service-account-path /path/to/service-account.json`
+Set the `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` environment variables to the AWS access key and secret key, respectively.
+
+### Azure Blob Storage
+
+```yaml
+params:
+  mode: delta_lake
+  unity_catalog_azure_storage_account_name: ${env:AZURE_ACCOUNT_NAME}
+  unity_catalog_azure_account_key: ${env:AZURE_ACCOUNT_KEY}
+```
+
+Set the `AZURE_ACCOUNT_NAME` and `AZURE_ACCOUNT_KEY` environment variables to the Azure storage account name and account key, respectively.
+
+### Google Cloud Storage
+
+```yaml
+params:
+  mode: delta_lake
+  unity_catalog_google_service_account: </path/to/service-account.json>
+```
 
 ## Step 5. Start the Spice runtime
 

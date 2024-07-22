@@ -9,7 +9,7 @@ datasets:
       clickhouse_db: [Database name]
       clickhouse_tcp_port: [Port]
       clickhouse_user: [Username]
-      clickhouse_pass: [Password]
+      clickhouse_pass: ${env:CLICKHOUSE_PASS}
       clickhouse_secure: [true/false] # Default to true.  Set to false if not connecting over SSL
     acceleration:
       enabled: true
