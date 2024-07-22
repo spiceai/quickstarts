@@ -9,7 +9,7 @@ datasets:
       mysql_tcp_port: [db-port]
       mysql_db: [db-name]
       mysql_user: [username]
-      mysql_pass_key: [password]
+      mysql_pass: ${env:MYSQL_PASS}
       mysql_sslmode: preferred # "required" is default
     acceleration:
       enabled: true

@@ -148,7 +148,13 @@ Query took: 0.015628708 seconds
 
 ![Screenshot](./aws-iam.png)
 
-**Step 3.** Log into S3 using the Spice CLI.
+**Step 3.** Initialize a Spice application.
+
+```bash
+spice init s3-demo-project
+```
+
+**Step 4.** Configure the S3 credentials using the Spice CLI.
 
 ```
 spice login s3 -k <aws_access_key_id> -s <aws_secret_access_key>
@@ -160,18 +166,21 @@ The following output is shown:
 Successfully logged in to s3
 ```
 
-**Step 4.** Initialize a Spice application, then start the Spice runtime.
+And a `.env` file is created in the project directory with the following content:
 
 ```bash
-spice init s3-demo-project
+SPICE_AWS_ACCESS_KEY_ID=<aws_access_key_id>
+SPICE_AWS_SECRET_ACCESS_KEY=<aws_secret_access_key>
 ```
+
+**Step 5.** Start the Spice runtime.
 
 ```bash
 cd s3-demo-project
 spice run
 ```
 
-**Step 5.** Configure the dataset to connect to S3:
+**Step 6.** Configure the dataset to connect to S3:
 
 ```bash
 spice dataset configure
@@ -214,7 +223,7 @@ If the login credentials were entered correctly, the dataset will have loaded in
 2024-03-26T22:18:02.062462Z  INFO runtime::dataconnector: Refreshing data for taxi_trips
 ```
 
-**Step 6.** Run queries against the dataset using the Spice SQL REPL.
+**Step 7.** Run queries against the dataset using the Spice SQL REPL.
 
 ```sql
 sql> select avg(total_amount), avg(tip_amount), count(1), passenger_count from taxi_trips group by passenger_count order by passenger_count asc;

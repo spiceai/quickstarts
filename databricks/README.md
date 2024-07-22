@@ -7,7 +7,7 @@ Spice can read data straight from a Databricks instance. This guide will create 
 - A Databricks personal access token is available (as the environment variable `DATABRICKS_TOKEN`).
 - A table already exists in Databricks, called `spice_data.public.awesome_table`.
 
-1. Initialise a Spice app
+1. Initialize a Spice app
     ```shell
     spice init databricks_demo
     cd databricks_demo
@@ -16,12 +16,12 @@ Spice can read data straight from a Databricks instance. This guide will create 
 1. Start the Spice runtime
     ```shell
     >>> spice run
-    2024-03-27T05:27:52.696536Z  INFO runtime::http: Spice Runtime HTTP listening on 127.0.0.1:3000
+    2024-03-27T05:27:52.696536Z  INFO runtime::http: Spice Runtime HTTP listening on 127.0.0.1:8090
     2024-03-27T05:27:52.696543Z  INFO runtime::flight: Spice Runtime Flight listening on 127.0.0.1:50051
     2024-03-27T05:27:52.696606Z  INFO runtime::opentelemetry: Spice Runtime OpenTelemetry listening on 127.0.0.1:50052
     ```
 
-1. In another terminal, authenticate Spice with Databricks
+1. In another terminal, working in the `databricks_demo` directory, configure Spice with the Databricks credentials
     ```shell
     spice login databricks \
         --token $DATABRICKS_TOKEN \
@@ -29,6 +29,8 @@ Spice can read data straight from a Databricks instance. This guide will create 
         --aws-secret-access-key $AWS_SECRET_ACCESS_KEY \
         --aws-region us-east-1
     ``` 
+
+    Executing `spice login` and successfully authenticating will create a `.env` file in the `databricks_demo` directory with the Databricks credentials.
 
 1. Configure a Databricks dataset into the spicepod. The table provided must be a reference to a table in the Databricks unity catalog. 
     ```shell

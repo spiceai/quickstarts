@@ -6,7 +6,7 @@ This quickstart will use a demo instance of Postgres. Follow the quickstart to c
 
 **Preparation**
 
-- Install [Postgres](https://www.postgresql.org/download/). Uppon downloading, you should be able to successfully run the following commands:
+- Install [PostgresSQL](https://www.postgresql.org/download/). Once downloaded and installed, run the following commands:
 
 ```bash
 createdb --help
@@ -66,10 +66,10 @@ The Spice runtime terminal will show that Spice Runtime is running.
 
 ```
 Spice.ai runtime starting...
-2024-05-07T01:01:40.566270Z  INFO spiced: Metrics listening on 127.0.0.1:9000
+2024-05-07T01:01:40.566270Z  INFO spiced: Metrics listening on 127.0.0.1:9090
 2024-05-07T01:01:40.566873Z  INFO runtime::flight: Spice Runtime Flight listening on 127.0.0.1:50051
 2024-05-07T01:01:40.566960Z  INFO runtime::opentelemetry: Spice Runtime OpenTelemetry listening on 127.0.0.1:50052
-2024-05-07T01:01:40.568738Z  INFO runtime::http: Spice Runtime HTTP listening on 127.0.0.1:3000
+2024-05-07T01:01:40.568738Z  INFO runtime::http: Spice Runtime HTTP listening on 127.0.0.1:8090
 ```
 
 **Step 4.** Configure the dataset to use Postgres as data accelerator. Copy and paste the configuration below to `spicepod.yaml` in the Spice app.
@@ -92,6 +92,13 @@ datasets:
         pg_port: 5432
         pg_db: spice_demo
         pg_sslmode: disable
+        pg_pass: ${env:PG_PASS}
+```
+
+Ensure the `PG_PASS` environment variable is set to the password for your Postgres instance. Environment variables can be specified on the command line when running the Spice runtime, or in a `.env` file in the same directory as `spicepod.yaml`.
+
+```bash
+echo "PG_PASS=<password>" > .env
 ```
 
 Save the changes to `spicepod.yaml`. The Spice runtime terminal will show that the dataset has been loaded:

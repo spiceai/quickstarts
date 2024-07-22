@@ -27,7 +27,7 @@ spice add spiceai/tpch
 The following output is shown in the Spice runtime terminal:
 
 ```bash
-2024-05-23T21:50:44.372314Z  INFO spiced: Metrics listening on 127.0.0.1:9000
+2024-05-23T21:50:44.372314Z  INFO spiced: Metrics listening on 127.0.0.1:9090
 2024-05-23T21:50:44.372986Z  INFO runtime: Initialized results cache; max size: 128.00 MiB, item ttl: 1s
 2024-05-23T21:50:45.861161Z  INFO runtime: Registered dataset customer
 2024-05-23T21:50:47.283554Z  INFO runtime: Registered dataset lineitem
@@ -82,7 +82,7 @@ spice run
 The following output is shown in the Spice runtime terminal, confirming the updated in-memory caching settings (`300s`):
 
 ```bash
-2024-05-23T22:02:36.899534Z  INFO spiced: Metrics listening on 127.0.0.1:9000
+2024-05-23T22:02:36.899534Z  INFO spiced: Metrics listening on 127.0.0.1:9090
 2024-05-23T22:02:36.900280Z  INFO runtime: Initialized results cache; max size: 128.00 MiB, item ttl: 300s
 2024-05-23T22:02:38.683392Z  INFO runtime: Registered dataset customer
 2024-05-23T22:02:40.054125Z  INFO runtime: Registered dataset lineitem

@@ -61,10 +61,10 @@ Confirm in the terminal output the `tpch_customer` dataset has been loaded:
 
 ```bash
 Spice.ai runtime starting...
-2024-04-29T18:23:18.055782Z  INFO spiced: Metrics listening on 127.0.0.1:9000
+2024-04-29T18:23:18.055782Z  INFO spiced: Metrics listening on 127.0.0.1:9090
 2024-04-29T18:23:18.059972Z  INFO runtime: Loaded dataset: tpch_customer
 2024-04-29T18:23:18.060005Z  INFO runtime::opentelemetry: Spice Runtime OpenTelemetry listening on 127.0.0.1:50052
-2024-04-29T18:23:18.062230Z  INFO runtime::http: Spice Runtime HTTP listening on 127.0.0.1:3000
+2024-04-29T18:23:18.062230Z  INFO runtime::http: Spice Runtime HTTP listening on 127.0.0.1:8090
 2024-04-29T18:23:18.062249Z  INFO runtime::flight: Spice Runtime Flight listening on 127.0.0.1:50051
 ```
 

@@ -119,9 +119,9 @@ The Spice runtime terminal will show that Spice Runtime is running.
 
 ```
 Spice.ai runtime starting...
-2024-05-06T22:15:57.688215Z  INFO spiced: Metrics listening on 127.0.0.1:9000
+2024-05-06T22:15:57.688215Z  INFO spiced: Metrics listening on 127.0.0.1:9090
 2024-05-06T22:15:57.690288Z  INFO runtime::opentelemetry: Spice Runtime OpenTelemetry listening on 127.0.0.1:50052
-2024-05-06T22:15:57.692557Z  INFO runtime::http: Spice Runtime HTTP listening on 127.0.0.1:3000
+2024-05-06T22:15:57.692557Z  INFO runtime::http: Spice Runtime HTTP listening on 127.0.0.1:8090
 2024-05-06T22:15:57.692571Z  INFO runtime::flight: Spice Runtime Flight listening on 127.0.0.1:50051
 ```
 
@@ -140,7 +140,13 @@ datasets:
       mysql_db: spice_demo
       mysql_sslmode: disabled
       mysql_user: root
-      # mysql_pass: <root-password>
+      mysql_pass: ${env:MYSQL_PASS}
+```
+
+Ensure the `MYSQL_PASS` environment variable is set to the password for your MySQL instance. Environment variables can be specified on the command line when running the Spice runtime or in a `.env` file in the same directory as `spicepod.yaml`.
+
+```bash
+echo "MYSQL_PASS=<password>" > .env
 ```
 
 Save the changes in `spicepod.yaml`. The Spice runtime terminal will show that the dataset has been loaded:

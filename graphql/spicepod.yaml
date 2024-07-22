@@ -6,7 +6,7 @@ datasets:
     name: [local_table_name]
     params:
       json_pointer: [json_pointer]
-      query: |
+      graphql_query: |
         [graphql_query]
     acceleration:
       enabled: true

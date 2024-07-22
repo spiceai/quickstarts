@@ -2,7 +2,14 @@
 
 The Spice.ai Cloud Platform has many datasets that can be used within Spice.  A valid login for the Spice.ai Cloud Platform is required to access the datasets.  Before beginning this quickstart, [link your GitHub account to Spice.ai](https://spice.ai/login) to get access to the platform.
 
-**Step 1.** Log in to Spice.ai to store your access key and token in the spice runtime configuration.
+**Step 1.** Initialize a Spice project:
+
+```bash
+spice init spiceai-demo
+cd spiceai-demo
+```
+
+**Step 2.** Use `spice login` to store the Spice.ai Cloud Platform API Key and Token.
 
 ```bash
 spice login
@@ -18,18 +25,20 @@ Successfully logged in to Spice.ai as your_user (your_email@email.com)
 Using app your_user/your_app
 ```
 
-**Step 2.** Initialize a Spice project and start the runtime:
+A `.env` file is created in the `spiceai-demo` directory with the following content:
 
 ```bash
-spice init spiceai-demo
+SPICE_SPICEAI_API_KEY=<api_key>
+SPICE_SPICEAI_TOKEN=<api_token>
 ```
 
+**Step 3.** Start the Spice runtime.
+
 ```bash
-cd spiceai-demo
 spice run
 ```
 
-**Step 3.** Configure the dataset to connect to Spice.ai:
+**Step 4.** Configure the dataset to connect to Spice.ai:
 
 Open a new terminal window in the spiceai-demo directory.
 
@@ -85,7 +94,7 @@ The Spice runtime terminal will show that the dataset has been loaded:
 2024-03-27T20:29:48.744800Z  INFO runtime: Loaded dataset: eth_recent_blocks
 ```
 
-**Step 4.** Run queries against the dataset using the Spice SQL REPL.
+**Step 5.** Run queries against the dataset using the Spice SQL REPL.
 
 In a new terminal, start the Spice SQL REPL
 

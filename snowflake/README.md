@@ -21,17 +21,30 @@ CREATE DATABASE IF NOT EXISTS SNOWFLAKE_SAMPLE_DATA FROM SHARE SFC_SAMPLES.SAMPL
 GRANT IMPORTED PRIVILEGES ON DATABASE SNOWFLAKE_SAMPLE_DATA TO ROLE PUBLIC;
 ```
 
-**Step 2.** Configure Spice Snowflake access
+**Step 2.** Initialize a new Spicepod
+
+```bash
+spice init snowflake-app
+cd snowflake-app
+```
+
+**Step 3.** Configure Spice Snowflake access
 
 1. Get [Snowflake account identifier](https://docs.snowflake.com/en/user-guide/admin-account-identifier#finding-the-organization-and-account-name-for-an-account)
 
 1. Run `spice login snowflake -a <account-identifier> -u <username> -p <password>`
 
-**Step 3.** Initialize and start Spice 
+The CLI command will create a `.env` file in the current directory with the Snowflake account details. The `.env` file should look like this:
 
 ```bash
-spice init snowflake-app
-cd snowflake-app
+SPICE_SNOWFLAKE_ACCOUNT=<account-identifier>
+SPICE_SNOWFLAKE_PASSWORD=<password>
+SPICE_SNOWFLAKE_USERNAME=<username>
+```
+
+**Step 4.** Start the Spice runtime
+
+```bash
 spice run
 ```
 
@@ -39,13 +52,13 @@ The following output is shown in the Spice runtime terminal:
 
 ```bash
 Spice.ai runtime starting...
-2024-05-03T06:16:38.263784Z  INFO spiced: Metrics listening on 127.0.0.1:9000
-2024-05-03T06:16:38.267184Z  INFO runtime::http: Spice Runtime HTTP listening on 127.0.0.1:3000
+2024-05-03T06:16:38.263784Z  INFO spiced: Metrics listening on 127.0.0.1:9090
+2024-05-03T06:16:38.267184Z  INFO runtime::http: Spice Runtime HTTP listening on 127.0.0.1:8090
 2024-05-03T06:16:38.267212Z  INFO runtime::flight: Spice Runtime Flight listening on 127.0.0.1:50051
 2024-05-03T06:16:38.267277Z  INFO runtime::opentelemetry: Spice Runtime OpenTelemetry listening on 127.0.0.1:50052
 ```
 
-**Step 4.** Configure Snowflake Dataset
+**Step 5.** Configure Snowflake Dataset
 
 Use text editor add **snowflake_sample_data.tpch_sf1** dataset to `spicepod.yaml`. Modify the `params` section to specify desired warehouse or role to use.
 
@@ -67,7 +80,7 @@ The following output is shown in the Spice runtime terminal:
 2024-05-03T06:17:08.225248Z  INFO runtime: Loaded dataset lineitem
 ```
 
-**Step 5.** Run queries against the dataset using the Spice SQL REPL.
+**Step 6.** Run queries against the dataset using the Spice SQL REPL.
 
 In a new terminal, start the Spice SQL REPL.
 
@@ -132,7 +145,7 @@ Output:
 Time: 0.5212925 seconds. 4 rows.
 ```
 
-**Step6 (Optional)** Enable [Data Acceleration](https://docs.spiceai.org/data-accelerators)
+**Step 7. (Optional)** Enable [Data Acceleration](https://docs.spiceai.org/data-accelerators)
 
 Use text editor to update `spicepod.yaml`
 
@@ -149,7 +162,9 @@ datasets:
     snowflake_role: accountadmin
     snowflake_warehouse: COMPUTE_WH
 ```
+
 After:
+
 ```yaml
 version: v1beta1
 kind: Spicepod
@@ -165,6 +180,7 @@ datasets:
     refresh_sql: |
       SELECT * FROM lineitem WHERE "L_SHIPDATE" <= DATE '1998-12-01'
 ```
+
 Note: we use `refresh_sql` parameter in this example to specify exact data we require local (specific date interval).
 
 The following output is shown in the Spice runtime terminal confirming new configuration is applied.
