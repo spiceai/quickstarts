@@ -6,97 +6,13 @@ This quickstart will use a demo instance of Postgres. Follow the quickstart to c
 
 ## Preparation
 
-- Install [Postgres](https://www.postgresql.org/download/). Upon downloading, you should be able to successfully run the following commands:
-
-```bash
-createdb --help
-psql --help
-```
-
-- Start postgres server (note: this is an insecure postgres, only use for testing).
-
-```bash
-docker run --name postgres -e POSTGRES_HOST_AUTH_METHOD=trust  -d -p 5432:5432 postgres
-```
-
-- Configure postgres settings
-
-```bash
-export PGHOST=localhost
-export PGPORT=5432
-export PGUSER=postgres
-```
-
+- A running Postgres server with a table loaded with data is installed.
 - Spice is installed (see the [Getting Started](https://docs.spiceai.org/getting-started) documentation).
-
 - Install the [Postgres ODBC driver](https://odbc.postgresql.org/) for your operating system.
 
 ## Steps
 
-**Step 1.** Create a Postgres database for testing.
-
-Create an empty database `spice_demo` in local Postgres.
-
-```bash
-createdb spice_demo
-```
-
-Verify the creation of `spice_demo` by opening it with the psql CLI.
-
-```bash
-psql spice_demo
-```
-
-**Step 2.** Download test data.
-
-This quickstart uses the `taxi_trips` data, loaded into Postgres in CSV format. Download the file using `curl`:
-
-```
-curl -o taxi_trips.csv https://spiceai-demo-datasets.s3.amazonaws.com/taxi_trips_csv/2024/yellow_tripdata_2024-01.csv
-```
-
-**Step 3.** Insert data into Postgres.
-
-Open the database with the psql CLI.
-
-```bash
-psql spice_demo
-```
-
-In the CLI, run this SQL to prepare a table for the data.
-
-```sql
-CREATE TABLE taxi_trips (
-VendorID varchar(50),
-tpep_pickup_datetime timestamp without time zone,
-tpep_dropoff_datetime timestamp without time zone,
-passenger_count float,
-trip_distance float,
-RatecodeID float,
-store_and_fwd_flag char(1),
-PULocationID varchar(50),
-DOLocationID varchar(50),
-payment_type varchar(5),
-fare_amount float,
-extra float,
-mta_tax float,
-tip_amount float,
-tolls_amount float,
-improvement_surcharge float,
-total_amount float,
-congestion_surcharge float,
-Airport_fee float);
-```
-
-With the table created, run this SQL to copy the downloaded data:
-
-```sql
-\copy taxi_trips from 'taxi_trips.csv' with delimiter ',' csv header;
-```
-
-If successfully copied, the psql CLI should output `COPY 2964624` identifying the number of rows copied.
-
-**Step 4.** Configure ODBC connection.
+**Step 1.** Configure ODBC connection.
 
 On Unix systems, ODBC creates a configuration file in `/etc/odbcinst.ini` identifying the available ODBC installations.
 
