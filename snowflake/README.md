@@ -52,8 +52,8 @@ The following output is shown in the Spice runtime terminal:
 
 ```bash
 Spice.ai runtime starting...
-2024-05-03T06:16:38.263784Z  INFO spiced: Metrics listening on 127.0.0.1:9000
-2024-05-03T06:16:38.267184Z  INFO runtime::http: Spice Runtime HTTP listening on 127.0.0.1:3000
+2024-05-03T06:16:38.263784Z  INFO spiced: Metrics listening on 127.0.0.1:9090
+2024-05-03T06:16:38.267184Z  INFO runtime::http: Spice Runtime HTTP listening on 127.0.0.1:8090
 2024-05-03T06:16:38.267212Z  INFO runtime::flight: Spice Runtime Flight listening on 127.0.0.1:50051
 2024-05-03T06:16:38.267277Z  INFO runtime::opentelemetry: Spice Runtime OpenTelemetry listening on 127.0.0.1:50052
 ```

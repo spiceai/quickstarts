@@ -98,7 +98,7 @@ curl -i -X PATCH \
      -d '{
            "refresh_sql": "SELECT * FROM taxi_trips WHERE passenger_count = 3"
          }' \
-     localhost:3000/v1/datasets/taxi_trips/acceleration
+     localhost:8090/v1/datasets/taxi_trips/acceleration
 ```
 
 The updated `refresh_sql` will be applied on the _next_ refresh (as determined by `refresh_check_interval`).
@@ -106,7 +106,7 @@ The updated `refresh_sql` will be applied on the _next_ refresh (as determined b
 Make an additional call to trigger a refresh now:
 
 ```bash
-curl -i -X POST localhost:3000/v1/datasets/taxi_trips/acceleration/refresh
+curl -i -X POST localhost:8090/v1/datasets/taxi_trips/acceleration/refresh
 ```
 
 Swap to the Spice SQL REPL and enter:

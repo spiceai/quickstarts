@@ -33,7 +33,7 @@ When dataset is being refreshed, the retention policy won't evict any data as 0 
 ```bash
 2024-04-22T04:17:24.374905Z  INFO runtime: Loaded dataset: taxi_trips
 2024-04-22T04:17:24.375694Z  INFO runtime::accelerated_table: [retention] Evicting data for taxi_trips where tpep_pickup_datetime < 2020-04-23T04:17:24+00:00...
-2024-04-22T04:17:24.376073Z  INFO runtime::http: Spice Runtime HTTP listening on 127.0.0.1:3000
+2024-04-22T04:17:24.376073Z  INFO runtime::http: Spice Runtime HTTP listening on 127.0.0.1:8090
 2024-04-22T04:17:24.376110Z  INFO runtime::flight: Spice Runtime Flight listening on 127.0.0.1:50051
 2024-04-22T04:17:24.376393Z  INFO runtime::opentelemetry: Spice Runtime OpenTelemetry listening on 127.0.0.1:50052
 2024-04-22T04:17:24.377709Z  INFO runtime::accelerated_table: Refreshing data for taxi_trips
