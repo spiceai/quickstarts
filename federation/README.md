@@ -22,7 +22,7 @@ spice init
 name: (federation)?
 ```
 
-**Step 3.** Log into the demo Dremio instance.
+**Step 3.** Log into the demo Dremio instance. Ensure this command is run in the `federation` directory.
 
 ```bash
 spice login dremio -u demo -p demo1234

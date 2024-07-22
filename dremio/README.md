@@ -1,26 +1,28 @@
 
 ## Spice.ai Quickstart Tutorial using Dremio
 
-This quickstart will use a demo instance of Dremio with a sample dataset.  No need to set up a Dremio instance, but the same steps can be used to connect to any Dremio instance available. 
+This quickstart will use a demo instance of Dremio with a sample dataset. No need to set up a Dremio instance, but the same steps can be used to connect to any Dremio instance available. 
 
-**Step 1.** Set the login credentials that the Spice runtime will use when accessing Dremio.
+**Step 2.** Initialize a Spice project:
+
+```bash
+spice init dremio-demo
+cd dremio-demo
+```
+
+**Step 2.** Set the login credentials that the Spice runtime will use when accessing Dremio. Ensure this command is run in the `dremio-demo` directory.
 
 ```bash
 spice login dremio -u demo -p demo1234
 ```
 
-**Step 2.** Initialize a Spice project and start the runtime:
+**Step 3.** Start the runtime.
 
 ```bash
-spice init dremio-demo
-```
-
-```bash
-cd dremio-demo
 spice run
 ```
 
-**Step 3.** Configure the dataset to connect to Dremio:
+**Step 4.** Configure the dataset to connect to Dremio:
 
 ```bash
 spice dataset configure
@@ -83,7 +85,7 @@ The Spice runtime terminal will show that the dataset has been loaded:
 2024-03-27T05:36:38.107138Z  INFO runtime::dataconnector: Refreshing data for taxi_trips
 ```
 
-**Step 4.** Run queries against the dataset using the Spice SQL REPL.
+**Step 5.** Run queries against the dataset using the Spice SQL REPL.
 
 In a new terminal, start the Spice SQL REPL
 
