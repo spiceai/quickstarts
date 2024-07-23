@@ -91,7 +91,7 @@ description: ethereum recent blocks
 The Spice runtime terminal will show that the dataset has been loaded:
 
 ```
-2024-03-27T20:29:48.744800Z  INFO runtime: Loaded dataset: eth_recent_blocks
+2024-07-23T01:01:50.403937Z  INFO runtime: Dataset eth_recent_blocks registered (spice.ai/eth.recent_blocks), results cache enabled.
 ```
 
 **Step 5.** Run queries against the dataset using the Spice SQL REPL.
