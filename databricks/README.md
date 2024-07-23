@@ -44,12 +44,13 @@ Spice can read data straight from a Databricks instance. This guide will create 
     Saved datasets/my_table/dataset.yaml
     ```
 
-1. Edit the dataset to add `mode: delta_lake` to the `params` section:
+1. Edit the dataset to add `mode: delta_lake` and `databricks_cluster_id: <cluster id>` to the `params` section:
 
     ```yaml
     params:
-      endpoint: <existing_endpoint>
       mode: delta_lake
+      databricks_endpoint: <existing_endpoint>
+      databricks_cluster_id: <cluster id>
     ```
 
 1. Confirm that the runtime has loaded the new table (in the original terminal)
