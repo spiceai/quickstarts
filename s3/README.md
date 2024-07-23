@@ -37,7 +37,7 @@ Specify the location of the dataset:
 from: s3://spiceai-demo-datasets/taxi_trips/2024/
 ```
 
-Press Enter when prompted to confirm parquet file format:
+Press Enter when prompted to select file format:
 
 ```bash
 file_format (parquet/csv) (parquet)
@@ -217,7 +217,7 @@ Specify the location of the dataset:
 from: s3://yourcompany-bucketname-datasets/taxi_trips/
 ```
 
-Press Enter when prompted to confirm parquet file format:
+Press Enter when prompted to select file format:
 
 ```bash
 file_format (parquet/csv) (parquet)
