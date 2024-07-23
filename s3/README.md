@@ -37,16 +37,22 @@ Specify the location of the dataset:
 from: s3://spiceai-demo-datasets/taxi_trips/2024/
 ```
 
+Press Enter when prompted to confirm parquet file format:
+
+```bash
+file_format (parquet/csv) (parquet)
+```
+
 Select "y" when prompted whether to locally accelerate the dataset:
 
 ```bash
-Locally accelerate (y/n)? y
+Locally accelerate (y/n)? (y)
 ```
 
 The following output is shown:
 
 ```
-Dataset settings written to `datasets/taxi_trips/dataset.yaml`!
+Saved datasets/taxi_trips/dataset.yaml
 ```
 
 The content of the `dataset.yaml` file is as follows:
@@ -55,17 +61,26 @@ The content of the `dataset.yaml` file is as follows:
 from: s3://spiceai-demo-datasets/taxi_trips/2024/
 name: taxi_trips
 description: taxi trips in s3
+params:
+    file_format: parquet
 acceleration:
-  enabled: true
-  refresh_check_interval: 10s
-  refresh_mode: full
+    enabled: true
+    refresh_mode: full
+    refresh_check_interval: 10s
 ```
 
 The following output is shown in the Spice runtime terminal:
 
 ```
-2024-03-26T22:18:02.062394Z  INFO runtime: Loaded dataset: taxi_trips
-2024-03-26T22:18:02.062462Z  INFO runtime::dataconnector: Refreshing data for taxi_trips
+Spice.ai runtime starting...
+2024-07-23T00:33:50.544366Z  INFO spiced: Metrics listening on 127.0.0.1:9090
+2024-07-23T00:33:50.547612Z  INFO runtime::opentelemetry: Spice Runtime OpenTelemetry listening on 127.0.0.1:50052
+2024-07-23T00:33:50.549731Z  INFO runtime: Initialized results cache; max size: 128.00 MiB, item ttl: 1s
+2024-07-23T00:33:50.552016Z  INFO runtime::http: Spice Runtime HTTP listening on 127.0.0.1:8090
+2024-07-23T00:33:50.552044Z  INFO runtime::flight: Spice Runtime Flight listening on 127.0.0.1:50051
+2024-07-23T00:35:42.716736Z  INFO runtime: Dataset taxi_trips registered (s3://spiceai-demo-datasets/taxi_trips/2024/), acceleration (arrow, 10s refresh), results cache enabled.
+2024-07-23T00:35:42.718009Z  INFO runtime::accelerated_table::refresh_task: Loading data for dataset taxi_trips
+2024-07-23T00:35:59.390722Z  INFO runtime::accelerated_table::refresh_task: Loaded 2,964,624 rows (421.71 MiB) for dataset taxi_trips in 16s 672ms.
 ```
 
 **Step 3.** Run queries against the dataset using the Spice SQL REPL.
@@ -80,16 +95,14 @@ Check that the taxi_trips table exists:
 
 ```sql
 sql> show tables;
++---------------+--------------+---------------+------------+
+| table_catalog | table_schema | table_name    | table_type |
++---------------+--------------+---------------+------------+
+| spice         | public       | taxi_trips    | BASE TABLE |
+| spice         | runtime      | query_history | BASE TABLE |
++---------------+--------------+---------------+------------+
 
-+---------------+--------------------+-------------+------------+
-| table_catalog | table_schema       | table_name  | table_type |
-+---------------+--------------------+-------------+------------+
-| datafusion    | public             | taxi_trips  | BASE TABLE |
-| datafusion    | information_schema | tables      | VIEW       |
-| datafusion    | information_schema | views       | VIEW       |
-| datafusion    | information_schema | columns     | VIEW       |
-| datafusion    | information_schema | df_settings | VIEW       |
-+---------------+--------------------+-------------+------------+
+Time: 0.010070708 seconds. 2 rows.
 ```
 
 Query against the `taxi_trips` table in the runtime.
@@ -98,22 +111,22 @@ Query against the `taxi_trips` table in the runtime.
 sql> select avg(total_amount), avg(tip_amount), count(1), passenger_count from taxi_trips group by passenger_count order by passenger_count asc;
 
 +------------------------------+----------------------------+-----------------+-----------------+
-| AVG(taxi_trips.total_amount) | AVG(taxi_trips.tip_amount) | COUNT(Int64(1)) | passenger_count |
+| avg(taxi_trips.total_amount) | avg(taxi_trips.tip_amount) | count(Int64(1)) | passenger_count |
 +------------------------------+----------------------------+-----------------+-----------------+
-| 25.32781693945655            | 3.072259971396792          | 31465           | 0               |
-| 26.205230445475053           | 3.3712622884680097         | 2188739         | 1               |
-| 29.520659930930112           | 3.7171302113290707         | 405103          | 2               |
-| 29.13830904429029            | 3.5370455392167552         | 91262           | 3               |
-| 30.877266710278338           | 3.466037634201714          | 51974           | 4               |
-| 26.269129111204002           | 3.379707813525932          | 33506           | 5               |
-| 25.80118328635979            | 3.3440987786874237         | 22353           | 6               |
-| 57.735                       | 8.370000000000001          | 8               | 7               |
+| 25.327816939456493           | 3.0722599713967904         | 31465           | 0               |
+| 26.205230445472967           | 3.371262288468208          | 2188739         | 1               |
+| 29.520659930930638           | 3.717130211329105          | 405103          | 2               |
+| 29.138309044290224           | 3.5370455392167583         | 91262           | 3               |
+| 30.87726671027828            | 3.466037634201712          | 51974           | 4               |
+| 26.269129111203984           | 3.3797078135259353         | 33506           | 5               |
+| 25.801183286359755           | 3.3440987786874237         | 22353           | 6               |
+| 57.735                       | 8.37                       | 8               | 7               |
 | 95.66803921568626            | 11.972156862745098         | 51              | 8               |
 | 18.45                        | 3.05                       | 1               | 9               |
-| 25.811736633324347           | 1.545956750046378          | 140162          |                 |
+| 25.811736633324262           | 1.5459567500463733         | 140162          |                 |
 +------------------------------+----------------------------+-----------------+-----------------+
 
-Query took: 0.015628708 seconds
+Time: 0.0240065 seconds. 11 rows.
 ```
 
 ## For private S3 bucket
@@ -204,6 +217,12 @@ Specify the location of the dataset:
 from: s3://yourcompany-bucketname-datasets/taxi_trips/
 ```
 
+Press Enter when prompted to confirm parquet file format:
+
+```bash
+file_format (parquet/csv) (parquet)
+```
+
 Select "y" when prompted whether to locally accelerate the dataset:
 
 ```bash
@@ -213,14 +232,21 @@ Locally accelerate (y/n)? y
 The following output is shown:
 
 ```
-Dataset settings written to `datasets/taxi_trips/dataset.yaml`!
+Saved datasets/taxi_trips/dataset.yaml
 ```
 
 If the login credentials were entered correctly, the dataset will have loaded into the runtime. The following output is shown in the Spice runtime terminal:
 
 ```
-2024-03-26T22:18:02.062394Z  INFO runtime: Loaded dataset: taxi_trips
-2024-03-26T22:18:02.062462Z  INFO runtime::dataconnector: Refreshing data for taxi_trips
+Spice.ai runtime starting...
+2024-07-23T00:33:50.544366Z  INFO spiced: Metrics listening on 127.0.0.1:9090
+2024-07-23T00:33:50.547612Z  INFO runtime::opentelemetry: Spice Runtime OpenTelemetry listening on 127.0.0.1:50052
+2024-07-23T00:33:50.549731Z  INFO runtime: Initialized results cache; max size: 128.00 MiB, item ttl: 1s
+2024-07-23T00:33:50.552016Z  INFO runtime::http: Spice Runtime HTTP listening on 127.0.0.1:8090
+2024-07-23T00:33:50.552044Z  INFO runtime::flight: Spice Runtime Flight listening on 127.0.0.1:50051
+2024-07-23T00:35:42.716736Z  INFO runtime: Dataset taxi_trips registered (s3://yourcompany-bucketname-datasets/taxi_trips/), acceleration (arrow, 10s refresh), results cache enabled.
+2024-07-23T00:35:42.718009Z  INFO runtime::accelerated_table::refresh_task: Loading data for dataset taxi_trips
+2024-07-23T00:35:59.390722Z  INFO runtime::accelerated_table::refresh_task: Loaded 2,964,624 rows (421.71 MiB) for dataset taxi_trips in 16s 672ms.
 ```
 
 **Step 7.** Run queries against the dataset using the Spice SQL REPL.
