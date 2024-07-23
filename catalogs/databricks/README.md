@@ -25,8 +25,8 @@ Add the following configuration to your `spicepod.yaml`:
 
 ```yaml
 catalogs:
-  - name: databricks:<CATALOG_NAME>
-    from: db_uc
+  - from: databricks:<CATALOG_NAME>
+    name: db_uc
     params:
       mode: spark_connect # or delta_lake
       databricks_token: ${env:DATABRICKS_TOKEN}
