@@ -18,7 +18,7 @@ On Unix systems, ODBC creates a configuration file in `/etc/odbcinst.ini` identi
 
 If your Postgres ODBC driver is installed correctly, the following config should appear in the file:
 
-```
+```ini
 [PostgreSQL Unicode]
 Description=PostgreSQL ODBC driver (Unicode version)
 Driver=psqlodbcw.so
