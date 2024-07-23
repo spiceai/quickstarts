@@ -48,7 +48,7 @@ datasets:
   - from: duckdb:customer
     name: tpch_customer
     params:
-      open: ./tpch.db
+      duckdb_open: ./tpch.db
 ```
 
 **Step 4.** Start the Spice runtime.
