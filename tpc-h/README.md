@@ -24,14 +24,20 @@ spice add spiceai/tpch
 The following output is shown in the Spice runtime terminal:
 
 ```bash
-2024-03-31T17:47:09.589058Z  INFO runtime: Loaded dataset: region
-2024-03-31T17:47:09.589846Z  INFO runtime: Loaded dataset: nation
-2024-03-31T17:47:09.606925Z  INFO runtime: Loaded dataset: supplier
-2024-03-31T17:47:09.662131Z  INFO runtime: Loaded dataset: partsupp
-2024-03-31T17:47:09.673164Z  INFO runtime: Loaded dataset: orders
-2024-03-31T17:47:09.678748Z  INFO runtime: Loaded dataset: lineitem
-2024-03-31T17:47:09.717499Z  INFO runtime: Loaded dataset: customer
-2024-03-31T17:47:09.757605Z  INFO runtime: Loaded dataset: part
+Spice.ai runtime starting...
+2024-07-23T00:46:31.840562Z  INFO spiced: Metrics listening on 127.0.0.1:9090
+2024-07-23T00:46:31.845882Z  INFO runtime: Initialized results cache; max size: 128.00 MiB, item ttl: 1s
+2024-07-23T00:46:31.846175Z  INFO runtime::http: Spice Runtime HTTP listening on 127.0.0.1:8090
+2024-07-23T00:46:31.846188Z  INFO runtime::flight: Spice Runtime Flight listening on 127.0.0.1:50051
+2024-07-23T00:46:31.846252Z  INFO runtime::opentelemetry: Spice Runtime OpenTelemetry listening on 127.0.0.1:50052
+2024-07-23T00:46:38.826938Z  INFO runtime: Dataset customer registered (s3://spiceai-demo-datasets/tpch/customer/), results cache enabled.
+2024-07-23T00:46:39.636713Z  INFO runtime: Dataset lineitem registered (s3://spiceai-demo-datasets/tpch/lineitem/), results cache enabled.
+2024-07-23T00:46:40.309918Z  INFO runtime: Dataset nation registered (s3://spiceai-demo-datasets/tpch/nation/), results cache enabled.
+2024-07-23T00:46:41.261388Z  INFO runtime: Dataset orders registered (s3://spiceai-demo-datasets/tpch/orders/), results cache enabled.
+2024-07-23T00:46:42.033806Z  INFO runtime: Dataset part registered (s3://spiceai-demo-datasets/tpch/part/), results cache enabled.
+2024-07-23T00:46:42.692861Z  INFO runtime: Dataset partsupp registered (s3://spiceai-demo-datasets/tpch/partsupp/), results cache enabled.
+2024-07-23T00:46:43.303279Z  INFO runtime: Dataset region registered (s3://spiceai-demo-datasets/tpch/region/), results cache enabled.
+2024-07-23T00:46:43.975979Z  INFO runtime: Dataset supplier registered (s3://spiceai-demo-datasets/tpch/supplier/), results cache enabled.
 ```
 
 **Step 3.** Run queries against the dataset using the Spice SQL REPL.
@@ -47,22 +53,21 @@ Check that TPC-H tables exist:
 ```sql
 show tables;
 
-+---------------+--------------------+-------------+------------+
-| table_catalog | table_schema       | table_name  | table_type |
-+---------------+--------------------+-------------+------------+
-| datafusion    | public             | lineitem    | VIEW       |
-| datafusion    | public             | part        | VIEW       |
-| datafusion    | public             | region      | VIEW       |
-| datafusion    | public             | partsupp    | VIEW       |
-| datafusion    | public             | orders      | VIEW       |
-| datafusion    | public             | nation      | VIEW       |
-| datafusion    | public             | customer    | VIEW       |
-| datafusion    | public             | supplier    | VIEW       |
-| datafusion    | information_schema | tables      | VIEW       |
-| datafusion    | information_schema | views       | VIEW       |
-| datafusion    | information_schema | columns     | VIEW       |
-| datafusion    | information_schema | df_settings | VIEW       |
-+---------------+--------------------+-------------+------------+
++---------------+--------------+---------------+------------+
+| table_catalog | table_schema | table_name    | table_type |
++---------------+--------------+---------------+------------+
+| spice         | public       | region        | BASE TABLE |
+| spice         | public       | partsupp      | BASE TABLE |
+| spice         | public       | part          | BASE TABLE |
+| spice         | public       | orders        | BASE TABLE |
+| spice         | public       | lineitem      | BASE TABLE |
+| spice         | public       | customer      | BASE TABLE |
+| spice         | public       | nation        | BASE TABLE |
+| spice         | public       | supplier      | BASE TABLE |
+| spice         | runtime      | query_history | BASE TABLE |
++---------------+--------------+---------------+------------+
+
+Time: 0.006163958 seconds. 9 rows.
 ```
 
 Run *Pricing Summary Report Query (Q1)*. More information about TPC-H and all the queries involved can be found in the official [TPC Benchmark H Standard Specification](https://www.tpc.org/tpc_documents_current_versions/pdf/tpc-h_v2.17.1.pdf).
@@ -124,22 +129,38 @@ After:
 
 The following output is shown in the Spice runtime terminal confirming new configuration is applied.
 ```bash
-2024-03-31T18:01:06.802013Z  INFO runtime: Unloaded dataset: customer
-2024-03-31T18:01:06.802073Z  INFO runtime: Unloaded dataset: lineitem
-2024-03-31T18:01:06.802641Z  INFO runtime: Unloaded dataset: nation
-2024-03-31T18:01:06.803116Z  INFO runtime: Loaded dataset: customer
-2024-03-31T18:01:06.803134Z  INFO runtime: Unloaded dataset: orders
-2024-03-31T18:01:06.803160Z  INFO runtime: Loaded dataset: lineitem
-2024-03-31T18:01:06.803203Z  INFO runtime: Unloaded dataset: part
-2024-03-31T18:01:06.803276Z  INFO runtime: Loaded dataset: nation
-2024-03-31T18:01:06.803333Z  INFO runtime: Unloaded dataset: partsupp
-2024-03-31T18:01:06.803359Z  INFO runtime: Loaded dataset: orders
-2024-03-31T18:01:06.803488Z  INFO runtime: Unloaded dataset: region
-2024-03-31T18:01:06.804223Z  INFO runtime: Loaded dataset: part
-2024-03-31T18:01:06.804736Z  INFO runtime: Unloaded dataset: supplier
-2024-03-31T18:01:06.804974Z  INFO runtime: Loaded dataset: partsupp
-2024-03-31T18:01:06.805004Z  INFO runtime: Loaded dataset: region
-2024-03-31T18:01:06.805023Z  INFO runtime: Loaded dataset: supplier
+2024-07-23T00:49:40.552646Z  INFO runtime: Updating accelerated dataset customer...
+2024-07-23T00:49:41.286410Z  INFO runtime::accelerated_table::refresh_task: Loading data for dataset customer
+2024-07-23T00:49:44.029108Z  INFO runtime::accelerated_table::refresh_task: Loaded 150,000 rows (32.10 MiB) for dataset customer in 2s 742ms.
+2024-07-23T00:49:44.717176Z  INFO runtime: Dataset customer registered (s3://spiceai-demo-datasets/tpch/customer/), acceleration (arrow), results cache enabled.
+2024-07-23T00:49:44.717224Z  INFO runtime: Updating accelerated dataset lineitem...
+2024-07-23T00:49:45.352376Z  INFO runtime::accelerated_table::refresh_task: Loading data for dataset lineitem
+2024-07-23T00:49:57.824329Z  INFO runtime::accelerated_table::refresh_task: Loaded 6,001,215 rows (1.05 GiB) for dataset lineitem in 12s 471ms.
+2024-07-23T00:49:58.476041Z  INFO runtime: Dataset lineitem registered (s3://spiceai-demo-datasets/tpch/lineitem/), acceleration (arrow), results cache enabled.
+2024-07-23T00:49:58.476107Z  INFO runtime: Updating accelerated dataset nation...
+2024-07-23T00:49:59.092162Z  INFO runtime::accelerated_table::refresh_task: Loading data for dataset nation
+2024-07-23T00:50:00.028890Z  INFO runtime::accelerated_table::refresh_task: Loaded 25 rows (3.10 kiB) for dataset nation in 936ms.
+2024-07-23T00:50:00.632540Z  INFO runtime: Dataset nation registered (s3://spiceai-demo-datasets/tpch/nation/), acceleration (arrow), results cache enabled.
+2024-07-23T00:50:00.632589Z  INFO runtime: Updating accelerated dataset orders...
+2024-07-23T00:50:01.319494Z  INFO runtime::accelerated_table::refresh_task: Loading data for dataset orders
+2024-07-23T00:50:06.117615Z  INFO runtime::accelerated_table::refresh_task: Loaded 1,500,000 rows (206.69 MiB) for dataset orders in 4s 798ms.
+2024-07-23T00:50:06.758589Z  INFO runtime: Dataset orders registered (s3://spiceai-demo-datasets/tpch/orders/), acceleration (arrow), results cache enabled.
+2024-07-23T00:50:06.758635Z  INFO runtime: Updating accelerated dataset part...
+2024-07-23T00:50:07.474957Z  INFO runtime::accelerated_table::refresh_task: Loading data for dataset part
+2024-07-23T00:50:09.480938Z  INFO runtime::accelerated_table::refresh_task: Loaded 200,000 rows (34.61 MiB) for dataset part in 2s 5ms.
+2024-07-23T00:50:10.099495Z  INFO runtime: Dataset part registered (s3://spiceai-demo-datasets/tpch/part/), acceleration (arrow), results cache enabled.
+2024-07-23T00:50:10.099526Z  INFO runtime: Updating accelerated dataset partsupp...
+2024-07-23T00:50:10.788284Z  INFO runtime::accelerated_table::refresh_task: Loading data for dataset partsupp
+2024-07-23T00:50:19.160679Z  INFO runtime::accelerated_table::refresh_task: Loaded 800,000 rows (138.95 MiB) for dataset partsupp in 8s 372ms.
+2024-07-23T00:50:19.849290Z  INFO runtime: Dataset partsupp registered (s3://spiceai-demo-datasets/tpch/partsupp/), acceleration (arrow), results cache enabled.
+2024-07-23T00:50:19.849380Z  INFO runtime: Updating accelerated dataset region...
+2024-07-23T00:50:20.438604Z  INFO runtime::accelerated_table::refresh_task: Loading data for dataset region
+2024-07-23T00:50:21.347679Z  INFO runtime::accelerated_table::refresh_task: Loaded 5 rows (944.00 B) for dataset region in 909ms.
+2024-07-23T00:50:21.958690Z  INFO runtime: Dataset region registered (s3://spiceai-demo-datasets/tpch/region/), acceleration (arrow), results cache enabled.
+2024-07-23T00:50:21.958735Z  INFO runtime: Updating accelerated dataset supplier...
+2024-07-23T00:50:22.692098Z  INFO runtime::accelerated_table::refresh_task: Loading data for dataset supplier
+2024-07-23T00:50:24.212649Z  INFO runtime::accelerated_table::refresh_task: Loaded 10,000 rows (1.80 MiB) for dataset supplier in 1s 520ms.
+2024-07-23T00:50:24.832568Z  INFO runtime: Dataset supplier registered (s3://spiceai-demo-datasets/tpch/supplier/), acceleration (arrow), results cache enabled.
 ```
 
 Run *Pricing Summary Report Query* using the Spice SQL REPL. 
