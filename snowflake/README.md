@@ -52,10 +52,11 @@ The following output is shown in the Spice runtime terminal:
 
 ```bash
 Spice.ai runtime starting...
-2024-05-03T06:16:38.263784Z  INFO spiced: Metrics listening on 127.0.0.1:9090
-2024-05-03T06:16:38.267184Z  INFO runtime::http: Spice Runtime HTTP listening on 127.0.0.1:8090
-2024-05-03T06:16:38.267212Z  INFO runtime::flight: Spice Runtime Flight listening on 127.0.0.1:50051
-2024-05-03T06:16:38.267277Z  INFO runtime::opentelemetry: Spice Runtime OpenTelemetry listening on 127.0.0.1:50052
+2024-07-23T00:20:01.012063Z  INFO spiced: Metrics listening on 127.0.0.1:9090
+2024-07-23T00:20:01.044050Z  INFO runtime::http: Spice Runtime HTTP listening on 127.0.0.1:8090
+2024-07-23T00:20:01.044108Z  INFO runtime::flight: Spice Runtime Flight listening on 127.0.0.1:50051
+2024-07-23T00:20:01.045430Z  INFO runtime::opentelemetry: Spice Runtime OpenTelemetry listening on 127.0.0.1:50052
+2024-07-23T00:20:01.047970Z  INFO runtime: Initialized results cache; max size: 128.00 MiB, item ttl: 1s
 ```
 
 **Step 5.** Configure Snowflake Dataset
@@ -77,7 +78,7 @@ datasets:
 The following output is shown in the Spice runtime terminal:
 
 ```bash
-2024-05-03T06:17:08.225248Z  INFO runtime: Loaded dataset lineitem
+2024-07-23T00:20:53.116572Z  INFO runtime: Dataset lineitem registered (snowflake:SNOWFLAKE_SAMPLE_DATA.TPCH_SF1.LINEITEM), results cache enabled.
 ```
 
 **Step 6.** Run queries against the dataset using the Spice SQL REPL.
@@ -97,12 +98,11 @@ sql> show tables;
 +---------------+--------------+---------------+------------+
 | table_catalog | table_schema | table_name    | table_type |
 +---------------+--------------+---------------+------------+
-| spice         | runtime      | metrics       | BASE TABLE |
-| spice         | runtime      | query_history | BASE TABLE |
 | spice         | public       | lineitem      | BASE TABLE |
+| spice         | runtime      | query_history | BASE TABLE |
 +---------------+--------------+---------------+------------+
 
-Time: 0.00588975 seconds. 3 rows.
+Time: 0.032075708 seconds. 2 rows.
 ```
 
 Run *Pricing Summary Report Query (Q1)*. More information about TPC-H and all the queries involved can be found in the official [TPC Benchmark H Standard Specification](https://www.tpc.org/tpc_documents_current_versions/pdf/tpc-h_v2.17.1.pdf).
@@ -133,16 +133,16 @@ ORDER BY
 ```
 Output:
 ```
-+--------------+--------------+----------+----------------+----------------+--------------+--------------------+--------------------+----------------------+-------------+
-| L_RETURNFLAG | L_LINESTATUS | SUM_QTY  | SUM_BASE_PRICE | SUM_DISC_PRICE | SUM_CHARGE   | AVG_QTY            | AVG_PRICE          | AVG_DISC             | COUNT_ORDER |
-+--------------+--------------+----------+----------------+----------------+--------------+--------------------+--------------------+----------------------+-------------+
-| A            | F            | 37734107 | 56586577106    | 56586577106    | 56586577106  | 25.522005853257337 | 38273.12973462167  | 0.049985295838397614 | 1478493     |
-| N            | F            | 991417   | 1487505208     | 1487505208     | 1487505208   | 25.516471920522985 | 38284.4677608483   | 0.0500934266742163   | 38854       |
-| N            | O            | 76633518 | 114935258407   | 114935258407   | 114935258407 | 25.50201963528761  | 38248.015609058646 | 0.05000025956756044  | 3004998     |
-| R            | F            | 37719753 | 56568064200    | 56568064200    | 56568064200  | 25.50579361269077  | 38250.85462609966  | 0.05000940583012707  | 1478870     |
-+--------------+--------------+----------+----------------+----------------+--------------+--------------------+--------------------+----------------------+-------------+
++--------------+--------------+-------------+-----------------+-------------------+---------------------+-----------+--------------+----------+-------------+
+| L_RETURNFLAG | L_LINESTATUS | SUM_QTY     | SUM_BASE_PRICE  | SUM_DISC_PRICE    | SUM_CHARGE          | AVG_QTY   | AVG_PRICE    | AVG_DISC | COUNT_ORDER |
++--------------+--------------+-------------+-----------------+-------------------+---------------------+-----------+--------------+----------+-------------+
+| N            | F            | 991417.00   | 1487504710.38   | 1413082168.0541   | 1469649223.194375   | 25.516472 | 38284.467761 | 0.050093 | 38854       |
+| A            | F            | 37734107.00 | 56586554400.73  | 53758257134.8700  | 55909065222.827692  | 25.522006 | 38273.129735 | 0.049985 | 1478493     |
+| N            | O            | 76633518.00 | 114935210409.19 | 109189591897.4720 | 113561024263.013782 | 25.502020 | 38248.015609 | 0.050000 | 3004998     |
+| R            | F            | 37719753.00 | 56568041380.90  | 53741292684.6040  | 55889619119.831932  | 25.505794 | 38250.854626 | 0.050009 | 1478870     |
++--------------+--------------+-------------+-----------------+-------------------+---------------------+-----------+--------------+----------+-------------+
 
-Time: 0.5212925 seconds. 4 rows.
+Time: 1.398187833 seconds. 4 rows.
 ```
 
 **Step 7. (Optional)** Enable [Data Acceleration](https://docs.spiceai.org/data-accelerators)
@@ -185,11 +185,10 @@ Note: we use `refresh_sql` parameter in this example to specify exact data we re
 
 The following output is shown in the Spice runtime terminal confirming new configuration is applied.
 ```bash
-2024-05-03T06:24:59.474301Z  INFO runtime: Unloaded dataset lineitem
-2024-05-03T06:24:59.623574Z  INFO runtime: Loaded dataset lineitem
-2024-05-03T06:25:06.272827Z  INFO runtime: Updating accelerated dataset lineitem...
-2024-05-03T06:25:06.441558Z  INFO runtime::accelerated_table: [refresh] Loading data for dataset lineitem
-2024-05-03T06:25:14.601966Z  INFO runtime: Loaded dataset lineitem
+2024-07-23T00:23:29.327942Z  INFO runtime: Updating accelerated dataset lineitem...
+2024-07-23T00:23:29.657023Z  INFO runtime::accelerated_table::refresh_task: Loading data for dataset lineitem
+2024-07-23T00:23:52.413596Z  INFO runtime::accelerated_table::refresh_task: Loaded 6,001,215 rows (9.46 GiB) for dataset lineitem in 22s 756ms.
+2024-07-23T00:23:52.553037Z  INFO runtime: Dataset lineitem registered (snowflake:snowflake_sample_data.tpch_sf1.lineitem), acceleration (arrow), results cache enabled.
 ```
 
 Run *Pricing Summary Report Query* using the Spice SQL REPL. 
@@ -220,15 +219,15 @@ ORDER BY
 ```
 Output:
 ```
-+--------------+--------------+----------+----------------+----------------+--------------+--------------------+--------------------+----------------------+-------------+
-| L_RETURNFLAG | L_LINESTATUS | SUM_QTY  | SUM_BASE_PRICE | SUM_DISC_PRICE | SUM_CHARGE   | AVG_QTY            | AVG_PRICE          | AVG_DISC             | COUNT_ORDER |
-+--------------+--------------+----------+----------------+----------------+--------------+--------------------+--------------------+----------------------+-------------+
-| A            | F            | 37734107 | 56586577106    | 56586577106    | 56586577106  | 25.522005853257337 | 38273.12973462167  | 0.049985295838397614 | 1478493     |
-| N            | F            | 991417   | 1487505208     | 1487505208     | 1487505208   | 25.516471920522985 | 38284.4677608483   | 0.0500934266742163   | 38854       |
-| N            | O            | 76633518 | 114935258407   | 114935258407   | 114935258407 | 25.50201963528761  | 38248.015609058646 | 0.05000025956756044  | 3004998     |
-| R            | F            | 37719753 | 56568064200    | 56568064200    | 56568064200  | 25.50579361269077  | 38250.85462609966  | 0.05000940583012707  | 1478870     |
-+--------------+--------------+----------+----------------+----------------+--------------+--------------------+--------------------+----------------------+-------------+
++--------------+--------------+-------------+-----------------+-------------------+---------------------+-----------+--------------+----------+-------------+
+| L_RETURNFLAG | L_LINESTATUS | SUM_QTY     | SUM_BASE_PRICE  | SUM_DISC_PRICE    | SUM_CHARGE          | AVG_QTY   | AVG_PRICE    | AVG_DISC | COUNT_ORDER |
++--------------+--------------+-------------+-----------------+-------------------+---------------------+-----------+--------------+----------+-------------+
+| A            | F            | 37734107.00 | 56586554400.73  | 53758257134.8700  | 55909065222.827692  | 25.522005 | 38273.129734 | 0.049985 | 1478493     |
+| N            | F            | 991417.00   | 1487504710.38   | 1413082168.0541   | 1469649223.194375   | 25.516471 | 38284.467760 | 0.050093 | 38854       |
+| N            | O            | 76633518.00 | 114935210409.19 | 109189591897.4720 | 113561024263.013782 | 25.502019 | 38248.015609 | 0.050000 | 3004998     |
+| R            | F            | 37719753.00 | 56568041380.90  | 53741292684.6040  | 55889619119.831932  | 25.505793 | 38250.854626 | 0.050009 | 1478870     |
++--------------+--------------+-------------+-----------------+-------------------+---------------------+-----------+--------------+----------+-------------+
 
-Time: 0.06030275 seconds. 4 rows.
+Time: 0.080415458 seconds. 4 rows.
 ```
-Observe query execution time decreased from **0.5212925** to **0.06030275** seconds using local acceleration.
+Observe query execution time decreased from **1.398187833** to **0.080415458** seconds using local acceleration.
