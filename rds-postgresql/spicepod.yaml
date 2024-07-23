@@ -10,6 +10,7 @@ datasets:
       pg_port: [Port]
       pg_user: [User]
       pg_pass: ${env:PG_PASS}
+      pg_sslmode: require
     acceleration:
       enabled: true
       refresh_mode: full
