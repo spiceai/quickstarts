@@ -17,6 +17,15 @@ Start the Spice runtime (`spiced`) with the TLS certificate and private key pair
 spiced --tls --tls-certificate-file /path/to/cert.pem --tls-private-key-file /path/to/key.pem
 ```
 
+Alternatively, add the following section to `spicepod.yaml`:
+
+```yaml
+runtime:
+  tls:
+    certificate_file: /path/to/cert.pem
+    key_file: /path/to/key.pem
+```
+
 ## Connect to Spice with TLS
 
 Use `curl` to connect to Spice with the `--cacert` option to specify the CA certificate to use to verify the connection:
