@@ -50,3 +50,7 @@ Quickstarts for [github.com/spiceai/spiceai](https://github.com/spiceai/spiceai)
 - [Data Retention Policy](./retention/README.md)
 - [Refresh Data Window](./refresh-data-window/README.md)
 - [Advanced Data Refresh](./acceleration/data-refresh/README.md)
+
+## Security
+
+- [Securing data in transit via TLS](./tls/README.md)
