@@ -14,7 +14,7 @@ Encrypt traffic between Spice and clients using Transport Layer Security (TLS).
 Start the Spice runtime (`spiced`) with the TLS certificate and private key pair:
 
 ```bash
-spiced --tls --tls-certificate-file /path/to/cert.pem --tls-private-key-file /path/to/key.pem
+spiced --tls-certificate-file /path/to/cert.pem --tls-private-key-file /path/to/key.pem
 ```
 
 Alternatively, add the following section to `spicepod.yaml`:
