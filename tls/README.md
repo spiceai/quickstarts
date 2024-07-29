@@ -4,9 +4,9 @@ Encrypt traffic between Spice and clients using Transport Layer Security (TLS).
 
 ## Pre-requisites
 
-- A TLS certificate and private key pair in PEM format. (i.e. `cert.pem` and `key.pem`)
+- A TLS certificate and private key pair in [PEM](https://en.wikipedia.org/wiki/Privacy-Enhanced_Mail) format. (i.e. `cert.pem` and `key.pem`)
 - The certificate authority (CA) certificate that issued the above certificate in PEM format. (i.e. `ca.pem`)
-  - Generate the above certificates by following the TLS sample if needed: https://github.com/spiceai/samples/tree/trunk/tls
+  - Generate the above certificates by following the [TLS sample](https://github.com/spiceai/samples/tree/trunk/tls) if needed.
 - The latest version of Spice.
 
 ## Start Spice with TLS
