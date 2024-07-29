@@ -55,7 +55,7 @@ Spice can read data straight from a Databricks instance. This guide will create 
 
 1. Confirm that the runtime has loaded the new table (in the original terminal)
     ```shell
-    2024-03-27T05:27:54.051229Z  INFO runtime: Loaded dataset: my_table
+    2024-03-27T05:27:54.051229Z  INFO runtime::accelerated_table::refresh_task: Loaded 150,000 rows (32.14 MiB) for dataset my_table in 4s 710ms.
     ```
 
 1. Check the table exists from the Spice REPL
@@ -65,15 +65,13 @@ Spice can read data straight from a Databricks instance. This guide will create 
 
     show tables; -- list available tables
     sql> show tables
-    +---------------+--------------------+-------------+------------+
-    | table_catalog | table_schema       | table_name  | table_type |
-    +---------------+--------------------+-------------+------------+
-    | datafusion    | public             | my_table    | BASE TABLE |
-    | datafusion    | information_schema | tables      | VIEW       |
-    | datafusion    | information_schema | views       | VIEW       |
-    | datafusion    | information_schema | columns     | VIEW       |
-    | datafusion    | information_schema | df_settings | VIEW       |
-    +---------------+--------------------+-------------+------------+
+    +---------------+--------------+---------------+------------+
+    | table_catalog | table_schema | table_name    | table_type |
+    +---------------+--------------+---------------+------------+
+    | spice         | public       | my_table      | BASE TABLE |
+    | spice         | runtime      | query_history | BASE TABLE |
+    | spice         | runtime      | metrics       | BASE TABLE |
+    +---------------+--------------+---------------+------------+
 
     Time: 0.008540708 seconds
     ```
