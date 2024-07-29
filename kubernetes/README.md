@@ -7,6 +7,8 @@ go install sigs.k8s.io/kind@v0.22.0
 kind create cluster
 ```
 
+See [kind installation](https://kind.sigs.k8s.io/docs/user/quick-start/#installation) for other installation options.
+
 **Step 2.** Install Spice in your Kubernetes cluster using Helm:
 
 ```bash
