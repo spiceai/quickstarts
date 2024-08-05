@@ -8,7 +8,7 @@ Use [Apache Superset](https://superset.apache.org/) to query and visualize datas
 
 Superset requires a Python [DB API 2](https://peps.python.org/pep-0249/) database driver and a [SQLAlchemy](https://www.sqlalchemy.org/) dialect to be installed for each connected datastore. Spice implements a Flight SQL server that understands the DataFusion SQL Dialect. The [`flightsql-dbapi`](https://pypi.org/project/flightsql-dbapi/) library for Python provides the required DB API 2 driver and SQLAlchemy dialect.
 
-The easiest way to connect Apache Superset and Spice is to follow the [`Sales BI` sample](https://github.com/spiceai/samples/tree/trunk/sales-bi). This sample builds a local Docker image based on Apache Superset that is pre-configured with the `flightsql-dbapi` library needed to connect to Spice.
+The easiest way to connect Apache Superset and Spice without an existing Superset instance is to follow the [`Sales BI` sample](https://github.com/spiceai/samples/tree/trunk/sales-bi). This sample builds a local Docker image based on Apache Superset that is pre-configured with the `flightsql-dbapi` library needed to connect to Spice.
 
 Clone the Spice samples repository and navigate to the `sales-bi` directory:
 
@@ -27,9 +27,19 @@ Log into Apache Superset at [http://localhost:8088](http://localhost:8088) with 
 
 Follow the below steps to configure a database connection to Spice manually, or run `make import-dashboards` to automatically configure the connection and create a sample dashboard.
 
+## Manual Configuration
+
+### Install the Spice SQL Dialect
+
+Install the `flightsql-dbapi` Python library on the server or container running the Superset service. This library provides the DB API 2 driver and SQLAlchemy dialect needed to connect to Spice.
+
+```bash
+pip install flightsql-dbapi
+```
+
 ## Configure a Spice Connection
 
-Once Apache Superset is up and running, and you are logged in, you can configure a connection to Spice.
+After Apache Superset is up and running and the `flightsql-dbapi` library is installed, configure a connection to Spice.
 
 Hover over the `Settings` menu and select `Database Connections`.
 
