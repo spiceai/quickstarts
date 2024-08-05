@@ -20,7 +20,7 @@ spice run
 
 **Step 2.** Add the TPC-H Benchmark Spicepod
 
-In another terminal window in the same directory, add the TPC-H Benchmark pod to the Spice runtime.
+In separate terminal, using the same directory, add the TPC-H Benchmark Spicepod to the project.
 
 ```bash
 cd cache-quickstart
@@ -50,7 +50,7 @@ Notice the following line confirming the default cache configuration with cached
 
 **Step 3.** Increase the cached items' expiration time
 
-Stop Spice with `Ctrl-C` and use a text editor to open the `spicepod.yaml` file. Add a custom in-memory caching configuration below to increase the cached items' duration to `5 minutes`. Read [Spice.ai OSS Docs: Results Caching](https://docs.spiceai.org/features/caching) to learn more about the available configuration parameters.
+Using `Ctrl-C`, stop Spice and use a text editor to open the `spicepod.yaml` file. Add a custom in-memory caching configuration below to increase the cached items' duration to `5 minutes`. Read [Spice.ai OSS Docs: Results Caching](https://docs.spiceai.org/features/caching) to learn more about the available configuration parameters.
 
 Before:
 ```
