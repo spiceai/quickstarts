@@ -30,11 +30,15 @@ datasets:
 **Step 3.** Run spice and check number of rows in `taxi_trips`
 
 ```bash
-2024-04-26T04:52:27.387126Z  INFO runtime: Loaded dataset: taxi_trips
-2024-04-26T04:52:27.387255Z  INFO runtime::flight: Spice Runtime Flight listening on 127.0.0.1:50051
-2024-04-26T04:52:27.387706Z  INFO runtime::opentelemetry: Spice Runtime OpenTelemetry listening on 127.0.0.1:50052
-2024-04-26T04:52:27.388588Z  INFO runtime::accelerated_table: [refresh] Refreshing data for taxi_trips
-2024-04-26T04:52:27.392075Z  INFO runtime::http: Spice Runtime HTTP listening on 127.0.0.1:8090
+Spice.ai runtime starting...
+2024-08-05T14:35:55.354700Z  INFO runtime::flight: Spice Runtime Flight listening on 127.0.0.1:50051
+2024-08-05T14:35:55.354775Z  INFO runtime::metrics_server: Spice Runtime Metrics listening on 127.0.0.1:9090
+2024-08-05T14:35:55.354672Z  INFO runtime: Initialized results cache; max size: 128.00 MiB, item ttl: 1s
+2024-08-05T14:35:55.354940Z  INFO runtime::http: Spice Runtime HTTP listening on 127.0.0.1:8090
+2024-08-05T14:35:55.362078Z  INFO runtime::opentelemetry: Spice Runtime OpenTelemetry listening on 127.0.0.1:50052
+2024-08-05T14:35:56.584438Z  INFO runtime: Dataset taxi_trips registered (s3://spiceai-demo-datasets/taxi_trips/2024/), acceleration (arrow), results cache enabled.
+2024-08-05T14:35:56.585614Z  INFO runtime::accelerated_table::refresh_task: Loading data for dataset taxi_trips
+2024-08-05T14:36:06.654548Z  INFO runtime::accelerated_table::refresh_task: Loaded 2,964,624 rows (421.71 MiB) for dataset taxi_trips in 10s 68ms.
 ```
 
 Run `spice sql` to check the number of rows and the 5 earliest records sorted by `tpep_pickup_datetime`
@@ -88,10 +92,10 @@ datasets:
 Check if dataset has been reloaded
 
 ```bash
-2024-04-26T04:52:52.817130Z  INFO runtime: Hot reloading accelerated dataset: taxi_trips...
-2024-04-26T04:52:54.313989Z  INFO runtime::accelerated_table: [refresh] Refreshing data for taxi_trips
-2024-04-26T04:53:13.355254Z  INFO runtime: Accelerated table for dataset taxi_trips is ready
-2024-04-26T04:53:13.355293Z  INFO runtime: Loaded dataset: taxi_trips
+2024-08-05T14:36:11.552233Z  INFO runtime: Updating accelerated dataset taxi_trips...
+2024-08-05T14:36:12.777384Z  INFO runtime::accelerated_table::refresh_task: Loading data for dataset taxi_trips
+2024-08-05T14:36:21.990860Z  INFO runtime::accelerated_table::refresh_task: Loaded 2,964,619 rows (421.58 MiB) for dataset taxi_trips in 9s 213ms.
+2024-08-05T14:36:23.197896Z  INFO runtime: Dataset taxi_trips registered (s3://spiceai-demo-datasets/taxi_trips/2024/), acceleration (arrow), results cache enabled.
 
 ```
 
