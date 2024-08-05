@@ -20,7 +20,7 @@ spice run
 
 **Step 2.** Add the TPC-H Benchmark Spicepod
 
-In separate terminal, using the same directory, add the TPC-H Benchmark Spicepod to the project.
+In a separate terminal, using the same directory, add the TPC-H Benchmark Spicepod to the project.
 
 ```bash
 cd cache-quickstart
