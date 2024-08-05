@@ -18,7 +18,7 @@ cd cache-quickstart
 spice run
 ```
 
-**Step 2.** Add the TPC-H Benchmark pod
+**Step 2.** Add the TPC-H Benchmark Spicepod
 
 In another terminal window in the same directory, add the TPC-H Benchmark pod to the Spice runtime.
 
