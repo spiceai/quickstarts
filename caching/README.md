@@ -18,36 +18,39 @@ cd cache-quickstart
 spice run
 ```
 
-**Step 2.** Add the TPC-H Benchmark pod
+**Step 2.** Add the TPC-H Benchmark Spicepod
+
+In a separate terminal, using the same directory, add the TPC-H Benchmark Spicepod to the project.
 
 ```bash
+cd cache-quickstart
 spice add spiceai/tpch
 ```
 
 The following output is shown in the Spice runtime terminal:
 
 ```bash
-2024-05-23T21:50:44.372314Z  INFO spiced: Metrics listening on 127.0.0.1:9090
-2024-05-23T21:50:44.372986Z  INFO runtime: Initialized results cache; max size: 128.00 MiB, item ttl: 1s
-2024-05-23T21:50:45.861161Z  INFO runtime: Registered dataset customer
-2024-05-23T21:50:47.283554Z  INFO runtime: Registered dataset lineitem
-2024-05-23T21:51:02.082094Z  INFO runtime: Registered dataset nation
-2024-05-23T21:51:03.318695Z  INFO runtime: Registered dataset orders
-2024-05-23T21:51:04.800068Z  INFO runtime: Registered dataset part
-2024-05-23T21:51:06.165243Z  INFO runtime: Registered dataset partsupp
-2024-05-23T21:51:08.075131Z  INFO runtime: Registered dataset region
-2024-05-23T21:51:09.332552Z  INFO runtime: Registered dataset supplier
+2024-08-05T05:25:10.627005Z  INFO runtime::metrics_server: Spice Runtime Metrics listening on 127.0.0.1:9090
+2024-08-05T05:25:10.628875Z  INFO runtime: Initialized results cache; max size: 128.00 MiB, item ttl: 1s
+2024-08-05T05:26:50.262092Z  INFO runtime: Dataset customer registered (s3://spiceai-demo-datasets/tpch/customer/), results cache enabled.
+2024-08-05T05:26:51.569841Z  INFO runtime: Dataset lineitem registered (s3://spiceai-demo-datasets/tpch/lineitem/), results cache enabled.
+2024-08-05T05:26:52.871013Z  INFO runtime: Dataset nation registered (s3://spiceai-demo-datasets/tpch/nation/), results cache enabled.
+2024-08-05T05:26:54.201229Z  INFO runtime: Dataset orders registered (s3://spiceai-demo-datasets/tpch/orders/), results cache enabled.
+2024-08-05T05:26:55.583954Z  INFO runtime: Dataset part registered (s3://spiceai-demo-datasets/tpch/part/), results cache enabled.
+2024-08-05T05:26:56.933827Z  INFO runtime: Dataset partsupp registered (s3://spiceai-demo-datasets/tpch/partsupp/), results cache enabled.
+2024-08-05T05:26:58.182547Z  INFO runtime: Dataset region registered (s3://spiceai-demo-datasets/tpch/region/), results cache enabled.
+2024-08-05T05:26:59.501475Z  INFO runtime: Dataset supplier registered (s3://spiceai-demo-datasets/tpch/supplier/), results cache enabled.
 ```
 
 Notice the following line confirming the default cache configuration with cached items expiration time of 1 second is loaded.
 
 ```bash
-2024-05-23T21:50:44.372986Z  INFO runtime: Initialized query results cache; max size: 128.00 MiB, item ttl: 1s
+2024-08-05T05:25:10.628875Z  INFO runtime: Initialized results cache; max size: 128.00 MiB, item ttl: 1s
 ```
 
 **Step 3.** Increase the cached items' expiration time
 
-Stop Spice and use a text editor to open the `spicepod.yaml` file. Add a custom in-memory caching configuration below to increase the cached items' duration to `5 minutes`. Read [Spice.ai OSS Docs: Results Caching](https://docs.spiceai.org/features/caching) to learn more on configuration parameters.
+Using `Ctrl-C`, stop Spice and use a text editor to open the `spicepod.yaml` file. Add a custom in-memory caching configuration below to increase the cached items' duration to `5 minutes`. Read [Spice.ai OSS Docs: Results Caching](https://docs.spiceai.org/features/caching) to learn more about the available configuration parameters.
 
 Before:
 ```
@@ -82,16 +85,16 @@ spice run
 The following output is shown in the Spice runtime terminal, confirming the updated in-memory caching settings (`300s`):
 
 ```bash
-2024-05-23T22:02:36.899534Z  INFO spiced: Metrics listening on 127.0.0.1:9090
-2024-05-23T22:02:36.900280Z  INFO runtime: Initialized results cache; max size: 128.00 MiB, item ttl: 300s
-2024-05-23T22:02:38.683392Z  INFO runtime: Registered dataset customer
-2024-05-23T22:02:40.054125Z  INFO runtime: Registered dataset lineitem
-2024-05-23T22:02:41.194782Z  INFO runtime: Registered dataset nation
-2024-05-23T22:02:42.459436Z  INFO runtime: Registered dataset orders
-2024-05-23T22:02:43.806835Z  INFO runtime: Registered dataset part
-2024-05-23T22:02:45.081951Z  INFO runtime: Registered dataset partsupp
-2024-05-23T22:02:46.261342Z  INFO runtime: Registered dataset region
-2024-05-23T22:02:47.533180Z  INFO runtime: Registered dataset supplier
+2024-08-05T05:29:06.876281Z  INFO runtime::metrics_server: Spice Runtime Metrics listening on 127.0.0.1:9090
+2024-08-05T05:29:06.876579Z  INFO runtime: Initialized results cache; max size: 128.00 MiB, item ttl: 300s
+2024-08-05T05:29:08.395163Z  INFO runtime: Dataset region registered (s3://spiceai-demo-datasets/tpch/region/), results cache enabled.
+2024-08-05T05:29:08.399137Z  INFO runtime: Dataset nation registered (s3://spiceai-demo-datasets/tpch/nation/), results cache enabled.
+2024-08-05T05:29:08.399887Z  INFO runtime: Dataset supplier registered (s3://spiceai-demo-datasets/tpch/supplier/), results cache enabled.
+2024-08-05T05:29:08.402294Z  INFO runtime: Dataset orders registered (s3://spiceai-demo-datasets/tpch/orders/), results cache enabled.
+2024-08-05T05:29:08.404676Z  INFO runtime: Dataset partsupp registered (s3://spiceai-demo-datasets/tpch/partsupp/), results cache enabled.
+2024-08-05T05:29:08.533932Z  INFO runtime: Dataset part registered (s3://spiceai-demo-datasets/tpch/part/), results cache enabled.
+2024-08-05T05:29:08.573218Z  INFO runtime: Dataset lineitem registered (s3://spiceai-demo-datasets/tpch/lineitem/), results cache enabled.
+2024-08-05T05:29:08.712402Z  INFO runtime: Dataset customer registered (s3://spiceai-demo-datasets/tpch/customer/), results cache enabled.
 ```
 
 **Step 3.** Run queries against the dataset using the Spice SQL REPL.
@@ -144,7 +147,7 @@ Time: 4.178523666 seconds. 4 rows.
 
 Execute the same query again and observe a significant reduction in query execution time, from **4.178523666** to **0.004944792** seconds, due to the result being retrieved from the in-memory cache. The cached item will expire 5 minutes after the initial query execution. 
 
-```
+```sql
 +--------------+--------------+-------------+-----------------+-------------------+---------------------+-----------+--------------+----------+-------------+
 | l_returnflag | l_linestatus | sum_qty     | sum_base_price  | sum_disc_price    | sum_charge          | avg_qty   | avg_price    | avg_disc | count_order |
 +--------------+--------------+-------------+-----------------+-------------------+---------------------+-----------+--------------+----------+-------------+
@@ -155,5 +158,4 @@ Execute the same query again and observe a significant reduction in query execut
 +--------------+--------------+-------------+-----------------+-------------------+---------------------+-----------+--------------+----------+-------------+
 
 Time: 0.004944792 seconds. 4 rows.
-
 ```
