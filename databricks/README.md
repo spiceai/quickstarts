@@ -53,9 +53,9 @@ Spice can read data straight from a Databricks instance. This guide will create 
       databricks_cluster_id: <cluster id>
     ```
 
-1. Confirm that the runtime has loaded the new table (in the original terminal)
+1. Confirm that the runtime has registered the new table (in the original terminal)
     ```shell
-    2024-03-27T05:27:54.051229Z  INFO runtime::accelerated_table::refresh_task: Loaded 150,000 rows (32.14 MiB) for dataset my_table in 4s 710ms.
+    2024-03-27T05:27:54.051229Z  INFO runtime: Dataset my_table registered (databricks:spice_data.public.awesome_table), results cache enabled.
     ```
 
 1. Check the table exists from the Spice REPL
