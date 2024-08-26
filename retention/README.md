@@ -31,13 +31,16 @@ datasets:
 
 When dataset is being refreshed, the retention policy won't evict any data as 0 rows are loaded.
 ```bash
-2024-04-22T04:17:24.374905Z  INFO runtime: Loaded dataset: taxi_trips
-2024-04-22T04:17:24.375694Z  INFO runtime::accelerated_table: [retention] Evicting data for taxi_trips where tpep_pickup_datetime < 2020-04-23T04:17:24+00:00...
-2024-04-22T04:17:24.376073Z  INFO runtime::http: Spice Runtime HTTP listening on 127.0.0.1:8090
-2024-04-22T04:17:24.376110Z  INFO runtime::flight: Spice Runtime Flight listening on 127.0.0.1:50051
-2024-04-22T04:17:24.376393Z  INFO runtime::opentelemetry: Spice Runtime OpenTelemetry listening on 127.0.0.1:50052
-2024-04-22T04:17:24.377709Z  INFO runtime::accelerated_table: Refreshing data for taxi_trips
-2024-04-22T04:17:24.382154Z  INFO runtime::accelerated_table: [retention] Evicted 0 records for taxi_trips
+2024-08-26T22:58:35.727218Z  INFO runtime::flight: Spice Runtime Flight listening on 127.0.0.1:50051
+2024-08-26T22:58:35.727245Z  INFO runtime::metrics_server: Spice Runtime Metrics listening on 127.0.0.1:9090
+2024-08-26T22:58:35.729973Z  INFO runtime::http: Spice Runtime HTTP listening on 127.0.0.1:8090
+2024-08-26T22:58:35.732064Z  INFO runtime::opentelemetry: Spice Runtime OpenTelemetry listening on 127.0.0.1:50052
+2024-08-26T22:58:35.929371Z  INFO runtime: Initialized results cache; max size: 128.00 MiB, item ttl: 1s
+2024-08-26T22:58:36.532031Z  INFO runtime: Dataset taxi_trips registered (s3://spiceai-demo-datasets/taxi_trips/2024/), acceleration (arrow, 10m refresh, 60s retention), results cache enabled.
+2024-08-26T22:58:36.533166Z  INFO runtime::accelerated_table::refresh_task: Loading data for dataset taxi_trips
+2024-08-26T22:58:36.533272Z  INFO runtime::accelerated_table: [retention] Evicting data for taxi_trips where tpep_pickup_datetime < 2020-08-27T22:58:36+00:00...
+2024-08-26T22:58:36.534969Z  INFO runtime::accelerated_table: [retention] Evicted 0 records for taxi_trips
+2024-08-26T22:58:43.217885Z  INFO runtime::accelerated_table::refresh_task: Loaded 2,964,624 rows (421.71 MiB) for dataset taxi_trips in 6s 684ms.
 ```
 
 **Step 4.** Run queries against the dataset using the Spice SQL REPL after the dataset is loaded and before the next retention check interval
