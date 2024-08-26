@@ -23,10 +23,10 @@ Add the following configuration to your `spicepod.yaml`:
 
 ```yaml
 catalogs:
-  - name: unity_catalog:https://<unity_catalog_host>/api/2.1/unity-catalog/catalogs/<catalog_name>
-    from: uc
+  - from: unity_catalog:https://<unity_catalog_host>/api/2.1/unity-catalog/catalogs/<catalog_name>
+    name: uc
     params:
-      # Configure the object store credentials here
+      # Configure the object store credentials here. Not required when running Unity Catalog locally.
 ```
 
 The Unity Catalog connector only supports Delta Lake tables and requires specifying the object store credentials to connect to the Delta Lake tables.
