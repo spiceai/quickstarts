@@ -12,7 +12,7 @@ This quickstart will use a demo instance of MySQL with a dataset generated using
 Invoke MySQL in the prompt.
 
 ```bash
-MySQL
+mysql -u USERNAME -pPASSWORD
 ```
 
 Inside MySQL, create and use a sample MySQL database named `spice_demo`.
@@ -75,6 +75,10 @@ Call the stored procedure to generate data in `sample_data`.
 CALL sample_data_gen();
 ```
 
+```bash
+Query OK, 1 row affected (1.92 sec)
+```
+
 Drop the stored procedure.
 
 ```SQL
@@ -85,6 +89,24 @@ Check the sample data generated in the `sample_data` table.
 
 ```SQL
 SELECT * FROM sample_data LIMIT 10;
+```
+
+```bash
++----+---------------------+--------+----------+--------------------+-----------------+----------+---------+------------+-------------+
+| id | datetime            | name   | phone    | email              | street_address  | zip_code | region  | latitude   | longitude   |
++----+---------------------+--------+----------+--------------------+-----------------+----------+---------+------------+-------------+
+|  1 | 2024-04-21 17:26:52 | Name49 | 555-5584 | user30@example.com | Street85 Avenue | 36728    | Region2 | -50.484340 |  -70.260682 |
+|  2 | 2024-11-11 23:19:51 | Name41 | 555-4699 | user10@example.com | Street13 Avenue | 36252    | Region3 |  72.269701 |  -66.940222 |
+|  3 | 2024-11-12 01:13:48 | Name38 | 555-3363 | user52@example.com | Street59 Avenue | 42688    | Region3 | -14.786284 | -154.742840 |
+|  4 | 2024-02-05 12:45:07 | Name27 | 555-0867 | user60@example.com | Street77 Avenue | 04347    | Region8 | -23.942890 | -130.868949 |
+|  5 | 2024-07-31 07:16:24 | Name49 | 555-7441 | user22@example.com | Street90 Avenue | 85108    | Region5 | -68.518797 |  177.533816 |
+|  6 | 2024-08-09 21:41:31 | Name5  | 555-4727 | user18@example.com | Street51 Avenue | 00585    | Region4 | -11.677234 |   73.445000 |
+|  7 | 2024-03-19 10:41:05 | Name96 | 555-1629 | user93@example.com | Street16 Avenue | 02943    | Region6 | -56.949324 |  163.769050 |
+|  8 | 2024-03-22 17:50:09 | Name25 | 555-5982 | user22@example.com | Street35 Avenue | 07752    | Region3 | -16.818093 | -162.236694 |
+|  9 | 2024-01-10 21:38:38 | Name98 | 555-8541 | user30@example.com | Street98 Avenue | 00167    | Region0 | -46.053884 | -154.358929 |
+| 10 | 2024-08-15 17:31:51 | Name90 | 555-6528 | user54@example.com | Street79 Avenue | 30242    | Region1 |  53.699951 |   24.584954 |
++----+---------------------+--------+----------+--------------------+-----------------+----------+---------+------------+-------------+
+10 rows in set (0.00 sec)
 ```
 
 **Step 2.** Inside MySQL, check the users in the local MySQL instance. Use any of the users from your query result in the later configuration of `mysql_user` in spicepod.yaml.
@@ -109,23 +131,7 @@ spice init mysql-demo
 cd mysql-demo
 ```
 
-**Step 4.** Start the Spice runtime.
-
-```bash
-spice run
-```
-
-The Spice runtime terminal will show that Spice Runtime is running.
-
-```
-Spice.ai runtime starting...
-2024-05-06T22:15:57.688215Z  INFO spiced: Metrics listening on 127.0.0.1:9090
-2024-05-06T22:15:57.690288Z  INFO runtime::opentelemetry: Spice Runtime OpenTelemetry listening on 127.0.0.1:50052
-2024-05-06T22:15:57.692557Z  INFO runtime::http: Spice Runtime HTTP listening on 127.0.0.1:8090
-2024-05-06T22:15:57.692571Z  INFO runtime::flight: Spice Runtime Flight listening on 127.0.0.1:50051
-```
-
-**Step 5.** Configure the dataset to connect to MySQL. Copy and paste the configuration below to `spicepod.yaml` in the Spice app.
+**Step 4.** Configure the dataset to connect to MySQL. Copy and paste the configuration below to `spicepod.yaml` in the Spice app.
 
 ```yaml
 version: v1beta1
@@ -149,17 +155,17 @@ Ensure the `MYSQL_PASS` environment variable is set to the password for your MyS
 echo "MYSQL_PASS=<password>" > .env
 ```
 
-Save the changes in `spicepod.yaml`. The Spice runtime terminal will show that the dataset has been loaded:
+**Step 5.** Start the Spice runtime
 
-```
-2024-05-06T22:16:26.412307Z  INFO runtime: Loaded dataset my_dataset
+```bash
+spice run
 ```
 
 Follow the [quickstart guide](https://docs.spiceai.org/getting-started) to get started with the Spice.ai runtime.
 
 See the [datasets reference](https://docs.spiceai.org/reference/spicepod/datasets) for more dataset configuration options.
 
-**Step 5.** Run queries against the dataset using the Spice SQL REPL.
+**Step 6.** Run queries against the dataset using the Spice SQL REPL.
 
 In a new terminal, start the Spice SQL REPL
 
