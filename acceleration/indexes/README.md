@@ -19,22 +19,23 @@ wget https://public-data.spiceai.org/large_eth_traces.parquet
 **Step 3.** Add the spicepod with indexes configured
 
 Add the following to your `spicepod.yaml`. Be sure to replace `path/to/large_eth_traces.parquet` with the absolute path to the downloaded dataset.
+
 ```yaml
 datasets:
-- from: file://path/to/large_eth_traces.parquet
-  name: traces
-  acceleration:
-    enabled: true
-    engine: sqlite
-    mode: file
-    indexes:
-      trace_id: enabled
-- from: file://path/to/large_eth_traces.parquet
-  name: traces_no_index
-  acceleration:
-    enabled: true
-    engine: sqlite
-    mode: file
+  - from: file://path/to/large_eth_traces.parquet
+    name: traces
+    acceleration:
+      enabled: true
+      engine: duckdb
+      mode: file
+      indexes:
+        trace_id: enabled
+  - from: file://path/to/large_eth_traces.parquet
+    name: traces_no_index
+    acceleration:
+      enabled: true
+      engine: duckdb
+      mode: file
 ```
 
 **Step 4.** Start Spice
