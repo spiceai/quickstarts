@@ -15,7 +15,7 @@ Invoke MySQL in the prompt.
 mysql -u USERNAME -pPASSWORD
 ```
 
-Inside MySQL, create and use a sample MySQL database named `spice_demo`.
+Using the MySQL console, create a sample database named `spice_demo`.
 
 ```SQL
 CREATE DATABASE spice_demo;
