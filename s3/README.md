@@ -188,7 +188,7 @@ SPICE_AWS_SECRET_ACCESS_KEY=<aws_secret_access_key>
 
 **Step 6.** Configure spicepod to contain correct s3_region
 
-s3_region parameter is [defaulted to us-east-1](https://docs.spiceai.org/components/data-connectors/s3). Update the spicepod to include s3_region parameter if your s3 bucket is not in ` us-east-1`
+s3_region parameter [defaults to us-east-1](https://docs.spiceai.org/components/data-connectors/s3). Update the spicepod to include s3_region parameter if your s3 bucket is not in ` us-east-1`
 
 ```
 from: s3://yourcompany-bucketname-datasets/taxi_trips/
