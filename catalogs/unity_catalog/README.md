@@ -26,8 +26,7 @@ catalogs:
   - from: unity_catalog:https://<unity_catalog_host>/api/2.1/unity-catalog/catalogs/<catalog_name>
     name: uc
     params:
-      # Configure the object store credentials here
-      # This isn't required if running Unity Catalog locally
+      # Configure the object store credentials here. Not required when running Unity Catalog locally.
 ```
 
 The Unity Catalog connector only supports Delta Lake tables and requires specifying the object store credentials to connect to the Delta Lake tables.
