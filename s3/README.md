@@ -62,11 +62,11 @@ from: s3://spiceai-demo-datasets/taxi_trips/2024/
 name: taxi_trips
 description: taxi trips in s3
 params:
-    file_format: parquet
+  file_format: parquet
 acceleration:
-    enabled: true
-    refresh_mode: full
-    refresh_check_interval: 10s
+  enabled: true
+  refresh_mode: full
+  refresh_check_interval: 10s
 ```
 
 The following output is shown in the Spice runtime terminal:
@@ -147,12 +147,12 @@ Time: 0.0240065 seconds. 11 rows.
       {
         "Effect": "Allow",
         "Action": ["s3:ListBucket"],
-        "resource": "arn:aws:s3:::yourcompany-bucketname-datasets"
+        "Resource": "arn:aws:s3:::yourcompany-bucketname-datasets"
       },
       {
         "Effect": "Allow",
         "Action": ["s3:GetObject"],
-        "resource": "arn:aws:s3:::yourcompany-bucketname-datasets/*"
+        "Resource": "arn:aws:s3:::yourcompany-bucketname-datasets/*"
       }
     ]
   }
@@ -186,14 +186,32 @@ SPICE_AWS_ACCESS_KEY_ID=<aws_access_key_id>
 SPICE_AWS_SECRET_ACCESS_KEY=<aws_secret_access_key>
 ```
 
-**Step 5.** Start the Spice runtime.
+**Step 6.** Configure spicepod to contain correct s3_region
+
+s3_region parameter is [defaulted to us-east-1](https://docs.spiceai.org/components/data-connectors/s3). Update the spicepod to include s3_region parameter if your s3 bucket is not in ` us-east-1`
+
+```
+from: s3://yourcompany-bucketname-datasets/taxi_trips/
+name: taxi_trips
+description: taxi trips in s3
+params:
+  file_format: parquet
+  s3_region: yourcompany-bucket-region
+acceleration:
+  enabled: true
+  refresh_mode: full
+  refresh_check_interval: 10s
+
+```
+
+**Step 6.** Start the Spice runtime.
 
 ```bash
 cd s3-demo-project
 spice run
 ```
 
-**Step 6.** Configure the dataset to connect to S3:
+**Step 7.** Configure the dataset to connect to S3:
 
 ```bash
 spice dataset configure
@@ -249,7 +267,7 @@ Spice.ai runtime starting...
 2024-07-23T00:35:59.390722Z  INFO runtime::accelerated_table::refresh_task: Loaded 2,964,624 rows (421.71 MiB) for dataset taxi_trips in 16s 672ms.
 ```
 
-**Step 7.** Run queries against the dataset using the Spice SQL REPL.
+**Step 8.** Run queries against the dataset using the Spice SQL REPL.
 
 ```sql
 sql> select avg(total_amount), avg(tip_amount), count(1), passenger_count from taxi_trips group by passenger_count order by passenger_count asc;
