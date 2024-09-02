@@ -10,6 +10,7 @@ datasets:
       mysql_tcp_port: [Port]
       mysql_user: [User]
       mysql_pass: ${env:MYSQL_PASS}
+      mysql_sslmode: disabled
     acceleration:
       enabled: true
       refresh_mode: full
