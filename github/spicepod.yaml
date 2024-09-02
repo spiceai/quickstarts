@@ -3,7 +3,7 @@ kind: Spicepod
 name: spicepod-graphql-spicehq-decisions
 
 datasets:
-  - from: github:github.com/spiceai/spiceai/files/v0.17.2-beta
+  - from: github:github.com/spiceai/spiceai/files/trunk
     name: spiceai.files
     params:
       github_access_token: ${secrets:GITHUB_TOKEN}
