@@ -36,15 +36,14 @@ Spice.ai runtime starting...
 2024-09-02T16:54:21.389815Z  INFO runtime::accelerated_table::refresh_task: Loading data for dataset spiceai.pulls
 ```
 
+Wait until all datasets are loaded:
+
 ```console
-...
 2024-09-02T16:54:22.576036Z  INFO runtime::accelerated_table::refresh_task: Loaded 66 rows (369.35 kiB) for dataset spiceai.files in 3s 361ms.
 2024-09-02T16:54:35.370411Z  INFO runtime::accelerated_table::refresh_task: Loaded 749 rows (4.47 MiB) for dataset spiceai.issues in 15s 13ms.
 2024-09-02T16:54:36.901489Z  INFO runtime::accelerated_table::refresh_task: Loaded 1,558 rows (3.87 MiB) for dataset spiceai.commits in 17s 428ms.
 2024-09-02T16:56:01.276622Z  INFO runtime::accelerated_table::refresh_task: Loaded 1,706 rows (8.57 MiB) for dataset spiceai.pulls in 1m 39s 886ms.
 ```
-
-Wait until all datasets are loaded
 
 **Step 3.** Run `spice sql` in a new terminal to start an interactive SQL query session against the Spice runtime.
 
