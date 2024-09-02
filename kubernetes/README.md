@@ -62,3 +62,17 @@ EOF
 ```bash
 helm upgrade spiceai spiceai/spiceai -f values.yaml
 ```
+
+## Clean up
+
+Uninstall the Spice Helm chart:
+
+```bash
+helm uninstall spiceai
+```
+
+Delete the Kind cluster:
+
+```bash
+kind delete cluster
+```
