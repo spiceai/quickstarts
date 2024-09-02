@@ -4,7 +4,7 @@ Follow these steps to get started with PostgreSQL as a Data Accelerator.
 
 This quickstart will use a demo instance of Postgres. Follow the quickstart to create Postgres instance and get started with Postgres as a Data Accelerator. With Postgres as a Data Accelerator, data sourced by Data Connectors can be **locally materialized and accelerated** into an attached Postgres instance. Unlike other Data Accelerators which are local to Spice, this enables other applications to query the accelerated data via a native integration with Postgres, which Spice keeps up-to-date automatically.
 
-**Preparation**
+## Preparation
 
 - Install [PostgresSQL](https://www.postgresql.org/download/). Once downloaded and installed, run the following commands:
 
@@ -28,12 +28,9 @@ export PGUSER=postgres
 ```
 
 - Spice is installed (see the [Getting Started](https://docs.spiceai.org/getting-started) documentation).
+- An account created with the [Spice.ai Cloud Platform](https://spice.ai).
 
-- [Login](https://docs.spiceai.org/cli/reference/login) to Spice, since this quickstart is using [Spice.ai Data Connector](https://docs.spiceai.org/data-connectors/spiceai).
-
-```bash
-spice login
-```
+## Quickstart
 
 **Step 1.** Create a Postgres database for testing.
 
@@ -56,7 +53,15 @@ spice init postgres-demo
 cd postgres-demo
 ```
 
-**Step 3.** Start the Spice runtime.
+**Step 3.** [Login](https://docs.spiceai.org/cli/reference/login) to use the [Spice.ai Data Connector](https://docs.spiceai.org/data-connectors/spiceai).
+
+```bash
+spice login
+```
+
+This will create a `.env` file with the Spice.ai API key in the `postgres-demo` directory.
+
+**Step 4.** Start the Spice runtime.
 
 ```bash
 spice run
@@ -64,7 +69,7 @@ spice run
 
 The Spice runtime terminal will show that Spice Runtime is running.
 
-```
+```console
 Spice.ai runtime starting...
 2024-05-07T01:01:40.566270Z  INFO spiced: Metrics listening on 127.0.0.1:9090
 2024-05-07T01:01:40.566873Z  INFO runtime::flight: Spice Runtime Flight listening on 127.0.0.1:50051
@@ -72,7 +77,13 @@ Spice.ai runtime starting...
 2024-05-07T01:01:40.568738Z  INFO runtime::http: Spice Runtime HTTP listening on 127.0.0.1:8090
 ```
 
-**Step 4.** Configure the dataset to use Postgres as data accelerator. Copy and paste the configuration below to `spicepod.yaml` in the Spice app.
+**Step 5.** Configure the dataset to use Postgres as data accelerator. Copy and paste the configuration below to `spicepod.yaml` in the Spice app.
+
+Ensure the `PG_PASS` environment variable is set to the password for your Postgres instance. Environment variables can be specified on the command line when running the Spice runtime, or in the same `.env` file created in Step 3.
+
+```bash
+echo "PG_PASS=<password>" > .env
+```
 
 ```yaml
 version: v1beta1
@@ -95,15 +106,9 @@ datasets:
         pg_pass: ${env:PG_PASS}
 ```
 
-Ensure the `PG_PASS` environment variable is set to the password for your Postgres instance. Environment variables can be specified on the command line when running the Spice runtime, or in a `.env` file in the same directory as `spicepod.yaml`.
-
-```bash
-echo "PG_PASS=<password>" > .env
-```
-
 Save the changes to `spicepod.yaml`. The Spice runtime terminal will show that the dataset has been loaded:
 
-```
+```console
 2024-05-07T23:56:44.094995Z  INFO runtime: Loaded dataset eth_recent_blocks
 2024-05-07T23:56:44.095902Z  INFO runtime::accelerated_table: [refresh] Loading data for dataset eth_recent_blocks
 ```
@@ -112,7 +117,7 @@ Follow the [quickstart guide](https://docs.spiceai.org/getting-started) to get s
 
 See the [datasets reference](https://docs.spiceai.org/reference/spicepod/datasets) for more dataset configuration options.
 
-**Step 5.** Run queries against the dataset using the Spice SQL REPL.
+**Step 6.** Run queries against the dataset using the Spice SQL REPL.
 
 In a new terminal, start the Spice SQL REPL
 
