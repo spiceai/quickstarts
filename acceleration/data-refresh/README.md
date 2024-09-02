@@ -81,7 +81,8 @@ datasets:
 ```
 
 Save the file and note that the dataset has been updated:
-```sheel
+
+```console
 2024-08-26T18:45:40.157775Z  INFO runtime: Updating accelerated dataset taxi_trips...
 2024-08-26T18:45:40.619285Z  INFO runtime::accelerated_table::refresh_task: Loading data for dataset taxi_trips
 2024-08-26T18:45:45.620097Z  INFO runtime::accelerated_table::refresh_task: Loaded 405,103 rows (54.93 MiB) for dataset taxi_trips in 5s.
