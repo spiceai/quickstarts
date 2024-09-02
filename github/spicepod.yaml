@@ -6,7 +6,7 @@ datasets:
   - from: github:github.com/spiceai/spiceai/files/trunk
     name: spiceai.files
     params:
-      github_access_token: ${secrets:GITHUB_TOKEN}
+      github_token: ${secrets:GITHUB_TOKEN}
       include: "**/*.md"
     acceleration:
       enabled: true
@@ -14,20 +14,20 @@ datasets:
   - from: github:github.com/spiceai/spiceai/issues
     name: spiceai.issues
     params:
-      github_access_token: ${secrets:GITHUB_TOKEN}
+      github_token: ${secrets:GITHUB_TOKEN}
     acceleration:
       enabled: true
 
   - from: github:github.com/spiceai/spiceai/pulls
     name: spiceai.pulls
     params:
-      github_access_token: ${secrets:GITHUB_TOKEN}
+      github_token: ${secrets:GITHUB_TOKEN}
     acceleration:
       enabled: true
 
   - from: github:github.com/spiceai/spiceai/commits
     name: spiceai.commits
     params:
-      github_access_token: ${secrets:GITHUB_TOKEN}
+      github_token: ${secrets:GITHUB_TOKEN}
     acceleration:
       enabled: true
