@@ -28,6 +28,7 @@ Quickstarts for [github.com/spiceai/spiceai](https://github.com/spiceai/spiceai)
 - [Clickhouse Data Connector](./clickhouse/README.md)
 - [Snowflake Data Connector](./snowflake/README.md)
 - [GraphQL Data Connector](./graphql/README.md)
+- [GitHub Data Connector](./github/README.md)
 
 ## Connecting to Data Sources with Catalog Connectors
 
