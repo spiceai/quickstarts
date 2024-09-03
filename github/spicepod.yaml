@@ -7,7 +7,7 @@ datasets:
     name: spiceai.files
     params:
       github_token: ${secrets:GITHUB_TOKEN}
-      include: "**/*.md"
+      include: '**/*.md'
     acceleration:
       enabled: true
 
@@ -27,6 +27,13 @@ datasets:
 
   - from: github:github.com/spiceai/spiceai/commits
     name: spiceai.commits
+    params:
+      github_token: ${secrets:GITHUB_TOKEN}
+    acceleration:
+      enabled: true
+
+  - from: github:github.com/spiceai/spiceai/stargazers
+    name: spiceai.stargazers
     params:
       github_token: ${secrets:GITHUB_TOKEN}
     acceleration:
