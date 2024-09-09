@@ -2,13 +2,13 @@ version: v1beta1
 kind: Spicepod
 name: rds_aurora_mysql_quickstart
 datasets:
-  - from: mysql:[remote_table_path]
-    name: [local_table_name]
+  - from: mysql:tpch.region
+    name: loc
     params:
-      mysql_host: [db-host]
-      mysql_tcp_port: [db-port]
-      mysql_db: [db-name]
-      mysql_user: [username]
+      mysql_host: spice-aurora-mysql-db.cluster-ro-cfaeegw6e8w0.us-east-2.rds.amazonaws.com
+      mysql_tcp_port: 3306
+      mysql_db: spice_test_db
+      mysql_user: admin
       mysql_pass: ${env:MYSQL_PASS}
       mysql_sslmode: preferred # "required" is default
     acceleration:

@@ -1,15 +1,17 @@
 version: v1beta1
 kind: Spicepod
 name: supabase_quickstart
+
+
 datasets:
-  - from: postgres:[remote_table_path]
-    name: [local_table_name]
+  - from: postgres:weather
+    name: test
     params:
-      pg_host: [Host]
-      pg_db: [Database name]
-      pg_port: [Port]
-      pg_user: [User]
-      pg_pass: ${env:PG_PASS}
+      pg_host: aws-0-us-east-1.pooler.supabase.com
+      pg_db: postgres
+      pg_port: 5432
+      pg_user: postgres.uilszanxlcsfkureohgw
+      pg_pass: 3HSnDmlsbpgd3OdP
       pg_sslmode: require # "verify-full" is default
     acceleration:
       enabled: true
