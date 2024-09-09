@@ -61,6 +61,12 @@ spice login
 
 This will create a `.env` file with the Spice.ai API key in the `postgres-demo` directory.
 
+Also, ensure the `PG_PASS` environment variable is set to the password for your Postgres instance. Environment variables can be specified on the command line when running the Spice runtime, or in the same `.env` file created in Step 3.
+
+```bash
+echo "PG_PASS=<password>" >> .env
+```
+
 **Step 4.** Start the Spice runtime.
 
 ```bash
@@ -78,12 +84,6 @@ Spice.ai runtime starting...
 ```
 
 **Step 5.** Configure the dataset to use Postgres as data accelerator. Copy and paste the configuration below to `spicepod.yaml` in the Spice app.
-
-Ensure the `PG_PASS` environment variable is set to the password for your Postgres instance. Environment variables can be specified on the command line when running the Spice runtime, or in the same `.env` file created in Step 3.
-
-```bash
-echo "PG_PASS=<password>" > .env
-```
 
 ```yaml
 version: v1beta1
