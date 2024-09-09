@@ -34,19 +34,19 @@ spice login dremio -u demo -p demo1234
 make
 ```
 
-**Step 5.** Start the Spice runtime.
-
-```bash
-spice run
-```
-
-**Step 6.** In another terminal window, add the `spiceai/fed-demo` Spicepod from [spicerack.org](https://spicerack.org).
+**Step 5.** Add the `spiceai/fed-demo` Spicepod from [spicerack.org](https://spicerack.org).
 
 ```bash
 spice add spiceai/fed-demo
 ```
 
-**Step 7.** Start the Spice SQL REPL and perform the following SQL queries:
+**Step 6.** Start the Spice runtime.
+
+```bash
+spice run
+```
+
+**Step 7.** In another terminal window, start the Spice SQL REPL and perform the following SQL queries:
 
 ```bash
 spice sql
