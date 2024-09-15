@@ -8,7 +8,9 @@ Quickstarts for [github.com/spiceai/spiceai](https://github.com/spiceai/spiceai)
 
 ## Materializing & accelerating data locally with Data Accelerators
 
+- [DuckDB Data Accelerator](./duckdb/accelerator/README.md)
 - [PostgreSQL Data Accelerator](./postgres/README.md)
+- [SQLIte Data Accelerator](./acceleration/sqlite/README.md)
 
 ## Consuming and visualizing data with clients
 
@@ -24,7 +26,7 @@ Quickstarts for [github.com/spiceai/spiceai](https://github.com/spiceai/spiceai)
 - [Dremio Data Connector](./dremio/README.md)
 - [Spice.ai Cloud Platform Data Connector](./spiceai/README.md)
 - [MySQL Data Connector](./mysql/README.md)
-- [DuckDB Data Connector](./duckdb/README.md) - Use a DuckDB database with sample TPCH data.
+- [DuckDB Data Connector](./duckdb/connector/README.md) - Use a DuckDB database with sample TPCH data.
 - [Clickhouse Data Connector](./clickhouse/README.md)
 - [Snowflake Data Connector](./snowflake/README.md)
 - [GraphQL Data Connector](./graphql/README.md)
