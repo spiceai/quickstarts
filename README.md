@@ -10,7 +10,7 @@ Quickstarts for [github.com/spiceai/spiceai](https://github.com/spiceai/spiceai)
 
 - [DuckDB Data Accelerator](./duckdb/accelerator/README.md)
 - [PostgreSQL Data Accelerator](./postgres/README.md)
-- [SQLIte Data Accelerator](./acceleration/sqlite/README.md)
+- [SQLIte Data Accelerator](./sqlite/accelerator/README.md)
 
 ## Consuming and visualizing data with clients
 
