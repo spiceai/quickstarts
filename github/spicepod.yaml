@@ -17,6 +17,8 @@ datasets:
       github_token: ${secrets:GITHUB_TOKEN}
     acceleration:
       enabled: true
+      refresh_sql: |
+        SELECT * FROM spiceai.issues ORDER by updated_at desc LIMIT 300
 
   - from: github:github.com/spiceai/spiceai/pulls
     name: spiceai.pulls
@@ -24,6 +26,8 @@ datasets:
       github_token: ${secrets:GITHUB_TOKEN}
     acceleration:
       enabled: true
+      refresh_sql: |
+        SELECT * FROM spiceai.pulls ORDER by merged_at desc LIMIT 300
 
   - from: github:github.com/spiceai/spiceai/commits
     name: spiceai.commits
@@ -31,6 +35,8 @@ datasets:
       github_token: ${secrets:GITHUB_TOKEN}
     acceleration:
       enabled: true
+      refresh_sql: |
+        SELECT * FROM spiceai.commits ORDER by committed_date desc LIMIT 300
 
   - from: github:github.com/spiceai/spiceai/stargazers
     name: spiceai.stargazers
@@ -38,3 +44,5 @@ datasets:
       github_token: ${secrets:GITHUB_TOKEN}
     acceleration:
       enabled: true
+      refresh_sql: |
+        SELECT * FROM spiceai.stargazers ORDER by starred_at desc LIMIT 300
