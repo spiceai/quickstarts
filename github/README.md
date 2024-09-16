@@ -21,28 +21,31 @@ cd <path/to/quickstarts/github>
 spice run
 Checking for latest Spice runtime release...
 Spice.ai runtime starting...
-2024-09-02T16:54:18.608286Z  INFO runtime::flight: Spice Runtime Flight listening on 127.0.0.1:50051
-2024-09-02T16:54:18.608420Z  INFO runtime::metrics_server: Spice Runtime Metrics listening on 127.0.0.1:9090
-2024-09-02T16:54:18.608727Z  INFO runtime::http: Spice Runtime HTTP listening on 127.0.0.1:8090
-2024-09-02T16:54:18.610603Z  INFO runtime::opentelemetry: Spice Runtime OpenTelemetry listening on 127.0.0.1:50052
-2024-09-02T16:54:18.803357Z  INFO runtime: Initialized results cache; max size: 128.00 MiB, item ttl: 1s
-2024-09-02T16:54:19.213824Z  INFO runtime: Dataset spiceai.files registered (github:github.com/spiceai/spiceai/files/v0.17.2-beta), acceleration (arrow), results cache enabled.
-2024-09-02T16:54:19.214975Z  INFO runtime::accelerated_table::refresh_task: Loading data for dataset spiceai.files
-2024-09-02T16:54:19.472261Z  INFO runtime: Dataset spiceai.commits registered (github:github.com/spiceai/spiceai/commits), acceleration (arrow), results cache enabled.
-2024-09-02T16:54:19.473454Z  INFO runtime::accelerated_table::refresh_task: Loading data for dataset spiceai.commits
-2024-09-02T16:54:20.356043Z  INFO runtime: Dataset spiceai.issues registered (github:github.com/spiceai/spiceai/issues), acceleration (arrow), results cache enabled.
-2024-09-02T16:54:20.357300Z  INFO runtime::accelerated_table::refresh_task: Loading data for dataset spiceai.issues
-2024-09-02T16:54:21.388544Z  INFO runtime: Dataset spiceai.pulls registered (github:github.com/spiceai/spiceai/pulls), acceleration (arrow), results cache enabled.
-2024-09-02T16:54:21.389815Z  INFO runtime::accelerated_table::refresh_task: Loading data for dataset spiceai.pulls
+2024-09-16T03:58:04.013601Z  INFO runtime::metrics_server: Spice Runtime Metrics listening on 127.0.0.1:9090
+2024-09-16T03:58:04.013775Z  INFO runtime::flight: Spice Runtime Flight listening on 127.0.0.1:50051
+2024-09-16T03:58:04.014420Z  INFO runtime::http: Spice Runtime HTTP listening on 127.0.0.1:8090
+2024-09-16T03:58:04.025747Z  INFO runtime::opentelemetry: Spice Runtime OpenTelemetry listening on 127.0.0.1:50052
+2024-09-16T03:58:04.213793Z  INFO runtime: Initialized results cache; max size: 128.00 MiB, item ttl: 1s
+2024-09-16T03:58:04.514613Z  INFO runtime: Dataset spiceai.files registered (github:github.com/spiceai/spiceai/files/trunk), acceleration (arrow), results cache enabled.
+2024-09-16T03:58:04.516007Z  INFO runtime::accelerated_table::refresh_task: Loading data for dataset spiceai.files
+2024-09-16T03:58:04.697364Z  INFO runtime: Dataset spiceai.commits registered (github:github.com/spiceai/spiceai/commits), acceleration (arrow), results cache enabled.
+2024-09-16T03:58:04.698871Z  INFO runtime::accelerated_table::refresh_task: Loading data for dataset spiceai.commits
+2024-09-16T03:58:04.871658Z  INFO runtime::accelerated_table::refresh_task: Loaded 69 rows (380.35 kiB) for dataset spiceai.files in 355ms.
+2024-09-16T03:58:05.178247Z  INFO runtime: Dataset spiceai.stargazers registered (github:github.com/spiceai/spiceai/stargazers), acceleration (arrow), results cache enabled.
+2024-09-16T03:58:05.179671Z  INFO runtime::accelerated_table::refresh_task: Loading data for dataset spiceai.stargazers
+2024-09-16T03:58:05.504365Z  INFO runtime: Dataset spiceai.issues registered (github:github.com/spiceai/spiceai/issues), acceleration (arrow), results cache enabled.
+2024-09-16T03:58:05.505534Z  INFO runtime::accelerated_table::refresh_task: Loading data for dataset spiceai.issues
+2024-09-16T03:58:06.563660Z  INFO runtime: Dataset spiceai.pulls registered (github:github.com/spiceai/spiceai/pulls), acceleration (arrow), results cache enabled.
+2024-09-16T03:58:06.564929Z  INFO runtime::accelerated_table::refresh_task: Loading data for dataset spiceai.pulls
 ```
 
 Wait until all datasets are loaded:
 
 ```console
-2024-09-02T16:54:22.576036Z  INFO runtime::accelerated_table::refresh_task: Loaded 66 rows (369.35 kiB) for dataset spiceai.files in 3s 361ms.
-2024-09-02T16:54:35.370411Z  INFO runtime::accelerated_table::refresh_task: Loaded 749 rows (4.47 MiB) for dataset spiceai.issues in 15s 13ms.
-2024-09-02T16:54:36.901489Z  INFO runtime::accelerated_table::refresh_task: Loaded 1,558 rows (3.87 MiB) for dataset spiceai.commits in 17s 428ms.
-2024-09-02T16:56:01.276622Z  INFO runtime::accelerated_table::refresh_task: Loaded 1,706 rows (8.57 MiB) for dataset spiceai.pulls in 1m 39s 886ms.
+2024-09-16T03:58:18.641091Z  INFO runtime::accelerated_table::refresh_task: Loaded 300 rows (641.44 kiB) for dataset spiceai.issues in 13s 135ms.
+2024-09-16T03:58:20.553513Z  INFO runtime::accelerated_table::refresh_task: Loaded 300 rows (59.55 kiB) for dataset spiceai.stargazers in 15s 373ms.
+2024-09-16T03:58:24.953706Z  INFO runtime::accelerated_table::refresh_task: Loaded 300 rows (204.38 kiB) for dataset spiceai.commits in 20s 254ms.
+2024-09-16T03:58:48.900296Z  INFO runtime::accelerated_table::refresh_task: Loaded 300 rows (948.54 kiB) for dataset spiceai.pulls in 42s 335ms.
 ```
 
 **Step 3.** Run `spice sql` in a new terminal to start an interactive SQL query session against the Spice runtime.
@@ -111,6 +114,28 @@ sql> select message_head_line, author_name, sha from spiceai.commits order by co
 +--------------------------------------------------------------------------+------------------+------------------------------------------+
 
 Time: 0.009864666 seconds. 10 rows.
+```
+
+Get the 10 most recent stargazers of the spiceai repository
+
+```console
+sql> select starred_at, login from spiceai.stargazers order by starred_at DESC limit 10
++----------------------+----------------------+
+| starred_at           | login                |
++----------------------+----------------------+
+| 2024-09-15T13:22:09Z | cisen                |
+| 2024-09-14T18:04:22Z | tyan-boot            |
+| 2024-09-13T10:38:01Z | yofriadi             |
+| 2024-09-13T10:01:33Z | FourSpaces           |
+| 2024-09-13T04:02:11Z | d4x1                 |
+| 2024-09-11T18:10:28Z | stephenakearns-insta |
+| 2024-09-09T22:17:42Z | Lrs121               |
+| 2024-09-09T19:56:26Z | jonathanfinley       |
+| 2024-09-09T07:02:10Z | leookun              |
+| 2024-09-09T03:04:27Z | royswale             |
++----------------------+----------------------+
+
+Time: 0.0088075 seconds. 10 rows.
 ```
 
 List beta release notes files:
