@@ -80,6 +80,8 @@ sql> show tables
 | spiceai       | spiceai      | datasets_tpch_orders                                           | BASE TABLE |
 ... (truncated)
 | spiceai       | goerli       | wallet_lst_balances                                            | BASE TABLE |
+| spice         | runtime      | task_history                                                   | BASE TABLE |
+| spice         | runtime      | metrics                                                        | BASE TABLE |
 | spice         | runtime      | query_history                                                  | BASE TABLE |
 +---------------+--------------+----------------------------------------------------------------+------------+
 
@@ -103,14 +105,16 @@ sql> show tables
 +---------------+--------------+---------------+------------+
 | table_catalog | table_schema | table_name    | table_type |
 +---------------+--------------+---------------+------------+
-| spiceai       | tpch         | region        | BASE TABLE |
-| spiceai       | tpch         | part          | BASE TABLE |
-| spiceai       | tpch         | customer      | BASE TABLE |
-| spiceai       | tpch         | lineitem      | BASE TABLE |
-| spiceai       | tpch         | partsupp      | BASE TABLE |
-| spiceai       | tpch         | supplier      | BASE TABLE |
 | spiceai       | tpch         | nation        | BASE TABLE |
 | spiceai       | tpch         | orders        | BASE TABLE |
+| spiceai       | tpch         | partsupp      | BASE TABLE |
+| spiceai       | tpch         | part          | BASE TABLE |
+| spiceai       | tpch         | lineitem      | BASE TABLE |
+| spiceai       | tpch         | region        | BASE TABLE |
+| spiceai       | tpch         | customer      | BASE TABLE |
+| spiceai       | tpch         | supplier      | BASE TABLE |
+| spice         | runtime      | task_history  | BASE TABLE |
+| spice         | runtime      | metrics       | BASE TABLE |
 | spice         | runtime      | query_history | BASE TABLE |
 +---------------+--------------+---------------+------------+
 
