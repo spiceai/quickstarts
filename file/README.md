@@ -23,12 +23,15 @@ EOF
 
 3. Run Spice runtime
 ```shell
->>> spice run
-
-sql> select avg(passenger_count) from taxi_trips
+spice run
 ```
 
-4. (Optional) Cleanup
+4. Run SQL query
+```sql
+select avg(passenger_count) from taxi_trips
+```
+
+5. (Optional) Cleanup
 ```shell
 rm spicepod.yaml
 ```
@@ -68,15 +71,9 @@ EOF
 3. Run Spice runtime
 ```shell
 spice run
+```
 
-sql> select location from docs
-+----------------------------------------------------+
-| location                                           |
-+----------------------------------------------------+
-| Users/jeadie/Github/quickstarts/file/debezium.md   |
-| Users/jeadie/Github/quickstarts/file/databricks.md |
-| Users/jeadie/Github/quickstarts/file/README.md     |
-| Users/jeadie/Github/quickstarts/file/clickhouse.md |
-| Users/jeadie/Github/quickstarts/file/delta-lake.md |
-+----------------------------------------------------+
+4. Run SQL query
+```sql
+select location from docs
 ```
