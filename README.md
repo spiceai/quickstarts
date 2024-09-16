@@ -1,12 +1,16 @@
 # Spice.ai OSS Quickstart Tutorials
 
-Quickstarts for [github.com/spiceai/spiceai](https://github.com/spiceai/spiceai). Designed to take 1-5 mins each!
+Quickstarts for [Spice OSS (github.com/spiceai/spiceai)](https://github.com/spiceai/spiceai).
+
+Quickstarts are designed to quickly try Spice OSS on your laptop with existing infrastructure in just 1-5 mins each.
+
+For complete end-to-end projects that use Spice OSS, see [Spice OSS Samples](https://github.com/spiceai/samples#samples).
 
 ## Core scenarios
 
-- [Federated SQL Query](./federation/README.md) - Fetch combined data from S3, PostgreSQL, and Dremio in a single query.
+- [Federated SQL Query](./federation/README.md) - Query data from S3, PostgreSQL, and Dremio in a single query.
 
-## Materializing & accelerating data locally with Data Accelerators
+## Data Acceleration - Materializing & accelerating data locally with Data Accelerators
 
 - [DuckDB Data Accelerator](./duckdb/accelerator/README.md)
 - [PostgreSQL Data Accelerator](./postgres/README.md)

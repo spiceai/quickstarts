@@ -15,12 +15,12 @@ spice init duckdb-acceleration-qs
 cd duckdb-acceleration-qs
 ```
 
-**Step 2.** Configure a dataset to use a slow data source (like from S3). Copy and paste the YAML below to `spicepod.yaml` in the Spice app.
+**Step 2.** Configure s3 dataset: copy and paste the YAML below to `spicepod.yaml` in the Spice app.
 
 ```yaml
 version: v1beta1
 kind: Spicepod
-name: quickstart
+name: duckdb-acceleration-qs
 datasets:
 - from: s3://spiceai-demo-datasets/taxi_trips/2024/
   name: taxi_trips
@@ -39,11 +39,12 @@ Confirm in the terminal output the `taxi_trips` dataset has been loaded:
 
 ```bash
 Spice.ai runtime starting...
-2024-04-29T18:23:18.055782Z  INFO spiced: Metrics listening on 127.0.0.1:9090
-2024-04-29T18:23:18.059972Z  INFO runtime: Loaded dataset: taxi_trips
-2024-04-29T18:23:18.060005Z  INFO runtime::opentelemetry: Spice Runtime OpenTelemetry listening on 127.0.0.1:50052
-2024-04-29T18:23:18.062230Z  INFO runtime::http: Spice Runtime HTTP listening on 127.0.0.1:8090
-2024-04-29T18:23:18.062249Z  INFO runtime::flight: Spice Runtime Flight listening on 127.0.0.1:50051
+2024-09-16T21:25:43.305988Z  INFO runtime::metrics_server: Spice Runtime Metrics listening on 127.0.0.1:9090
+2024-09-16T21:25:43.306009Z  INFO runtime::flight: Spice Runtime Flight listening on 127.0.0.1:50051
+2024-09-16T21:25:43.309474Z  INFO runtime::http: Spice Runtime HTTP listening on 127.0.0.1:8090
+2024-09-16T21:25:43.311587Z  INFO runtime::opentelemetry: Spice Runtime OpenTelemetry listening on 127.0.0.1:50052
+2024-09-16T21:25:43.507974Z  INFO runtime: Initialized results cache; max size: 128.00 MiB, item ttl: 1s
+2024-09-16T21:25:44.101055Z  INFO runtime: Dataset taxi_trips registered (s3://spiceai-demo-datasets/taxi_trips/2024/), results cache enabled.
 ```
 
 **Step 4.** Run queries against the dataset using the Spice SQL REPL.
@@ -76,12 +77,12 @@ select "VendorID", tpep_pickup_datetime, tpep_dropoff_datetime, passenger_count 
 Time: 4.684086261 seconds. 10 rows.
 ```
 
-**Step 5.** Update the `spicepod.yaml` in the Spice app to enable DuckDB acceleration.
+**Step 5.** Update the `spicepod.yaml` to enable DuckDB acceleration.
 
 ```yaml
 version: v1beta1
 kind: Spicepod
-name: quickstart
+name: duckdb-acceleration-qs
 datasets:
 - from: s3://spiceai-demo-datasets/taxi_trips/2024/
   name: taxi_trips

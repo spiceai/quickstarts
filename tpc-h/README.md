@@ -64,7 +64,7 @@ show tables;
 | spice         | public       | customer      | BASE TABLE |
 | spice         | public       | nation        | BASE TABLE |
 | spice         | public       | supplier      | BASE TABLE |
-| spice         | runtime      | query_history | BASE TABLE |
+| spice         | runtime      | task_history  | BASE TABLE |
 +---------------+--------------+---------------+------------+
 
 Time: 0.006163958 seconds. 9 rows.
