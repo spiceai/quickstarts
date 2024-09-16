@@ -6,7 +6,7 @@ Follow these steps to get started with GraphQL as a Data Connector.
 
 - The latest version of Spice. [Install Spice](https://docs.spiceai.org/getting-started/installation)
 - A GraphQL endpoint with a query that returns data in JSON format.
-  - The GitHub GraphQL API (https://api.github.com/graphql) is a good example to get started with. [GitHub GraphQL API](https://docs.github.com/en/graphql)
+  - The GitHub GraphQL API (<https://api.github.com/graphql>) is a good example to get started with. [GitHub GraphQL API](https://docs.github.com/en/graphql)
 
 **Step 1.** Edit the `spicepod.yaml` file in this directory and replace the `graphql_quickstart` dataset params with the connection parameters for the GraphQL instance, where `[local_table_name]` is the desired name for the federated table within Spice, `[graphql_endpoint]` is the URL to the GraphQL endpoint, `[graphql_query]` is the query to execute, and `[json_pointer]` is the JSON pointer to the data in the GraphQL response.
 
@@ -46,7 +46,13 @@ datasets:
 
 See the [GraphQL data connector docs](https://docs.spiceai.org/components/data-connectors/graphql) for more configuration options.
 
-To securely store GraphQL auth params, see [Secret Stores](https://docs.spiceai.org/components/secret-stores)
+To securely store GraphQL auth params, see [Secret Stores](https://docs.spiceai.org/components/secret-stores).
+
+Add the following environment variable to a `.env` file:
+
+```bash
+GH_TOKEN=<your GitHub token>
+```
 
 **Step 2.** Run the Spice runtime with `spice run` from the directory with the `spicepod.yaml` file.
 

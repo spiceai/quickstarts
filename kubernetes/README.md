@@ -1,4 +1,4 @@
-### Follow these steps to get started running Spice.ai in Kubernetes.
+# Follow these steps to get started running Spice.ai in Kubernetes
 
 **Step 1.** (Optional) Start a local [`kind`](https://kind.sigs.k8s.io/) cluster:
 

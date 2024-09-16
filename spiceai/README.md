@@ -1,4 +1,4 @@
-## Spice Quickstart Tutorial using the Spice.ai Cloud Platform
+# Spice Quickstart Tutorial using the Spice.ai Cloud Platform
 
 The Spice.ai Cloud Platform has many datasets that can be used within Spice.  A valid login for the Spice.ai Cloud Platform is required to access the datasets.  Before beginning this quickstart, [link your GitHub account to Spice.ai](https://spice.ai/login) to get access to the platform.
 
@@ -14,6 +14,7 @@ cd spiceai-demo
 ```bash
 spice login
 ```
+
 A browser window will open displaying a code that will appear in the terminal.  Select Approve if the authorization codes match.
 
 ![Screenshot](./device_login.png)
@@ -90,7 +91,7 @@ description: ethereum recent blocks
 
 The Spice runtime terminal will show that the dataset has been loaded:
 
-```
+```console
 2024-07-23T01:01:50.403937Z  INFO runtime: Dataset eth_recent_blocks registered (spice.ai/eth.recent_blocks), results cache enabled.
 ```
 
