@@ -15,6 +15,20 @@ psql --help
 
 **Step 1.** Create a sample Postgres database and generate a testing table using stored procedure.
 
+- Start postgres server (note: this is an insecure postgres, only use for testing).
+
+```bash
+docker run --name postgres -e POSTGRES_HOST_AUTH_METHOD=trust  -d -p 5432:5432 postgres
+```
+
+- Configure postgres settings
+
+```bash
+export PGHOST=localhost
+export PGPORT=5432
+export PGUSER=postgres
+```
+
 Create an empty database `spice_demo` in local Postgres.
 
 ```bash
@@ -132,14 +146,9 @@ datasets:
       pg_db: spice_demo
       pg_sslmode: disable
       pg_user: postgres
-      pg_pass: ${env:PG_PASS}
 ```
 
-Ensure that the `pg_pass` connctor parameter is only set when `pg_user` used in spicepod requires a password, and ensure the `PG_PASS` environment variable is set to the password for your Postgres instance. Environment variables can be specified on the command line when running the Spice runtime or in a `.env` file in the same directory as `spicepod.yaml`.
-
-```bash
-echo "PG_PASS=<password>" > .env
-```
+Ensure that the `pg_pass` connctor parameter is only set when `pg_user` used in spicepod requires a password.
 
 **Step 4.** Start the Spice runtime
 
