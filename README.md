@@ -14,7 +14,7 @@ For complete end-to-end projects that use Spice OSS, see [Spice OSS Samples](htt
 
 - [DuckDB Data Accelerator](./duckdb/accelerator/README.md)
 - [PostgreSQL Data Accelerator](./postgres/README.md)
-- [SQLite Data Accelerator](./acceleration/sqlite/README.md)
+- [SQLite Data Accelerator](./sqlite/accelerator/README.md)
 
 ## Consuming and visualizing data with clients
 
