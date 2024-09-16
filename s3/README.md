@@ -197,6 +197,9 @@ description: taxi trips in s3
 params:
   file_format: parquet
   s3_region: yourcompany-bucket-region
+  s3_auth: key
+  s3_secret: ${secrets:SPICE_AWS_SECRET_ACCESS_KEY}
+  s3_key: ${secrets:SPICE_AWS_ACCESS_KEY_ID}
 acceleration:
   enabled: true
   refresh_mode: full
