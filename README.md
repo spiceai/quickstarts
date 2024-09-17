@@ -32,8 +32,8 @@ For complete end-to-end projects that use Spice OSS, see [Spice OSS Samples](htt
 - [GraphQL Data Connector](./graphql/README.md)
 - [MySQL Data Connector](./mysql/README.md)
 - [S3 Data Connector](./s3/README.md)
-- [Snowflake Data Connector](./snowflake/README.md)
 - [SharePoint/OneDrive for Business Data Connector](./sharepoint/README.md)
+- [Snowflake Data Connector](./snowflake/README.md)
 - [Spice.ai Cloud Platform Data Connector](./spiceai/README.md)
 - [Supabase Data Connector Data Connector](./supabase/README.md)
 
