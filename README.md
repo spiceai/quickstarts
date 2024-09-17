@@ -22,19 +22,20 @@ For complete end-to-end projects that use Spice OSS, see [Spice OSS Samples](htt
 
 ## Connecting to Data Sources with Data Connectors
 
-- [S3 Data Connector](./s3/README.md)
-- [Databricks Delta Lake Data Connector](./databricks/README.md)
-- [Supabase Data Connector Data Connector](./supabase/README.md)
-- [AWS RDS PostgreSQL Data Connector](./rds-postgresql/README.md)
 - [AWS RDS Aurora (MySQL Compatible) Data Connector](./rds-aurora-mysql/README.md)
-- [Dremio Data Connector](./dremio/README.md)
-- [Spice.ai Cloud Platform Data Connector](./spiceai/README.md)
-- [MySQL Data Connector](./mysql/README.md)
-- [DuckDB Data Connector](./duckdb/connector/README.md) - Use a DuckDB database with sample TPCH data.
+- [AWS RDS PostgreSQL Data Connector](./rds-postgresql/README.md)
 - [Clickhouse Data Connector](./clickhouse/README.md)
-- [Snowflake Data Connector](./snowflake/README.md)
-- [GraphQL Data Connector](./graphql/README.md)
+- [Databricks Delta Lake Data Connector](./databricks/README.md)
+- [Dremio Data Connector](./dremio/README.md)
+- [DuckDB Data Connector](./duckdb/connector/README.md) - Use a DuckDB database with sample TPCH data.
 - [GitHub Data Connector](./github/README.md)
+- [GraphQL Data Connector](./graphql/README.md)
+- [MySQL Data Connector](./mysql/README.md)
+- [S3 Data Connector](./s3/README.md)
+- [SharePoint/OneDrive for Business Data Connector](./sharepoint/README.md)
+- [Snowflake Data Connector](./snowflake/README.md)
+- [Spice.ai Cloud Platform Data Connector](./spiceai/README.md)
+- [Supabase Data Connector Data Connector](./supabase/README.md)
 
 ## Connecting to Data Sources with Catalog Connectors
 
