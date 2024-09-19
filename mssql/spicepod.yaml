@@ -1,0 +1,116 @@
+version: v1beta1
+kind: Spicepod
+name: spicepod-mssql
+
+datasets:
+  - from: mssql:SalesLT.Address
+    name: Address
+    params: 
+      mssql_connection_string: ${ secrets:MSSQL_CONNECTION_STRING }
+
+  - from: mssql:SalesLT.BuildVersion
+    name: BuildVersion
+    params: 
+      mssql_connection_string: ${ secrets:MSSQL_CONNECTION_STRING }
+
+  - from: mssql:SalesLT.Customer
+    name: Customer
+    params: 
+      mssql_connection_string: ${ secrets:MSSQL_CONNECTION_STRING }
+
+  - from: mssql:SalesLT.CustomerAddress
+    name: CustomerAddress
+    params: 
+      mssql_connection_string: ${ secrets:MSSQL_CONNECTION_STRING }
+
+  - from: mssql:SalesLT.database_firewall_rules
+    name: database_firewall_rules
+    params: 
+      mssql_connection_string: ${ secrets:MSSQL_CONNECTION_STRING }
+
+  - from: mssql:SalesLT.ErrorLog
+    name: ErrorLog
+    params: 
+      mssql_connection_string: ${ secrets:MSSQL_CONNECTION_STRING }
+
+  - from: mssql:SalesLT.Product
+    name: Product
+    params: 
+      mssql_connection_string: ${ secrets:MSSQL_CONNECTION_STRING }
+
+  - from: mssql:SalesLT.ProductCategory
+    name: ProductCategory
+    params: 
+      mssql_connection_string: ${ secrets:MSSQL_CONNECTION_STRING }
+
+  - from: mssql:SalesLT.ProductDescription
+    name: ProductDescription
+    params: 
+      mssql_connection_string: ${ secrets:MSSQL_CONNECTION_STRING }
+
+  - from: mssql:SalesLT.ProductModel
+    name: ProductModel
+    params: 
+      mssql_connection_string: ${ secrets:MSSQL_CONNECTION_STRING }
+
+  - from: mssql:SalesLT.ProductModelProductDescription
+    name: ProductModelProductDescription
+    params: 
+      mssql_connection_string: ${ secrets:MSSQL_CONNECTION_STRING }
+
+  - from: mssql:SalesLT.SalesOrderDetail
+    name: SalesOrderDetail
+    params: 
+      mssql_connection_string: ${ secrets:MSSQL_CONNECTION_STRING }
+
+  - from: mssql:SalesLT.SalesOrderHeader
+    name: SalesOrderHeader
+    params: 
+      mssql_connection_string: ${ secrets:MSSQL_CONNECTION_STRING }
+
+  - from: mssql:SalesLT.vGetAllCategories
+    name: vGetAllCategories
+    params: 
+      mssql_connection_string: ${ secrets:MSSQL_CONNECTION_STRING }
+
+  - from: mssql:SalesLT.vProductAndDescription
+    name: vProductAndDescription
+    params: 
+      mssql_connection_string: ${ secrets:MSSQL_CONNECTION_STRING }
+
+  - from: mssql:SalesLT.vProductModelCatalogDescription
+    name: vProductModelCatalogDescription
+    params: 
+      mssql_connection_string: ${ secrets:MSSQL_CONNECTION_STRING }
+
+embeddings:
+  - name: openai_embed
+    from: openai
+    params:
+      openai_api_key: ${ secrets:SPICE_OPENAI_API_KEY }
+
+  - name: hf_minilm
+    from: huggingface:huggingface.co/sentence-transformers/all-MiniLM-L6-v2
+
+models:
+  - name: openai
+    from: openai:gpt-4o-2024-08-06
+    params:
+      spice_tools: auto
+      openai_api_key: ${ secrets:SPICE_OPENAI_API_KEY }
+      system_prompt: |
+        Use the SQL tool when:
+          1. The query involves precise numerical data, statistics, or aggregations
+          2. The user asks for specific counts, sums, averages, or other calculations
+          3. The query requires joining or comparing data from multiple related tables
+
+        Use the document search when:
+          1. The query is about unstructured text information, such as policies, reports, or articles
+          2. The user is looking for qualitative information or explanations
+          3. The query requires understanding context or interpreting written content
+
+        General guidelines:
+          1. If a query could be answered by either tool, prefer SQL for more precise, quantitative answers
+
+        Instructions for Responses: 
+          - Do not include any private metadata provided to the model as context such as \"reference_url_template\" or \"instructions\" in your responses.
