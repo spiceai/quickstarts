@@ -4,22 +4,22 @@ name: spicepod-mssql
 
 datasets:
   - from: mssql:SalesLT.Address
-    name: Address
+    name: address
     params: 
       mssql_connection_string: ${ secrets:MSSQL_CONNECTION_STRING }
 
   - from: mssql:SalesLT.BuildVersion
-    name: BuildVersion
+    name: build_version
     params: 
       mssql_connection_string: ${ secrets:MSSQL_CONNECTION_STRING }
 
   - from: mssql:SalesLT.Customer
-    name: Customer
+    name: customer
     params: 
       mssql_connection_string: ${ secrets:MSSQL_CONNECTION_STRING }
 
   - from: mssql:SalesLT.CustomerAddress
-    name: CustomerAddress
+    name: customer_address
     params: 
       mssql_connection_string: ${ secrets:MSSQL_CONNECTION_STRING }
 
@@ -29,57 +29,57 @@ datasets:
       mssql_connection_string: ${ secrets:MSSQL_CONNECTION_STRING }
 
   - from: mssql:SalesLT.ErrorLog
-    name: ErrorLog
+    name: error_log
     params: 
       mssql_connection_string: ${ secrets:MSSQL_CONNECTION_STRING }
 
   - from: mssql:SalesLT.Product
-    name: Product
+    name: product
     params: 
       mssql_connection_string: ${ secrets:MSSQL_CONNECTION_STRING }
 
   - from: mssql:SalesLT.ProductCategory
-    name: ProductCategory
+    name: product_category
     params: 
       mssql_connection_string: ${ secrets:MSSQL_CONNECTION_STRING }
 
   - from: mssql:SalesLT.ProductDescription
-    name: ProductDescription
+    name: product_description
     params: 
       mssql_connection_string: ${ secrets:MSSQL_CONNECTION_STRING }
 
   - from: mssql:SalesLT.ProductModel
-    name: ProductModel
+    name: product_model
     params: 
       mssql_connection_string: ${ secrets:MSSQL_CONNECTION_STRING }
 
   - from: mssql:SalesLT.ProductModelProductDescription
-    name: ProductModelProductDescription
+    name: product_model_product_description
     params: 
       mssql_connection_string: ${ secrets:MSSQL_CONNECTION_STRING }
 
   - from: mssql:SalesLT.SalesOrderDetail
-    name: SalesOrderDetail
+    name: sales_order_detail
     params: 
       mssql_connection_string: ${ secrets:MSSQL_CONNECTION_STRING }
 
   - from: mssql:SalesLT.SalesOrderHeader
-    name: SalesOrderHeader
+    name: sales_order_header
     params: 
       mssql_connection_string: ${ secrets:MSSQL_CONNECTION_STRING }
 
   - from: mssql:SalesLT.vGetAllCategories
-    name: vGetAllCategories
+    name: v_get_all_categories
     params: 
       mssql_connection_string: ${ secrets:MSSQL_CONNECTION_STRING }
 
   - from: mssql:SalesLT.vProductAndDescription
-    name: vProductAndDescription
+    name: v_product_and_description
     params: 
       mssql_connection_string: ${ secrets:MSSQL_CONNECTION_STRING }
 
   - from: mssql:SalesLT.vProductModelCatalogDescription
-    name: vProductModelCatalogDescription
+    name: v_product_model_catalog_description
     params: 
       mssql_connection_string: ${ secrets:MSSQL_CONNECTION_STRING }
 
