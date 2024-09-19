@@ -1,38 +1,44 @@
-# Spice Demo with SalesLT dataset in MSSQL
-
-This demo showcases how to use Spice with the SalesLT sample dataset in MSSQL.
+# MSSQL Data connector
 
 ## Prerequisites
 
-- MSSQL Server with SalesLT sample dataset
-- Spice installed and configured
+- The latest version of Spice. [Install Spice](https://docs.spiceai.org/getting-started/installation)
+- MSSQL Server with SalesLT sample dataset (see below)
 
-## Steps
-1. Obtain your SQL server ADO connection string. It should look something like this:
-    `Server=tcp:server.database.windows.net,1433;Initial Catalog=nrc_health_testing;Persist Security Info=False;User ID={your_username};Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;`
+## Creating a sample SQL database
 
-2. Copy `.env.example` as `.env` and put the connection string in the new `.env` file in the `MSSQL_CONNECTION_STRING` field
+This quickstart is based around the sample SalesLT dataset. Depending on your server setup there are two approaches to loading the dataset into your database:
 
-3. Put your OpenAI key in the `SPICE_OPENAI_API_KEY` field
+### New SQL Database
 
-3. Run Spice with `spice run`
+When creating the SQL Database through the Azure portal, you have the option to include the sample dataset as part of your deployment.
 
-4. In another shell run `spice sql` to connect to the Spice backend and query your data or `spice chat` to chat with your data using an LLM
+![Adding SalesLT dataset](images/screenshot.png "Adding SalesLT dataset to a new database")
+
+### Existing SQL Database
+
+The dataset is available as a series of [backup files](https://learn.microsoft.com/en-us/sql/samples/adventureworks-install-configure?view=sql-server-ver16&tabs=ssms) that can be loaded using backup restore tools
+
+## Quickstart Steps
+1. Obtain your SQL server ADO connection string. Currently, the only supported auth method is `SQL Authentication`. If you're using Azure SQL the connection strings can be found in the Portal: 
+
+![Connection String step 1](images/cs1.png "Connection string step 1")
+![Connection String step 2](images/cs2.png "Connection string step 2")
+
+2. Copy `.env` as `.env.local` and put the connection string in the new `.env.local` file in the `SPICE_MSSQL_CONNECTION_STRING` field
+
+3. Replace `{your_password}` in `SPICE_MSSQL_CONNECTION_STRING` with your SQL user's password
+
+4. Run Spice with `spice run`
+
+5. In another shell run `spice sql` to connect to the Spice backend and query the dataset
 
 
-```
+```sql 
 sql> SELECT COUNT(*) FROM customer
 +----------+
 | count(*) |
 +----------+
 | 847      |
 +----------+
-```
-
-```
-❯ spice chat
-Using model: openai
-
-chat> How many customers do I have?
-You have 847 customers.
 ```
