@@ -1,7 +1,7 @@
 # MSSQL Connector Quickstart
 
 This quickstart is meant to get you up and running with Spice's MSSQL data connector. It runs two instances of MSSQL server: 2019 and 2022. Both
-instances are accessible from within Spice to show off that you can query across multiple servers.
+instances are accessible from within Spice to demonstrate that you can query across multiple servers.
 
 ## Pre-requisites
 
@@ -49,39 +49,33 @@ Output:
 ### Order information per customer
 
 ```sql
-SELECT c.CustomerID, 
-    MAX(CAST(OrderDate AS DATE)) AS LatestOrderDate, 
-    ROUND(AVG(TotalDue), 2) AS AverageOrderValue, 
-    COUNT(SalesOrderID) AS TotalNumberOfOrders 
+SELECT c."CustomerID", 
+    MAX(CAST("OrderDate" AS DATE)) AS LatestOrderDate, 
+    ROUND(AVG("TotalDue"), 2) AS AverageOrderValue, 
+    COUNT("SalesOrderID") AS TotalNumberOfOrders 
 FROM Sales.Customer c
 LEFT OUTER JOIN Sales.SalesOrderHeader soh 
-    ON c.CustomerID = soh .CustomerID 
-GROUP BY c.CustomerID 
+    ON c."CustomerID" = soh."CustomerID" 
+GROUP BY c."CustomerID" 
 ORDER BY TotalNumberOfOrders DESC
-LIMIT 100
+LIMIT 10
 ```
 
 Output:
 
-```csv
-CustomerID,LatestOrderDate,AverageOrderValue,TotalNumberOfOrders
-11176,2014-06-29,52.09,28
-11091,2014-06-10,46.94,28
-11277,2014-06-18,58.73,27
-11200,2014-06-22,59.89,27
-11223,2014-06-08,49.33,27
-11300,2014-06-02,61.41,27
-11711,2014-06-28,45.17,27
-11287,2014-06-30,47.76,27
-11330,2014-06-24,46.51,27
-11276,2014-06-24,40.45,27
-11331,2014-06-26,54.40,27
-11262,2014-06-24,46.12,27
-11185,2014-06-28,66.15,27
-11566,2014-06-09,44.50,25
-11211,2014-06-09,51.58,17
-11203,2014-05-13,52.12,17
-11215,2014-05-17,75.11,17
-11212,2014-06-19,53.77,17
-11142,2014-06-15,63.75,17
+```shell
++------------+-----------------+-------------------+---------------------+
+| CustomerID | latestorderdate | averageordervalue | totalnumberoforders |
++------------+-----------------+-------------------+---------------------+
+| 11176      | 2014-06-29      | 52.09             | 28                  |
+| 11091      | 2014-06-10      | 46.94             | 28                  |
+| 11330      | 2014-06-24      | 46.51             | 27                  |
+| 11300      | 2014-06-02      | 61.41             | 27                  |
+| 11711      | 2014-06-28      | 45.17             | 27                  |
+| 11331      | 2014-06-26      | 54.4              | 27                  |
+| 11287      | 2014-06-30      | 47.76             | 27                  |
+| 11185      | 2014-06-28      | 66.15             | 27                  |
+| 11276      | 2014-06-24      | 40.45             | 27                  |
+| 11200      | 2014-06-22      | 59.89             | 27                  |
++------------+-----------------+-------------------+---------------------+
 ```
