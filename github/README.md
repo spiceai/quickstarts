@@ -7,7 +7,7 @@ This quickstart will use [spiceai/spiceai](https://github.com/spiceai/spiceai) r
 - Spice is installed (see the [Getting Started](https://docs.spiceai.org/getting-started) documentation).
 - GitHub personal access token, [Learn more](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic) how to create one.
 
-**Step 1.** Copy the `.env.example` file into a new `.env` file in this directory, and set the `GITHUB_TOKEN` environment variable to your personal access token.
+**Step 1.** Copy the `.env` file into a new `.env.local` file in this directory, and set the `GITHUB_TOKEN` environment variable to your personal access token.
 
 ```env
 GITHUB_TOKEN=<your_github_token>
