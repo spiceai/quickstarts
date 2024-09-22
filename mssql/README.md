@@ -1,44 +1,87 @@
-# MSSQL Data connector
+# MSSQL Connector Quickstart
 
-## Prerequisites
+This quickstart is meant to get you up and running with Spice's MSSQL data connector. It runs two instances of MSSQL server: 2019 and 2022. Both
+instances are accessible from within Spice to show off that you can query across multiple servers.
 
-- The latest version of Spice. [Install Spice](https://docs.spiceai.org/getting-started/installation)
-- MSSQL Server with SalesLT sample dataset (see below)
+## Pre-requisites
 
-## Creating a sample SQL database
+- Spice is installed (see the [Getting Started](https://docs.spiceai.org/getting-started) documentation).
+- Docker running on your system
 
-This quickstart is based around the sample SalesLT dataset. Depending on your server setup there are two approaches to loading the dataset into your database:
+## Steps
 
-### New SQL Database
+1. Start the MSSQL instances using `docker compose up -d`. In a production scenario you'd want to use [secrets](https://docs.spiceai.org/components/secret-stores) to protect your secrets
+2. Start up Spice using `spice run`
+3. In another shell, fire up the Spice SQL REPL using `spice sql`
 
-When creating the SQL Database through the Azure portal, you have the option to include the sample dataset as part of your deployment.
+## Example Queries
 
-![Adding SalesLT dataset](images/screenshot.png "Adding SalesLT dataset to a new database")
+### Verify that the row counts in the 2019 server matches the 2022 server
 
-### Existing SQL Database
+```sql
+SELECT 
+    count_2019,
+    count_2022,
+    count_2019=count_2022 AS equal 
+FROM (
+    SELECT 
+        COUNT(*) AS count_2019, 
+        MAX(count_2022) AS count_2022 
+    FROM Sales.Customer 
+    JOIN (
+        SELECT 
+            COUNT(*) AS count_2022 
+        FROM Sales.Customer2022
+    ) ON 1=1
+)
+```
 
-The dataset is available as a series of [backup files](https://learn.microsoft.com/en-us/sql/samples/adventureworks-install-configure?view=sql-server-ver16&tabs=ssms) that can be loaded using backup restore tools
+Output:
 
-## Quickstart Steps
-1. Obtain your SQL server ADO connection string. Currently, the only supported auth method is `SQL Authentication`. If you're using Azure SQL the connection strings can be found in the Portal: 
+```shell
++------------+------------+-------+
+| count_2019 | count_2022 | equal |
++------------+------------+-------+
+| 19820      | 19820      | true  |
++------------+------------+-------+
+```
 
-![Connection String step 1](images/cs1.png "Connection string step 1")
-![Connection String step 2](images/cs2.png "Connection string step 2")
+### Order information per customer
 
-2. Copy `.env` as `.env.local` and put the connection string in the new `.env.local` file in the `SPICE_MSSQL_CONNECTION_STRING` field
+```sql
+SELECT c.CustomerID, 
+    MAX(CAST(OrderDate AS DATE)) AS LatestOrderDate, 
+    ROUND(AVG(TotalDue), 2) AS AverageOrderValue, 
+    COUNT(SalesOrderID) AS TotalNumberOfOrders 
+FROM Sales.Customer c
+LEFT OUTER JOIN Sales.SalesOrderHeader soh 
+    ON c.CustomerID = soh .CustomerID 
+GROUP BY c.CustomerID 
+ORDER BY TotalNumberOfOrders DESC
+LIMIT 100
+```
 
-3. Replace `{your_password}` in `SPICE_MSSQL_CONNECTION_STRING` with your SQL user's password
+Output:
 
-4. Run Spice with `spice run`
-
-5. In another shell run `spice sql` to connect to the Spice backend and query the dataset
-
-
-```sql 
-sql> SELECT COUNT(*) FROM customer
-+----------+
-| count(*) |
-+----------+
-| 847      |
-+----------+
+```csv
+CustomerID,LatestOrderDate,AverageOrderValue,TotalNumberOfOrders
+11176,2014-06-29,52.09,28
+11091,2014-06-10,46.94,28
+11277,2014-06-18,58.73,27
+11200,2014-06-22,59.89,27
+11223,2014-06-08,49.33,27
+11300,2014-06-02,61.41,27
+11711,2014-06-28,45.17,27
+11287,2014-06-30,47.76,27
+11330,2014-06-24,46.51,27
+11276,2014-06-24,40.45,27
+11331,2014-06-26,54.40,27
+11262,2014-06-24,46.12,27
+11185,2014-06-28,66.15,27
+11566,2014-06-09,44.50,25
+11211,2014-06-09,51.58,17
+11203,2014-05-13,52.12,17
+11215,2014-05-17,75.11,17
+11212,2014-06-19,53.77,17
+11142,2014-06-15,63.75,17
 ```
