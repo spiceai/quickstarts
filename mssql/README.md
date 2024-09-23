@@ -10,9 +10,14 @@ instances are accessible from within Spice to demonstrate that you can query acr
 
 ## Steps
 
-1. Start the MSSQL instances using `docker compose up -d`. In a production scenario you'd want to use [secrets](https://docs.spiceai.org/components/secret-stores) to protect your secrets
-2. Start up Spice using `spice run`
-3. In another shell, fire up the Spice SQL REPL using `spice sql`
+1. Clone the Spice quickstarts repository and navigate to the `mssql` directory:
+```bash
+git clone https://github.com/spiceai/quickstarts.git
+cd quickstarts/mssql
+```
+2. Start the MSSQL instances using `docker compose up -d`. In a production scenario you'd want to use [secrets](https://docs.spiceai.org/components/secret-stores) to protect your secrets
+3. Start up Spice using `spice run`
+4. In another shell, fire up the Spice SQL REPL using `spice sql`
 
 ## Example Queries
 
