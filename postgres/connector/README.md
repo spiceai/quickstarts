@@ -177,7 +177,6 @@ sql> show tables;
 +---------------+--------------+---------------+------------+
 | spice         | public       | sample_data   | BASE TABLE |
 | spice         | runtime      | task_history  | BASE TABLE |
-| spice         | runtime      | query_history | BASE TABLE |
 | spice         | runtime      | metrics       | BASE TABLE |
 +---------------+--------------+---------------+------------+
 

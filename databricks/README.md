@@ -75,7 +75,7 @@ Spice can read data straight from a Databricks instance. This guide will create 
     | table_catalog | table_schema | table_name    | table_type |
     +---------------+--------------+---------------+------------+
     | spice         | public       | my_table      | BASE TABLE |
-    | spice         | runtime      | query_history | BASE TABLE |
+    | spice         | runtime      | task_history  | BASE TABLE |
     | spice         | runtime      | metrics       | BASE TABLE |
     +---------------+--------------+---------------+------------+
 
