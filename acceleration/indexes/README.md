@@ -6,6 +6,7 @@ Indexes can be created on accelerated datasets (for supported engines) to improv
 
 ```bash
 spice init acceleration-indexes
+cd acceleration-indexes
 ```
 
 **Step 2.** Download the large test dataset locally
@@ -18,11 +19,11 @@ wget https://public-data.spiceai.org/large_eth_traces.parquet
 
 **Step 3.** Add the spicepod with indexes configured
 
-Add the following to your `spicepod.yaml`. Be sure to replace `path/to/large_eth_traces.parquet` with the absolute path to the downloaded dataset.
+Add the following to your `spicepod.yaml`.
 
 ```yaml
 datasets:
-  - from: file://path/to/large_eth_traces.parquet
+  - from: file:/large_eth_traces.parquet
     name: traces
     acceleration:
       enabled: true
@@ -30,7 +31,7 @@ datasets:
       mode: file
       indexes:
         trace_id: enabled
-  - from: file://path/to/large_eth_traces.parquet
+  - from: file:/large_eth_traces.parquet
     name: traces_no_index
     acceleration:
       enabled: true
@@ -43,7 +44,6 @@ datasets:
 Spice will start and load the dataset into sqlite. **This may take several minutes.**
 
 ```bash
-cd acceleration-indexes
 spice run
 ```
 
