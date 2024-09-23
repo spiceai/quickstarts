@@ -82,7 +82,6 @@ sql> show tables
 | spiceai       | goerli       | wallet_lst_balances                                            | BASE TABLE |
 | spice         | runtime      | task_history                                                   | BASE TABLE |
 | spice         | runtime      | metrics                                                        | BASE TABLE |
-| spice         | runtime      | query_history                                                  | BASE TABLE |
 +---------------+--------------+----------------------------------------------------------------+------------+
 
 Time: 0.007676958 seconds. 249 rows.
@@ -115,7 +114,6 @@ sql> show tables
 | spiceai       | tpch         | supplier      | BASE TABLE |
 | spice         | runtime      | task_history  | BASE TABLE |
 | spice         | runtime      | metrics       | BASE TABLE |
-| spice         | runtime      | query_history | BASE TABLE |
 +---------------+--------------+---------------+------------+
 
 Time: 0.001866958 seconds. 9 rows.
