@@ -2,7 +2,7 @@ version: v1beta1
 kind: Spicepod
 name: acceleration-indexes
 datasets:
-  - from: file:/large_eth_traces.parquet
+  - from: file:large_eth_traces.parquet
     name: traces
     acceleration:
       enabled: true
@@ -10,7 +10,7 @@ datasets:
       mode: file
       indexes:
         trace_id: enabled
-  - from: file:/large_eth_traces.parquet
+  - from: file:large_eth_traces.parquet
     name: traces_no_index
     acceleration:
       enabled: true
