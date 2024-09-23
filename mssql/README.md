@@ -40,7 +40,7 @@ Spice.ai runtime starting...
 2024-09-23T19:43:29.387697Z  INFO runtime::accelerated_table::refresh_task: Loaded 19,820 rows (2.20 MiB) for dataset sales.customer2022 in 88ms.
 2024-09-23T19:43:29.394271Z  INFO runtime::accelerated_table::refresh_task: Loaded 31,465 rows (7.19 MiB) for dataset sales.salesorderheader in 95ms.
 ```
-5. In another shell, fire up the Spice SQL REPL using `spice sql`
+4. In another shell, fire up the Spice SQL REPL using `spice sql`
 ```shell
 Welcome to the Spice.ai SQL REPL! Type 'help' for help.
 
