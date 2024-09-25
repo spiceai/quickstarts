@@ -35,7 +35,7 @@ Add the following configuration to your `spicepod.yaml`:
 
 ```yaml
 catalogs:
-  - name: spiceai
+  - name: spice.ai
     from: spiceai
 ```
 
