@@ -28,7 +28,7 @@ spice run
 
 4. Run SQL query
 ```sql
-select avg(passenger_count) from taxi_trips
+select avg(passenger_count) from yellow_taxis
 ```
 
 5. (Optional) Cleanup
