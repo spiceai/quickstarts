@@ -183,8 +183,8 @@ Successfully logged in to s3
 And a `.env` file is created in the project directory with the following content:
 
 ```bash
-SPICE_AWS_ACCESS_KEY_ID=<aws_access_key_id>
-SPICE_AWS_SECRET_ACCESS_KEY=<aws_secret_access_key>
+SPICE_S3_KEY=<aws_access_key_id>
+SPICE_S3_SECRET=<aws_secret_access_key>
 ```
 
 **Step 6.** Configure spicepod to contain correct s3_region
@@ -199,8 +199,8 @@ params:
   file_format: parquet
   s3_region: yourcompany-bucket-region
   s3_auth: key
-  s3_secret: ${secrets:SPICE_AWS_SECRET_ACCESS_KEY}
-  s3_key: ${secrets:SPICE_AWS_ACCESS_KEY_ID}
+  s3_secret: ${secrets:SPICE_S3_SECRET}
+  s3_key: ${secrets:SPICE_S3_KEY}
 acceleration:
   enabled: true
   refresh_mode: full
