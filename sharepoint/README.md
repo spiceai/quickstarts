@@ -47,6 +47,6 @@ SELECT web_url FROM important_documents;
 
 ## Learn more
 
-- [SharePoint Data Connector Documentation](https://docs.spiceai.org/data-connectors/sharepoint).
+- [SharePoint Data Connector Documentation](https://docs.spiceai.org/components/data-connectors/sharepoint).
 - [Spice CLI Reference](https://docs.spiceai.org/cli/reference/sql) for SQL queries.
 - [Datasets Reference](https://docs.spiceai.org/reference/spicepod/datasets) for more configuration options.
