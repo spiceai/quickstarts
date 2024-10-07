@@ -71,7 +71,7 @@ $ spice sql
 Welcome to the Spice.ai SQL REPL! Type 'help' for help.
 
 show tables; -- list available tables
-sql> select * from my_first_table
+sql> select * from my_first_table;
 +---------+----------------------------------------------------+---------------------+---------+
 | user_id | message                                            | timestamp           | metric  |
 +---------+----------------------------------------------------+---------------------+---------+

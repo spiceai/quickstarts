@@ -60,7 +60,7 @@ SELECT * FROM spiceai.tpch.lineitem LIMIT 10;
 Use `show tables` in the Spice SQL REPL to see the available datasets.
 
 ```bash
-sql> show tables
+sql> show tables;
 +---------------+--------------+----------------------------------------------------------------+------------+
 | table_catalog | table_schema | table_name                                                     | table_type |
 +---------------+--------------+----------------------------------------------------------------+------------+
@@ -100,7 +100,7 @@ catalogs:
 ```
 
 ```bash
-sql> show tables
+sql> show tables;
 +---------------+--------------+---------------+------------+
 | table_catalog | table_schema | table_name    | table_type |
 +---------------+--------------+---------------+------------+
