@@ -53,7 +53,7 @@ Wait until all datasets are loaded:
 Get the 10 most recently updated issues:
 
 ```console
-sql> select number, title, state, labels, updated_at from spiceai.issues order by updated_at desc limit 10
+sql> select number, title, state, labels, updated_at from spiceai.issues order by updated_at desc limit 10;
 +--------+------------------------------------------------------------------------+--------+--------------------+----------------------+
 | number | title                                                                  | state  | labels             | updated_at           |
 +--------+------------------------------------------------------------------------+--------+--------------------+----------------------+
@@ -75,7 +75,7 @@ Time: 0.017607167 seconds. 10 rows.
 Get the 10 most recently merged pull requests:
 
 ```console
-sql> select number, title, state, merged_at from spiceai.pulls where state = 'MERGED' order by merged_at desc limit 10
+sql> select number, title, state, merged_at from spiceai.pulls where state = 'MERGED' order by merged_at desc limit 10;
 +--------+--------------------------------------------------------------------------------+--------+----------------------+
 | number | title                                                                          | state  | merged_at            |
 +--------+--------------------------------------------------------------------------------+--------+----------------------+
@@ -97,7 +97,7 @@ Time: 0.010307125 seconds. 10 rows.
 Get the 10 most recent commits:
 
 ```console
-sql> select message_head_line, author_name, sha from spiceai.commits order by committed_date desc limit 10
+sql> select message_head_line, author_name, sha from spiceai.commits order by committed_date desc limit 10;
 +--------------------------------------------------------------------------+------------------+------------------------------------------+
 | message_head_line                                                        | author_name      | sha                                      |
 +--------------------------------------------------------------------------+------------------+------------------------------------------+
@@ -119,7 +119,7 @@ Time: 0.009864666 seconds. 10 rows.
 Get the 10 most recent stargazers of the spiceai repository
 
 ```console
-sql> select starred_at, login from spiceai.stargazers order by starred_at DESC limit 10
+sql> select starred_at, login from spiceai.stargazers order by starred_at DESC limit 10;
 +----------------------+----------------------+
 | starred_at           | login                |
 +----------------------+----------------------+
@@ -141,7 +141,7 @@ Time: 0.0088075 seconds. 10 rows.
 List beta release notes files:
 
 ```console
-sql> select name, path, download_url, content from spiceai.files where path like 'docs/release_notes/%-beta.md'
+sql> select name, path, download_url, content from spiceai.files where path like 'docs/release_notes/%-beta.md';
 +-----------------+------------------------------------+---------------------------------------------------------------------------------------------------+
 | name            | path                               | download_url                                                                                      |
 +-----------------+------------------------------------+---------------------------------------------------------------------------------------------------+
@@ -154,7 +154,7 @@ sql> select name, path, download_url, content from spiceai.files where path like
 Read release notes of Spice `v0.17.2-beta` release
 
 ```console
-sql> select content from spiceai.files where name = 'v0.17.0-beta.md'
+sql> select content from spiceai.files where name = 'v0.17.0-beta.md';
 +-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | content                                                                                                                                                                                                                                                                                                                                             |
 +-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+

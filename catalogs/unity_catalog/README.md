@@ -86,7 +86,7 @@ SELECT * FROM uc.<SCHEMA_NAME>.<TABLE_NAME> LIMIT 10;
 
 Example: 
 ```bash
-sql> select trace_id, block_number from db_uc.default.traces limit 10
+sql> select trace_id, block_number from db_uc.default.traces limit 10;
 +-------------------------------------------------------------------------------+--------------+
 | trace_id                                                                      | block_number |
 +-------------------------------------------------------------------------------+--------------+

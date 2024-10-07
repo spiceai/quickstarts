@@ -70,7 +70,7 @@ Spice can read data straight from a Databricks instance. This guide will create 
    Welcome to the Spice.ai SQL REPL! Type 'help' for help.
 
    show tables; -- list available tables
-   sql> show tables
+   sql> show tables;
    +---------------+--------------+---------------+------------+
    | table_catalog | table_schema | table_name    | table_type |
    +---------------+--------------+---------------+------------+
@@ -83,7 +83,7 @@ Spice can read data straight from a Databricks instance. This guide will create 
    ```
 
    ```shell
-   sql> describe spice.public.my_table
+   sql> describe spice.public.my_table;
    +-----------------------+------------------------------+-------------+
    | column_name           | data_type                    | is_nullable |
    +-----------------------+------------------------------+-------------+
