@@ -44,17 +44,17 @@ spice run
 Once the datasets have loaded, run the following query in the SQL REPL via `spice sql` to get a single row:
 
 ```sql
-SELECT * FROM traces_no_index WHERE trace_id = 'call_0x22ba49176f15ec5524434d87c47fc9dbff6ef8f584889ab4f0fa830d76a678d4_7_3_2_0_0_0_0_0'
+SELECT * FROM traces_no_index WHERE trace_id = 'call_0x22ba49176f15ec5524434d87c47fc9dbff6ef8f584889ab4f0fa830d76a678d4_7_3_2_0_0_0_0_0';
 ```
 
-> Time: 0.009690667 seconds. 1 rows.
+> Time: 6.4854340950000005 seconds. 1 rows.
 
 **Step 4.** Run a query on the dataset with an index
 
 Repeat the query, but this time against the dataset with the index configured:
 
 ```sql
-SELECT * FROM traces WHERE trace_id = 'call_0x22ba49176f15ec5524434d87c47fc9dbff6ef8f584889ab4f0fa830d76a678d4_7_3_2_0_0_0_0_0'
+SELECT * FROM traces WHERE trace_id = 'call_0x22ba49176f15ec5524434d87c47fc9dbff6ef8f584889ab4f0fa830d76a678d4_7_3_2_0_0_0_0_0';
 ```
 
 > Time: 0.003471583 seconds. 1 rows.
