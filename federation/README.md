@@ -81,7 +81,7 @@ SELECT SUM(sales) as total_sales,
        COUNT(*) AS total_transactions,
        MAX(sales) AS max_sale,
        AVG(sales) AS avg_sale
-FROM all_sales
+FROM all_sales;
 ```
 
 **Step 8.** Clean up the demo environment:
