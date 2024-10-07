@@ -16,6 +16,7 @@ instances are accessible from within Spice to demonstrate that you can query acr
 git clone https://github.com/spiceai/quickstarts.git
 cd quickstarts/mssql
 ```
+
 2. Start the MSSQL instances using `docker compose up -d`. In a production scenario you'd want to use [secrets](https://docs.spiceai.org/components/secret-stores) to protect your secrets
 3. Start up Spice using `spice run`
 
@@ -40,7 +41,9 @@ Spice.ai runtime starting...
 2024-09-23T19:43:29.387697Z  INFO runtime::accelerated_table::refresh_task: Loaded 19,820 rows (2.20 MiB) for dataset sales.customer2022 in 88ms.
 2024-09-23T19:43:29.394271Z  INFO runtime::accelerated_table::refresh_task: Loaded 31,465 rows (7.19 MiB) for dataset sales.salesorderheader in 95ms.
 ```
+
 4. In another shell, fire up the Spice SQL REPL using `spice sql`
+
 ```shell
 Welcome to the Spice.ai SQL REPL! Type 'help' for help.
 
@@ -52,21 +55,21 @@ show tables; -- list available tables
 ### Verify that the row counts in the 2019 server matches the 2022 server
 
 ```sql
-SELECT 
+SELECT
     count_2019,
     count_2022,
-    count_2019=count_2022 AS equal 
+    count_2019=count_2022 AS equal
 FROM (
-    SELECT 
-        COUNT(*) AS count_2019, 
-        MAX(count_2022) AS count_2022 
-    FROM Sales.Customer 
+    SELECT
+        COUNT(*) AS count_2019,
+        MAX(count_2022) AS count_2022
+    FROM Sales.Customer
     JOIN (
-        SELECT 
-            COUNT(*) AS count_2022 
+        SELECT
+            COUNT(*) AS count_2022
         FROM Sales.Customer2022
     ) ON 1=1
-)
+);
 ```
 
 Output:
@@ -82,16 +85,16 @@ Output:
 ### Order information per customer
 
 ```sql
-SELECT c."CustomerID", 
-    MAX(CAST("OrderDate" AS DATE)) AS LatestOrderDate, 
-    ROUND(AVG("TotalDue"), 2) AS AverageOrderValue, 
-    COUNT("SalesOrderID") AS TotalNumberOfOrders 
+SELECT c."CustomerID",
+    MAX(CAST("OrderDate" AS DATE)) AS LatestOrderDate,
+    ROUND(AVG("TotalDue"), 2) AS AverageOrderValue,
+    COUNT("SalesOrderID") AS TotalNumberOfOrders
 FROM Sales.Customer c
-LEFT OUTER JOIN Sales.SalesOrderHeader soh 
-    ON c."CustomerID" = soh."CustomerID" 
-GROUP BY c."CustomerID" 
+LEFT OUTER JOIN Sales.SalesOrderHeader soh
+    ON c."CustomerID" = soh."CustomerID"
+GROUP BY c."CustomerID"
 ORDER BY TotalNumberOfOrders DESC
-LIMIT 10
+LIMIT 10;
 ```
 
 Output:
