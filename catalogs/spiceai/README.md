@@ -35,8 +35,8 @@ Add the following configuration to your `spicepod.yaml`:
 
 ```yaml
 catalogs:
-  - name: spice.ai
-    from: spiceai
+  - name: spiceai
+    from: spice.ai
 ```
 
 ## Step 5. Start the Spice runtime
@@ -94,7 +94,7 @@ Specify an `include` filter to limit the tables registered in the catalog.
 ```yaml
 catalogs:
   - name: spiceai
-    from: spiceai
+    from: spice.ai
     include:
       - tpch.*
 ```
