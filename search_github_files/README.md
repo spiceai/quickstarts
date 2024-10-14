@@ -78,6 +78,7 @@ Result:
     ],
     "duration_ms": 48
 }
+```
 
 ### Additional Configuration - Chunking
 
