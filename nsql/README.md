@@ -1,6 +1,6 @@
 ## Text to SQL (NSQL) Quickstarts
 
-Spice can provide an end to end system for users to ask questions of their SQL data. 
+Spice can provide an end to end system for users to ask natural language questions of their datasets. 
 
 ## Requirements
 
@@ -9,6 +9,7 @@ Spice can provide an end to end system for users to ask questions of their SQL d
   - `SPICE_OPENAI_API_KEY`
 --- 
 
+## Using a Hosted Model
 **Step 1.** Run Spice runtime
 ```shell 
 spice run
@@ -43,8 +44,10 @@ spice sql
 ```
 
 Then:
+```sql
+SELECT start_time, parent_span_id, span_id, task, substr(input, 0, 64) AS input, execution_duration_ms FROM runtime.task_history WHERE trace_id=(SELECT trace_id FROM runtime.task_history WHERE task='nsql') ORDER BY start_time ASC;
+```
 ```shell
-sql> SELECT start_time, parent_span_id, span_id, task, substr(input, 0, 64) AS input, execution_duration_ms FROM runtime.task_history WHERE trace_id=(SELECT trace_id FROM runtime.task_history WHERE task='nsql') ORDER BY start_time ASC;
 +----------------------------+------------------+------------------+---------------+-----------------------------------------------------------------+-----------------------+
 | start_time                 | parent_span_id   | span_id          | task          | input                                                           | execution_duration_ms |
 +----------------------------+------------------+------------------+---------------+-----------------------------------------------------------------+-----------------------+
@@ -87,8 +90,10 @@ Time: 9.141290 seconds. 1 rows.
 ```
 
 Step 5.** (Optional) Check the underlying query
+```sql
+select start_time, parent_span_id, span_id, task, substr(input, 0, 64) as input, execution_duration_ms from runtime.task_history where trace_id=(select trace_id from runtime.task_history where task='nsql') order by start_time asc;
+```
 ```shell
-sql> select start_time, parent_span_id, span_id, task, substr(input, 0, 64) as input, execution_duration_ms from runtime.task_history where trace_id=(select trace_id from runtime.task_history where task='nsql') order by start_time asc;
 +----------------------------+------------------+------------------+---------------+-----------------------------------------------------------------+-----------------------+
 | start_time                 | parent_span_id   | span_id          | task          | input                                                           | execution_duration_ms |
 +----------------------------+------------------+------------------+---------------+-----------------------------------------------------------------+-----------------------+
