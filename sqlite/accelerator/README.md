@@ -14,7 +14,7 @@ Clone the Spice samples repository and navigate to the `sqlite` directory:
 
 ```bash
 git clone https://github.com/spiceai/quickstarts.git
-cd quickstarts/acceleration/sqlite
+cd quickstarts/sqlite/accelerator
 ```
 
 Start the Spice runtime
@@ -80,11 +80,11 @@ version: v1beta1
 kind: Spicepod
 name: spice_app
 datasets:
-- from: s3://spiceai-demo-datasets/taxi_trips/2024/
-  name: taxi_trips
-  description: taxi trips in s3
-  params:
-    file_format: parquet
+  - from: s3://spiceai-demo-datasets/taxi_trips/2024/
+    name: taxi_trips
+    description: taxi trips in s3
+    params:
+      file_format: parquet
 #   acceleration:
 #     enabled: true
 #     engine: sqlite
