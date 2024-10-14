@@ -20,13 +20,13 @@ datasets:
       include: 'docs/**/*.md'
     acceleration:
       enabled: true
-    embeddings:
-      - column: content
-        use: local_embedding_model
-        column_pk:
-          - path
-        chunking:
-          enabled: true
-          target_chunk_size: 256
-          overlap_size: 64
-          file_format: md
+    # embeddings:
+    #   - column: content
+    #     use: local_embedding_model
+    #     column_pk:
+    #       - path
+    #     chunking:
+    #       enabled: false
+    #       target_chunk_size: 256
+    #       overlap_size: 64
+    #       file_format: md
