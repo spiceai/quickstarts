@@ -38,4 +38,4 @@ Follow the [quickstart guide](https://docs.spiceai.org/getting-started) to get s
 
 For more information on using `spice sql`, see the [CLI reference](https://docs.spiceai.org/cli/reference/sql).
 
-**Step 7.** Execute the query `select * from [local_table_name];` to see the AWS RDS table accelerated locally.
+**Step 7.** Execute the query `select * from [local_table_name];` to see the Planetscale table accelerated locally.
