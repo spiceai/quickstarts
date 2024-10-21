@@ -47,7 +47,7 @@ Once the datasets have loaded, run the following query in the SQL REPL via `spic
 SELECT * FROM traces_no_index WHERE trace_id = 'call_0x22ba49176f15ec5524434d87c47fc9dbff6ef8f584889ab4f0fa830d76a678d4_7_3_2_0_0_0_0_0';
 ```
 
-> Time: 6.4854340950000005 seconds. 1 rows.
+> Time: 0.118341417 seconds. 1 rows.
 
 **Step 4.** Run a query on the dataset with an index
 
