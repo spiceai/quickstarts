@@ -34,7 +34,7 @@ kubectl exec -it deploy/spiceai -- spiced --repl
 ```sql
 show tables;
 ```
-Output:
+
 ```sql
 +---------------+--------------+---------------+------------+
 | table_catalog | table_schema | table_name    | table_type |
@@ -45,10 +45,11 @@ Output:
 | spice         | public       | taxi_trips    | BASE TABLE |
 +---------------+--------------+---------------+------------+
 ```
+
 ```sql
 describe taxi_trips;
 ```
-Output:
+
 ```sql
 +-----------------------+------------------------------+-------------+
 | column_name           | data_type                    | is_nullable |
@@ -76,9 +77,11 @@ Output:
 
 Time: 0.006071083 seconds. 19 rows.
 ```
+
 ```sql
 select * from taxi_trips limit 10;
 ```
+
 ```sql
 +----------+----------------------+-----------------------+-----------------+---------------+------------+--------------------+--------------+--------------+--------------+-------------+-------+---------+------------+--------------+-----------------------+--------------+----------------------+-------------+
 | VendorID | tpep_pickup_datetime | tpep_dropoff_datetime | passenger_count | trip_distance | RatecodeID | store_and_fwd_flag | PULocationID | DOLocationID | payment_type | fare_amount | extra | mta_tax | tip_amount | tolls_amount | improvement_surcharge | total_amount | congestion_surcharge | Airport_fee |
