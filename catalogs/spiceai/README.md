@@ -14,9 +14,8 @@ Sign up for a Spice.ai Cloud Platform account at https://spice.ai.
 ## Step 2. Create a new directory and initialize a Spicepod
 
 ```bash
-mkdir spice-catalog-demo
+spice init spice-catalog-demo
 cd spice-catalog-demo
-spice init
 ```
 
 ## Step 3. Login to the Spice.ai Cloud Platform with `spice login`
@@ -57,7 +56,7 @@ SELECT * FROM spiceai.tpch.lineitem LIMIT 10;
 
 ## Step 7. Explore the available datasets
 
-Use `show tables` in the Spice SQL REPL to see the available datasets.
+Use `show tables;` in the Spice SQL REPL to see the available datasets.
 
 ```bash
 sql> show tables;
