@@ -10,7 +10,7 @@ Follow these steps to get started with GraphQL as a Data Connector.
 
 **Step 1.** Edit the `spicepod.yaml` file in this directory and replace the `graphql_quickstart` dataset params with the connection parameters for the GraphQL instance, where `[local_table_name]` is the desired name for the federated table within Spice, `[graphql_endpoint]` is the URL to the GraphQL endpoint, `[graphql_query]` is the query to execute, and `[json_pointer]` is the JSON pointer to the data in the GraphQL response.
 
-For authentication options see [GraphQL Data Connector docs](https://docs.spiceai.org/data-connectors/graphql#configuration)
+For authentication options see [GraphQL Data Connector docs](https://docs.spiceai.org/components/data-connectors/graphql#configuration)
 
 For example, to connect to the GitHub GraphQL API and fetch the stargazers of the `spiceai` repository:
 
