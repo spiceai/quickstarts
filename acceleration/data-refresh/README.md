@@ -40,7 +40,7 @@ Spice.ai runtime starting...
 In the REPL, enter:
 
 ```sql
-select avg(passenger_count) from taxi_trips
+select avg(passenger_count) from taxi_trips;
 ```
 
 Note the output is:
@@ -92,7 +92,7 @@ Save the file and note that the dataset has been updated:
 Swap to the Spice SQL REPL and enter:
 
 ```sql
-select avg(passenger_count) from taxi_trips
+select avg(passenger_count) from taxi_trips;
 ```
 
 Note, the output is now:
@@ -131,7 +131,7 @@ The updated `refresh_sql` will be applied on the _next_ refresh (as determined b
 Make an additional call to trigger a refresh now:
 
 ```bash
-curl -i -X POST localhost:8090/v1/datasets/taxi_trips/acceleration/refresh
+curl -i -H "Content-Type: application/json" -X POST localhost:8090/v1/datasets/taxi_trips/acceleration/refresh --data "{}"
 ```
 
 ```bash
@@ -142,7 +142,7 @@ curl -i -X POST localhost:8090/v1/datasets/taxi_trips/acceleration/refresh
 Swap to the Spice SQL REPL and enter:
 
 ```sql
-select avg(passenger_count) from taxi_trips
+select avg(passenger_count) from taxi_trips;
 ```
 
 Note, the output is now:
