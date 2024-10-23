@@ -42,6 +42,55 @@ show tables;
 | spice         | runtime      | query_history | BASE TABLE |
 | spice         | runtime      | metrics       | BASE TABLE |
 | spice         | runtime      | task_history  | BASE TABLE |
++---------------+--------------+---------------+------------+
+```
+
+
+**Step 6.** Create a `values.yaml` file to configure the Spice deployment:
+
+```bash
+cat <<EOF > values.yaml
+spicepod:
+  name: app
+  version: v1beta1
+  kind: Spicepod
+
+  datasets:
+    - from: s3://spiceai-demo-datasets/taxi_trips/2024/
+      name: taxi_trips_customized
+      description: Demo taxi trips in s3
+      params:
+        file_format: parquet
+      acceleration:
+        enabled: true
+EOF
+```
+
+**Step 7.** Update the Spice deployment with the new configuration:
+
+```bash
+helm upgrade spiceai spiceai/spiceai -f values.yaml
+```
+
+**Step 8.** Rerun the Spice SQL REPL 
+
+```bash
+kubectl exec -it deploy/spiceai -- spiced --repl
+```
+
+**Step 9.** Run these queries in the Spice SQL REPL:
+
+```sql
+show tables;
+```
+
+```sql
++---------------+--------------+---------------+------------+
+| table_catalog | table_schema | table_name    | table_type |
++---------------+--------------+---------------+------------+
+| spice         | runtime      | query_history | BASE TABLE |
+| spice         | runtime      | metrics       | BASE TABLE |
+| spice         | runtime      | task_history  | BASE TABLE |
 | spice         | public       | taxi_trips    | BASE TABLE |
 +---------------+--------------+---------------+------------+
 ```
@@ -99,32 +148,6 @@ select * from taxi_trips limit 10;
 +----------+----------------------+-----------------------+-----------------+---------------+------------+--------------------+--------------+--------------+--------------+-------------+-------+---------+------------+--------------+-----------------------+--------------+----------------------+-------------+
 
 Time: 0.01968175 seconds. 10 rows.
-```
-
-**Step 6.** Create a `values.yaml` file to configure the Spice deployment:
-
-```bash
-cat <<EOF > values.yaml
-spicepod:
-  name: app
-  version: v1beta1
-  kind: Spicepod
-
-  datasets:
-    - from: s3://spiceai-demo-datasets/taxi_trips/2024/
-      name: taxi_trips_customized
-      description: Demo taxi trips in s3
-      params:
-        file_format: parquet
-      acceleration:
-        enabled: true
-EOF
-```
-
-**Step 7.** Update the Spice deployment with the new configuration:
-
-```bash
-helm upgrade spiceai spiceai/spiceai -f values.yaml
 ```
 
 ## Clean up
