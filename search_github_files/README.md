@@ -173,3 +173,56 @@ Result:
     "duration_ms": 45
 }
 ```
+
+## Pre-existing embeddings
+Spiced can perform vector search on table that already have the required embedding columns. To try this:
+
+1. Run a new `spiced` instance pointing to the currently running `spiced`.
+```shell
+cd child/
+spiced --http 127.0.0.1:8091 --flight 127.0.0.1:50061 --open_telemetry 127.0.0.1:50062
+```
+
+2. Rerun the search, this time against the child `spiced` (port `8091`)
+```shell
+curl -XPOST http://localhost:8091/v1/search \
+  -H 'Content-Type: application/json' \
+  -d "{
+    \"datasets\": [\"spiceai.files\"],
+    \"text\": \"errors\",
+    \"where\": \"not contains(path, 'docs/release_notes')\",
+    \"additional_columns\": [\"download_url\"],
+    \"limit\": 2
+  }"
+```
+
+Result:
+```json
+{
+    "matches": [
+        {
+            "value": "# Spice.ai Extensibility\n\nThis document is an overview of all the interfaces and extension points in Spice.ai.\n\n| Component       | Description                                                                                                                                | Definition Link                                            |\n| --------------- | -----------------------------",
+            "score": 0.7811596783985292,
+            "dataset": "spiceai.files",
+            "primary_key": {
+                "path": "docs/EXTENSIBILITY.md"
+            },
+            "metadata": {
+                "download_url": "https://raw.githubusercontent.com/spiceai/spiceai/trunk/docs/EXTENSIBILITY.md"
+            }
+        },
+        {
+            "value": "# Guidelines for error handlling\n\n## Rust Error Traits\n\nIn Rust, the Error trait implements both the Debug and Display traits. All user-facing errors should use the Display trait, not the Debug trait.\n\ni.e.\n\nGood (uses Display trait)\n```rust\nif let Err(user_facing_err) = upload_data(datasource) {\n    tracing::error!(\"Unable to upload data to {datasource}: {user_facing_err}\");\n}\n``",
+            "score": 0.8009972672322939,
+            "dataset": "spiceai.files",
+            "primary_key": {
+                "path": "docs/dev/error_handling.md"
+            },
+            "metadata": {
+                "download_url": "https://raw.githubusercontent.com/spiceai/spiceai/trunk/docs/dev/error_handling.md"
+            }
+        }
+    ],
+    "duration_ms": 48
+}
+```
