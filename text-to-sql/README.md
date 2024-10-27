@@ -25,7 +25,7 @@ spice run
 curl -XPOST "http://localhost:8090/v1/nsql" \
   -H "Content-Type: application/json" \
   -d '{
-    "query": "What is the total sales for the month of January 2020?"
+    "query": "Which vendors have made the most trips this year?"
   }'
 ```
 
@@ -33,7 +33,16 @@ Result:
 ```json
 [
     {
-        "total_rides": 2964624
+        "VendorID": 2,
+        "TripCount": 2234617
+    },
+    {
+        "VendorID": 1,
+        "TripCount": 729732
+    },
+    {
+        "VendorID": 6,
+        "TripCount": 260
     }
 ]
 ```
@@ -62,7 +71,25 @@ Result:
   "messages": [
     {
       "role": "system",
-      "content": "```SQL\nCREATE TABLE IF NOT EXISTS \"spice.public.taxi_trips\" ( \"VendorID\" integer, \"tpep_pickup_datetime\" timestamp, \"tpep_dropoff_datetime\" timestamp, \"passenger_count\" bigint, \"trip_distance\" double precision, \"RatecodeID\" bigint, \"store_and_fwd_flag\" text, \"PULocationID\" integer, \"DOLocationID\" integer, \"payment_type\" bigint, \"fare_amount\" double precision, \"extra\" double precision, \"mta_tax\" double precision, \"tip_amount\" double precision, \"tolls_amount\" double precision, \"improvement_surcharge\" double precision, \"total_amount\" double precision, \"congestion_surcharge\" double precision, \"Airport_fee\" double precision )```\nTask: Write a postgres SQL query to answer this question: _\"How many taxi rides have been made?\"_. Instruction: Return only valid SQL code, nothing additional."
+      "content": "Task: Write a SQL query to answer this question: _\\\"Which vendors have made the most trips this year?\\\"_. Instruction: Return only valid SQL code, nothing additional. Columns with capitals must be quoted. For tables with schemas and catalogs '\"catalog\".\"schema\".\"table\"' not '\"catalog.schema.table\"'."
+    },
+    {
+      "role": "assistant",
+      "tool_calls": [
+        {
+          "id": "schemas-nsql",
+          "type": "function",
+          "function": {
+            "name": "table_schema",
+            "arguments": "{\"tables\":[\"spice.public.taxi_trips\"]}"
+          }
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "content": "[{\"schema\":{\"fields\":[{\"data_type\":\"Int32\",\"dict_id\":0,\"dict_is_ordered\":false,\"metadata\":{},\"name\":\"VendorID\",\"nullable\":true},{\"data_type\":{\"Timestamp\":[\"Microsecond\",null]},\"dict_id\":0,\"dict_is_ordered\":false,\"metadata\":{},\"name\":\"tpep_pickup_datetime\",\"nullable\":true},{\"data_type\":{\"Timestamp\":[\"Microsecond\",null]},\"dict_id\":0,\"dict_is_ordered\":false,\"metadata\":{},\"name\":\"tpep_dropoff_datetime\",\"nullable\":true},{\"data_type\":\"Int64\",\"dict_id\":0,\"dict_is_ordered\":false,\"metadata\":{},\"name\":\"passenger_count\",\"nullable\":true},{\"data_type\":\"Float64\",\"dict_id\":0,\"dict_is_ordered\":false,\"metadata\":{},\"name\":\"trip_distance\",\"nullable\":true},{\"data_type\":\"Int64\",\"dict_id\":0,\"dict_is_ordered\":false,\"metadata\":{},\"name\":\"RatecodeID\",\"nullable\":true},{\"data_type\":\"Utf8\",\"dict_id\":0,\"dict_is_ordered\":false,\"metadata\":{},\"name\":\"store_and_fwd_flag\",\"nullable\":true},{\"data_type\":\"Int32\",\"dict_id\":0,\"dict_is_ordered\":false,\"metadata\":{},\"name\":\"PULocationID\",\"nullable\":true},{\"data_type\":\"Int32\",\"dict_id\":0,\"dict_is_ordered\":false,\"metadata\":{},\"name\":\"DOLocationID\",\"nullable\":true},{\"data_type\":\"Int64\",\"dict_id\":0,\"dict_is_ordered\":false,\"metadata\":{},\"name\":\"payment_type\",\"nullable\":true},{\"data_type\":\"Float64\",\"dict_id\":0,\"dict_is_ordered\":false,\"metadata\":{},\"name\":\"fare_amount\",\"nullable\":true},{\"data_type\":\"Float64\",\"dict_id\":0,\"dict_is_ordered\":false,\"metadata\":{},\"name\":\"extra\",\"nullable\":true},{\"data_type\":\"Float64\",\"dict_id\":0,\"dict_is_ordered\":false,\"metadata\":{},\"name\":\"mta_tax\",\"nullable\":true},{\"data_type\":\"Float64\",\"dict_id\":0,\"dict_is_ordered\":false,\"metadata\":{},\"name\":\"tip_amount\",\"nullable\":true},{\"data_type\":\"Float64\",\"dict_id\":0,\"dict_is_ordered\":false,\"metadata\":{},\"name\":\"tolls_amount\",\"nullable\":true},{\"data_type\":\"Float64\",\"dict_id\":0,\"dict_is_ordered\":false,\"metadata\":{},\"name\":\"improvement_surcharge\",\"nullable\":true},{\"data_type\":\"Float64\",\"dict_id\":0,\"dict_is_ordered\":false,\"metadata\":{},\"name\":\"total_amount\",\"nullable\":true},{\"data_type\":\"Float64\",\"dict_id\":0,\"dict_is_ordered\":false,\"metadata\":{},\"name\":\"congestion_surcharge\",\"nullable\":true},{\"data_type\":\"Float64\",\"dict_id\":0,\"dict_is_ordered\":false,\"metadata\":{},\"name\":\"Airport_fee\",\"nullable\":true}],\"metadata\":{}},\"table\":\"spice.public.taxi_trips\"}]",
+      "tool_call_id": "schemas-nsql"
     },
     {
       "role": "assistant",
@@ -97,7 +124,7 @@ Result:
     },
     {
       "role": "tool",
-      "content": "\"+----------+----------------------+-----------------------+-----------------+---------------+------------+--------------------+--------------+--------------+--------------+-------------+-------+---------+------------+--------------+-----------------------+--------------+----------------------+-------------+\\n| VendorID | tpep_pickup_datetime | tpep_dropoff_datetime | passenger_count | trip_distance | RatecodeID | store_and_fwd_flag | PULocationID | DOLocationID | payment_type | fare_amount | extra | mta_tax | tip_amount | tolls_amount | improvement_surcharge | total_amount | congestion_surcharge | Airport_fee |\\n+----------+----------------------+-----------------------+-----------------+---------------+------------+--------------------+--------------+--------------+--------------+-------------+-------+---------+------------+--------------+-----------------------+--------------+----------------------+-------------+\\n| 1        | 2024-01-10T16:22:13  | 2024-01-10T16:27:50   | 1               | 0.6           | 1          | N                  | 142          | 230          | 1            | 6.5         | 5.0   | 0.5     | 3.0        | 0.0          | 1.0                   | 16.0         | 2.5                  | 0.0         |\\n| 1        | 2024-01-10T16:24:01  | 2024-01-10T16:36:51   | 1               | 1.2           | 1          | N                  | 161          | 237          | 1            | 11.4        | 5.0   | 0.5     | 3.6        | 0.0          | 1.0                   | 21.5         | 2.5                  | 0.0         |\\n| 1        | 2024-01-10T16:48:49  | 2024-01-10T16:55:11   | 1               | 1.0           | 1          | N                  | 237          | 75           | 1            | 7.9         | 5.0   | 0.5     | 2.9        | 0.0          | 1.0                   | 17.3         | 2.5                  | 0.0         |\\n+----------+----------------------+-----------------------+-----------------+---------------+------------+--------------------+--------------+--------------+--------------+-------------+-------+---------+------------+--------------+-----------------------+--------------+----------------------+-------------+\"",
+      "content": "\"+----------+----------------------+-----------------------+-----------------+---------------+------------+--------------------+--------------+--------------+--------------+-------------+-------+---------+------------+--------------+-----------------------+--------------+----------------------+-------------+\\n| VendorID | tpep_pickup_datetime | tpep_dropoff_datetime | passenger_count | trip_distance | RatecodeID | store_and_fwd_flag | PULocationID | DOLocationID | payment_type | fare_amount | extra | mta_tax | tip_amount | tolls_amount | improvement_surcharge | total_amount | congestion_surcharge | Airport_fee |\\n+----------+----------------------+-----------------------+-----------------+---------------+------------+--------------------+--------------+--------------+--------------+-------------+-------+---------+------------+--------------+-----------------------+--------------+----------------------+-------------+\\n| 2        | 2024-01-23T15:35:31  | 2024-01-23T16:26:51   | 2               | 21.06         | 2          | N                  | 132          | 87           | 1            | 70.0        | 0.0   | 0.5     | 20.23      | 6.94         | 1.0                   | 102.92       | 2.5                  | 1.75        |\\n| 2        | 2024-01-23T15:23:18  | 2024-01-23T15:46:22   | 2               | 1.57          | 1          | N                  | 142          | 186          | 2            | 19.8        | 0.0   | 0.5     | 0.0        | 0.0          | 1.0                   | 23.8         | 2.5                  | 0.0         |\\n| 2        | 2024-01-23T15:52:48  | 2024-01-23T15:56:39   | 2               | 0.66          | 1          | N                  | 142          | 239          | 2            | 5.8         | 0.0   | 0.5     | 0.0        | 0.0          | 1.0                   | 9.8          | 2.5                  | 0.0         |\\n+----------+----------------------+-----------------------+-----------------+---------------+------------+--------------------+--------------+--------------+--------------+-------------+-------+---------+------------+--------------+-----------------------+--------------+----------------------+-------------+\"",
       "tool_call_id": "distinct-spice.public.taxi_trips-nsql"
     }
   ],
@@ -126,11 +153,11 @@ Result:
 }
 ```
 
-From this, you can see that `spice` does the following to help the model with text to sql:
- - Shows table creation SQL statements for the relevant tables.
+From this, you can see that `spice` runs the following [tools](https://docs.spiceai.org/features/ai-gateway/runtime_tools) to help the model write contextual, correct SQL:
+ - `table_schema`: To show the table schema of each relevant table.
  - Sample data from the relevant table(s), both:
-    - A sample of the data in the table.
-    - A sample of disctinct values from each column in the table.
+    - `random_sample` to sample rows from each table.
+    - `sample_distinct_columns` to sample distinct values from each column in the table.
 
 
 ### Disable Sampling
@@ -139,7 +166,7 @@ To disable sampling in text-to-SQL:
 curl -XPOST "http://localhost:8090/v1/nsql" \
   -H "Content-Type: application/json" \
   -d '{
-    "query": "What is the total sales for the month of January 2020?",
+    "query": "Which vendors have made the most trips this year?",
      "sample_data_enabled": false
   }'
 ```
@@ -150,7 +177,7 @@ To restrict the tables that `spice` uses for text-to-SQL:
 curl -XPOST "http://localhost:8090/v1/nsql" \
   -H "Content-Type: application/json" \
   -d '{
-    "query": "What is the total sales for the month of January 2020?",
-    "tables": ["public.sales"]
+    "query": "Which vendors have made the most trips this year?",
+    "tables": ["taxi_trips"]
   }'
 ```
