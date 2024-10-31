@@ -24,7 +24,6 @@ datasets:
         enabled: true
         engine: duckdb
         mode: file
-        refresh_check_interval: 10s
 
 ```
 
