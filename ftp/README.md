@@ -1,5 +1,7 @@
 # FTP/SFTP Data Connector
 
+The instructions below require access to an FTP/SFTP server. An end-to-end sample configuration with a test FTP server, available via a Docker container, can be found at [FTP/SFTP Data Connector Sample](https://github.com/spiceai/samples/tree/trunk/ftp).
+
 Follow these steps to get started with FTP/SFTP as a Data Connector.
 
 **Step 1** Edit the `spicepod_ftp.yaml` or `spicepod_sftp.yaml` file in this directory, depending on your chosen connection type. Replace the parameters in the specified dataset with the connection details for your FTP/SFTP server. Define `[local_table_name]` as your preferred name for the federated table, `[remote_host]` as the server's address, and `[remote_path]` as the directory or file you wish to accelerate. The file should be named simply as spicepod.yaml. Currently, FTP/SFTP supports Parquet and CSV file formats.
