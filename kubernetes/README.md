@@ -39,7 +39,6 @@ show tables;
 +---------------+--------------+---------------+------------+
 | table_catalog | table_schema | table_name    | table_type |
 +---------------+--------------+---------------+------------+
-| spice         | runtime      | query_history | BASE TABLE |
 | spice         | runtime      | metrics       | BASE TABLE |
 | spice         | runtime      | task_history  | BASE TABLE |
 +---------------+--------------+---------------+------------+
@@ -85,18 +84,17 @@ show tables;
 ```
 
 ```sql
-+---------------+--------------+---------------+------------+
-| table_catalog | table_schema | table_name    | table_type |
-+---------------+--------------+---------------+------------+
-| spice         | runtime      | query_history | BASE TABLE |
-| spice         | runtime      | metrics       | BASE TABLE |
-| spice         | runtime      | task_history  | BASE TABLE |
-| spice         | public       | taxi_trips    | BASE TABLE |
-+---------------+--------------+---------------+------------+
++---------------+--------------+-----------------------+------------+
+| table_catalog | table_schema | table_name            | table_type |
++---------------+--------------+-----------------------+------------+
+| spice         | public       | taxi_trips_customized | BASE TABLE |
+| spice         | runtime      | task_history          | BASE TABLE |
+| spice         | runtime      | metrics               | BASE TABLE |
++---------------+--------------+-----------------------+------------+
 ```
 
 ```sql
-describe taxi_trips;
+describe taxi_trips_customized;
 ```
 
 ```sql
@@ -128,7 +126,7 @@ Time: 0.006071083 seconds. 19 rows.
 ```
 
 ```sql
-select * from taxi_trips limit 10;
+select * from taxi_trips_customized limit 10;
 ```
 
 ```sql
