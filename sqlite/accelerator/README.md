@@ -106,7 +106,7 @@ datasets:
   acceleration:
     enabled: true
     engine: sqlite
-   mode: file
+    mode: file
 ```
 
 The following output is shown in the Spice runtime terminal confirming new configuration is applied.
