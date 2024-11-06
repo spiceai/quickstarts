@@ -1,6 +1,6 @@
 # Quickstart: Searching GitHub files with Spice
 
-## Prerequistes 
+## Prerequistes
  - Ensure you have the Spice CLI installed. Follow the [Getting Started](https://docs.spiceai.org/getting-started) if you haven't done so.
  - Populate `.env`.
    - `GITHUB_TOKEN`: With a [personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic).
@@ -34,7 +34,7 @@ Result:
 
 ## Utilizing Vector-Based Search
 
-1. In the `spicepod.yaml`, uncomment the `datasets[0].embeddings`.
+1. In the `spicepod.yaml`, uncomment the `datasets[0].columns[0].embeddings`.
 2. Restart the spiced.
 3. Perform a basic search
 ```shell
@@ -82,7 +82,7 @@ Result:
 
 ### Additional Configuration - Chunking
 
-1. Update the spicepod `datasets[0].embeddings.chunking.enabled: true`.
+1. Update the spicepod `datasets[0].columns[0].embeddings.chunking.enabled: true`.
 2. Restart the spiced.
 3. Rerun the search
 ```shell
