@@ -24,14 +24,18 @@ spice chat
 **Step 4.** Interact with the model
 ```shell
 >>> spice chat
-Welcome to the Spice.ai Chat!
-Using model: chat_model
 
 chat> Hi, my name is Alice and I work as a software engineer
-Hello Alice! Nice to meet you. It's great to connect with a fellow software engineer. How's your day going?
+Hi Alice! It's nice to meet you. How can I assist you today?
 
-chat> I live in Seattle
-I see you're based in Seattle! That's a great tech hub. How do you like living there?
+chat>  I live in Seattle. Tell me a joke about it
+Sure, here's a Seattle-themed joke for you:
+
+Why don't Seattle folks get lost in the woods?
+
+Because they always follow the trail of coffee cups back home! ☕🌲
+
+Hope that gives you a chuckle! Let me know if there's anything else you'd like to know or chat about.
 ```
 
 **Step 5.** Check stored memories
@@ -44,13 +48,13 @@ Then:
 SELECT id, value FROM llm_memory;
 ```
 ```shell
-+--------------------------------------+----------------------------------------+
-| id                                   | value                                  |
-+--------------------------------------+----------------------------------------+
-| 01930a3e-65aa-7332-b401-c112f7f72b70 | User's name is Alice.                 |
-| 01930a3e-65aa-7332-b401-c127c51b2c67 | Alice works as a software engineer.   |
-| 01930a3e-65aa-7332-b401-c1394d0e6025 | Alice lives in Seattle.               |
-+--------------------------------------+----------------------------------------+
++--------------------------------------+-------------------------------------+
+| id                                   | value                               |
++--------------------------------------+-------------------------------------+
+| 019319e4-ca14-7a12-a91a-f2c73528d304 | User's name is Alice                |
+| 019319e4-ca14-7a12-a91a-f2d52fb70fba | Alice is a software engineer        |
+| 019319e4-ca14-7a12-a91a-f2e2656ff222 | Alice lives in Seattle              |
++--------------------------------------+-------------------------------------+
 ```
 
 ### Using Memory Tools Directly
@@ -62,4 +66,12 @@ curl -XPOST http://127.0.0.1:8090/v1/tool/store_memory -d '{"thoughts": ["Alice 
 **Step 2.** Load stored memories
 ```shell
 curl -XPOST http://127.0.0.1:8090/v1/tool/load_memory -d '{"last": "10m"}'
+```
+```json
+[
+    "Users name is Alice",
+    "Alice is a software engineer",
+    "Alice lives in Seattle",
+    "Alice thinks she deserves a promotion"
+]
 ```
