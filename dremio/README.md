@@ -74,7 +74,7 @@ from: dremio:datasets.taxi_trips
 name: taxi_trips
 description: taxi trips data in Dremio
 params:
-  endpoint: grpc://20.163.171.8:32010
+  dremio_endpoint: grpc://20.163.171.8:32010
 acceleration:
   enabled: true
   refresh_check_interval: 10s
