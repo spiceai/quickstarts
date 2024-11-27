@@ -16,11 +16,32 @@ helm repo add spiceai https://helm.spiceai.org
 helm install spiceai spiceai/spiceai
 ```
 
+Output:
+
+```bash
+NAME: spiceai
+LAST DEPLOYED: Wed Nov 27 13:55:43 2024
+NAMESPACE: default
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+```
+
 **Step 3.** Verify that the Spice pods are running:
 
 ```bash
 kubectl get pods
 kubectl logs deploy/spiceai
+```
+
+Output:
+
+```bash
+2024-11-27T21:55:48.116059Z  INFO runtime::metrics_server: Spice Runtime Metrics listening on 0.0.0.0:9090
+2024-11-27T21:55:48.116119Z  INFO runtime::flight: Spice Runtime Flight listening on 0.0.0.0:50051
+2024-11-27T21:55:48.116053Z  INFO runtime::opentelemetry: Spice Runtime OpenTelemetry listening on 0.0.0.0:50052
+2024-11-27T21:55:48.116548Z  INFO runtime::http: Spice Runtime HTTP listening on 0.0.0.0:8090
+2024-11-27T21:55:48.116578Z  INFO runtime: Initialized results cache; max size: 128.00 MiB, item ttl: 1s
 ```
 
 **Step 4.** Run the Spice SQL REPL inside the running pod:
@@ -43,7 +64,6 @@ show tables;
 | spice         | runtime      | task_history  | BASE TABLE |
 +---------------+--------------+---------------+------------+
 ```
-
 
 **Step 6.** Create a `values.yaml` file to configure the Spice deployment:
 
@@ -69,6 +89,18 @@ EOF
 
 ```bash
 helm upgrade spiceai spiceai/spiceai -f values.yaml
+```
+
+Output:
+
+```bash
+Release "spiceai" has been upgraded. Happy Helming!
+NAME: spiceai
+LAST DEPLOYED: Wed Nov 27 13:57:35 2024
+NAMESPACE: default
+STATUS: deployed
+REVISION: 2
+TEST SUITE: None
 ```
 
 **Step 8.** Rerun the Spice SQL REPL 
