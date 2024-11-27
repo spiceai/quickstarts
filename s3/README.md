@@ -13,6 +13,19 @@ cd s3-demo-project
 spice run
 ```
 
+The following output is shown in the terminal:
+
+```bash
+2024/11/27 15:00:11 INFO Checking for latest Spice runtime release...
+2024/11/27 15:00:11 INFO Spice.ai runtime starting...
+2024-11-27T23:00:11.849307Z  INFO runtime::init::dataset: No datasets were configured. If this is unexpected, check the Spicepod configuration.
+2024-11-27T23:00:11.850273Z  INFO runtime::metrics_server: Spice Runtime Metrics listening on 127.0.0.1:9090
+2024-11-27T23:00:11.850338Z  INFO runtime::flight: Spice Runtime Flight listening on 127.0.0.1:50051
+2024-11-27T23:00:11.850888Z  INFO runtime::http: Spice Runtime HTTP listening on 127.0.0.1:8090
+2024-11-27T23:00:11.858487Z  INFO runtime::opentelemetry: Spice Runtime OpenTelemetry listening on 127.0.0.1:50052
+2024-11-27T23:00:12.052740Z  INFO runtime::init::results_cache: Initialized results cache; max size: 128.00 MiB, item ttl: 1s
+```
+
 **Step 2.** Configure the dataset to connect to S3:
 
 ```bash
@@ -72,15 +85,9 @@ acceleration:
 The following output is shown in the Spice runtime terminal:
 
 ```
-Spice.ai runtime starting...
-2024-07-23T00:33:50.544366Z  INFO spiced: Metrics listening on 127.0.0.1:9090
-2024-07-23T00:33:50.547612Z  INFO runtime::opentelemetry: Spice Runtime OpenTelemetry listening on 127.0.0.1:50052
-2024-07-23T00:33:50.549731Z  INFO runtime: Initialized results cache; max size: 128.00 MiB, item ttl: 1s
-2024-07-23T00:33:50.552016Z  INFO runtime::http: Spice Runtime HTTP listening on 127.0.0.1:8090
-2024-07-23T00:33:50.552044Z  INFO runtime::flight: Spice Runtime Flight listening on 127.0.0.1:50051
-2024-07-23T00:35:42.716736Z  INFO runtime: Dataset taxi_trips registered (s3://spiceai-demo-datasets/taxi_trips/2024/), acceleration (arrow, 10s refresh), results cache enabled.
-2024-07-23T00:35:42.718009Z  INFO runtime::accelerated_table::refresh_task: Loading data for dataset taxi_trips
-2024-07-23T00:35:59.390722Z  INFO runtime::accelerated_table::refresh_task: Loaded 2,964,624 rows (421.71 MiB) for dataset taxi_trips in 16s 672ms.
+2024-11-27T23:01:32.660992Z  INFO runtime::init::dataset: Dataset taxi_trips registered (s3://spiceai-demo-datasets/taxi_trips/2024/), acceleration (arrow, 10s refresh), results cache enabled.
+2024-11-27T23:01:32.663444Z  INFO runtime::accelerated_table::refresh_task: Loading data for dataset taxi_trips
+2024-11-27T23:01:41.897121Z  INFO runtime::accelerated_table::refresh_task: Loaded 2,964,624 rows (419.31 MiB) for dataset taxi_trips in 9s 233ms.
 ```
 
 **Step 3.** Run queries against the dataset using the Spice SQL REPL.
