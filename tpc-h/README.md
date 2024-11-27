@@ -25,19 +25,22 @@ The following output is shown in the Spice runtime terminal:
 
 ```bash
 Spice.ai runtime starting...
-2024-07-23T00:46:31.840562Z  INFO spiced: Metrics listening on 127.0.0.1:9090
-2024-07-23T00:46:31.845882Z  INFO runtime: Initialized results cache; max size: 128.00 MiB, item ttl: 1s
-2024-07-23T00:46:31.846175Z  INFO runtime::http: Spice Runtime HTTP listening on 127.0.0.1:8090
-2024-07-23T00:46:31.846188Z  INFO runtime::flight: Spice Runtime Flight listening on 127.0.0.1:50051
-2024-07-23T00:46:31.846252Z  INFO runtime::opentelemetry: Spice Runtime OpenTelemetry listening on 127.0.0.1:50052
-2024-07-23T00:46:38.826938Z  INFO runtime: Dataset customer registered (s3://spiceai-demo-datasets/tpch/customer/), results cache enabled.
-2024-07-23T00:46:39.636713Z  INFO runtime: Dataset lineitem registered (s3://spiceai-demo-datasets/tpch/lineitem/), results cache enabled.
-2024-07-23T00:46:40.309918Z  INFO runtime: Dataset nation registered (s3://spiceai-demo-datasets/tpch/nation/), results cache enabled.
-2024-07-23T00:46:41.261388Z  INFO runtime: Dataset orders registered (s3://spiceai-demo-datasets/tpch/orders/), results cache enabled.
-2024-07-23T00:46:42.033806Z  INFO runtime: Dataset part registered (s3://spiceai-demo-datasets/tpch/part/), results cache enabled.
-2024-07-23T00:46:42.692861Z  INFO runtime: Dataset partsupp registered (s3://spiceai-demo-datasets/tpch/partsupp/), results cache enabled.
-2024-07-23T00:46:43.303279Z  INFO runtime: Dataset region registered (s3://spiceai-demo-datasets/tpch/region/), results cache enabled.
-2024-07-23T00:46:43.975979Z  INFO runtime: Dataset supplier registered (s3://spiceai-demo-datasets/tpch/supplier/), results cache enabled.
+2024/11/27 12:59:01 INFO Checking for latest Spice runtime release...
+2024/11/27 12:59:01 INFO Spice.ai runtime starting...
+2024-11-27T20:59:02.364766Z  INFO runtime::init::dataset: No datasets were configured. If this is unexpected, check the Spicepod configuration.
+2024-11-27T20:59:02.366771Z  INFO runtime::http: Spice Runtime HTTP listening on 127.0.0.1:8090
+2024-11-27T20:59:02.366928Z  INFO runtime::metrics_server: Spice Runtime Metrics listening on 127.0.0.1:9090
+2024-11-27T20:59:02.366986Z  INFO runtime::flight: Spice Runtime Flight listening on 127.0.0.1:50051
+2024-11-27T20:59:02.374354Z  INFO runtime::opentelemetry: Spice Runtime OpenTelemetry listening on 127.0.0.1:50052
+2024-11-27T20:59:02.564753Z  INFO runtime::init::results_cache: Initialized results cache; max size: 128.00 MiB, item ttl: 1s
+2024-11-27T20:59:47.749619Z  INFO runtime::init::dataset: Dataset customer registered (s3://spiceai-demo-datasets/tpch/customer/), results cache enabled.
+2024-11-27T20:59:48.540821Z  INFO runtime::init::dataset: Dataset lineitem registered (s3://spiceai-demo-datasets/tpch/lineitem/), results cache enabled.
+2024-11-27T20:59:49.279920Z  INFO runtime::init::dataset: Dataset nation registered (s3://spiceai-demo-datasets/tpch/nation/), results cache enabled.
+2024-11-27T20:59:50.096551Z  INFO runtime::init::dataset: Dataset orders registered (s3://spiceai-demo-datasets/tpch/orders/), results cache enabled.
+2024-11-27T20:59:50.928929Z  INFO runtime::init::dataset: Dataset part registered (s3://spiceai-demo-datasets/tpch/part/), results cache enabled.
+2024-11-27T20:59:51.717123Z  INFO runtime::init::dataset: Dataset partsupp registered (s3://spiceai-demo-datasets/tpch/partsupp/), results cache enabled.
+2024-11-27T20:59:52.464457Z  INFO runtime::init::dataset: Dataset region registered (s3://spiceai-demo-datasets/tpch/region/), results cache enabled.
+2024-11-27T20:59:53.264263Z  INFO runtime::init::dataset: Dataset supplier registered (s3://spiceai-demo-datasets/tpch/supplier/), results cache enabled.
 ```
 
 **Step 3.** Run queries against the dataset using the Spice SQL REPL.
@@ -53,19 +56,20 @@ Check that TPC-H tables exist:
 ```sql
 show tables;
 
-+---------------+--------------+---------------+------------+
-| table_catalog | table_schema | table_name    | table_type |
-+---------------+--------------+---------------+------------+
-| spice         | public       | region        | BASE TABLE |
-| spice         | public       | partsupp      | BASE TABLE |
-| spice         | public       | part          | BASE TABLE |
-| spice         | public       | orders        | BASE TABLE |
-| spice         | public       | lineitem      | BASE TABLE |
-| spice         | public       | customer      | BASE TABLE |
-| spice         | public       | nation        | BASE TABLE |
-| spice         | public       | supplier      | BASE TABLE |
-| spice         | runtime      | task_history  | BASE TABLE |
-+---------------+--------------+---------------+------------+
++---------------+--------------+--------------+------------+
+| table_catalog | table_schema | table_name   | table_type |
++---------------+--------------+--------------+------------+
+| spice         | runtime      | task_history | BASE TABLE |
+| spice         | runtime      | metrics      | BASE TABLE |
+| spice         | public       | customer     | BASE TABLE |
+| spice         | public       | region       | BASE TABLE |
+| spice         | public       | lineitem     | BASE TABLE |
+| spice         | public       | partsupp     | BASE TABLE |
+| spice         | public       | part         | BASE TABLE |
+| spice         | public       | nation       | BASE TABLE |
+| spice         | public       | orders       | BASE TABLE |
+| spice         | public       | supplier     | BASE TABLE |
++---------------+--------------+--------------+------------+
 
 Time: 0.006163958 seconds. 9 rows.
 ```
