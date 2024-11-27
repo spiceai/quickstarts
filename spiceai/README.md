@@ -106,7 +106,9 @@ spice sql
 You can now now query `eth_recent_blocks` in the runtime.
 
 ```sql
-sql> select number, hash from eth_recent_blocks limit 10;
+select number, hash from eth_recent_blocks limit 10;
+```
+```shell
 +----------+--------------------------------------------------------------------+
 | number   | hash                                                               |
 +----------+--------------------------------------------------------------------+
