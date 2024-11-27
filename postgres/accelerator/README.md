@@ -129,6 +129,8 @@ You can now now query `eth_recent_blocks` in the runtime.
 
 ```sql
 select number, "timestamp", hash, transaction_count, gas_used from eth_recent_blocks order by number desc limit 10;
+```
+```shell
 +----------+------------+--------------------------------------------------------------------+-------------------+----------+
 | number   | timestamp  | hash                                                               | transaction_count | gas_used |
 +----------+------------+--------------------------------------------------------------------+-------------------+----------+
@@ -156,7 +158,9 @@ psql spice_demo
 ```
 
 ```sql
-spice_demo=# select number, "timestamp", hash, transaction_count, gas_used from eth_recent_blocks order by number desc limit 10;
+select number, "timestamp", hash, transaction_count, gas_used from eth_recent_blocks order by number desc limit 10;
+```
+```shell
   number  | timestamp  |                                hash                                | transaction_count | gas_used
 ----------+------------+--------------------------------------------------------------------+-------------------+----------
  19823523 | 1715149295 | 0x6a4619e01fae477b9034981c74908a2cf5110c56828227971a46b798c5c11f1b |               238 | 15921279
