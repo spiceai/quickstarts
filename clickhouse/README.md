@@ -58,6 +58,26 @@ A `.env` file is created in the project directory with the following content:
 CLICKHOUSE_PASS=<password>
 ```
 
+If you followed the above [preparation](#preparation) to generate a Clickhouse server use this
+```yaml
+version: v1beta1
+kind: Spicepod
+name: clickhouse_quickstart
+datasets:
+  - from: clickhouse:my_first_table
+    name: my_first_table
+    params:
+      clickhouse_host: localhost
+      clickhouse_db: default
+      clickhouse_user: default
+      clickhouse_tcp_port: 9000
+      clickhouse_secure: false
+    acceleration:
+      enabled: true
+      refresh_mode: full
+      refresh_check_interval: 10s
+```
+
 **Step 2.** Run the Spice runtime with `spice run` from this directory.
 
 **Step 3.** Run `spice sql` in a new terminal to start an interactive SQL query session against the Spice runtime.
