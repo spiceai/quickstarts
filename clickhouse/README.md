@@ -6,16 +6,16 @@ Follow these steps to get started with Clickhouse as a Data Connector.
 
 - Install the [Spice.ai CLI](https://docs.spiceai.org/getting-started/installation)
 - Install [Clickhouse](https://clickhouse.com/docs/en/install#quick-install)
+  - `curl https://clickhouse.com/ | sh` 
 - Start a Clickhouse instance (`clickhouse server`)
-
   ```bash
-  clickhouse server
+  ./clickhouse server
   ```
-
+  
 - Create a database and table, for example:
 
   ```bash
-  clickhouse client
+  ./clickhouse client 
   ```
 
   ```sql
