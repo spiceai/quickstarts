@@ -1,6 +1,6 @@
-# Spice on Databricks
+# Spice on Databricks (mode: delta_lake)
 
-Spice can read data straight from a Databricks instance. This guide will create an app, configure Databricks, load and query a dataset. It assumes:
+Spice can read data straight from a Databricks instance. This guide will create an app, configure Databricks, load and query a dataset directly from Delta Lake Tables. It assumes:
 
 - Spice is installed (see the [Getting Started](https://docs.spiceai.org/getting-started) documentation).
 - The Databricks instance is running against AWS S3 storage in `us-east-1`.
