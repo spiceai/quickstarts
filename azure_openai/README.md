@@ -26,15 +26,6 @@ Populate `.env` with the following:
 Verify that the `spicepod.yaml` configuration (`azure_deployment_name`, `azure_api_version`, etc.) matches the information on the [Azure OpenAI Model Deployment](https://ai.azure.com/resource/deployments) page.
 
 ```yaml
-models:
-  - from: azure:gpt-4o-mini
-    name: chat-model
-    params:
-      endpoint: ${ secrets:SPICE_AZURE_AI_ENDPOINT }
-      azure_api_version: 2024-08-01-preview
-      azure_deployment_name: gpt-4o-mini
-      azure_api_key: ${ secrets:SPICE_AZURE_API_KEY }
-
 embeddings:
   - name: embeddings-model
     from: azure:text-embedding-3-small
@@ -42,6 +33,16 @@ embeddings:
       endpoint: ${ secrets:SPICE_AZURE_AI_ENDPOINT }
       azure_deployment_name: text-embedding-3-small
       azure_api_version: 2023-05-15
+      azure_api_key: ${ secrets:SPICE_AZURE_API_KEY }
+
+models:
+  - from: azure:gpt-4o-mini
+    name: chat-model
+    params:
+      spice_tools: auto
+      endpoint: ${ secrets:SPICE_AZURE_AI_ENDPOINT }
+      azure_api_version: 2024-08-01-preview
+      azure_deployment_name: gpt-4o-mini
       azure_api_key: ${ secrets:SPICE_AZURE_API_KEY }
 ```
 
