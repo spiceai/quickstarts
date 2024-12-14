@@ -46,7 +46,7 @@ For complete end-to-end projects that use Spice OSS, see [Spice OSS Samples](htt
 ## AI/ML for Advanced Search and Retrieval
   - [Searching GitHub files with Spice](./search_github_file/README.mds)
   - [Text-to-SQL with Spicel](./text-to-sql/README.md)
-  - [Using Azure OpenAI models](./azure_openai/README.md)
+  - [Spice with Azure OpenAI](./azure_openai/README.md)
   
 ## Deployment and Installation
 
