@@ -24,7 +24,8 @@ datasets:
       - name: content
         # embeddings:
         #   - from: local_embedding_model
-        #     row_id: path
+        #     row_id:
+        #       - path
         #     chunking:
         #       enabled: false
         #       target_chunk_size: 256
