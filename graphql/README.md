@@ -4,7 +4,7 @@ Follow these steps to get started with GraphQL as a Data Connector.
 
 ## Pre-requisites
 
-- The latest version of Spice. [Install Spice](https://docs.spiceai.org/getting-started/installation)
+- The latest version of Spice. [Install Spice](https://docs.spiceai.org/installation)
 - A GraphQL endpoint with a query that returns data in JSON format.
   - The GitHub GraphQL API (<https://api.github.com/graphql>) is a good example to get started with. [GitHub GraphQL API](https://docs.github.com/en/graphql)
 
