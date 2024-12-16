@@ -6,7 +6,7 @@ This quickstart deploys Nvidia [NIM](https://docs.nvidia.com/nim/) infrastructur
 
 ## Prerequisites
  1. A Kubernetes cluster, with at least 1 GPU node.
-    - Ensure that the GPU has at [compute capability](https://developer.nvidia.com/cuda-gpus) of 8.0 or higher.
+    - Ensure that the GPU has a [compute capability](https://developer.nvidia.com/cuda-gpus) of 8.0 or higher.
  2. Local tools
     - `helm`: [install](https://helm.sh/docs/intro/install/)
     - `kubectl`: [install](https://kubernetes.io/docs/tasks/tools/)
