@@ -59,9 +59,6 @@ select * from s3_source;
 -- Query the accelerated S3 source
 select * from s3_source_accelerated;
 
--- Query the federated PostgreSQL source
-select * from pg_source;
-
 -- Query the federated Dremio source
 select * from dremio_source;
 
@@ -70,8 +67,6 @@ select * from dremio_source_accelerated;
 
 -- Perform an aggregation query that combines data from S3, PostgreSQL, and Dremio
 WITH all_sales AS (
-  SELECT sales FROM pg_source
-  UNION ALL
   SELECT sales FROM s3_source_accelerated
   UNION ALL
   select fare_amount+tip_amount as sales from dremio_source_accelerated
@@ -82,6 +77,16 @@ SELECT SUM(sales) as total_sales,
        MAX(sales) AS max_sale,
        AVG(sales) AS avg_sale
 FROM all_sales;
+```
+
+```console
++--------------------+--------------------+----------+--------------------+
+| total_sales        | total_transactions | max_sale | avg_sale           |
++--------------------+--------------------+----------+--------------------+
+| 11501140.079999998 | 102823             | 14082.8  | 111.85376890384445 |
++--------------------+--------------------+----------+--------------------+
+
+Time: 0.021036792 seconds. 1 rows.
 ```
 
 **Step 8.** Clean up the demo environment:
