@@ -116,7 +116,7 @@ Time: 0.018795833 seconds. 4 rows.
     -H "Content-Type: application/json" \
     -d "{
       \"datasets\": [\"spiceai.files\"],
-      \"text\": \"TEL metrics naming\",
+      \"text\": \"OTEL metrics naming\",
       \"where\": \"not contains(path, 'docs/release_notes')\",
       \"additional_columns\": [\"download_url\"],
       \"limit\": 2
