@@ -89,7 +89,7 @@ select
 	avg(l_discount) as avg_disc,
 	count(*) as count_order
 from
-	lineitem
+	tpch.lineitem
 where
 	l_shipdate <= date '1998-12-01' - interval '110' day
 group by
@@ -167,7 +167,7 @@ The following output is shown in the Spice runtime terminal confirming new confi
 2024-07-23T00:50:24.832568Z  INFO runtime: Dataset supplier registered (s3://spiceai-demo-datasets/tpch/supplier/), acceleration (arrow), results cache enabled.
 ```
 
-Run *Pricing Summary Report Query* using the Spice SQL REPL. 
+Run *Pricing Summary Report Query* using the Spice SQL REPL.
 
 ```sql
 select
@@ -182,7 +182,7 @@ select
 	avg(l_discount) as avg_disc,
 	count(*) as count_order
 from
-	lineitem
+	tpch.lineitem
 where
 	l_shipdate <= date '1998-12-01' - interval '110' day
 group by
