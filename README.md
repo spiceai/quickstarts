@@ -56,6 +56,7 @@ Connecting to Data Sources with Catalog Connectors:
 - [Searching GitHub files with Spice](./search_github_file/README.md)
 - [Text-to-SQL with Spice](./text-to-sql/README.md)
 - [Azure OpenAI](./azure-openai/README.md)
+- [Running Llama 3 locally](./llama/README.md)
 
 ## Deployment and Installation
 
