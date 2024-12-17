@@ -77,6 +77,8 @@ For more information, see the [Spice HuggingFace documentation](https://docs.spi
 
 If you have the required hardware (NVIDIA GPU or Apple M-series processor), you can build and run Spice with hardware acceleration.
 
+See [Building Spice](https://github.com/spiceai/spiceai/blob/trunk/CONTRIBUTING.md#building) for general instructions to build Spice from source.
+
 ### For NVIDIA GPU (CUDA)
 
 1. **Install CUDA Toolkit:**
@@ -99,8 +101,8 @@ make install-with-models-cuda
 
 2. **Build Spice with Metal support:**
 
-   ```sh
-   git clone git@github.com:spiceai/spiceai.git
-   cd spiceai
-   make install-with-models-metal
-   ```
+```sh
+git clone git@github.com:spiceai/spiceai.git
+cd spiceai
+make install-with-models-metal
+```
