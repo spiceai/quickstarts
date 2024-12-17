@@ -6,7 +6,7 @@ Quickstarts are designed to quickly try Spice OSS on your laptop with existing i
 
 For complete end-to-end projects that use Spice OSS, see [Spice OSS Samples](https://github.com/spiceai/samples#samples).
 
-## Core Scenarios
+## Core Scenarios (⭐️ Start Here! ⭐️)
 
 - [Federated SQL Query](./federation/README.md) - Query data from S3, PostgreSQL, and Dremio in a single query.
 
