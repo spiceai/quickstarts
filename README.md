@@ -6,21 +6,27 @@ Quickstarts are designed to quickly try Spice OSS on your laptop with existing i
 
 For complete end-to-end projects that use Spice OSS, see [Spice OSS Samples](https://github.com/spiceai/samples#samples).
 
-## Core scenarios
+## Core Scenarios (⭐️ Start Here! ⭐️)
 
 - [Federated SQL Query](./federation/README.md) - Query data from S3, PostgreSQL, and Dremio in a single query.
 
-## Data Acceleration - Materializing & accelerating data locally with Data Accelerators
+## Data Acceleration
+
+Materializing & accelerating data locally with Data Accelerators:
 
 - [DuckDB Data Accelerator](./duckdb/accelerator/README.md)
 - [PostgreSQL Data Accelerator](./postgres/README.md)
 - [SQLite Data Accelerator](./sqlite/accelerator/README.md)
 
-## Consuming and visualizing data with clients
+## Data Consumption and Visualization
+
+Consuming and visualizing data with clients:
 
 - [Apache Superset](./superset/README.md)
 
-## Connecting to Data Sources with Data Connectors
+## Data Connectors
+
+Connecting to Data Sources with Data Connectors:
 
 - [AWS RDS Aurora (MySQL Compatible) Data Connector](./rds-aurora-mysql/README.md)
 - [AWS RDS PostgreSQL Data Connector](./rds-postgresql/README.md)
@@ -35,24 +41,27 @@ For complete end-to-end projects that use Spice OSS, see [Spice OSS Samples](htt
 - [SharePoint/OneDrive for Business Data Connector](./sharepoint/README.md)
 - [Snowflake Data Connector](./snowflake/README.md)
 - [Spice.ai Cloud Platform Data Connector](./spiceai/README.md)
-- [Supabase Data Connector Data Connector](./supabase/README.md)
+- [Supabase Data Connector](./supabase/README.md)
 
-## Connecting to Data Sources with Catalog Connectors
+## Catalog Connectors
+
+Connecting to Data Sources with Catalog Connectors:
 
 - [Spice.ai Cloud Platform Catalog Connector](./catalogs/spiceai/README.md)
 - [Databricks Unity Catalog Connector](./catalogs/databricks/README.md)
 - [Unity Catalog Connector](./catalogs/unity_catalog/README.md)
 
 ## AI/ML for Advanced Search and Retrieval
-  - [Searching GitHub files with Spice](./search_github_file/README.mds)
-  - [Text-to-SQL with Spicel](./text-to-sql/README.md)
-  - [Spice with Azure OpenAI](./azure_openai/README.md)
-  
+
+- [Searching GitHub files with Spice](./search_github_file/README.md)
+- [Text-to-SQL with Spice](./text-to-sql/README.md)
+- [Azure OpenAI](./azure-openai/README.md)
+
 ## Deployment and Installation
 
 - [Deploying to Kubernetes](./kubernetes/README.md)
 
-## Performance
+## Performance Optimization
 
 - [TPC-H Benchmarking](./tpc-h/README.md)
 - [Results Caching](./caching/README.md)
@@ -66,4 +75,4 @@ For complete end-to-end projects that use Spice OSS, see [Spice OSS Samples](htt
 
 ## Security
 
-- [Securing data in transit via TLS](./tls/README.md)
+- [Securing Data in Transit via TLS](./tls/README.md)
