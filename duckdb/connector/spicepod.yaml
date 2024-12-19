@@ -1,8 +1,0 @@
-version: v1beta1
-kind: Spicepod
-name: duckdb-qs
-datasets:
-  - from: duckdb:[database].[schema].[table]
-    name: [local_table_name]
-    params:
-      open: [path/to/duckdb/file/database_file.db]
